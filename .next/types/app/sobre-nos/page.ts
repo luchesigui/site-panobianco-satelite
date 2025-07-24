@@ -1,4 +1,4 @@
-// File: /Users/guilhermeluchesi/Dev/panobianco-website/app/sobre-nos/page.tsx
+// File: /workspace/app/sobre-nos/page.tsx
 import * as entry from '../../../../app/sobre-nos/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -1,7 +1,12 @@
 {
-  "/not-found": "app/not-found.js",
+  "/_not-found": "app/_not-found.js",
+  "/aula-experimental/page": "app/aula-experimental/page.js",
+  "/contato/page": "app/contato/page.js",
+  "/planos/page": "app/planos/page.js",
+  "/servicos/musculacao/page": "app/servicos/musculacao/page.js",
   "/page": "app/page.js",
+  "/servicos/page": "app/servicos/page.js",
+  "/servicos/treino-personalizado/page": "app/servicos/treino-personalizado/page.js",
   "/sobre-nos/page": "app/sobre-nos/page.js",
-  "/aulas-coletivas/page": "app/aulas-coletivas/page.js",
-  "/contato/page": "app/contato/page.js"
+  "/aulas-coletivas/page": "app/aulas-coletivas/page.js"
 }

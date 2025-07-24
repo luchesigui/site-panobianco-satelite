@@ -300,9 +300,9 @@ export default function Home() {
                 <Calendar className="h-5 w-5 mr-2" />
                 Agendar Aula Experimental
               </Link>
-              <a href="tel:+5512992192268" className="btn-secondary">
-                Ligar Agora: (12) 99219-2268
-              </a>
+              <Link href="/planos" className="btn-secondary">
+                Conheça Nossos Planos
+              </Link>
             </div>
           </div>
         </div>

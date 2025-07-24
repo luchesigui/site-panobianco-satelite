@@ -1,4 +1,4 @@
-// File: /Users/guilhermeluchesi/Dev/panobianco-website/app/contato/page.tsx
+// File: /workspace/app/contato/page.tsx
 import * as entry from '../../../../app/contato/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

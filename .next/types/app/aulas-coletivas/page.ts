@@ -1,4 +1,4 @@
-// File: /Users/guilhermeluchesi/Dev/panobianco-website/app/aulas-coletivas/page.tsx
+// File: /workspace/app/aulas-coletivas/page.tsx
 import * as entry from '../../../../app/aulas-coletivas/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
