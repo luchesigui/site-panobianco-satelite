@@ -1,0 +1,207 @@
+{
+  "designSystemProfile": {
+    "name": "Panobianco Agendamento Digital",
+    "version": "1.0.0",
+    "description": "A design system profile based on the Panobianco class scheduling website. It features a dark theme with a vibrant green accent, focusing on clarity and ease of use for a streamlined user experience.",
+    "style": "Dark, Modern, Minimalist",
+    "theme": "Dark",
+    "coreElements": {
+      "colorPalette": {
+        "description": "The palette is built on a dark foundation with shades of grey for depth, and a strong, energetic green for primary actions and highlights.",
+        "primary": {
+          "500": {
+            "value": "#22c55e",
+            "description": "Main brand color for buttons, links, and active states."
+          }
+        },
+        "neutral": {
+          "background": {
+            "value": "#121212",
+            "description": "Base background color of the application."
+          },
+          "surface": {
+            "value": "#1f1f1f",
+            "description": "Background for elevated surfaces like cards and headers."
+          },
+          "border": {
+            "value": "#333333",
+            "description": "Default border color for components like cards and inputs."
+          },
+          "textPrimary": {
+            "value": "#ffffff",
+            "description": "Primary text color for headings and important information."
+          },
+          "textSecondary": {
+            "value": "#a3a3a3",
+            "description": "Secondary text color for less important details and descriptions."
+          }
+        },
+        "state": {
+          "disabled": {
+            "background": {
+              "value": "#3f3f46",
+              "description": "Background color for disabled elements."
+            },
+            "text": {
+              "value": "#71717a",
+              "description": "Text color for disabled elements."
+            }
+          },
+          "focus": {
+            "ring": {
+              "value": "#22c55e",
+              "description": "Color for focus rings on interactive elements like inputs."
+            }
+          }
+        }
+      },
+      "typography": {
+        "description": "Uses a standard system sans-serif font stack for broad compatibility and a clean, modern look. The typographic scale is clear and hierarchical.",
+        "fontFamily": {
+          "sans": {
+            "value": "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "description": "Primary font stack."
+          }
+        },
+        "scale": [
+          {
+            "name": "Display",
+            "size": "1.875rem",
+            "weight": "700",
+            "lineHeight": "2.25rem",
+            "use": "Main page titles."
+          },
+          {
+            "name": "Heading",
+            "size": "1.25rem",
+            "weight": "700",
+            "lineHeight": "1.75rem",
+            "use": "Section titles."
+          },
+          {
+            "name": "Body",
+            "size": "1rem",
+            "weight": "400",
+            "lineHeight": "1.5rem",
+            "use": "Default text for paragraphs and labels."
+          },
+          {
+            "name": "Subtext",
+            "size": "0.875rem",
+            "weight": "400",
+            "lineHeight": "1.25rem",
+            "use": "Helper text and secondary information."
+          }
+        ]
+      },
+      "spacing": {
+        "description": "A consistent spacing scale (likely based on a 0.25rem unit) is used for padding, margins, and gaps to ensure a harmonious layout.",
+        "baseUnit": "0.25rem",
+        "scale": {
+          "xs": "0.5rem",
+          "sm": "0.75rem",
+          "md": "1rem",
+          "lg": "1.5rem",
+          "xl": "2rem",
+          "2xl": "3rem"
+        }
+      },
+      "layout": {
+        "description": "The primary layout is a single, centered column that is responsive and constrained for optimal readability on larger screens.",
+        "container": {
+          "maxWidth": "768px",
+          "padding": "1rem"
+        },
+        "structure": "Single-column, centered"
+      },
+      "effects": {
+        "borderRadius": {
+          "sm": "0.25rem",
+          "md": "0.5rem",
+          "lg": "0.75rem",
+          "full": "9999px"
+        },
+        "boxShadow": {
+          "none": "none"
+        }
+      }
+    },
+    "components": {
+      "description": "Core UI components that form the building blocks of the application interface.",
+      "button": {
+        "description": "Buttons are used for primary user actions.",
+        "baseStyle": {
+          "display": "inline-flex",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "borderRadius": "0.5rem",
+          "fontWeight": "600",
+          "fontSize": "1rem",
+          "padding": "0.75rem 1.25rem",
+          "transition": "background-color 0.2s ease-in-out"
+        },
+        "variants": {
+          "primary": {
+            "backgroundColor": "colorPalette.primary.500",
+            "color": "colorPalette.neutral.textPrimary",
+            "hover": {
+              "backgroundColor": "darken(colorPalette.primary.500, 10%)"
+            }
+          }
+        },
+        "states": {
+          "disabled": {
+            "backgroundColor": "colorPalette.state.disabled.background",
+            "color": "colorPalette.state.disabled.text",
+            "cursor": "not-allowed"
+          }
+        }
+      },
+      "inputField": {
+        "description": "Text inputs for forms and data entry.",
+        "baseStyle": {
+          "width": "100%",
+          "backgroundColor": "colorPalette.neutral.background",
+          "border": "1px solid colorPalette.neutral.border",
+          "borderRadius": "0.5rem",
+          "color": "colorPalette.neutral.textPrimary",
+          "padding": "0.75rem 1rem",
+          "fontSize": "1rem"
+        },
+        "states": {
+          "focus": {
+            "borderColor": "colorPalette.primary.500",
+            "boxShadow": "0 0 0 2px colorPalette.primary.500"
+          }
+        }
+      },
+      "card": {
+        "description": "Cards are used to group related content, such as available time slots.",
+        "baseStyle": {
+          "backgroundColor": "colorPalette.neutral.surface",
+          "border": "1px solid colorPalette.neutral.border",
+          "borderRadius": "0.75rem",
+          "padding": "1.5rem",
+          "display": "flex",
+          "flexDirection": "column"
+        },
+        "interactions": {
+          "hover": {
+            "borderColor": "colorPalette.primary.500"
+          }
+        }
+      },
+      "header": {
+        "description": "The application header containing navigation and branding.",
+        "baseStyle": {
+          "backgroundColor": "colorPalette.neutral.surface",
+          "borderBottom": "1px solid colorPalette.neutral.border",
+          "padding": "1rem 1.5rem",
+          "display": "flex",
+          "alignItems": "center",
+          "justifyContent": "space-between"
+        }
+      }
+    }
+  }
+}
