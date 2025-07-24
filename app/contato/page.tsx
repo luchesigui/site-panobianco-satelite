@@ -2,7 +2,7 @@
 
 import type { Metadata } from 'next'
 import { useState } from 'react'
-import { Phone, Mail, MapPin, Clock, Instagram, Facebook, Send } from 'lucide-react'
+import { Phone, MapPin, Clock, Instagram, Facebook, Send } from 'lucide-react'
 
 export default function Contato() {
   const [formData, setFormData] = useState({
@@ -174,28 +174,7 @@ export default function Contato() {
                     </div>
                   </div>
 
-                  {/* Email */}
-                  <div className="card">
-                    <div className="flex items-start space-x-4">
-                      <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg">
-                        <Mail className="h-6 w-6 text-neutral-text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="text-heading text-neutral-text-primary mb-2">
-                          E-mail
-                        </h3>
-                        <p className="text-body text-neutral-text-secondary mb-2">
-                          Resposta em até 24h úteis
-                        </p>
-                        <a 
-                          href="mailto:contato@panobiancosatelite.com.br" 
-                          className="text-primary-500 hover:text-green-400 transition-colors font-semibold"
-                        >
-                          contato@panobiancosatelite.com.br
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+
 
                   {/* Social Media */}
                   <div className="card">

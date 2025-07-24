@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navigation = [
   { name: "Início", href: "/" },
@@ -10,7 +10,6 @@ const navigation = [
   { name: "Serviços", href: "/servicos" },
   { name: "Aulas Coletivas", href: "/aulas-coletivas" },
   { name: "Planos", href: "/planos" },
-  { name: "Blog", href: "/blog" },
   { name: "Contato", href: "/contato" },
 ];
 
@@ -41,15 +40,8 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Contact Info & CTA */}
-          <div className="hidden md:flex items-center space-x-4">
-            <a
-              href="tel:+5512992192268"
-              className="flex items-center space-x-2 text-neutral-text-secondary hover:text-primary-500 transition-colors"
-            >
-              <Phone className="h-4 w-4" />
-              <span className="text-sm">(12) 99219-2268</span>
-            </a>
+          {/* CTA */}
+          <div className="hidden md:flex items-center">
             <Link href="/aula-experimental" className="btn-primary">
               Aula Experimental
             </Link>
@@ -84,13 +76,6 @@ export default function Header() {
                 </Link>
               ))}
               <div className="px-4 py-2">
-                <a
-                  href="tel:+5512992192268"
-                  className="flex items-center space-x-2 text-neutral-text-secondary hover:text-primary-500 transition-colors mb-3"
-                >
-                  <Phone className="h-4 w-4" />
-                  <span className="text-sm">(12) 99219-2268</span>
-                </a>
                 <Link
                   href="/aula-experimental"
                   className="btn-primary w-full text-center"

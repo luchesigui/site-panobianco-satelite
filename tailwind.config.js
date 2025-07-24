@@ -9,13 +9,13 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          500: "#22c55e",
+          500: "#f15927", // Vibrant Orange for buttons, highlights, icons
         },
         neutral: {
           background: "#121212",
           surface: "#1f1f1f",
           border: "#333333",
-          "text-primary": "#ffffff",
+          "text-primary": "#2A2F31", // Dark Charcoal for primary text
           "text-secondary": "#a3a3a3",
         },
         state: {
@@ -24,7 +24,7 @@ module.exports = {
             text: "#71717a",
           },
           focus: {
-            ring: "#22c55e",
+            ring: "#f15927", // Vibrant Orange for focus states
           },
         },
       },
@@ -51,13 +51,28 @@ module.exports = {
         "2xl": "3rem",
       },
       maxWidth: {
-        container: "768px",
+        // Container widths based on the schema provided
+        'container-xs': '100%',      // Extra small: 100%
+        'container-sm': '540px',     // Small: 540px
+        'container-md': '720px',     // Medium: 720px
+        'container-lg': '960px',     // Large: 960px
+        'container-xl': '1140px',    // X-Large: 1140px
+        'container-xxl': '1320px',   // XX-Large: 1320px
+        'container-fluid': '100%',   // Fluid: 100%
       },
       borderRadius: {
         sm: "0.25rem",
         md: "0.5rem",
         lg: "0.75rem",
         full: "9999px",
+      },
+      screens: {
+        'xs': '0px',      // Extra small
+        'sm': '576px',    // Small
+        'md': '768px',    // Medium
+        'lg': '992px',    // Large
+        'xl': '1200px',   // X-Large
+        'xxl': '1400px',  // XX-Large
       },
     },
   },

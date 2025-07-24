@@ -1,7 +1,0 @@
-{
-  "/not-found": "app/not-found.js",
-  "/page": "app/page.js",
-  "/sobre-nos/page": "app/sobre-nos/page.js",
-  "/aulas-coletivas/page": "app/aulas-coletivas/page.js",
-  "/contato/page": "app/contato/page.js"
-}
