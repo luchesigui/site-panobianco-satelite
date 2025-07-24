@@ -15,8 +15,8 @@ module.exports = {
           background: "#121212",
           surface: "#1f1f1f",
           border: "#333333",
-          "text-primary": "#2A2F31", // Dark Charcoal for primary text
-          "text-secondary": "#a3a3a3",
+          "text-primary": "#ffffff", // White for primary text - excellent contrast on dark background
+          "text-secondary": "#d1d5db", // Lighter gray for better contrast on dark background
         },
         state: {
           disabled: {

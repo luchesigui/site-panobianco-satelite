@@ -10,7 +10,7 @@
 
   body {
     background-color: #121212;
-    color: #2A2F31; /* Dark Charcoal for primary text */
+    color: #ffffff; /* White for primary text - excellent contrast on dark background */
     line-height: 1.5;
   }
 }
