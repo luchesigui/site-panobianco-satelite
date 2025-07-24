@@ -43,7 +43,7 @@ export default function AulaExperimental() {
             <p className="text-xl text-neutral-text-secondary max-w-3xl mx-auto mb-8">
               Quer vivenciar a experiência Panobianco Jardim Satélite antes de se comprometer? Agende agora mesmo sua aula experimental gratuita!
             </p>
-            <div className="bg-primary-500 text-neutral-text-primary px-6 py-3 rounded-lg inline-block font-semibold">
+            <div className="bg-primary-500 text-white px-6 py-3 rounded-lg inline-block font-semibold">
               🎉 100% GRATUITA - SEM COMPROMISSO
             </div>
           </div>
@@ -277,7 +277,7 @@ export default function AulaExperimental() {
                 <div className="space-y-6">
                   <div className="card">
                     <div className="flex items-start space-x-4">
-                      <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-full text-neutral-text-primary font-bold text-sm">
+                      <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-full text-white font-bold text-sm">
                         1
                       </div>
                       <div>
@@ -293,7 +293,7 @@ export default function AulaExperimental() {
 
                   <div className="card">
                     <div className="flex items-start space-x-4">
-                      <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-full text-neutral-text-primary font-bold text-sm">
+                      <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-full text-white font-bold text-sm">
                         2
                       </div>
                       <div>
@@ -309,7 +309,7 @@ export default function AulaExperimental() {
 
                   <div className="card">
                     <div className="flex items-start space-x-4">
-                      <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-full text-neutral-text-primary font-bold text-sm">
+                      <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-full text-white font-bold text-sm">
                         3
                       </div>
                       <div>
