@@ -328,7 +328,7 @@ export default function JiuJitsuPage() {
               Se você busca uma arte marcial que vai além do físico, que desafia sua mente e te ensina a superar limites, o Jiu Jítsu da Academia Panobianco Jardim Satélite é a sua escolha. Venha aprender a arte suave, fortalecer seu corpo e sua mente, e fazer parte de uma comunidade que valoriza a disciplina, o respeito e a evolução constante.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="https://agendamento.panobiancosatelite.com.br/" className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+              <Link href="https://agendamento.panobiancosatelite.com.br/" className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors" target="_blank" rel="noopener noreferrer">
                 Agendar Aula Experimental
               </Link>
               <Link href="/aulas-coletivas" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-colors">

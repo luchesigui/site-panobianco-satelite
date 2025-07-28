@@ -13,12 +13,42 @@ export default function Contato() {
     mensagem: ''
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would handle form submission
-    console.log('Form submitted:', formData)
-    // For now, just show an alert
-    alert('Mensagem enviada com sucesso! Entraremos em contato em breve.')
+    setIsSubmitting(true)
+    setSubmitMessage('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSubmitMessage('Mensagem enviada com sucesso! Entraremos em contato em breve.')
+        setFormData({
+          nome: '',
+          email: '',
+          telefone: '',
+          assunto: '',
+          mensagem: ''
+        })
+      } else {
+        setSubmitMessage(data.error || 'Erro ao enviar mensagem. Tente novamente.')
+      }
+    } catch (error) {
+      setSubmitMessage('Erro ao enviar mensagem. Tente novamente.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -71,6 +101,7 @@ export default function Contato() {
                     onChange={handleChange}
                     className="input-field"
                     placeholder="Seu nome completo"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -87,6 +118,7 @@ export default function Contato() {
                     onChange={handleChange}
                     className="input-field"
                     placeholder="seu@email.com"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -102,6 +134,7 @@ export default function Contato() {
                     onChange={handleChange}
                     className="input-field"
                     placeholder="(12) 99999-9999"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -117,6 +150,7 @@ export default function Contato() {
                     onChange={handleChange}
                     className="input-field"
                     placeholder="Sobre o que você gostaria de falar?"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -133,13 +167,24 @@ export default function Contato() {
                     onChange={handleChange}
                     className="input-field resize-none"
                     placeholder="Conte-nos como podemos te ajudar..."
+                    disabled={isSubmitting}
                   />
                 </div>
 
-                <button type="submit" className="btn-primary w-full">
+                <button type="submit" className="btn-primary w-full" disabled={isSubmitting}>
                   <Send className="h-5 w-5 mr-2" />
-                  Enviar Mensagem
+                  {isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}
                 </button>
+
+                {submitMessage && (
+                  <div className={`p-4 rounded-lg ${
+                    submitMessage.includes('sucesso') 
+                      ? 'bg-green-100 text-green-800 border border-green-200' 
+                      : 'bg-red-100 text-red-800 border border-red-200'
+                  }`}>
+                    {submitMessage}
+                  </div>
+                )}
               </form>
             </div>
 
@@ -165,16 +210,16 @@ export default function Contato() {
                           Para um atendimento rápido e direto
                         </p>
                         <a 
-                          href="tel:+5512992192268" 
+                          href="https://wa.me/5512992192268" 
                           className="text-primary-500 hover:text-orange-600 transition-colors font-semibold"
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           (12) 99219-2268
                         </a>
                       </div>
                     </div>
                   </div>
-
-
 
                   {/* Social Media */}
                   <div className="card">
@@ -237,12 +282,6 @@ export default function Contato() {
                       CEP: 12231-675
                     </p>
                   </div>
-                </div>
-                
-                <div className="bg-neutral-background rounded-lg p-6 text-center">
-                  <p className="text-subtext text-neutral-text-secondary">
-                    [Mapa Interativo do Google Maps seria incorporado aqui]
-                  </p>
                 </div>
               </div>
             </div>
@@ -328,11 +367,11 @@ export default function Contato() {
             </div>
 
             <div className="card">
-              <h3 className="text-heading text-neural-text-primary mb-3">
-                Vocês aceitam Gympass?
+              <h3 className="text-heading text-neutral-text-primary mb-3">
+                Vocês aceitam Gympass/TotalPass?
               </h3>
               <p className="text-body text-neutral-text-secondary">
-                Sim! Aceitamos Gympass a partir do plano Basic. Entre em contato para mais informações sobre parcerias corporativas.
+                Sim! Aceitamos Gympass a partir do plano Basic e TotalPass a partir do TP1+. Entre em contato para mais informações sobre parcerias corporativas.
               </p>
             </div>
 

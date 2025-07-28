@@ -149,7 +149,7 @@ export default function Servicos() {
               Na Academia Panobianco Jardim Satélite, estamos comprometidos em oferecer a você o melhor em fitness e bem-estar. Venha nos visitar e descubra a modalidade que mais te inspira!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary">
+              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary" target="_blank" rel="noopener noreferrer">
                 Aula Experimental Gratuita
               </Link>
               <Link href="/contato" className="btn-secondary">

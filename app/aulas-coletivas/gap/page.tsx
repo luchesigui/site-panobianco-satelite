@@ -317,7 +317,7 @@ export default function GAPPage() {
               Se você busca um treino focado e eficaz para glúteos, abdômen e pernas, a aula de GAP da Academia Panobianco Jardim Satélite é a sua melhor opção. Venha sentir a queima, ver a transformação e conquistar o corpo que você sempre desejou.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                              <Link href="https://agendamento.panobiancosatelite.com.br/" className="bg-white text-pink-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                              <Link href="https://agendamento.panobiancosatelite.com.br/" className="bg-white text-pink-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors" target="_blank" rel="noopener noreferrer">
                   Agendar Aula Experimental
                 </Link>
               <Link href="/aulas-coletivas" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-pink-600 transition-colors">

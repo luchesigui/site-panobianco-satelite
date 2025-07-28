@@ -271,7 +271,7 @@ export default function AulasColetivas() {
               Venha experimentar nossas aulas coletivas e sinta a energia contagiante da Academia Panobianco Jardim Satélite. Sua primeira aula é gratuita!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary">
+              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary" target="_blank" rel="noopener noreferrer">
                 Experimentar Aula Gratuita
               </Link>
               <Link href="/contato" className="btn-secondary">

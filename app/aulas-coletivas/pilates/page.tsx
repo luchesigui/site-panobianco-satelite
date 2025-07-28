@@ -252,7 +252,7 @@ export default function PilatesPage() {
               Se você busca uma prática que promove o bem-estar integral, fortalece o corpo e acalma a mente, o Pilates da Academia Panobianco Jardim Satélite é a sua melhor opção. Venha experimentar os benefícios dessa modalidade e descubra uma nova forma de se conectar consigo mesmo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="https://agendamento.panobiancosatelite.com.br/" className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+              <Link href="https://agendamento.panobiancosatelite.com.br/" className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors" target="_blank" rel="noopener noreferrer">
                 Agendar Aula Experimental
               </Link>
               <Link href="/aulas-coletivas" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
