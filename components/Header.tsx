@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const navigation = [
   { name: "Início", href: "/" },
@@ -21,7 +22,14 @@ export default function Header() {
       <div className="container-main">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center space-x-3">
+            <Image
+              src="/logo.svg"
+              alt="Academia Panobianco"
+              width={40}
+              height={40}
+              className="w-10 h-10"
+            />
             <div className="text-heading font-bold text-primary-500">
               Academia Panobianco
             </div>
@@ -42,7 +50,7 @@ export default function Header() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center">
-            <Link href="/aula-experimental" className="btn-primary">
+            <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary">
               Aula Experimental
             </Link>
           </div>
@@ -77,7 +85,7 @@ export default function Header() {
               ))}
               <div className="px-4 py-2">
                 <Link
-                  href="/aula-experimental"
+                  href="https://agendamento.panobiancosatelite.com.br/"
                   className="btn-primary w-full text-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >

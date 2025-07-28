@@ -16,7 +16,7 @@ export default function Musculacao() {
               Nossa área de musculação é um espaço amplo e bem equipado, com uma vasta gama de aparelhos modernos e seguros, projetados para atender a todas as necessidades e grupos musculares.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/aula-experimental" className="btn-primary">
+              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary">
                 Experimente Gratuitamente
               </Link>
               <Link href="/planos" className="btn-secondary">
@@ -236,7 +236,7 @@ export default function Musculacao() {
               Se você busca um lugar onde a musculação é levada a sério, com estrutura de ponta, equipamentos modernos e o suporte de profissionais dedicados, a Academia Panobianco Jardim Satélite é o seu destino.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/aula-experimental" className="btn-primary">
+              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary">
                 Agende Sua Aula Experimental Gratuita
               </Link>
               <Link href="/contato" className="btn-secondary">

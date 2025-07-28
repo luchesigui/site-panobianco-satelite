@@ -255,11 +255,11 @@ export default function AulaExperimental() {
 
                 <p className="text-subtext text-neutral-text-secondary text-center">
                   Ao agendar, você concorda com nossos{' '}
-                  <Link href="/termos-de-uso" className="text-primary-500 hover:text-green-400 transition-colors">
+                  <Link href="/termos-de-uso" className="text-primary-500 hover:text-orange-600 transition-colors">
                     termos de uso
                   </Link>{' '}
                   e{' '}
-                  <Link href="/politica-de-privacidade" className="text-primary-500 hover:text-green-400 transition-colors">
+                  <Link href="/politica-de-privacidade" className="text-primary-500 hover:text-orange-600 transition-colors">
                     política de privacidade
                   </Link>
                   .
