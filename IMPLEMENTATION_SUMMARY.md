@@ -54,8 +54,8 @@
 - `resend` package for email functionality
 
 ### API Configuration
-- Email sender: `contato@panobiancosatelite.com.br` (may need domain verification)
-- Email recipient: `contato@panobiancosatelite.com.br`
+- Email sender: `sjc.satelite@panobiancoacademia.com.br`
+- Email recipient: `gui.olhenrique@gmail.com`
 - HTML email template with gym branding
 
 ### Build Status
@@ -63,12 +63,19 @@
 - ✅ All TypeScript errors resolved
 - ✅ 21 static pages generated
 
+### 7. Plans Page Updates (Latest Changes)
+- **Reduced spacing**: Decreased padding between main title and plan cards
+- **Removed sections**: 
+  - "Aceitamos Gympass e TotalPass" informational section
+  - "Pronto para começar?" CTA card
+- **Updated Gympass card**: Added contact link "Entre em contato conosco" that links to `/contato`
+- **Location**: `app/planos/page.tsx`
+
 ## Next Steps Required
 
 1. **Logo File**: Place the PNG logo at `/public/logo.png`
-2. **Domain Verification**: Verify sender domain with Resend if needed
+2. **Domain Verification**: Verify sender domain `sjc.satelite@panobiancoacademia.com.br` with Resend if needed
 3. **Email Testing**: Test the contact form functionality
-4. **Email Configuration**: Update recipient email if different from `contato@panobiancosatelite.com.br`
 
 ## Files Modified Summary
 - `app/contato/page.tsx` - Contact page updates
