@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { MapPin, Clock, Instagram, Facebook } from 'lucide-react'
 
 export default function Footer() {
@@ -8,9 +9,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Informações da Academia */}
           <div>
-            <h3 className="text-heading font-bold text-primary-500 mb-4">
-              Academia Panobianco
-            </h3>
+            <div className="flex items-center space-x-3 mb-4">
+              <Image
+                src="/logo.svg"
+                alt="Academia Panobianco"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+              />
+              <h3 className="text-heading font-bold text-primary-500">
+                Academia Panobianco
+              </h3>
+            </div>
             <p className="text-body text-neutral-text-secondary mb-4">
               Sua academia completa no Jardim Satélite. Musculação, aulas coletivas e treino personalizado.
             </p>
@@ -59,7 +69,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/aula-experimental" className="text-body text-neutral-text-secondary hover:text-primary-500 transition-colors">
+                <Link href="https://agendamento.panobiancosatelite.com.br/" className="text-body text-neutral-text-secondary hover:text-primary-500 transition-colors">
                   Aula Experimental
                 </Link>
               </li>

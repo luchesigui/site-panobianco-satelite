@@ -16,7 +16,7 @@ export default function TreinoPersonalizado() {
               Se você busca um acompanhamento ainda mais individualizado e focado em resultados rápidos e eficazes, nosso serviço de treino personalizado é a solução ideal.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/aula-experimental" className="btn-primary">
+              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary">
                 Agende sua Consultoria
               </Link>
               <Link href="/contato" className="btn-secondary">
@@ -268,7 +268,7 @@ export default function TreinoPersonalizado() {
               O treino personalizado na Academia Panobianco Jardim Satélite é um investimento na sua saúde, no seu bem-estar e na sua qualidade de vida. Se você está pronto para acelerar seus resultados, treinar com segurança e ter um acompanhamento de excelência, entre em contato conosco.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/aula-experimental" className="btn-primary">
+              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary">
                 Agende Sua Consultoria Personalizada
               </Link>
               <Link href="/planos" className="btn-secondary">

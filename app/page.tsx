@@ -16,7 +16,7 @@ export default function Home() {
               Sua nova jornada de saúde e bem-estar começa aqui. Musculação, aulas coletivas, treino personalizado e muito mais em São José dos Campos.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/aula-experimental" className="btn-primary">
+              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary">
                 Agende sua Aula Experimental
               </Link>
               <Link href="/planos" className="btn-secondary">
@@ -41,7 +41,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Musculação */}
-            <div className="card hover:border-primary-500 transition-colors">
+            <Link href="/servicos/musculacao" className="card hover:border-primary-500 transition-colors block">
               <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
                 <Dumbbell className="h-6 w-6 text-neutral-text-primary" />
               </div>
@@ -51,13 +51,13 @@ export default function Home() {
               <p className="text-body text-neutral-text-secondary mb-4">
                 Área ampla com equipamentos modernos e acompanhamento de professores qualificados para seu treino personalizado.
               </p>
-              <Link href="/servicos/musculacao" className="text-primary-500 hover:text-green-400 transition-colors">
+              <span className="text-primary-500 hover:text-orange-600 transition-colors">
                 Saiba mais →
-              </Link>
-            </div>
+              </span>
+            </Link>
 
             {/* Aulas Coletivas */}
-            <div className="card hover:border-primary-500 transition-colors">
+            <Link href="/aulas-coletivas" className="card hover:border-primary-500 transition-colors block">
               <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
                 <Users className="h-6 w-6 text-neutral-text-primary" />
               </div>
@@ -67,13 +67,13 @@ export default function Home() {
               <p className="text-body text-neutral-text-secondary mb-4">
                 Flashback, Pilates, WolfFit, GAP, FitDance, Jump, Muay Thai e Jiu Jítsu. Energia e diversão em grupo.
               </p>
-              <Link href="/aulas-coletivas" className="text-primary-500 hover:text-green-400 transition-colors">
+              <span className="text-primary-500 hover:text-orange-600 transition-colors">
                 Explore nossas aulas →
-              </Link>
-            </div>
+              </span>
+            </Link>
 
             {/* Treino Personalizado */}
-            <div className="card hover:border-primary-500 transition-colors">
+            <Link href="/servicos/treino-personalizado" className="card hover:border-primary-500 transition-colors block">
               <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
                 <User className="h-6 w-6 text-neutral-text-primary" />
               </div>
@@ -83,13 +83,13 @@ export default function Home() {
               <p className="text-body text-neutral-text-secondary mb-4">
                 Acompanhamento individualizado com personal trainers qualificados para resultados rápidos e eficazes.
               </p>
-              <Link href="/servicos/treino-personalizado" className="text-primary-500 hover:text-green-400 transition-colors">
+              <span className="text-primary-500 hover:text-orange-600 transition-colors">
                 Saiba mais →
-              </Link>
-            </div>
+              </span>
+            </Link>
 
             {/* Avaliação Física */}
-            <div className="card hover:border-primary-500 transition-colors">
+            <Link href="/servicos" className="card hover:border-primary-500 transition-colors block">
               <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
                 <FileCheck className="h-6 w-6 text-neutral-text-primary" />
               </div>
@@ -99,10 +99,10 @@ export default function Home() {
               <p className="text-body text-neutral-text-secondary mb-4">
                 Análise completa do seu condicionamento atual para traçar um plano de treino seguro e eficaz.
               </p>
-              <Link href="/servicos" className="text-primary-500 hover:text-green-400 transition-colors">
+              <span className="text-primary-500 hover:text-orange-600 transition-colors">
                 Saiba mais →
-              </Link>
-            </div>
+              </span>
+            </Link>
           </div>
         </div>
       </section>
@@ -176,10 +176,10 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-body text-neutral-text-secondary mb-4">
-                "A Panobianco Jardim Satélite superou minhas expectativas! A estrutura é impecável, os professores são muito atenciosos e as aulas coletivas são demais. Sinto-me muito mais motivada e com resultados visíveis."
+                "Linda academia, aparelhos modernos, local limpo e tem até elevador! Participei da aula fitDance com o professor Ed, um excelente profissional, além de dançar muitíssimo bem, é educado e atencioso!"
               </p>
               <div className="text-subtext text-neutral-text-primary font-semibold">
-                — Maria S., Aluna de Musculação e Zumba
+                — Angela
               </div>
             </div>
 
@@ -190,10 +190,10 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-body text-neutral-text-secondary mb-4">
-                "Ambiente excelente para treinar. Os equipamentos são novos e sempre tem alguém da equipe para ajudar. Recomendo a todos que buscam uma academia de qualidade em São José dos Campos."
+                "O que eu mais gostei logo de cara foi a atenção dos professores, eles são muito atenciosos, simpáticos e tem muita paciência com a gente. Sempre estimulando a gente a treinar e treinar da forma correta e com treinos personalizados pra gente. Não ficar amarrado em um plano também é excelente."
               </p>
               <div className="text-subtext text-neutral-text-primary font-semibold">
-                — João P., Aluno de Musculação
+                — Vanessa
               </div>
             </div>
 
@@ -204,10 +204,10 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-body text-neutral-text-secondary mb-4">
-                "Adoro as aulas de Spinning! A energia é incrível e os instrutores são muito bons. É o meu momento de desestressar e cuidar da saúde."
+                "A academia Panobianco do Satélite, é top demais! Estrutura impecável, com três pavimentos super bem organizados, elevador, banheiros com chuveiros e até shampoo disponível, um cuidado que faz toda a diferença!"
               </p>
               <div className="text-subtext text-neutral-text-primary font-semibold">
-                — Ana L., Aluna de Spinning
+                — Liliane
               </div>
             </div>
           </div>
@@ -236,11 +236,6 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-              </div>
-              <div className="mt-8 bg-neutral-background rounded-lg p-4">
-                <p className="text-subtext text-neutral-text-secondary text-center">
-                  [Google Maps seria incorporado aqui]
-                </p>
               </div>
             </div>
 
@@ -296,7 +291,7 @@ export default function Home() {
               Agende sua aula experimental gratuita e descubra por que a Academia Panobianco Jardim Satélite é o lugar perfeito para você alcançar seus objetivos.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/aula-experimental" className="btn-primary">
+              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary">
                 <Calendar className="h-5 w-5 mr-2" />
                 Agendar Aula Experimental
               </Link>

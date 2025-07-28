@@ -166,7 +166,7 @@ export default function Contato() {
                         </p>
                         <a 
                           href="tel:+5512992192268" 
-                          className="text-primary-500 hover:text-green-400 transition-colors font-semibold"
+                          className="text-primary-500 hover:text-orange-600 transition-colors font-semibold"
                         >
                           (12) 99219-2268
                         </a>

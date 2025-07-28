@@ -146,7 +146,7 @@ export default function AulasColetivas() {
                   </div>
                   <Link 
                     href={`/aulas-coletivas/${classItem.slug}`} 
-                    className="text-primary-500 hover:text-green-400 transition-colors font-semibold"
+                    className="text-primary-500 hover:text-orange-600 transition-colors font-semibold"
                   >
                     Saiba mais →
                   </Link>
@@ -271,7 +271,7 @@ export default function AulasColetivas() {
               Venha experimentar nossas aulas coletivas e sinta a energia contagiante da Academia Panobianco Jardim Satélite. Sua primeira aula é gratuita!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/aula-experimental" className="btn-primary">
+              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary">
                 Experimentar Aula Gratuita
               </Link>
               <Link href="/contato" className="btn-secondary">

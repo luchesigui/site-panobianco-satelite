@@ -214,7 +214,7 @@ export default function SobreNos() {
                 Variedade de Aulas
               </h3>
               <p className="text-body text-neutral-text-secondary">
-                De musculação a aulas coletivas como Zumba, Spinning, Yoga, Pilates e muito mais, nossa grade de horários é diversificada para atender a todos os gostos e objetivos.
+                De musculação a aulas coletivas como Pilates, FitDance, Jump, Muay Thai, Jiu Jítsu e muito mais, nossa grade de horários é diversificada para atender a todos os gostos e objetivos.
               </p>
             </div>
 
@@ -268,7 +268,7 @@ export default function SobreNos() {
               Venha nos visitar e descubra por que a Academia Panobianco Jardim Satélite é o lugar perfeito para você transformar seu corpo, sua mente e sua vida.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/aula-experimental" className="btn-primary">
+              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary">
                 Agendar Aula Experimental
               </Link>
               <Link href="/contato" className="btn-secondary">
