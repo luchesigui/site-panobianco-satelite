@@ -5,7 +5,7 @@ export default function Planos() {
   return (
     <div className="bg-neutral-background">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-20">
         <div className="container-main">
           <div className="text-center">
             <h1 className="text-4xl lg:text-6xl font-bold text-neutral-text-primary mb-6">
@@ -19,9 +19,9 @@ export default function Planos() {
       </section>
 
       {/* Plans Section */}
-      <section className="py-16">
+      <section className="py-8">
         <div className="container-main">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
             
             {/* Plano Platinum (Recorrente) */}
             <div className="card hover:border-primary-500 transition-colors border-primary-500">
@@ -131,21 +131,8 @@ export default function Planos() {
             </div>
 
           </div>
-        </div>
-      </section>
 
-      {/* Gympass Section */}
-      <section className="py-16">
-        <div className="container-main">
-          <div className="text-center mb-12">
-            <h2 className="text-display text-neutral-text-primary mb-4">
-              Aceitamos Gympass e TotalPass
-            </h2>
-            <p className="text-body text-neutral-text-secondary max-w-2xl mx-auto">
-              Facilitamos ainda mais o seu acesso aos nossos serviços através de parcerias com convênios corporativos.
-            </p>
-          </div>
-
+          {/* Gympass Card */}
           <div className="card text-center max-w-2xl mx-auto">
             <h3 className="text-heading text-neutral-text-primary mb-4">
               Usuário Gympass ou TotalPass?
@@ -153,33 +140,9 @@ export default function Planos() {
             <p className="text-body text-neutral-text-secondary mb-6">
               O Gympass é aceito a partir do plano Basic e o TotalPass, a partir do TP1+. Entre em contato conosco para verificar as condições e começar a treinar hoje mesmo!
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16">
-        <div className="container-main">
-          <div className="card text-center">
-            <h2 className="text-display text-neutral-text-primary mb-4">
-              Pronto para começar?
-            </h2>
-            <p className="text-body text-neutral-text-secondary mb-6 max-w-2xl mx-auto">
-              Tem dúvidas sobre qual plano é ideal para você? Nossa equipe está pronta para te ajudar!
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contato" className="btn-primary">
-                Fale Conosco Agora!
-              </Link>
-              <Link 
-                href="https://agendamento.panobiancosatelite.com.br/" 
-                className="btn-secondary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Aula Experimental Gratuita
-              </Link>
-            </div>
+            <Link href="/contato" className="btn-primary">
+              Entre em contato conosco
+            </Link>
           </div>
         </div>
       </section>

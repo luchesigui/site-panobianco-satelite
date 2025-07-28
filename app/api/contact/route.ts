@@ -18,8 +18,8 @@ export async function POST(request: NextRequest) {
 
     // Send email using Resend
     const data = await resend.emails.send({
-      from: 'contato@panobiancosatelite.com.br', // You may need to verify this domain with Resend
-      to: ['contato@panobiancosatelite.com.br'], // Replace with the gym's email
+      from: 'sjc.satelite@panobiancoacademia.com.br',
+      to: ['gui.olhenrique@gmail.com'],
       subject: assunto || 'Nova mensagem do site',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
