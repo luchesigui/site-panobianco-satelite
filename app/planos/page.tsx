@@ -79,7 +79,12 @@ export default function Planos() {
                   Panobianco APP
                 </li>
               </ul>
-              <Link href="https://panobiancosatelite.com.br/checkout" className="btn-primary w-full text-center">
+              <Link 
+                href="https://panobiancosatelite.com.br/checkout" 
+                className="btn-primary w-full text-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Assinar Agora
               </Link>
             </div>
@@ -166,7 +171,12 @@ export default function Planos() {
               <Link href="/contato" className="btn-primary">
                 Fale Conosco Agora!
               </Link>
-              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-secondary">
+              <Link 
+                href="https://agendamento.panobiancosatelite.com.br/" 
+                className="btn-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Aula Experimental Gratuita
               </Link>
             </div>

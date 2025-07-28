@@ -9,17 +9,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Informações da Academia */}
           <div>
-            <div className="flex items-center space-x-3 mb-4">
+            <div className="flex items-center mb-4">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Academia Panobianco"
-                width={32}
+                width={120}
                 height={32}
-                className="w-8 h-8"
+                className="h-8 w-auto"
               />
-              <h3 className="text-heading font-bold text-primary-500">
-                Academia Panobianco
-              </h3>
             </div>
             <p className="text-body text-neutral-text-secondary mb-4">
               Sua academia completa no Jardim Satélite. Musculação, aulas coletivas e treino personalizado.
@@ -73,7 +70,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="https://agendamento.panobiancosatelite.com.br/" className="text-body text-neutral-text-secondary hover:text-primary-500 transition-colors">
+                <Link 
+                  href="https://agendamento.panobiancosatelite.com.br/" 
+                  className="text-body text-neutral-text-secondary hover:text-primary-500 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Aula Experimental
                 </Link>
               </li>

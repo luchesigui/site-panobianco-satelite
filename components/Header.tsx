@@ -22,17 +22,14 @@ export default function Header() {
       <div className="container-main">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
+          <Link href="/" className="flex items-center">
             <Image
-              src="/logo.svg"
+              src="/logo.png"
               alt="Academia Panobianco"
-              width={40}
+              width={120}
               height={40}
-              className="w-10 h-10"
+              className="h-10 w-auto"
             />
-            <div className="text-heading font-bold text-primary-500">
-              Academia Panobianco
-            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -50,7 +47,12 @@ export default function Header() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center">
-            <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary">
+            <Link 
+              href="https://agendamento.panobiancosatelite.com.br/" 
+              className="btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Aula Experimental
             </Link>
           </div>
@@ -88,6 +90,8 @@ export default function Header() {
                   href="https://agendamento.panobiancosatelite.com.br/"
                   className="btn-primary w-full text-center"
                   onClick={() => setMobileMenuOpen(false)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Aula Experimental
                 </Link>
