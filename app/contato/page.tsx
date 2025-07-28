@@ -186,15 +186,19 @@ export default function Contato() {
                     </p>
                     <div className="flex space-x-4">
                       <a 
-                        href="#" 
+                        href="https://instagram.com/panobiancosjcsatelite" 
                         className="flex items-center space-x-2 text-neutral-text-secondary hover:text-primary-500 transition-colors"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <Instagram className="h-5 w-5" />
                         <span>Instagram</span>
                       </a>
                       <a 
-                        href="#" 
+                        href="https://facebook.com/panobiancosjcsatelitesp" 
                         className="flex items-center space-x-2 text-neutral-text-secondary hover:text-primary-500 transition-colors"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <Facebook className="h-5 w-5" />
                         <span>Facebook</span>

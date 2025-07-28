@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Check, Star, Zap, Shield } from 'lucide-react'
+import { Check, Star, Zap, X } from 'lucide-react'
 
 export default function Planos() {
   return (
@@ -79,8 +79,8 @@ export default function Planos() {
                   Panobianco APP
                 </li>
               </ul>
-              <Link href="/contato" className="btn-primary w-full text-center">
-                Saiba Mais
+              <Link href="https://panobiancosatelite.com.br/checkout" className="btn-primary w-full text-center">
+                Assinar Agora
               </Link>
             </div>
 
@@ -100,43 +100,28 @@ export default function Planos() {
                 Você paga só o mês que usar, por pix, débito ou dinheiro direto na recepção.
               </p>
               
-              <h4 className="text-heading text-neutral-text-primary mb-4">Inclui:</h4>
+              <h4 className="text-heading text-neutral-text-primary mb-4">Benefícios:</h4>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start text-sm text-neutral-text-secondary">
                   <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
-                  Área de cardio tecnológica com esteiras e escada com YouTube e Netflix
+                  Tudo que está incluso no plano recorrente
                 </li>
                 <li className="flex items-start text-sm text-neutral-text-secondary">
                   <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
-                  Musculação com equipamentos de ponta e biodinâmica exclusivas
+                  Maior controle dos seus pagamentos mensais
                 </li>
-                <li className="flex items-start text-sm text-neutral-text-secondary">
-                  <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
-                  Acesso a todas as aulas coletivas, incluindo pilates, muai thai, jiu-jítsu e muito mais
-                </li>
-                <li className="flex items-start text-sm text-neutral-text-secondary">
-                  <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
-                  Trazer 5 convidados por mês
-                </li>
-                <li className="flex items-start text-sm text-neutral-text-secondary">
-                  <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
-                  Avaliação física gratuita
-                </li>
-                <li className="flex items-start text-sm text-neutral-text-secondary">
-                  <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
-                  Acesso a todas as unidades da rede
-                </li>
-                <li className="flex items-start text-sm text-neutral-text-secondary">
-                  <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
-                  Sem anuidade, nem taxa de cancelamento
-                </li>
-                <li className="flex items-start text-sm text-neutral-text-secondary">
-                  <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
-                  Panobianco APP
+                <li className="flex items-start text-sm text-red-500">
+                  <X className="h-4 w-4 text-red-500 mr-2 mt-0.5 flex-shrink-0" />
+                  Menos praticidade, pois precisa renovar mês a mês
                 </li>
               </ul>
-              <Link href="/contato" className="btn-primary w-full text-center">
-                Saiba Mais
+              <Link 
+                href="https://api.whatsapp.com/send/?phone=5512992192268&text=Olá! Eu vi do site e gostaria de me matricular no plano avulso." 
+                className="btn-primary w-full text-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Falar no WhatsApp
               </Link>
             </div>
 

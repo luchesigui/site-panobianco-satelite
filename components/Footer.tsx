@@ -26,16 +26,20 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="#" 
+                href="https://instagram.com/panobiancosjcsatelite" 
                 className="text-neutral-text-secondary hover:text-primary-500 transition-colors"
                 aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Instagram className="h-5 w-5" />
               </a>
               <a 
-                href="#" 
+                href="https://facebook.com/panobiancosjcsatelitesp" 
                 className="text-neutral-text-secondary hover:text-primary-500 transition-colors"
                 aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Facebook className="h-5 w-5" />
               </a>
