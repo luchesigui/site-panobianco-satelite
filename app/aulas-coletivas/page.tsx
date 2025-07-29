@@ -12,9 +12,20 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Aulas Coletivas | Academia Panobianco Jardim Satélite",
+  title: "Aulas Coletivas | Academia Panobianco Jardim Satélite - Flashback, Pilates, WolfFit",
   description:
-    "Descubra nossas aulas coletivas: Flashback, Pilates, WolfFit, GAP, FitDance, Jump, Muay Thai e Jiu Jítsu. Energia e diversão em grupo.",
+    "Descubra nossas aulas coletivas: Flashback, Pilates, WolfFit, GAP, FitDance, Jump, Muay Thai e Jiu Jítsu. Energia e diversão em grupo na Academia Panobianco Jardim Satélite.",
+  keywords: "aulas coletivas, flashback, pilates, wolffit, gap, fitdance, jump, muay thai, jiu jitsu, academia jardim satélite, são josé dos campos",
+  robots: 'index, follow',
+  openGraph: {
+    title: "Aulas Coletivas | Academia Panobianco Jardim Satélite",
+    description: "Descubra nossas aulas coletivas: Flashback, Pilates, WolfFit, GAP, FitDance, Jump, Muay Thai e Jiu Jítsu.",
+    type: 'website',
+    locale: 'pt_BR',
+  },
+  alternates: {
+    canonical: '/aulas-coletivas',
+  },
 };
 
 const classes = [

@@ -1,5 +1,22 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Dumbbell, Target, Shield, TrendingUp, Users, CheckCircle } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Musculação | Academia Panobianco Jardim Satélite - Equipamentos Modernos',
+  description: 'Área de musculação completa com equipamentos modernos e seguros. Professores qualificados para orientar seu treino na Academia Panobianco Jardim Satélite.',
+  keywords: 'musculação, academia, equipamentos modernos, treino força, hipertrofia, jardim satélite, são josé dos campos',
+  robots: 'index, follow',
+  openGraph: {
+    title: 'Musculação | Academia Panobianco Jardim Satélite',
+    description: 'Área de musculação completa com equipamentos modernos e seguros. Força e definição para o seu corpo.',
+    type: 'website',
+    locale: 'pt_BR',
+  },
+  alternates: {
+    canonical: '/servicos/musculacao',
+  },
+}
 
 export default function Musculacao() {
   return (

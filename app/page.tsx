@@ -1,5 +1,28 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Dumbbell, Users, User, FileCheck, Calendar, MapPin, Clock, Star } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Academia Panobianco Jardim Satélite | Musculação, Aulas Coletivas e Treino Personalizado em São José dos Campos',
+  description: 'Academia Panobianco Jardim Satélite oferece musculação, aulas coletivas, treino personalizado e avaliação física. Localizada na Av. Cidade Jardim, 391, Jardim Satélite, São José dos Campos.',
+  keywords: 'academia, musculação, aulas coletivas, treino personalizado, são josé dos campos, jardim satélite, academia panobianco, fitness, personal trainer, avaliação física',
+  robots: 'index, follow',
+  openGraph: {
+    title: 'Academia Panobianco Jardim Satélite | Musculação e Aulas Coletivas',
+    description: 'Sua nova jornada de saúde e bem-estar começa aqui. Musculação, aulas coletivas, treino personalizado em São José dos Campos.',
+    type: 'website',
+    locale: 'pt_BR',
+    siteName: 'Academia Panobianco Jardim Satélite',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Academia Panobianco Jardim Satélite | Musculação e Aulas Coletivas',
+    description: 'Sua nova jornada de saúde e bem-estar começa aqui. Musculação, aulas coletivas, treino personalizado em São José dos Campos.',
+  },
+  alternates: {
+    canonical: '/',
+  },
+}
 
 export default function Home() {
   return (

@@ -1,5 +1,22 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Dumbbell, User, FileCheck, Users } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Serviços | Academia Panobianco Jardim Satélite - Musculação, Personal e Avaliação Física',
+  description: 'Conheça todos os serviços da Academia Panobianco: musculação completa, treino personalizado, avaliação física e aulas coletivas em São José dos Campos.',
+  keywords: 'serviços academia, musculação, treino personalizado, avaliação física, personal trainer, academia jardim satélite, são josé dos campos',
+  robots: 'index, follow',
+  openGraph: {
+    title: 'Serviços | Academia Panobianco Jardim Satélite',
+    description: 'Oferecemos uma gama completa de serviços: musculação, treino personalizado, avaliação física e aulas coletivas.',
+    type: 'website',
+    locale: 'pt_BR',
+  },
+  alternates: {
+    canonical: '/servicos',
+  },
+}
 
 export default function Servicos() {
   return (
