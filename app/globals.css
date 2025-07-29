@@ -8,7 +8,7 @@
       "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   }
 
-  /* Light theme (default) */
+  /* Light theme (default) - IMPROVED */
   body {
     background-color: #ffffff;
     color: #1e293b;
@@ -16,7 +16,7 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* Dark theme */
+  /* Dark theme - RESTORED TO ORIGINAL */
   .dark body {
     background-color: #121212;
     color: #ffffff;
@@ -31,20 +31,26 @@
 
   .btn-secondary {
     @apply inline-flex items-center justify-center rounded-md border px-5 py-3 text-base font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    /* Light theme - improved */
     @apply border-light-border bg-light-bg-secondary text-light-text-primary hover:bg-light-border focus:ring-offset-light-bg-primary;
-    @apply dark:border-dark-border dark:bg-dark-bg-secondary dark:text-dark-text-primary dark:hover:bg-dark-border dark:focus:ring-offset-dark-bg-primary;
+    /* Dark theme - original styling */
+    @apply dark:border-dark-border dark:bg-dark-bg-card dark:text-dark-text-primary dark:hover:bg-dark-border dark:focus:ring-offset-dark-bg-primary;
   }
 
   .card {
     @apply rounded-lg border p-6 transition-colors;
+    /* Light theme - improved */
     @apply border-light-border bg-light-bg-card;
+    /* Dark theme - original: both surface and cards use #1f1f1f */
     @apply dark:border-dark-border dark:bg-dark-bg-card;
   }
 
   .input-field {
     @apply w-full rounded-md border px-4 py-3 text-base placeholder-opacity-50 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors;
+    /* Light theme - improved */
     @apply border-light-border bg-light-bg-primary text-light-text-primary placeholder-light-text-muted;
-    @apply dark:border-dark-border dark:bg-dark-bg-primary dark:text-dark-text-primary dark:placeholder-dark-text-muted;
+    /* Dark theme - original */
+    @apply dark:border-dark-border dark:bg-dark-bg-primary dark:text-dark-text-primary dark:placeholder-dark-text-secondary;
   }
 
   .container-main {

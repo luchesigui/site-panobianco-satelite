@@ -12,7 +12,7 @@ module.exports = {
         primary: {
           500: "#f15927", // Vibrant Orange for buttons, highlights, icons
         },
-        // Light theme colors (default)
+        // Light theme colors (default) - NEW AND IMPROVED
         light: {
           bg: {
             primary: "#ffffff",     // White background
@@ -26,19 +26,19 @@ module.exports = {
           },
           border: "#e2e8f0",        // Light gray borders
         },
-        // Dark theme colors
+        // Dark theme colors - RESTORED TO ORIGINAL
         dark: {
           bg: {
-            primary: "#121212",     // Dark background
-            secondary: "#1f1f1f",   // Slightly lighter dark for sections
-            card: "#2a2a2a",        // Dark gray for cards
+            primary: "#121212",     // Original dark background
+            secondary: "#1f1f1f",   // Original surface color
+            card: "#1f1f1f",        // Original surface color for cards (not the new #2a2a2a)
           },
           text: {
-            primary: "#ffffff",     // White for primary text
-            secondary: "#d1d5db",   // Light gray for secondary text
-            muted: "#9ca3af",       // Medium gray for muted text
+            primary: "#ffffff",     // Original white for primary text
+            secondary: "#d1d5db",   // Original light gray for secondary text
+            muted: "#d1d5db",       // Keep secondary color for muted (original didn't have separate muted)
           },
-          border: "#333333",        // Dark gray borders
+          border: "#333333",        // Original dark gray borders
         },
         state: {
           disabled: {
