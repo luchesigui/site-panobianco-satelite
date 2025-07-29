@@ -26,25 +26,25 @@
 @layer components {
   .btn-primary {
     @apply inline-flex items-center justify-center rounded-md bg-primary-500 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-    @apply focus:ring-offset-neutral-light-background dark:focus:ring-offset-neutral-background;
+    @apply focus:ring-offset-light-bg-primary dark:focus:ring-offset-dark-bg-primary;
   }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center rounded-md border px-5 py-3 text-base font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-    @apply border-neutral-light-border bg-neutral-light-surface text-neutral-light-text-primary hover:bg-neutral-light-border focus:ring-offset-neutral-light-background;
-    @apply dark:border-neutral-border dark:bg-neutral-surface dark:text-neutral-text-primary dark:hover:bg-neutral-border dark:focus:ring-offset-neutral-background;
+    @apply border-light-border bg-light-bg-secondary text-light-text-primary hover:bg-light-border focus:ring-offset-light-bg-primary;
+    @apply dark:border-dark-border dark:bg-dark-bg-secondary dark:text-dark-text-primary dark:hover:bg-dark-border dark:focus:ring-offset-dark-bg-primary;
   }
 
   .card {
-    @apply rounded-lg border p-6;
-    @apply border-neutral-light-border bg-neutral-light-surface;
-    @apply dark:border-neutral-border dark:bg-neutral-surface;
+    @apply rounded-lg border p-6 transition-colors;
+    @apply border-light-border bg-light-bg-card;
+    @apply dark:border-dark-border dark:bg-dark-bg-card;
   }
 
   .input-field {
-    @apply w-full rounded-md border px-4 py-3 text-base placeholder-opacity-50 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500;
-    @apply border-neutral-light-border bg-neutral-light-background text-neutral-light-text-primary placeholder-neutral-light-text-secondary;
-    @apply dark:border-neutral-border dark:bg-neutral-background dark:text-neutral-text-primary dark:placeholder-neutral-text-secondary;
+    @apply w-full rounded-md border px-4 py-3 text-base placeholder-opacity-50 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors;
+    @apply border-light-border bg-light-bg-primary text-light-text-primary placeholder-light-text-muted;
+    @apply dark:border-dark-border dark:bg-dark-bg-primary dark:text-dark-text-primary dark:placeholder-dark-text-muted;
   }
 
   .container-main {
@@ -104,24 +104,32 @@
 
   /* Theme-aware text utilities */
   .text-primary {
-    @apply text-neutral-light-text-primary dark:text-neutral-text-primary;
+    @apply text-light-text-primary dark:text-dark-text-primary;
   }
 
   .text-secondary {
-    @apply text-neutral-light-text-secondary dark:text-neutral-text-secondary;
+    @apply text-light-text-secondary dark:text-dark-text-secondary;
+  }
+
+  .text-muted {
+    @apply text-light-text-muted dark:text-dark-text-muted;
   }
 
   /* Theme-aware background utilities */
-  .bg-surface {
-    @apply bg-neutral-light-surface dark:bg-neutral-surface;
+  .bg-primary {
+    @apply bg-light-bg-primary dark:bg-dark-bg-primary;
   }
 
-  .bg-background {
-    @apply bg-neutral-light-background dark:bg-neutral-background;
+  .bg-secondary {
+    @apply bg-light-bg-secondary dark:bg-dark-bg-secondary;
+  }
+
+  .bg-card {
+    @apply bg-light-bg-card dark:bg-dark-bg-card;
   }
 
   /* Theme-aware border utilities */
   .border-theme {
-    @apply border-neutral-light-border dark:border-neutral-border;
+    @apply border-light-border dark:border-dark-border;
   }
 }

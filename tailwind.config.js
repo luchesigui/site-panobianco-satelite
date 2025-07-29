@@ -12,26 +12,40 @@ module.exports = {
         primary: {
           500: "#f15927", // Vibrant Orange for buttons, highlights, icons
         },
-        neutral: {
-          // Dark theme colors
-          background: "#121212",
-          surface: "#1f1f1f",
-          border: "#333333",
-          "text-primary": "#ffffff", // White for primary text - excellent contrast on dark background
-          "text-secondary": "#d1d5db", // Lighter gray for better contrast on dark background
-          // Light theme colors
-          "light-background": "#ffffff",
-          "light-surface": "#f8fafc",
-          "light-border": "#e2e8f0",
-          "light-text-primary": "#1e293b", // Dark gray for primary text on light background
-          "light-text-secondary": "#64748b", // Medium gray for secondary text on light background
+        // Light theme colors (default)
+        light: {
+          bg: {
+            primary: "#ffffff",     // White background
+            secondary: "#f8fafc",   // Light gray background for sections
+            card: "#ffffff",        // White for cards
+          },
+          text: {
+            primary: "#1e293b",     // Dark gray for primary text - excellent contrast
+            secondary: "#64748b",   // Medium gray for secondary text
+            muted: "#94a3b8",       // Light gray for muted text
+          },
+          border: "#e2e8f0",        // Light gray borders
+        },
+        // Dark theme colors
+        dark: {
+          bg: {
+            primary: "#121212",     // Dark background
+            secondary: "#1f1f1f",   // Slightly lighter dark for sections
+            card: "#2a2a2a",        // Dark gray for cards
+          },
+          text: {
+            primary: "#ffffff",     // White for primary text
+            secondary: "#d1d5db",   // Light gray for secondary text
+            muted: "#9ca3af",       // Medium gray for muted text
+          },
+          border: "#333333",        // Dark gray borders
         },
         state: {
           disabled: {
-            background: "#3f3f46",
-            text: "#71717a",
-            "light-background": "#f1f5f9",
-            "light-text": "#94a3b8",
+            background: "#f1f5f9",
+            text: "#94a3b8",
+            "dark-background": "#3f3f46",
+            "dark-text": "#71717a",
           },
           focus: {
             ring: "#f15927", // Vibrant Orange for focus states

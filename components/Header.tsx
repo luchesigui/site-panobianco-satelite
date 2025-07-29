@@ -18,7 +18,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-surface border-b border-theme">
+    <header className="bg-secondary border-b border-theme">
       <div className="container-main">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
@@ -63,7 +63,7 @@ export default function Header() {
             <ThemeToggle />
             <button
               type="button"
-              className="p-2 rounded-md text-primary hover:text-primary-500"
+              className="p-2 rounded-md text-primary hover:text-primary-500 transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? (
@@ -83,7 +83,7 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-4 py-2 text-body text-primary hover:text-primary-500 hover:bg-background rounded-md transition-colors"
+                  className="block px-4 py-2 text-body text-primary hover:text-primary-500 hover:bg-primary rounded-md transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
