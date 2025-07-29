@@ -56,7 +56,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-16">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center mb-12">
             <h2 className="text-display text-primary mb-4">
@@ -136,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-16 bg-secondary">
+      <section className="py-16">
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -185,7 +185,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center mb-12">
             <h2 className="text-display text-primary mb-4">
@@ -243,7 +243,7 @@ export default function Home() {
       </section>
 
       {/* Location & Schedule Section */}
-      <section className="py-16 bg-secondary">
+      <section className="py-16">
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Location */}
@@ -309,7 +309,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center">
             <h2 className="text-display text-primary mb-6">
