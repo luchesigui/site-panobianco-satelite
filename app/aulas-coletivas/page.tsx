@@ -160,9 +160,10 @@ export default function AulasColetivas() {
             {classes.map((classItem) => {
               const IconComponent = classItem.icon;
               return (
-                <div
+                <Link
                   key={classItem.slug}
-                  className="card hover:border-primary-500 transition-colors group"
+                  href={`/aulas-coletivas/${classItem.slug}`}
+                  className="card hover:border-primary-500 transition-colors group cursor-pointer block"
                 >
                   <div
                     className={`flex items-center justify-center w-12 h-12 ${classItem.color} rounded-lg mb-4 group-hover:scale-110 transition-transform`}
@@ -187,13 +188,10 @@ export default function AulasColetivas() {
                       ))}
                     </ul>
                   </div>
-                  <Link
-                    href={`/aulas-coletivas/${classItem.slug}`}
-                    className="text-primary-500 hover:text-orange-600 transition-colors font-semibold"
-                  >
+                  <span className="text-primary-500 group-hover:text-orange-600 transition-colors font-semibold">
                     Saiba mais →
-                  </Link>
-                </div>
+                  </span>
+                </Link>
               );
             })}
           </div>
