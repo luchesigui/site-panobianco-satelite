@@ -33,41 +33,18 @@ export default function MuayThaiPage() {
       {/* What is Muay Thai */}
       <section className="py-16">
         <div className="container-main">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-display text-neutral-text-primary mb-6">
-                O Que é Muay Thai?
-              </h2>
-              <p className="text-body text-neutral-text-secondary mb-6">
-                Muay Thai é uma arte marcial e esporte de combate originário da Tailândia. É uma disciplina que utiliza o corpo como um todo, empregando punhos, cotovelos, joelhos e canelas em seus golpes. Conhecida como a "Arte das Oito Armas", o Muay Thai é uma das artes marciais mais eficazes e completas do mundo.
-              </p>
-              <p className="text-body text-neutral-text-secondary">
-                Além do aspecto físico, o Muay Thai também enfatiza a disciplina, o respeito, a concentração e o autocontrole. É um treino intenso que melhora a resistência cardiovascular, a força muscular, a flexibilidade e a coordenação motora.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
-              <div className="card">
-                <h3 className="text-heading text-neutral-text-primary mb-4">
-                  Características da Aula
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <Clock className="h-5 w-5 text-yellow-500" />
-                    <span className="text-body text-neutral-text-secondary">Duração: 30 minutos</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Users className="h-5 w-5 text-yellow-500" />
-                    <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Shield className="h-5 w-5 text-yellow-500" />
-                    <span className="text-body text-neutral-text-secondary">Foco: Arte marcial e autodefesa</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Zap className="h-5 w-5 text-yellow-500" />
-                    <span className="text-body text-neutral-text-secondary">Alta intensidade</span>
-                  </div>
-                </div>
+              <div>
+                <h2 className="text-display text-neutral-text-primary mb-6">
+                  O Que é Muay Thai?
+                </h2>
+                <p className="text-body text-neutral-text-secondary mb-6">
+                  Muay Thai é uma arte marcial e esporte de combate originário da Tailândia. É uma disciplina que utiliza o corpo como um todo, empregando punhos, cotovelos, joelhos e canelas em seus golpes. Conhecida como a "Arte das Oito Armas", o Muay Thai é uma das artes marciais mais eficazes e completas do mundo.
+                </p>
+                <p className="text-body text-neutral-text-secondary">
+                  Além do aspecto físico, o Muay Thai também enfatiza a disciplina, o respeito, a concentração e o autocontrole. É um treino intenso que melhora a resistência cardiovascular, a força muscular, a flexibilidade e a coordenação motora.
+                </p>
               </div>
               
               <div className="card">
@@ -91,6 +68,30 @@ export default function MuayThaiPage() {
                     <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                     <span className="text-body text-neutral-text-secondary">Canelas (2 armas)</span>
                   </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="card">
+              <h3 className="text-heading text-neutral-text-primary mb-4">
+                Características da Aula
+              </h3>
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <Clock className="h-5 w-5 text-yellow-500" />
+                  <span className="text-body text-neutral-text-secondary">Duração: 30 minutos</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Users className="h-5 w-5 text-yellow-500" />
+                  <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Shield className="h-5 w-5 text-yellow-500" />
+                  <span className="text-body text-neutral-text-secondary">Foco: Arte marcial e autodefesa</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Zap className="h-5 w-5 text-yellow-500" />
+                  <span className="text-body text-neutral-text-secondary">Alta intensidade</span>
                 </div>
               </div>
             </div>
