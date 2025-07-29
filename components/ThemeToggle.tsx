@@ -4,7 +4,16 @@ import { Sun, Moon } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, mounted } = useTheme();
+
+  // Don't render anything on server-side or before hydration
+  if (!mounted) {
+    return (
+      <div className="p-2 rounded-md w-9 h-9">
+        {/* Placeholder to maintain layout during SSR */}
+      </div>
+    );
+  }
 
   return (
     <button
