@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function FlashbackPage() {
   return (
-    <div className="bg-neutral-background">
+    <div className="bg-primary">
       {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-gradient-to-br from-purple-600 to-purple-800">
         <div className="container-main">
@@ -34,36 +34,36 @@ export default function FlashbackPage() {
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-display text-neutral-text-primary mb-6">
+              <h2 className="text-display text-primary mb-6">
                 O Que é Flashback?
               </h2>
-              <p className="text-body text-neutral-text-secondary mb-6">
+              <p className="text-body text-secondary mb-6">
                 Flashback é uma aula de dança com tema retrô, que combina movimentos coreografados com hits que marcaram época, desde os anos 60 até os 90 e 2000. É uma aula dinâmica e empolgante, onde você segue coreografias simples e divertidas ao som de músicas vibrantes, como pop, disco, rock, e muito mais.
               </p>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Não é preciso ter experiência em dança ou ser um dançarino profissional; o importante é se mover e se divertir! Prepare-se para uma viagem nostálgica que fará você esquecer que está se exercitando.
               </p>
             </div>
             <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
+              <h3 className="text-heading text-primary mb-4">
                 Características da Aula
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Clock className="h-5 w-5 text-purple-500" />
-                  <span className="text-body text-neutral-text-secondary">Duração: 30 minutos</span>
+                  <span className="text-body text-secondary">Duração: 30 minutos</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Users className="h-5 w-5 text-purple-500" />
-                  <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
+                  <span className="text-body text-secondary">Para todos os níveis</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Target className="h-5 w-5 text-purple-500" />
-                  <span className="text-body text-neutral-text-secondary">Foco: Cardio e diversão</span>
+                  <span className="text-body text-secondary">Foco: Cardio e diversão</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Music className="h-5 w-5 text-purple-500" />
-                  <span className="text-body text-neutral-text-secondary">Sucessos dos anos 60-2000</span>
+                  <span className="text-body text-secondary">Sucessos dos anos 60-2000</span>
                 </div>
               </div>
             </div>
@@ -72,13 +72,13 @@ export default function FlashbackPage() {
       </section>
 
       {/* Benefits */}
-      <section className="py-16 bg-neutral-surface">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center mb-12">
-            <h2 className="text-display text-neutral-text-primary mb-4">
+            <h2 className="text-display text-primary mb-4">
               Benefícios do Flashback
             </h2>
-            <p className="text-body text-neutral-text-secondary">
+            <p className="text-body text-secondary">
               Descubra como esta aula pode transformar seu treino em diversão
             </p>
           </div>
@@ -90,10 +90,10 @@ export default function FlashbackPage() {
                   <Zap className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Queima Calórica Elevada
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Uma aula de Flashback pode queimar centenas de calorias, contribuindo significativamente para o emagrecimento e a manutenção do peso.
               </p>
             </div>
@@ -104,10 +104,10 @@ export default function FlashbackPage() {
                   <Heart className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Melhora do Condicionamento
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 A variação de intensidade dos movimentos fortalece o coração e melhora a resistência cardiovascular.
               </p>
             </div>
@@ -118,10 +118,10 @@ export default function FlashbackPage() {
                   <Target className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Coordenação Motora
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 As coreografias ajudam a aprimorar a coordenação, o equilíbrio e a agilidade de forma divertida.
               </p>
             </div>
@@ -132,10 +132,10 @@ export default function FlashbackPage() {
                   <Users className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Tonificação Muscular
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Embora seja focada no cárdio, o Flashback trabalha diversos grupos musculares, contribuindo para a tonificação do corpo.
               </p>
             </div>
@@ -146,10 +146,10 @@ export default function FlashbackPage() {
                   <Heart className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Alívio do Estresse
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 A dança e a música são excelentes para liberar tensões, melhorar o humor e reduzir o estresse.
               </p>
             </div>
@@ -160,10 +160,10 @@ export default function FlashbackPage() {
                   <Users className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Socialização
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 O ambiente de grupo e a energia contagiante tornam a aula um momento de lazer e uma oportunidade de fazer novas amizades.
               </p>
             </div>
@@ -176,48 +176,48 @@ export default function FlashbackPage() {
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
+              <h3 className="text-heading text-primary mb-4">
                 Nossas Aulas de Flashback
               </h3>
-              <p className="text-body text-neutral-text-secondary mb-4">
+              <p className="text-body text-secondary mb-4">
                 Na Academia Panobianco Jardim Satélite, nossas aulas de Flashback são conduzidas por instrutores certificados e apaixonados, que trazem toda a energia e o carisma necessários para fazer você se soltar e aproveitar cada minuto.
               </p>
-              <p className="text-body text-neutral-text-secondary mb-6">
+              <p className="text-body text-secondary mb-6">
                 A trilha sonora é cuidadosamente selecionada para te manter motivado, e as coreografias são pensadas para serem fáceis de seguir, mas desafiadoras o suficiente para garantir um treino eficaz.
               </p>
-              <div className="bg-neutral-background rounded-lg p-4">
-                <p className="text-subtext text-neutral-text-secondary text-center">
+              <div className="bg-primary rounded-lg p-4">
+                <p className="text-subtext text-secondary text-center">
                   <strong>Horários:</strong> Consulte nossa grade de horários na recepção ou entre em contato conosco
                 </p>
               </div>
             </div>
 
             <div>
-              <h3 className="text-heading text-neutral-text-primary mb-6">
+              <h3 className="text-heading text-primary mb-6">
                 Acessível a Todos
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-purple-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Iniciantes:</strong> As coreografias são simples e fáceis de acompanhar
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-purple-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Todas as idades:</strong> Adaptável para diferentes faixas etárias
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-purple-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Baixo impacto:</strong> Opções de modificação para quem tem limitações
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-purple-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Diversão garantida:</strong> O importante é se mover e se divertir!
                   </p>
                 </div>

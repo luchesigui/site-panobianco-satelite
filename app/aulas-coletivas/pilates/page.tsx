@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PilatesPage() {
   return (
-    <div className="bg-neutral-background">
+    <div className="bg-primary">
       {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-gradient-to-br from-blue-600 to-blue-800">
         <div className="container-main">
@@ -35,70 +35,70 @@ export default function PilatesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
               <div>
-                <h2 className="text-display text-neutral-text-primary mb-6">
+                <h2 className="text-display text-primary mb-6">
                   O Que é Pilates?
                 </h2>
-                <p className="text-body text-neutral-text-secondary mb-6">
+                <p className="text-body text-secondary mb-6">
                   Pilates é um método de exercício físico e alongamento que utiliza o peso do próprio corpo e equipamentos específicos para fortalecer os músculos, melhorar a flexibilidade, a coordenação e o equilíbrio. Criado por Joseph Pilates, o método se baseia em seis princípios fundamentais: centralização, concentração, controle, fluidez, precisão e respiração.
                 </p>
-                <p className="text-body text-neutral-text-secondary">
+                <p className="text-body text-secondary">
                   O Pilates é conhecido por ser uma atividade de baixo impacto, ideal para reabilitação, prevenção de lesões e para pessoas de todas as idades e níveis de condicionamento físico.
                 </p>
               </div>
               
               <div className="card">
-                <h3 className="text-heading text-neutral-text-primary mb-4">
+                <h3 className="text-heading text-primary mb-4">
                   Princípios do Pilates
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span className="text-body text-neutral-text-secondary">Centralização</span>
+                    <span className="text-body text-secondary">Centralização</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span className="text-body text-neutral-text-secondary">Concentração</span>
+                    <span className="text-body text-secondary">Concentração</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span className="text-body text-neutral-text-secondary">Controle</span>
+                    <span className="text-body text-secondary">Controle</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span className="text-body text-neutral-text-secondary">Fluidez</span>
+                    <span className="text-body text-secondary">Fluidez</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span className="text-body text-neutral-text-secondary">Precisão</span>
+                    <span className="text-body text-secondary">Precisão</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span className="text-body text-neutral-text-secondary">Respiração</span>
+                    <span className="text-body text-secondary">Respiração</span>
                   </div>
                 </div>
               </div>
             </div>
             
             <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
+              <h3 className="text-heading text-primary mb-4">
                 Características da Aula
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Clock className="h-5 w-5 text-blue-500" />
-                  <span className="text-body text-neutral-text-secondary">Duração: 50 minutos</span>
+                  <span className="text-body text-secondary">Duração: 50 minutos</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Users className="h-5 w-5 text-blue-500" />
-                  <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
+                  <span className="text-body text-secondary">Para todos os níveis</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Target className="h-5 w-5 text-blue-500" />
-                  <span className="text-body text-neutral-text-secondary">Foco: Core, postura e flexibilidade</span>
+                  <span className="text-body text-secondary">Foco: Core, postura e flexibilidade</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Shield className="h-5 w-5 text-blue-500" />
-                  <span className="text-body text-neutral-text-secondary">Baixo impacto</span>
+                  <span className="text-body text-secondary">Baixo impacto</span>
                 </div>
               </div>
             </div>
@@ -108,13 +108,13 @@ export default function PilatesPage() {
 
 
       {/* Benefits */}
-      <section className="py-16 bg-neutral-surface">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center mb-12">
-            <h2 className="text-display text-neutral-text-primary mb-4">
+            <h2 className="text-display text-primary mb-4">
               Benefícios do Pilates
             </h2>
-            <p className="text-body text-neutral-text-secondary">
+            <p className="text-body text-secondary">
               Descubra como o Pilates pode transformar seu corpo e sua mente
             </p>
           </div>
@@ -126,10 +126,10 @@ export default function PilatesPage() {
                   <Target className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Fortalecimento do Core
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 O Pilates foca no fortalecimento dos músculos abdominais e lombares, que são o centro de força do corpo, essenciais para a postura e a estabilidade.
               </p>
             </div>
@@ -140,10 +140,10 @@ export default function PilatesPage() {
                   <Users className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Melhora da Postura
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Ao fortalecer os músculos do core e alongar a coluna, o Pilates ajuda a corrigir desvios posturais e a aliviar dores nas costas.
               </p>
             </div>
@@ -154,10 +154,10 @@ export default function PilatesPage() {
                   <Flower2 className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Aumento da Flexibilidade
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Os exercícios de alongamento e mobilidade articular contribuem para o aumento da flexibilidade e da amplitude de movimento.
               </p>
             </div>
@@ -168,10 +168,10 @@ export default function PilatesPage() {
                   <Brain className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Consciência Corporal
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 A prática exige concentração e controle dos movimentos, desenvolvendo uma maior percepção do corpo e de suas sensações.
               </p>
             </div>
@@ -182,10 +182,10 @@ export default function PilatesPage() {
                   <Heart className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Alívio do Estresse
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 A respiração controlada e a concentração nos movimentos ajudam a acalmar a mente e a reduzir o estresse e a ansiedade.
               </p>
             </div>
@@ -196,10 +196,10 @@ export default function PilatesPage() {
                   <Shield className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Prevenção de Lesões
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 O Pilates é amplamente utilizado na prevenção e recuperação de lesões, pois fortalece os músculos de forma equilibrada e sem impacto.
               </p>
             </div>
@@ -212,37 +212,37 @@ export default function PilatesPage() {
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-heading text-neutral-text-primary mb-6">
+              <h3 className="text-heading text-primary mb-6">
                 Para Quem é Indicado?
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Pessoas com dores nas costas:</strong> Fortalece e alonga a musculatura da coluna
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Reabilitação:</strong> Ideal para recuperação de lesões e cirurgias
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Terceira idade:</strong> Exercícios seguros e de baixo impacto
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Atletas:</strong> Melhora performance e previne lesões
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Gestantes:</strong> Fortalece o core e prepara para o parto
                   </p>
                 </div>
@@ -250,17 +250,17 @@ export default function PilatesPage() {
             </div>
 
             <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
+              <h3 className="text-heading text-primary mb-4">
                 Nossas Aulas de Pilates
               </h3>
-              <p className="text-body text-neutral-text-secondary mb-4">
+              <p className="text-body text-secondary mb-4">
                 Na Academia Panobianco Jardim Satélite, nossas aulas de Pilates são conduzidas por instrutores qualificados e experientes, que garantem a execução correta dos exercícios e a adaptação para as necessidades individuais de cada aluno.
               </p>
-              <p className="text-body text-neutral-text-secondary mb-6">
+              <p className="text-body text-secondary mb-6">
                 Oferecemos aulas em grupo e, se desejar, também podemos organizar sessões personalizadas para um acompanhamento ainda mais individualizado.
               </p>
-              <div className="bg-neutral-background rounded-lg p-4">
-                <p className="text-subtext text-neutral-text-secondary text-center">
+              <div className="bg-primary rounded-lg p-4">
+                <p className="text-subtext text-secondary text-center">
                   <strong>Horários:</strong> Consulte nossa grade de horários na recepção
                 </p>
               </div>

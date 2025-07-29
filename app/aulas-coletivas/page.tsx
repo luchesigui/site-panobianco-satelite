@@ -105,15 +105,15 @@ const classes = [
 
 export default function AulasColetivas() {
   return (
-    <div className="bg-neutral-background">
+    <div className="bg-primary">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-neutral-surface">
+      <section className="py-16 lg:py-24">
         <div className="container-main">
           <div className="text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold text-neutral-text-primary mb-6">
+            <h1 className="text-4xl lg:text-6xl font-bold text-primary mb-6">
               Aulas <span className="text-primary-500">Coletivas</span>
             </h1>
-            <p className="text-xl text-neutral-text-secondary max-w-3xl mx-auto">
+            <p className="text-xl text-secondary max-w-3xl mx-auto">
               Se exercitar pode ser uma experiência divertida, motivadora e
               social. Descubra nossa variedade de aulas coletivas!
             </p>
@@ -122,20 +122,20 @@ export default function AulasColetivas() {
       </section>
 
       {/* Introduction */}
-      <section className="py-16">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-display text-neutral-text-primary mb-6">
+            <h2 className="text-display text-primary mb-6">
               Energia e Diversão em Grupo
             </h2>
-            <p className="text-body text-neutral-text-secondary mb-8">
+            <p className="text-body text-secondary mb-8">
               Na Academia Panobianco Jardim Satélite, acreditamos que se
               exercitar pode ser uma experiência divertida, motivadora e social.
               Nossas aulas coletivas são projetadas para oferecer uma variedade
               de opções que atendem a diferentes gostos, níveis de
               condicionamento e objetivos.
             </p>
-            <p className="text-body text-neutral-text-secondary">
+            <p className="text-body text-secondary">
               Com instrutores energéticos e ambientes dinâmicos, você encontrará
               a modalidade perfeita para se desafiar, queimar calorias e se
               conectar com uma comunidade vibrante.
@@ -145,13 +145,13 @@ export default function AulasColetivas() {
       </section>
 
       {/* Classes Grid */}
-      <section className="py-16 bg-neutral-surface">
+      <section className="py-16">
         <div className="container-main">
           <div className="text-center mb-12">
-            <h2 className="text-display text-neutral-text-primary mb-4">
+            <h2 className="text-display text-primary mb-4">
               Nossa Grade de Aulas
             </h2>
-            <p className="text-body text-neutral-text-secondary">
+            <p className="text-body text-secondary">
               Explore todas as modalidades disponíveis e encontre a sua favorita
             </p>
           </div>
@@ -170,10 +170,10 @@ export default function AulasColetivas() {
                   >
                     <IconComponent className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-heading text-neutral-text-primary mb-3">
+                  <h3 className="text-heading text-primary mb-3">
                     {classItem.name}
                   </h3>
-                  <p className="text-body text-neutral-text-secondary mb-4">
+                  <p className="text-body text-secondary mb-4">
                     {classItem.description}
                   </p>
                   <div className="mb-4">
@@ -181,7 +181,7 @@ export default function AulasColetivas() {
                       {classItem.benefits.map((benefit, index) => (
                         <li key={index} className="flex items-center space-x-2">
                           <div className="w-1.5 h-1.5 bg-primary-500 rounded-full"></div>
-                          <span className="text-subtext text-neutral-text-secondary">
+                          <span className="text-subtext text-secondary">
                             {benefit}
                           </span>
                         </li>
@@ -199,23 +199,23 @@ export default function AulasColetivas() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-display text-neutral-text-primary mb-6">
+              <h2 className="text-display text-primary mb-6">
                 Benefícios das Aulas Coletivas
               </h2>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-full mt-1">
-                    <Users className="h-4 w-4 text-neutral-text-primary" />
+                    <Users className="h-4 w-4 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-heading text-neutral-text-primary mb-2">
+                    <h3 className="text-heading text-primary mb-2">
                       Motivação
                     </h3>
-                    <p className="text-body text-neutral-text-secondary">
+                    <p className="text-body text-secondary">
                       O ambiente de grupo e a energia do instrutor são grandes
                       motivadores para manter a consistência.
                     </p>
@@ -224,13 +224,13 @@ export default function AulasColetivas() {
 
                 <div className="flex items-start space-x-3">
                   <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-full mt-1">
-                    <Heart className="h-4 w-4 text-neutral-text-primary" />
+                    <Heart className="h-4 w-4 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-heading text-neutral-text-primary mb-2">
+                    <h3 className="text-heading text-primary mb-2">
                       Diversão
                     </h3>
-                    <p className="text-body text-neutral-text-secondary">
+                    <p className="text-body text-secondary">
                       Exercitar-se em grupo torna o treino mais prazeroso e
                       menos monótono.
                     </p>
@@ -239,13 +239,13 @@ export default function AulasColetivas() {
 
                 <div className="flex items-start space-x-3">
                   <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-full mt-1">
-                    <Target className="h-4 w-4 text-neutral-text-primary" />
+                    <Target className="h-4 w-4 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-heading text-neutral-text-primary mb-2">
+                    <h3 className="text-heading text-primary mb-2">
                       Resultados
                     </h3>
-                    <p className="text-body text-neutral-text-secondary">
+                    <p className="text-body text-secondary">
                       Queime calorias, melhore o condicionamento e alcance seus
                       objetivos de forma eficaz.
                     </p>
@@ -254,13 +254,13 @@ export default function AulasColetivas() {
 
                 <div className="flex items-start space-x-3">
                   <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-full mt-1">
-                    <Activity className="h-4 w-4 text-neutral-text-primary" />
+                    <Activity className="h-4 w-4 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-heading text-neutral-text-primary mb-2">
+                    <h3 className="text-heading text-primary mb-2">
                       Variedade
                     </h3>
-                    <p className="text-body text-neutral-text-secondary">
+                    <p className="text-body text-secondary">
                       Experimente diferentes modalidades e mantenha seu treino
                       sempre interessante.
                     </p>
@@ -270,16 +270,16 @@ export default function AulasColetivas() {
             </div>
 
             <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
+              <h3 className="text-heading text-primary mb-4">
                 Para Todos os Níveis
               </h3>
-              <p className="text-body text-neutral-text-secondary mb-4">
+              <p className="text-body text-secondary mb-4">
                 Nossas aulas coletivas são pensadas para acolher pessoas de
                 todos os níveis de condicionamento físico. Nossos instrutores
                 oferecem modificações e adaptações para garantir que todos
                 possam participar e se beneficiar.
               </p>
-              <p className="text-body text-neutral-text-secondary mb-6">
+              <p className="text-body text-secondary mb-6">
                 Seja você um iniciante ou alguém mais experiente, encontrará
                 desafios adequados ao seu nível e objetivos pessoais.
               </p>
@@ -289,18 +289,18 @@ export default function AulasColetivas() {
       </section>
 
       {/* Schedule Teaser */}
-      <section className="py-16 bg-neutral-surface" id="horarios">
+      <section className="py-16" id="horarios">
         <div className="container-main">
           <div className="text-center">
-            <h2 className="text-display text-neutral-text-primary mb-6">
+            <h2 className="text-display text-primary mb-6">
               Horários Flexíveis
             </h2>
-            <p className="text-body text-neutral-text-secondary mb-8 max-w-2xl mx-auto">
+            <p className="text-body text-secondary mb-8 max-w-2xl mx-auto">
               Oferecemos diversos horários ao longo da semana para que você
               possa encaixar as aulas na sua rotina. Confira nossa grade
               completa e encontre o melhor horário para você.
             </p>
-            <div className="bg-neutral-background rounded-lg p-6 max-w-lg mx-auto">
+            <div className="bg-primary rounded-lg p-6 max-w-lg mx-auto">
               <img
                 src="/images/horarios.png"
                 alt="Horários"
@@ -312,13 +312,13 @@ export default function AulasColetivas() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center">
-            <h2 className="text-display text-neutral-text-primary mb-6">
+            <h2 className="text-display text-primary mb-6">
               Pronto para Suar a Camisa?
             </h2>
-            <p className="text-body text-neutral-text-secondary mb-8 max-w-2xl mx-auto">
+            <p className="text-body text-secondary mb-8 max-w-2xl mx-auto">
               Venha experimentar nossas aulas coletivas e sinta a energia
               contagiante da Academia Panobianco Jardim Satélite. Sua primeira
               aula é gratuita!

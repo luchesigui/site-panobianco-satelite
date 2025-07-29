@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function GAPPage() {
   return (
-    <div className="bg-neutral-background">
+    <div className="bg-primary">
       {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-gradient-to-br from-pink-600 to-pink-800">
         <div className="container-main">
@@ -36,19 +36,19 @@ export default function GAPPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
               <div>
-                <h2 className="text-display text-neutral-text-primary mb-6">
+                <h2 className="text-display text-primary mb-6">
                   O Que é GAP?
                 </h2>
-                <p className="text-body text-neutral-text-secondary mb-6">
+                <p className="text-body text-secondary mb-6">
                   GAP é a sigla para Glúteos, Abdômen e Pernas, e é uma aula de ginástica localizada que se concentra no fortalecimento e tonificação desses três grupos musculares. A aula é composta por uma série de exercícios específicos, que podem utilizar o peso do próprio corpo, caneleiras, halteres leves ou elásticos, para trabalhar intensamente cada região.
                 </p>
-                <p className="text-body text-neutral-text-secondary">
+                <p className="text-body text-secondary">
                   É uma modalidade eficaz para quem busca melhorar a estética corporal, aumentar a força e a resistência muscular localizada. Com a prática regular, é possível observar uma melhora significativa na firmeza e no contorno das regiões trabalhadas.
                 </p>
               </div>
               
               <div className="card">
-                <h3 className="text-heading text-neutral-text-primary mb-4">
+                <h3 className="text-heading text-primary mb-4">
                   Regiões Trabalhadas
                 </h3>
                 <div className="space-y-4">
@@ -57,8 +57,8 @@ export default function GAPPage() {
                       <span className="text-white font-bold text-sm">G</span>
                     </div>
                     <div>
-                      <span className="text-body text-neutral-text-primary font-semibold">Glúteos</span>
-                      <p className="text-subtext text-neutral-text-secondary">Glúteo máximo, médio e mínimo</p>
+                      <span className="text-body text-primary font-semibold">Glúteos</span>
+                      <p className="text-subtext text-secondary">Glúteo máximo, médio e mínimo</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
@@ -66,8 +66,8 @@ export default function GAPPage() {
                       <span className="text-white font-bold text-sm">A</span>
                     </div>
                     <div>
-                      <span className="text-body text-neutral-text-primary font-semibold">Abdômen</span>
-                      <p className="text-subtext text-neutral-text-secondary">Reto abdominal, oblíquos e transverso</p>
+                      <span className="text-body text-primary font-semibold">Abdômen</span>
+                      <p className="text-subtext text-secondary">Reto abdominal, oblíquos e transverso</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
@@ -75,8 +75,8 @@ export default function GAPPage() {
                       <span className="text-white font-bold text-sm">P</span>
                     </div>
                     <div>
-                      <span className="text-body text-neutral-text-primary font-semibold">Pernas</span>
-                      <p className="text-subtext text-neutral-text-secondary">Quadríceps, isquiotibiais e panturrilhas</p>
+                      <span className="text-body text-primary font-semibold">Pernas</span>
+                      <p className="text-subtext text-secondary">Quadríceps, isquiotibiais e panturrilhas</p>
                     </div>
                   </div>
                 </div>
@@ -84,25 +84,25 @@ export default function GAPPage() {
             </div>
             
             <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
+              <h3 className="text-heading text-primary mb-4">
                 Características da Aula
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Clock className="h-5 w-5 text-pink-500" />
-                  <span className="text-body text-neutral-text-secondary">Duração: 30 minutos</span>
+                  <span className="text-body text-secondary">Duração: 30 minutos</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Users className="h-5 w-5 text-pink-500" />
-                  <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
+                  <span className="text-body text-secondary">Para todos os níveis</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Target className="h-5 w-5 text-pink-500" />
-                  <span className="text-body text-neutral-text-secondary">Foco: Glúteos, abdômen e pernas</span>
+                  <span className="text-body text-secondary">Foco: Glúteos, abdômen e pernas</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Flame className="h-5 w-5 text-pink-500" />
-                  <span className="text-body text-neutral-text-secondary">Exercícios localizados</span>
+                  <span className="text-body text-secondary">Exercícios localizados</span>
                 </div>
               </div>
             </div>
@@ -113,13 +113,13 @@ export default function GAPPage() {
 
 
       {/* Benefits */}
-      <section className="py-16 bg-neutral-surface">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center mb-12">
-            <h2 className="text-display text-neutral-text-primary mb-4">
+            <h2 className="text-display text-primary mb-4">
               Benefícios do GAP
             </h2>
-            <p className="text-body text-neutral-text-secondary">
+            <p className="text-body text-secondary">
               Descubra como esta modalidade pode esculpir seu corpo
             </p>
           </div>
@@ -131,10 +131,10 @@ export default function GAPPage() {
                   <Target className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Tonificação Muscular
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Fortalece e define os músculos dos glúteos, abdômen e pernas, contribuindo para um corpo mais esculpido.
               </p>
             </div>
@@ -145,10 +145,10 @@ export default function GAPPage() {
                   <Flame className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Queima Calórica
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Embora seja uma aula localizada, o GAP promove um bom gasto calórico, auxiliando no emagrecimento e na redução de gordura corporal.
               </p>
             </div>
@@ -159,10 +159,10 @@ export default function GAPPage() {
                   <Users className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Melhora da Postura
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 O fortalecimento do abdômen e dos músculos do core contribui para uma melhor postura e alívio de dores nas costas.
               </p>
             </div>
@@ -173,10 +173,10 @@ export default function GAPPage() {
                   <Zap className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Aumento da Força
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Melhora a capacidade de realizar atividades diárias e o desempenho em outras modalidades esportivas.
               </p>
             </div>
@@ -187,10 +187,10 @@ export default function GAPPage() {
                   <Shield className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Prevenção de Lesões
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Músculos fortes e equilibrados protegem as articulações e reduzem o risco de lesões.
               </p>
             </div>
@@ -201,10 +201,10 @@ export default function GAPPage() {
                   <Heart className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Resultados Visíveis
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Com a prática regular, é possível observar uma melhora significativa na firmeza e no contorno das regiões trabalhadas.
               </p>
             </div>
@@ -217,37 +217,37 @@ export default function GAPPage() {
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-heading text-neutral-text-primary mb-6">
+              <h3 className="text-heading text-primary mb-6">
                 Equipamentos Utilizados
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-pink-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Peso Corporal:</strong> Exercícios usando apenas o próprio peso
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-pink-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Caneleiras:</strong> Para intensificar os exercícios de pernas
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-pink-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Halteres Leves:</strong> Para trabalhar braços e core simultaneamente
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-pink-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Elásticos:</strong> Para exercícios de resistência e fortalecimento
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-pink-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Colchonetes:</strong> Para exercícios de solo e alongamentos
                   </p>
                 </div>
@@ -255,17 +255,17 @@ export default function GAPPage() {
             </div>
 
             <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
+              <h3 className="text-heading text-primary mb-4">
                 Nossas Aulas de GAP
               </h3>
-              <p className="text-body text-neutral-text-secondary mb-4">
+              <p className="text-body text-secondary mb-4">
                 Na Academia Panobianco Jardim Satélite, nossas aulas de GAP são conduzidas por instrutores experientes e motivadores, que garantem a execução correta dos exercícios e a intensidade necessária para alcançar seus objetivos.
               </p>
-              <p className="text-body text-neutral-text-secondary mb-6">
+              <p className="text-body text-secondary mb-6">
                 A aula é dinâmica e desafiadora, com variações que atendem a diferentes níveis de condicionamento físico. Prepare-se para sentir a queima e ver a transformação!
               </p>
-              <div className="bg-neutral-background rounded-lg p-4">
-                <p className="text-subtext text-neutral-text-secondary text-center">
+              <div className="bg-primary rounded-lg p-4">
+                <p className="text-subtext text-secondary text-center">
                   <strong>Horários:</strong> Consulte nossa grade de horários na recepção
                 </p>
               </div>
@@ -275,13 +275,13 @@ export default function GAPPage() {
       </section>
 
       {/* Target Audience */}
-      <section className="py-16 bg-neutral-surface">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center">
-            <h2 className="text-display text-neutral-text-primary mb-6">
+            <h2 className="text-display text-primary mb-6">
               Para Quem é Indicado?
             </h2>
-            <p className="text-body text-neutral-text-secondary mb-12 max-w-3xl mx-auto">
+            <p className="text-body text-secondary mb-12 max-w-3xl mx-auto">
               O GAP é uma modalidade versátil que atende diferentes perfis e objetivos. Nossos instrutores adaptam os exercícios para garantir que todos possam participar e se beneficiar.
             </p>
             
@@ -292,8 +292,8 @@ export default function GAPPage() {
                     <Target className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-heading text-neutral-text-primary mb-3">Iniciantes</h3>
-                <p className="text-body text-neutral-text-secondary">
+                <h3 className="text-heading text-primary mb-3">Iniciantes</h3>
+                <p className="text-body text-secondary">
                   Movimentos básicos e progressão gradual
                 </p>
               </div>
@@ -303,8 +303,8 @@ export default function GAPPage() {
                     <Heart className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-heading text-neutral-text-primary mb-3">Mulheres</h3>
-                <p className="text-body text-neutral-text-secondary">
+                <h3 className="text-heading text-primary mb-3">Mulheres</h3>
+                <p className="text-body text-secondary">
                   Foco nas áreas mais desejadas pelo público feminino
                 </p>
               </div>
@@ -314,8 +314,8 @@ export default function GAPPage() {
                     <Zap className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-heading text-neutral-text-primary mb-3">Atletas</h3>
-                <p className="text-body text-neutral-text-secondary">
+                <h3 className="text-heading text-primary mb-3">Atletas</h3>
+                <p className="text-body text-secondary">
                   Fortalecimento complementar para melhor performance
                 </p>
               </div>
@@ -325,8 +325,8 @@ export default function GAPPage() {
                     <Users className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-heading text-neutral-text-primary mb-3">Pós-parto</h3>
-                <p className="text-body text-neutral-text-secondary">
+                <h3 className="text-heading text-primary mb-3">Pós-parto</h3>
+                <p className="text-body text-secondary">
                   Fortalecimento seguro após liberação médica
                 </p>
               </div>

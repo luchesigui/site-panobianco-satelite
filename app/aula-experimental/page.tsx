@@ -32,15 +32,15 @@ export default function AulaExperimental() {
   }
 
   return (
-    <div className="bg-neutral-background">
+    <div className="bg-primary">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-neutral-surface">
+      <section className="py-16 lg:py-24 bg-secondary">
         <div className="container-main">
           <div className="text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold text-neutral-text-primary mb-6">
+            <h1 className="text-4xl lg:text-6xl font-bold text-primary mb-6">
               Aula <span className="text-primary-500">Experimental</span>
             </h1>
-            <p className="text-xl text-neutral-text-secondary max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-secondary max-w-3xl mx-auto mb-8">
               Quer vivenciar a experiência Panobianco Jardim Satélite antes de se comprometer? Agende agora mesmo sua aula experimental gratuita!
             </p>
             <div className="bg-primary-500 text-white px-6 py-3 rounded-lg inline-block font-semibold">
@@ -54,10 +54,10 @@ export default function AulaExperimental() {
       <section className="py-16">
         <div className="container-main">
           <div className="text-center mb-12">
-            <h2 className="text-display text-neutral-text-primary mb-4">
+            <h2 className="text-display text-primary mb-4">
               Por Que Agendar Sua Aula Experimental?
             </h2>
-            <p className="text-body text-neutral-text-secondary max-w-2xl mx-auto">
+            <p className="text-body text-secondary max-w-2xl mx-auto">
               É a oportunidade perfeita para conhecer nossa estrutura, sentir a energia do nosso ambiente e experimentar a qualidade das nossas aulas.
             </p>
           </div>
@@ -65,48 +65,48 @@ export default function AulaExperimental() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="card text-center">
               <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4 mx-auto">
-                <CheckCircle className="h-6 w-6 text-neutral-text-primary" />
+                <CheckCircle className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Conheça Nossa Estrutura
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Explore nossos três andares com equipamentos modernos e áreas dedicadas à musculação, cárdio e aulas coletivas.
               </p>
             </div>
 
             <div className="card text-center">
               <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4 mx-auto">
-                <Users className="h-6 w-6 text-neutral-text-primary" />
+                <Users className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Experimente Nossas Aulas
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Participe de uma aula coletiva ou faça um treino na musculação com acompanhamento profissional.
               </p>
             </div>
 
             <div className="card text-center">
               <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4 mx-auto">
-                <User className="h-6 w-6 text-neutral-text-primary" />
+                <User className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Ambiente Acolhedor
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Sinta a energia da nossa comunidade. Nossos alunos e equipe são acolhedores e motivadores.
               </p>
             </div>
 
             <div className="card text-center">
               <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4 mx-auto">
-                <MessageSquare className="h-6 w-6 text-neutral-text-primary" />
+                <MessageSquare className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Tire Suas Dúvidas
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Converse sobre seus objetivos e conheça os planos disponíveis sem qualquer pressão.
               </p>
             </div>
@@ -115,21 +115,21 @@ export default function AulaExperimental() {
       </section>
 
       {/* Booking Form Section */}
-      <section className="py-16 bg-neutral-surface">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Form */}
             <div>
-              <h2 className="text-display text-neutral-text-primary mb-6">
+              <h2 className="text-display text-primary mb-6">
                 Agendar Aula Experimental
               </h2>
-              <p className="text-body text-neutral-text-secondary mb-8">
+              <p className="text-body text-secondary mb-8">
                 Preencha o formulário abaixo e nossa equipe entrará em contato para confirmar o agendamento e tirar qualquer dúvida.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="nome" className="block text-body text-neutral-text-primary mb-2">
+                  <label htmlFor="nome" className="block text-body text-primary mb-2">
                     Nome Completo *
                   </label>
                   <input
@@ -145,7 +145,7 @@ export default function AulaExperimental() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-body text-neutral-text-primary mb-2">
+                  <label htmlFor="email" className="block text-body text-primary mb-2">
                     E-mail *
                   </label>
                   <input
@@ -161,7 +161,7 @@ export default function AulaExperimental() {
                 </div>
 
                 <div>
-                  <label htmlFor="telefone" className="block text-body text-neutral-text-primary mb-2">
+                  <label htmlFor="telefone" className="block text-body text-primary mb-2">
                     Telefone (com DDD) *
                   </label>
                   <input
@@ -178,7 +178,7 @@ export default function AulaExperimental() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="data_preferencial" className="block text-body text-neutral-text-primary mb-2">
+                    <label htmlFor="data_preferencial" className="block text-body text-primary mb-2">
                       Data Preferencial
                     </label>
                     <input
@@ -192,7 +192,7 @@ export default function AulaExperimental() {
                   </div>
 
                   <div>
-                    <label htmlFor="hora_preferencial" className="block text-body text-neutral-text-primary mb-2">
+                    <label htmlFor="hora_preferencial" className="block text-body text-primary mb-2">
                       Hora Preferencial
                     </label>
                     <input
@@ -207,7 +207,7 @@ export default function AulaExperimental() {
                 </div>
 
                 <div>
-                  <label htmlFor="modalidade_interesse" className="block text-body text-neutral-text-primary mb-2">
+                  <label htmlFor="modalidade_interesse" className="block text-body text-primary mb-2">
                     Modalidade de Interesse (opcional)
                   </label>
                   <select
@@ -234,7 +234,7 @@ export default function AulaExperimental() {
                 </div>
 
                 <div>
-                  <label htmlFor="mensagem" className="block text-body text-neutral-text-primary mb-2">
+                  <label htmlFor="mensagem" className="block text-body text-primary mb-2">
                     Mensagem (opcional)
                   </label>
                   <textarea
@@ -253,7 +253,7 @@ export default function AulaExperimental() {
                   Agendar Aula Experimental
                 </button>
 
-                <p className="text-subtext text-neutral-text-secondary text-center">
+                <p className="text-subtext text-secondary text-center">
                   Ao agendar, você concorda com nossos{' '}
                   <Link href="/termos-de-uso" className="text-primary-500 hover:text-orange-600 transition-colors">
                     termos de uso
@@ -270,7 +270,7 @@ export default function AulaExperimental() {
             {/* What to Expect */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-display text-neutral-text-primary mb-6">
+                <h2 className="text-display text-primary mb-6">
                   O Que Esperar da Sua Visita
                 </h2>
                 
@@ -281,10 +281,10 @@ export default function AulaExperimental() {
                         1
                       </div>
                       <div>
-                        <h3 className="text-heading text-neutral-text-primary mb-2">
+                        <h3 className="text-heading text-primary mb-2">
                           Recepção Calorosa
                         </h3>
-                        <p className="text-body text-neutral-text-secondary">
+                        <p className="text-body text-secondary">
                           Você será recebido por nossa equipe, que fará um breve cadastro e apresentará as instalações da academia.
                         </p>
                       </div>
@@ -297,10 +297,10 @@ export default function AulaExperimental() {
                         2
                       </div>
                       <div>
-                        <h3 className="text-heading text-neutral-text-primary mb-2">
+                        <h3 className="text-heading text-primary mb-2">
                           Orientação Profissional
                         </h3>
-                        <p className="text-body text-neutral-text-secondary">
+                        <p className="text-body text-secondary">
                           Um dos nossos professores estará disponível para te orientar no treino ou na aula escolhida, garantindo segurança e aproveitamento máximo.
                         </p>
                       </div>
@@ -313,10 +313,10 @@ export default function AulaExperimental() {
                         3
                       </div>
                       <div>
-                        <h3 className="text-heading text-neutral-text-primary mb-2">
+                        <h3 className="text-heading text-primary mb-2">
                           Experiência Completa
                         </h3>
-                        <p className="text-body text-neutral-text-secondary">
+                        <p className="text-body text-secondary">
                           Você poderá usar nossos vestiários, experimentar equipamentos e sentir o ambiente motivador da nossa comunidade.
                         </p>
                       </div>
@@ -326,10 +326,10 @@ export default function AulaExperimental() {
               </div>
 
               <div className="card bg-primary-500">
-                <h3 className="text-heading text-neutral-text-primary mb-4">
+                <h3 className="text-heading text-primary mb-4">
                   💡 Dicas para Sua Primeira Visita
                 </h3>
-                <ul className="space-y-2 text-body text-neutral-text-primary">
+                <ul className="space-y-2 text-body text-primary">
                   <li>• Vista roupas confortáveis para exercício</li>
                   <li>• Traga tênis adequado para atividade física</li>
                   <li>• Leve uma garrafa de água</li>
@@ -339,18 +339,18 @@ export default function AulaExperimental() {
               </div>
 
               <div className="card">
-                <h3 className="text-heading text-neutral-text-primary mb-4">
+                <h3 className="text-heading text-primary mb-4">
                   Outras Formas de Agendar
                 </h3>
                 <div className="space-y-3">
                   <a 
                     href="tel:+5512992192268" 
-                    className="flex items-center space-x-3 text-neutral-text-secondary hover:text-primary-500 transition-colors"
+                    className="flex items-center space-x-3 text-secondary hover:text-primary-500 transition-colors"
                   >
                     <Phone className="h-5 w-5" />
                     <span>(12) 99219-2268 - WhatsApp</span>
                   </a>
-                  <div className="flex items-center space-x-3 text-neutral-text-secondary">
+                  <div className="flex items-center space-x-3 text-secondary">
                     <Clock className="h-5 w-5" />
                     <span>Diretamente na recepção</span>
                   </div>
@@ -365,40 +365,40 @@ export default function AulaExperimental() {
       <section className="py-16">
         <div className="container-main">
           <div className="text-center">
-            <h2 className="text-display text-neutral-text-primary mb-6">
+            <h2 className="text-display text-primary mb-6">
               Sem Compromisso, Apenas Benefícios
             </h2>
-            <p className="text-body text-neutral-text-secondary mb-8 max-w-2xl mx-auto">
+            <p className="text-body text-secondary mb-8 max-w-2xl mx-auto">
               A aula experimental é totalmente gratuita e sem qualquer obrigação de matrícula. Queremos que você tenha certeza de que a Panobianco Jardim Satélite é o lugar certo para você.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="card text-center">
                 <div className="text-2xl mb-4">🆓</div>
-                <h3 className="text-heading text-neutral-text-primary mb-2">
+                <h3 className="text-heading text-primary mb-2">
                   100% Gratuita
                 </h3>
-                <p className="text-body text-neutral-text-secondary">
+                <p className="text-body text-secondary">
                   Sem taxas, sem pegadinhas. Completamente gratuita.
                 </p>
               </div>
 
               <div className="card text-center">
                 <div className="text-2xl mb-4">❌</div>
-                <h3 className="text-heading text-neutral-text-primary mb-2">
+                <h3 className="text-heading text-primary mb-2">
                   Sem Compromisso
                 </h3>
-                <p className="text-body text-neutral-text-secondary">
+                <p className="text-body text-secondary">
                   Nenhuma obrigação de se matricular após a experiência.
                 </p>
               </div>
 
               <div className="card text-center">
                 <div className="text-2xl mb-4">✅</div>
-                <h3 className="text-heading text-neutral-text-primary mb-2">
+                <h3 className="text-heading text-primary mb-2">
                   Experiência Completa
                 </h3>
-                <p className="text-body text-neutral-text-secondary">
+                <p className="text-body text-secondary">
                   Acesso total às instalações e acompanhamento profissional.
                 </p>
               </div>

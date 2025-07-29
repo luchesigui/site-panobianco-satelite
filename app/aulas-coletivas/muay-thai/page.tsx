@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function MuayThaiPage() {
   return (
-    <div className="bg-neutral-background">
+    <div className="bg-primary">
       {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-gradient-to-br from-yellow-600 to-yellow-800">
         <div className="container-main">
@@ -36,62 +36,62 @@ export default function MuayThaiPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
               <div>
-                <h2 className="text-display text-neutral-text-primary mb-6">
+                <h2 className="text-display text-primary mb-6">
                   O Que é Muay Thai?
                 </h2>
-                <p className="text-body text-neutral-text-secondary mb-6">
+                <p className="text-body text-secondary mb-6">
                   Muay Thai é uma arte marcial e esporte de combate originário da Tailândia. É uma disciplina que utiliza o corpo como um todo, empregando punhos, cotovelos, joelhos e canelas em seus golpes. Conhecida como a "Arte das Oito Armas", o Muay Thai é uma das artes marciais mais eficazes e completas do mundo.
                 </p>
-                <p className="text-body text-neutral-text-secondary">
+                <p className="text-body text-secondary">
                   Além do aspecto físico, o Muay Thai também enfatiza a disciplina, o respeito, a concentração e o autocontrole. É um treino intenso que melhora a resistência cardiovascular, a força muscular, a flexibilidade e a coordenação motora.
                 </p>
               </div>
               
               <div className="card">
-                <h3 className="text-heading text-neutral-text-primary mb-4">
+                <h3 className="text-heading text-primary mb-4">
                   As Oito Armas
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                    <span className="text-body text-neutral-text-secondary">Punhos (2 armas)</span>
+                    <span className="text-body text-secondary">Punhos (2 armas)</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                    <span className="text-body text-neutral-text-secondary">Cotovelos (2 armas)</span>
+                    <span className="text-body text-secondary">Cotovelos (2 armas)</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                    <span className="text-body text-neutral-text-secondary">Joelhos (2 armas)</span>
+                    <span className="text-body text-secondary">Joelhos (2 armas)</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                    <span className="text-body text-neutral-text-secondary">Canelas (2 armas)</span>
+                    <span className="text-body text-secondary">Canelas (2 armas)</span>
                   </div>
                 </div>
               </div>
             </div>
             
             <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
+              <h3 className="text-heading text-primary mb-4">
                 Características da Aula
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Clock className="h-5 w-5 text-yellow-500" />
-                  <span className="text-body text-neutral-text-secondary">Duração: 30 minutos</span>
+                  <span className="text-body text-secondary">Duração: 30 minutos</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Users className="h-5 w-5 text-yellow-500" />
-                  <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
+                  <span className="text-body text-secondary">Para todos os níveis</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Shield className="h-5 w-5 text-yellow-500" />
-                  <span className="text-body text-neutral-text-secondary">Foco: Arte marcial e autodefesa</span>
+                  <span className="text-body text-secondary">Foco: Arte marcial e autodefesa</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Zap className="h-5 w-5 text-yellow-500" />
-                  <span className="text-body text-neutral-text-secondary">Alta intensidade</span>
+                  <span className="text-body text-secondary">Alta intensidade</span>
                 </div>
               </div>
             </div>
@@ -102,13 +102,13 @@ export default function MuayThaiPage() {
 
 
       {/* Benefits */}
-      <section className="py-16 bg-neutral-surface">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center mb-12">
-            <h2 className="text-display text-neutral-text-primary mb-4">
+            <h2 className="text-display text-primary mb-4">
               Benefícios do Muay Thai
             </h2>
-            <p className="text-body text-neutral-text-secondary">
+            <p className="text-body text-secondary">
               Descubra como esta arte marcial pode transformar seu corpo e sua mente
             </p>
           </div>
@@ -120,10 +120,10 @@ export default function MuayThaiPage() {
                   <Target className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Condicionamento Físico Total
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 O Muay Thai é um treino de corpo inteiro que melhora a capacidade cardiovascular, a força, a resistência e a flexibilidade.
               </p>
             </div>
@@ -134,10 +134,10 @@ export default function MuayThaiPage() {
                   <Zap className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Queima Calórica Elevada
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 A intensidade dos treinos promove um alto gasto calórico, auxiliando no emagrecimento e na definição muscular.
               </p>
             </div>
@@ -148,10 +148,10 @@ export default function MuayThaiPage() {
                   <Shield className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Autodefesa
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Aprenda técnicas de autodefesa eficazes que aumentam a segurança e a confiança em situações de risco.
               </p>
             </div>
@@ -162,10 +162,10 @@ export default function MuayThaiPage() {
                   <Users className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Força e Potência
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Os golpes e movimentos fortalecem os músculos de todo o corpo, especialmente pernas, abdômen e braços.
               </p>
             </div>
@@ -176,10 +176,10 @@ export default function MuayThaiPage() {
                   <Brain className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Disciplina e Foco
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 A prática do Muay Thai exige e desenvolve disciplina, concentração e respeito, valores fundamentais da arte marcial.
               </p>
             </div>
@@ -190,10 +190,10 @@ export default function MuayThaiPage() {
                   <Heart className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Alívio do Estresse
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 A liberação de energia durante o treino é uma excelente forma de combater o estresse e a ansiedade.
               </p>
             </div>
@@ -206,37 +206,37 @@ export default function MuayThaiPage() {
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-heading text-neutral-text-primary mb-6">
+              <h3 className="text-heading text-primary mb-6">
                 Estrutura do Treino
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-yellow-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Aquecimento:</strong> Preparação física e mental para o treino
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-yellow-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Técnicas Básicas:</strong> Aprendizado dos golpes fundamentais
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-yellow-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Treino em Paos:</strong> Prática dos golpes com parceiro
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-yellow-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Condicionamento:</strong> Fortalecimento específico para a modalidade
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-yellow-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Alongamento:</strong> Relaxamento e flexibilidade
                   </p>
                 </div>
@@ -244,17 +244,17 @@ export default function MuayThaiPage() {
             </div>
 
             <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
+              <h3 className="text-heading text-primary mb-4">
                 Nossas Aulas de Muay Thai
               </h3>
-              <p className="text-body text-neutral-text-secondary mb-4">
+              <p className="text-body text-secondary mb-4">
                 Na Academia Panobianco Jardim Satélite, nossas aulas de Muay Thai são conduzidas por instrutores experientes e qualificados, que garantem um ambiente seguro e desafiador para todos os níveis, desde iniciantes até praticantes avançados.
               </p>
-              <p className="text-body text-neutral-text-secondary mb-6">
+              <p className="text-body text-secondary mb-6">
                 Você aprenderá as técnicas fundamentais, aprimorará sua forma e desenvolverá suas habilidades em um ambiente de respeito e camaradagem, seguindo os valores tradicionais desta arte marcial milenar.
               </p>
-              <div className="bg-neutral-background rounded-lg p-4">
-                <p className="text-subtext text-neutral-text-secondary text-center">
+              <div className="bg-primary rounded-lg p-4">
+                <p className="text-subtext text-secondary text-center">
                   <strong>Horários:</strong> Consulte nossa grade de horários na recepção
                 </p>
               </div>
@@ -264,13 +264,13 @@ export default function MuayThaiPage() {
       </section>
 
       {/* Philosophy */}
-      <section className="py-16 bg-neutral-surface">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center">
-            <h2 className="text-display text-neutral-text-primary mb-6">
+            <h2 className="text-display text-primary mb-6">
               Filosofia e Valores
             </h2>
-            <p className="text-body text-neutral-text-secondary mb-12 max-w-3xl mx-auto">
+            <p className="text-body text-secondary mb-12 max-w-3xl mx-auto">
               O Muay Thai vai além do combate físico. É uma arte que cultiva valores importantes como respeito, disciplina, perseverança e humildade. Em nossas aulas, esses princípios são transmitidos junto com as técnicas.
             </p>
             
@@ -281,8 +281,8 @@ export default function MuayThaiPage() {
                     <Heart className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-heading text-neutral-text-primary mb-3">Respeito</h3>
-                <p className="text-body text-neutral-text-secondary">
+                <h3 className="text-heading text-primary mb-3">Respeito</h3>
+                <p className="text-body text-secondary">
                   Pelos mestres, colegas e pela arte marcial
                 </p>
               </div>
@@ -292,8 +292,8 @@ export default function MuayThaiPage() {
                     <Brain className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-heading text-neutral-text-primary mb-3">Disciplina</h3>
-                <p className="text-body text-neutral-text-secondary">
+                <h3 className="text-heading text-primary mb-3">Disciplina</h3>
+                <p className="text-body text-secondary">
                   Constância e dedicação no treinamento
                 </p>
               </div>
@@ -303,8 +303,8 @@ export default function MuayThaiPage() {
                     <Target className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-heading text-neutral-text-primary mb-3">Perseverança</h3>
-                <p className="text-body text-neutral-text-secondary">
+                <h3 className="text-heading text-primary mb-3">Perseverança</h3>
+                <p className="text-body text-secondary">
                   Superação de desafios e limites pessoais
                 </p>
               </div>
@@ -314,8 +314,8 @@ export default function MuayThaiPage() {
                     <Users className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-heading text-neutral-text-primary mb-3">Humildade</h3>
-                <p className="text-body text-neutral-text-secondary">
+                <h3 className="text-heading text-primary mb-3">Humildade</h3>
+                <p className="text-body text-secondary">
                   Aprendizado contínuo e reconhecimento dos limites
                 </p>
               </div>
