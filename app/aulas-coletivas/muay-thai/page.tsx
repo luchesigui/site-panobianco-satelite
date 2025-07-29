@@ -72,6 +72,37 @@ export default function MuayThaiPage() {
         </div>
       </section>
 
+      {/* Class Characteristics */}
+      <section className="py-16">
+        <div className="container-main">
+          <div className="max-w-4xl mx-auto">
+            <div className="card">
+              <h3 className="text-heading text-neutral-text-primary mb-4">
+                Características da Aula
+              </h3>
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <Clock className="h-5 w-5 text-yellow-500" />
+                  <span className="text-body text-neutral-text-secondary">Duração: 30 minutos</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Users className="h-5 w-5 text-yellow-500" />
+                  <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Shield className="h-5 w-5 text-yellow-500" />
+                  <span className="text-body text-neutral-text-secondary">Foco: Arte marcial e autodefesa</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Zap className="h-5 w-5 text-yellow-500" />
+                  <span className="text-body text-neutral-text-secondary">Alta intensidade</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Benefits */}
       <section className="py-16 bg-neutral-surface">
         <div className="container-main">
