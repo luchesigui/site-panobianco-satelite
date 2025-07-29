@@ -32,52 +32,80 @@ export default function PilatesPage() {
       {/* What is Pilates */}
       <section className="py-16">
         <div className="container-main">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-display text-neutral-text-primary mb-6">
-                O Que é Pilates?
-              </h2>
-              <p className="text-body text-neutral-text-secondary mb-6">
-                Pilates é um método de exercício físico e alongamento que utiliza o peso do próprio corpo e equipamentos específicos para fortalecer os músculos, melhorar a flexibilidade, a coordenação e o equilíbrio. Criado por Joseph Pilates, o método se baseia em seis princípios fundamentais: centralização, concentração, controle, fluidez, precisão e respiração.
-              </p>
-              <p className="text-body text-neutral-text-secondary">
-                O Pilates é conhecido por ser uma atividade de baixo impacto, ideal para reabilitação, prevenção de lesões e para pessoas de todas as idades e níveis de condicionamento físico.
-              </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-display text-neutral-text-primary mb-6">
+                  O Que é Pilates?
+                </h2>
+                <p className="text-body text-neutral-text-secondary mb-6">
+                  Pilates é um método de exercício físico e alongamento que utiliza o peso do próprio corpo e equipamentos específicos para fortalecer os músculos, melhorar a flexibilidade, a coordenação e o equilíbrio. Criado por Joseph Pilates, o método se baseia em seis princípios fundamentais: centralização, concentração, controle, fluidez, precisão e respiração.
+                </p>
+                <p className="text-body text-neutral-text-secondary">
+                  O Pilates é conhecido por ser uma atividade de baixo impacto, ideal para reabilitação, prevenção de lesões e para pessoas de todas as idades e níveis de condicionamento físico.
+                </p>
+              </div>
+              
+              <div className="card">
+                <h3 className="text-heading text-neutral-text-primary mb-4">
+                  Princípios do Pilates
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Centralização</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Concentração</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Controle</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Fluidez</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Precisão</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Respiração</span>
+                  </div>
+                </div>
+              </div>
             </div>
+            
             <div className="card">
               <h3 className="text-heading text-neutral-text-primary mb-4">
-                Princípios do Pilates
+                Características da Aula
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Centralização</span>
+                  <Clock className="h-5 w-5 text-blue-500" />
+                  <span className="text-body text-neutral-text-secondary">Duração: 50 minutos</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Concentração</span>
+                  <Users className="h-5 w-5 text-blue-500" />
+                  <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Controle</span>
+                  <Target className="h-5 w-5 text-blue-500" />
+                  <span className="text-body text-neutral-text-secondary">Foco: Core, postura e flexibilidade</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Fluidez</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Precisão</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Respiração</span>
+                  <Shield className="h-5 w-5 text-blue-500" />
+                  <span className="text-body text-neutral-text-secondary">Baixo impacto</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* Benefits */}
       <section className="py-16 bg-neutral-surface">

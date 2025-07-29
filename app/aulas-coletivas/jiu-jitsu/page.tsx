@@ -33,44 +33,73 @@ export default function JiuJitsuPage() {
       {/* What is Jiu Jitsu */}
       <section className="py-16">
         <div className="container-main">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-display text-neutral-text-primary mb-6">
-                O Que é Jiu Jítsu?
-              </h2>
-              <p className="text-body text-neutral-text-secondary mb-6">
-                Jiu Jítsu Brasileiro é uma arte marcial, esporte de combate e sistema de autodefesa que se concentra na luta de chão e técnicas de submissão. Desenvolvido a partir do judô e do jiu-jítsu japonês, o BJJ (Brazilian Jiu Jitsu) promove o conceito de que uma pessoa menor e mais fraca pode se defender com sucesso contra um agressor maior e mais forte usando alavancagem e técnicas adequadas.
-              </p>
-              <p className="text-body text-neutral-text-secondary">
-                É uma modalidade que exige estratégia, paciência e muita técnica. O Jiu Jítsu é conhecido como "a arte suave" porque utiliza a força do oponente contra ele mesmo, priorizando a técnica sobre a força bruta.
-              </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-display text-neutral-text-primary mb-6">
+                  O Que é Jiu Jítsu?
+                </h2>
+                <p className="text-body text-neutral-text-secondary mb-6">
+                  Jiu Jítsu Brasileiro é uma arte marcial, esporte de combate e sistema de autodefesa que se concentra na luta de chão e técnicas de submissão. Desenvolvido a partir do judô e do jiu-jítsu japonês, o BJJ (Brazilian Jiu Jitsu) promove o conceito de que uma pessoa menor e mais fraca pode se defender com sucesso contra um agressor maior e mais forte usando alavancagem e técnicas adequadas.
+                </p>
+                <p className="text-body text-neutral-text-secondary">
+                  É uma modalidade que exige estratégia, paciência e muita técnica. O Jiu Jítsu é conhecido como "a arte suave" porque utiliza a força do oponente contra ele mesmo, priorizando a técnica sobre a força bruta.
+                </p>
+              </div>
+              
+              <div className="card">
+                <h3 className="text-heading text-neutral-text-primary mb-4">
+                  Princípios Fundamentais
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Alavancagem sobre força</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Técnica sobre velocidade</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Estratégia sobre agressividade</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Paciência sobre pressa</span>
+                  </div>
+                </div>
+              </div>
             </div>
+            
             <div className="card">
               <h3 className="text-heading text-neutral-text-primary mb-4">
-                Princípios Fundamentais
+                Características da Aula
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Alavancagem sobre força</span>
+                  <Clock className="h-5 w-5 text-indigo-500" />
+                  <span className="text-body text-neutral-text-secondary">Duração: 50 minutos</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Técnica sobre velocidade</span>
+                  <Users className="h-5 w-5 text-indigo-500" />
+                  <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Estratégia sobre agressividade</span>
+                  <Shield className="h-5 w-5 text-indigo-500" />
+                  <span className="text-body text-neutral-text-secondary">Foco: Arte marcial e autodefesa</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Paciência sobre pressa</span>
+                  <Brain className="h-5 w-5 text-indigo-500" />
+                  <span className="text-body text-neutral-text-secondary">Estratégia e técnica</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+
 
       {/* Benefits */}
       <section className="py-16 bg-neutral-surface">

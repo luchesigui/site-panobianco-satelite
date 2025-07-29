@@ -51,7 +51,7 @@ export default function JumpPage() {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Clock className="h-5 w-5 text-green-500" />
-                  <span className="text-body text-neutral-text-secondary">Duração: 45-60 minutos</span>
+                  <span className="text-body text-neutral-text-secondary">Duração: 50 minutos</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Activity className="h-5 w-5 text-green-500" />

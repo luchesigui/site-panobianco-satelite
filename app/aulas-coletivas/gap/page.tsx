@@ -33,55 +33,84 @@ export default function GAPPage() {
       {/* What is GAP */}
       <section className="py-16">
         <div className="container-main">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-display text-neutral-text-primary mb-6">
-                O Que é GAP?
-              </h2>
-              <p className="text-body text-neutral-text-secondary mb-6">
-                GAP é a sigla para Glúteos, Abdômen e Pernas, e é uma aula de ginástica localizada que se concentra no fortalecimento e tonificação desses três grupos musculares. A aula é composta por uma série de exercícios específicos, que podem utilizar o peso do próprio corpo, caneleiras, halteres leves ou elásticos, para trabalhar intensamente cada região.
-              </p>
-              <p className="text-body text-neutral-text-secondary">
-                É uma modalidade eficaz para quem busca melhorar a estética corporal, aumentar a força e a resistência muscular localizada. Com a prática regular, é possível observar uma melhora significativa na firmeza e no contorno das regiões trabalhadas.
-              </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-display text-neutral-text-primary mb-6">
+                  O Que é GAP?
+                </h2>
+                <p className="text-body text-neutral-text-secondary mb-6">
+                  GAP é a sigla para Glúteos, Abdômen e Pernas, e é uma aula de ginástica localizada que se concentra no fortalecimento e tonificação desses três grupos musculares. A aula é composta por uma série de exercícios específicos, que podem utilizar o peso do próprio corpo, caneleiras, halteres leves ou elásticos, para trabalhar intensamente cada região.
+                </p>
+                <p className="text-body text-neutral-text-secondary">
+                  É uma modalidade eficaz para quem busca melhorar a estética corporal, aumentar a força e a resistência muscular localizada. Com a prática regular, é possível observar uma melhora significativa na firmeza e no contorno das regiões trabalhadas.
+                </p>
+              </div>
+              
+              <div className="card">
+                <h3 className="text-heading text-neutral-text-primary mb-4">
+                  Regiões Trabalhadas
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="flex items-center justify-center w-8 h-8 bg-pink-500 rounded-full">
+                      <span className="text-white font-bold text-sm">G</span>
+                    </div>
+                    <div>
+                      <span className="text-body text-neutral-text-primary font-semibold">Glúteos</span>
+                      <p className="text-subtext text-neutral-text-secondary">Glúteo máximo, médio e mínimo</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="flex items-center justify-center w-8 h-8 bg-pink-500 rounded-full">
+                      <span className="text-white font-bold text-sm">A</span>
+                    </div>
+                    <div>
+                      <span className="text-body text-neutral-text-primary font-semibold">Abdômen</span>
+                      <p className="text-subtext text-neutral-text-secondary">Reto abdominal, oblíquos e transverso</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="flex items-center justify-center w-8 h-8 bg-pink-500 rounded-full">
+                      <span className="text-white font-bold text-sm">P</span>
+                    </div>
+                    <div>
+                      <span className="text-body text-neutral-text-primary font-semibold">Pernas</span>
+                      <p className="text-subtext text-neutral-text-secondary">Quadríceps, isquiotibiais e panturrilhas</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+            
             <div className="card">
               <h3 className="text-heading text-neutral-text-primary mb-4">
-                Regiões Trabalhadas
+                Características da Aula
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="flex items-center justify-center w-8 h-8 bg-pink-500 rounded-full">
-                    <span className="text-white font-bold text-sm">G</span>
-                  </div>
-                  <div>
-                    <span className="text-body text-neutral-text-primary font-semibold">Glúteos</span>
-                    <p className="text-subtext text-neutral-text-secondary">Glúteo máximo, médio e mínimo</p>
-                  </div>
+                  <Clock className="h-5 w-5 text-pink-500" />
+                  <span className="text-body text-neutral-text-secondary">Duração: 30 minutos</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="flex items-center justify-center w-8 h-8 bg-pink-500 rounded-full">
-                    <span className="text-white font-bold text-sm">A</span>
-                  </div>
-                  <div>
-                    <span className="text-body text-neutral-text-primary font-semibold">Abdômen</span>
-                    <p className="text-subtext text-neutral-text-secondary">Reto abdominal, oblíquos e transverso</p>
-                  </div>
+                  <Users className="h-5 w-5 text-pink-500" />
+                  <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="flex items-center justify-center w-8 h-8 bg-pink-500 rounded-full">
-                    <span className="text-white font-bold text-sm">P</span>
-                  </div>
-                  <div>
-                    <span className="text-body text-neutral-text-primary font-semibold">Pernas</span>
-                    <p className="text-subtext text-neutral-text-secondary">Quadríceps, isquiotibiais e panturrilhas</p>
-                  </div>
+                  <Target className="h-5 w-5 text-pink-500" />
+                  <span className="text-body text-neutral-text-secondary">Foco: Glúteos, abdômen e pernas</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Flame className="h-5 w-5 text-pink-500" />
+                  <span className="text-body text-neutral-text-secondary">Exercícios localizados</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+
 
       {/* Benefits */}
       <section className="py-16 bg-neutral-surface">
