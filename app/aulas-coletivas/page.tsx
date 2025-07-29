@@ -280,7 +280,7 @@ export default function AulasColetivas() {
       </section>
 
       {/* Schedule Teaser */}
-      <section className="py-16 bg-neutral-surface">
+      <section className="py-16 bg-neutral-surface" id="horarios">
         <div className="container-main">
           <div className="text-center">
             <h2 className="text-display text-neutral-text-primary mb-6">
@@ -291,14 +291,12 @@ export default function AulasColetivas() {
               possa encaixar as aulas na sua rotina. Confira nossa grade
               completa e encontre o melhor horário para você.
             </p>
-            <div className="bg-neutral-background rounded-lg p-6 max-w-md mx-auto">
-              <p className="text-subtext text-neutral-text-secondary text-center">
-                Grade de horários detalhada
-                <br />
-                disponível na recepção ou
-                <br />
-                entre em contato conosco!
-              </p>
+            <div className="bg-neutral-background rounded-lg p-6 max-w-lg mx-auto">
+              <img
+                src="/images/horarios.png"
+                alt="Horários"
+                className="w-full h-auto"
+              />
             </div>
           </div>
         </div>
@@ -324,9 +322,6 @@ export default function AulasColetivas() {
                 rel="noopener noreferrer"
               >
                 Experimentar Aula Gratuita
-              </Link>
-              <Link href="/contato" className="btn-secondary">
-                Ver Horários
               </Link>
             </div>
           </div>
