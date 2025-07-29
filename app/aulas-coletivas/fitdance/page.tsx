@@ -44,34 +44,60 @@ export default function FitDancePage() {
                 As aulas são dinâmicas, com músicas atuais e coreografias que podem ser facilmente acompanhadas por todos, independentemente do nível de coordenação. O importante é se soltar e aproveitar a música!
               </p>
             </div>
-            <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
-                Estilos Musicais
-              </h3>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Funk</span>
+            <div className="space-y-6">
+              <div className="card">
+                <h3 className="text-heading text-neutral-text-primary mb-4">
+                  Características da Aula
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <Clock className="h-5 w-5 text-red-500" />
+                    <span className="text-body text-neutral-text-secondary">Duração: 50 minutos</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Users className="h-5 w-5 text-red-500" />
+                    <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Music className="h-5 w-5 text-red-500" />
+                    <span className="text-body text-neutral-text-secondary">Foco: Cardio e diversão</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Heart className="h-5 w-5 text-red-500" />
+                    <span className="text-body text-neutral-text-secondary">Alto gasto calórico</span>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Pop</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Axé</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Sertanejo</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Hip Hop</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">E muito mais!</span>
+              </div>
+              
+              <div className="card">
+                <h3 className="text-heading text-neutral-text-primary mb-4">
+                  Estilos Musicais
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Funk</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Pop</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Axé</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Sertanejo</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Hip Hop</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">E muito mais!</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -79,36 +105,7 @@ export default function FitDancePage() {
         </div>
       </section>
 
-      {/* Class Characteristics */}
-      <section className="py-16">
-        <div className="container-main">
-          <div className="max-w-4xl mx-auto">
-            <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
-                Características da Aula
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <Clock className="h-5 w-5 text-red-500" />
-                  <span className="text-body text-neutral-text-secondary">Duração: 50 minutos</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Users className="h-5 w-5 text-red-500" />
-                  <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Music className="h-5 w-5 text-red-500" />
-                  <span className="text-body text-neutral-text-secondary">Foco: Cardio e diversão</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Heart className="h-5 w-5 text-red-500" />
-                  <span className="text-body text-neutral-text-secondary">Alto gasto calórico</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Benefits */}
       <section className="py-16 bg-neutral-surface">
