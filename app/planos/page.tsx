@@ -1,5 +1,22 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Check, Star, Zap, X } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Planos e Adesão | Academia Panobianco Jardim Satélite - Mensalidades e Preços',
+  description: 'Conheça os planos da Academia Panobianco Jardim Satélite. Opções flexíveis de mensalidade que se adaptam ao seu estilo de vida e orçamento em São José dos Campos.',
+  keywords: 'planos academia, mensalidade academia, preços academia panobianco, adesão academia jardim satélite, são josé dos campos',
+  robots: 'index, follow',
+  openGraph: {
+    title: 'Planos e Adesão | Academia Panobianco Jardim Satélite',
+    description: 'Encontre o plano perfeito para você. Opções flexíveis que se adaptam ao seu estilo de vida e orçamento.',
+    type: 'website',
+    locale: 'pt_BR',
+  },
+  alternates: {
+    canonical: '/planos',
+  },
+}
 
 export default function Planos() {
   return (

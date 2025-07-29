@@ -1,5 +1,22 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { User, Target, Zap, Shield, CheckCircle, Users, Clock, TrendingUp } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Treino Personalizado | Academia Panobianco Jardim Satélite - Personal Trainer',
+  description: 'Treino personalizado com acompanhamento individualizado. Personal trainer qualificado para resultados rápidos e eficazes na Academia Panobianco.',
+  keywords: 'treino personalizado, personal trainer, acompanhamento individual, resultados rápidos, academia jardim satélite, são josé dos campos',
+  robots: 'index, follow',
+  openGraph: {
+    title: 'Treino Personalizado | Academia Panobianco Jardim Satélite',
+    description: 'Acompanhamento individualizado com personal trainer qualificado. Resultados sob medida para você.',
+    type: 'website',
+    locale: 'pt_BR',
+  },
+  alternates: {
+    canonical: '/servicos/treino-personalizado',
+  },
+}
 
 export default function TreinoPersonalizado() {
   return (
