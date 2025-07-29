@@ -8,28 +8,43 @@
       "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   }
 
+  /* Light theme (default) */
   body {
-    background-color: #121212;
-    color: #ffffff; /* White for primary text - excellent contrast on dark background */
+    background-color: #ffffff;
+    color: #1e293b;
     line-height: 1.5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Dark theme */
+  .dark body {
+    background-color: #121212;
+    color: #ffffff;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-md bg-primary-500 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-background;
+    @apply inline-flex items-center justify-center rounded-md bg-primary-500 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply focus:ring-offset-neutral-light-background dark:focus:ring-offset-neutral-background;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-md border border-neutral-border bg-neutral-surface px-5 py-3 text-base font-semibold text-neutral-text-primary transition-colors hover:bg-neutral-border focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-background;
+    @apply inline-flex items-center justify-center rounded-md border px-5 py-3 text-base font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply border-neutral-light-border bg-neutral-light-surface text-neutral-light-text-primary hover:bg-neutral-light-border focus:ring-offset-neutral-light-background;
+    @apply dark:border-neutral-border dark:bg-neutral-surface dark:text-neutral-text-primary dark:hover:bg-neutral-border dark:focus:ring-offset-neutral-background;
   }
 
   .card {
-    @apply rounded-lg border border-neutral-border bg-neutral-surface p-6;
+    @apply rounded-lg border p-6;
+    @apply border-neutral-light-border bg-neutral-light-surface;
+    @apply dark:border-neutral-border dark:bg-neutral-surface;
   }
 
   .input-field {
-    @apply w-full rounded-md border border-neutral-border bg-neutral-background px-4 py-3 text-base text-neutral-text-primary placeholder-neutral-text-secondary focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500;
+    @apply w-full rounded-md border px-4 py-3 text-base placeholder-opacity-50 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500;
+    @apply border-neutral-light-border bg-neutral-light-background text-neutral-light-text-primary placeholder-neutral-light-text-secondary;
+    @apply dark:border-neutral-border dark:bg-neutral-background dark:text-neutral-text-primary dark:placeholder-neutral-text-secondary;
   }
 
   .container-main {
@@ -85,5 +100,28 @@
 
   .text-subtext {
     @apply text-sm font-normal leading-5;
+  }
+
+  /* Theme-aware text utilities */
+  .text-primary {
+    @apply text-neutral-light-text-primary dark:text-neutral-text-primary;
+  }
+
+  .text-secondary {
+    @apply text-neutral-light-text-secondary dark:text-neutral-text-secondary;
+  }
+
+  /* Theme-aware background utilities */
+  .bg-surface {
+    @apply bg-neutral-light-surface dark:bg-neutral-surface;
+  }
+
+  .bg-background {
+    @apply bg-neutral-light-background dark:bg-neutral-background;
+  }
+
+  /* Theme-aware border utilities */
+  .border-theme {
+    @apply border-neutral-light-border dark:border-neutral-border;
   }
 }

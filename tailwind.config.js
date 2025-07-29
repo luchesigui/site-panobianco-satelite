@@ -5,6 +5,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -12,16 +13,25 @@ module.exports = {
           500: "#f15927", // Vibrant Orange for buttons, highlights, icons
         },
         neutral: {
+          // Dark theme colors
           background: "#121212",
           surface: "#1f1f1f",
           border: "#333333",
           "text-primary": "#ffffff", // White for primary text - excellent contrast on dark background
           "text-secondary": "#d1d5db", // Lighter gray for better contrast on dark background
+          // Light theme colors
+          "light-background": "#ffffff",
+          "light-surface": "#f8fafc",
+          "light-border": "#e2e8f0",
+          "light-text-primary": "#1e293b", // Dark gray for primary text on light background
+          "light-text-secondary": "#64748b", // Medium gray for secondary text on light background
         },
         state: {
           disabled: {
             background: "#3f3f46",
             text: "#71717a",
+            "light-background": "#f1f5f9",
+            "light-text": "#94a3b8",
           },
           focus: {
             ring: "#f15927", // Vibrant Orange for focus states
