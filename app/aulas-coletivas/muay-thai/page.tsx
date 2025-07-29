@@ -45,26 +45,52 @@ export default function MuayThaiPage() {
                 Além do aspecto físico, o Muay Thai também enfatiza a disciplina, o respeito, a concentração e o autocontrole. É um treino intenso que melhora a resistência cardiovascular, a força muscular, a flexibilidade e a coordenação motora.
               </p>
             </div>
-            <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
-                As Oito Armas
-              </h3>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Punhos (2 armas)</span>
+            <div className="space-y-6">
+              <div className="card">
+                <h3 className="text-heading text-neutral-text-primary mb-4">
+                  Características da Aula
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <Clock className="h-5 w-5 text-yellow-500" />
+                    <span className="text-body text-neutral-text-secondary">Duração: 30 minutos</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Users className="h-5 w-5 text-yellow-500" />
+                    <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Shield className="h-5 w-5 text-yellow-500" />
+                    <span className="text-body text-neutral-text-secondary">Foco: Arte marcial e autodefesa</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Zap className="h-5 w-5 text-yellow-500" />
+                    <span className="text-body text-neutral-text-secondary">Alta intensidade</span>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Cotovelos (2 armas)</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Joelhos (2 armas)</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Canelas (2 armas)</span>
+              </div>
+              
+              <div className="card">
+                <h3 className="text-heading text-neutral-text-primary mb-4">
+                  As Oito Armas
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Punhos (2 armas)</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Cotovelos (2 armas)</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Joelhos (2 armas)</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Canelas (2 armas)</span>
+                  </div>
                 </div>
               </div>
             </div>

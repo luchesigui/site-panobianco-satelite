@@ -45,26 +45,52 @@ export default function JiuJitsuPage() {
                 É uma modalidade que exige estratégia, paciência e muita técnica. O Jiu Jítsu é conhecido como "a arte suave" porque utiliza a força do oponente contra ele mesmo, priorizando a técnica sobre a força bruta.
               </p>
             </div>
-            <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
-                Princípios Fundamentais
-              </h3>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Alavancagem sobre força</span>
+            <div className="space-y-6">
+              <div className="card">
+                <h3 className="text-heading text-neutral-text-primary mb-4">
+                  Características da Aula
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <Clock className="h-5 w-5 text-indigo-500" />
+                    <span className="text-body text-neutral-text-secondary">Duração: 50 minutos</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Users className="h-5 w-5 text-indigo-500" />
+                    <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Shield className="h-5 w-5 text-indigo-500" />
+                    <span className="text-body text-neutral-text-secondary">Foco: Arte marcial e autodefesa</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Brain className="h-5 w-5 text-indigo-500" />
+                    <span className="text-body text-neutral-text-secondary">Estratégia e técnica</span>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Técnica sobre velocidade</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Estratégia sobre agressividade</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-                  <span className="text-body text-neutral-text-secondary">Paciência sobre pressa</span>
+              </div>
+              
+              <div className="card">
+                <h3 className="text-heading text-neutral-text-primary mb-4">
+                  Princípios Fundamentais
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Alavancagem sobre força</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Técnica sobre velocidade</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Estratégia sobre agressividade</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                    <span className="text-body text-neutral-text-secondary">Paciência sobre pressa</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -72,36 +98,7 @@ export default function JiuJitsuPage() {
         </div>
       </section>
 
-      {/* Class Characteristics */}
-      <section className="py-16">
-        <div className="container-main">
-          <div className="max-w-4xl mx-auto">
-            <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
-                Características da Aula
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <Clock className="h-5 w-5 text-indigo-500" />
-                  <span className="text-body text-neutral-text-secondary">Duração: 50 minutos</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Users className="h-5 w-5 text-indigo-500" />
-                  <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Shield className="h-5 w-5 text-indigo-500" />
-                  <span className="text-body text-neutral-text-secondary">Foco: Arte marcial e autodefesa</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Brain className="h-5 w-5 text-indigo-500" />
-                  <span className="text-body text-neutral-text-secondary">Estratégia e técnica</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Benefits */}
       <section className="py-16 bg-neutral-surface">
