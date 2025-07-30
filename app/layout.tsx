@@ -2,12 +2,14 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Academia Panobianco Jardim Satélite | Musculação, Aulas Coletivas e Treino Personalizado em São José dos Campos",
-    template: "%s | Academia Panobianco Jardim Satélite"
+    default:
+      "Academia Panobianco Jardim Satélite | Musculação, Aulas Coletivas e Treino Personalizado em São José dos Campos",
+    template: "%s | Academia Panobianco Jardim Satélite",
   },
   description:
     "Academia Panobianco Jardim Satélite oferece musculação, aulas coletivas, treino personalizado e avaliação física. Localizada na Av. Cidade Jardim, 391, Jardim Satélite, São José dos Campos.",
@@ -23,12 +25,14 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     siteName: "Academia Panobianco Jardim Satélite",
     title: "Academia Panobianco Jardim Satélite | Musculação e Aulas Coletivas",
-    description: "Academia completa em São José dos Campos com musculação, aulas coletivas e treino personalizado.",
+    description:
+      "Academia completa em São José dos Campos com musculação, aulas coletivas e treino personalizado.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Academia Panobianco Jardim Satélite | Musculação e Aulas Coletivas",
-    description: "Academia completa em São José dos Campos com musculação, aulas coletivas e treino personalizado.",
+    description:
+      "Academia completa em São José dos Campos com musculação, aulas coletivas e treino personalizado.",
   },
 };
 
@@ -39,6 +43,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
+      <head>
+        <Script src="https://cdn.overtracking.com/t/tYnpTLPMjGZY80maV/" defer />
+      </head>
       <body>
         <ThemeProvider>
           <Header />
