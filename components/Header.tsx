@@ -1,12 +1,13 @@
 "use client";
 
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import Image from "next/image";
+
+import ThemeToggle from "./ClientThemeToggle";
+import Logo from "./Logo";
 
 const navigation = [
-  { name: "Início", href: "/" },
   { name: "Sobre Nós", href: "/sobre-nos" },
   { name: "Serviços", href: "/servicos" },
   { name: "Aulas Coletivas", href: "/aulas-coletivas" },
@@ -18,19 +19,11 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-neutral-surface border-b border-neutral-border">
+    <header className="bg-secondary border-b border-theme">
       <div className="container-main">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/logo.png"
-              alt="Academia Panobianco"
-              width={120}
-              height={40}
-              className="h-10 w-auto"
-            />
-          </Link>
+          <Logo />
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -38,17 +31,18 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-body text-neutral-text-primary hover:text-primary-500 transition-colors"
+                className="text-body text-primary hover:text-primary-500 transition-colors"
               >
                 {item.name}
               </Link>
             ))}
           </nav>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center">
-            <Link 
-              href="https://agendamento.panobiancosatelite.com.br/" 
+          {/* Theme Toggle and CTA */}
+          <div className="hidden md:flex items-center space-x-4">
+            <ThemeToggle />
+            <Link
+              href="https://agendamento.panobiancosatelite.com.br/"
               className="btn-primary"
               target="_blank"
               rel="noopener noreferrer"
@@ -57,29 +51,32 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            className="md:hidden p-2 rounded-md text-neutral-text-primary hover:text-primary-500"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </button>
+          {/* Mobile menu button and theme toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
+            <button
+              type="button"
+              className="p-2 rounded-md text-primary hover:text-primary-500 transition-colors"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-neutral-border">
+          <div className="md:hidden border-t border-theme">
             <div className="space-y-1 py-4">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-4 py-2 text-body text-neutral-text-primary hover:text-primary-500 hover:bg-neutral-background rounded-md transition-colors"
+                  className="block px-4 py-2 text-body text-primary hover:text-primary-500 hover:bg-primary rounded-md transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}

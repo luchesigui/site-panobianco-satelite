@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function JiuJitsuPage() {
   return (
-    <div className="bg-neutral-background">
+    <div className="bg-primary">
       {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-gradient-to-br from-indigo-600 to-indigo-800">
         <div className="container-main">
@@ -36,62 +36,62 @@ export default function JiuJitsuPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
               <div>
-                <h2 className="text-display text-neutral-text-primary mb-6">
+                <h2 className="text-display text-primary mb-6">
                   O Que é Jiu Jítsu?
                 </h2>
-                <p className="text-body text-neutral-text-secondary mb-6">
+                <p className="text-body text-secondary mb-6">
                   Jiu Jítsu Brasileiro é uma arte marcial, esporte de combate e sistema de autodefesa que se concentra na luta de chão e técnicas de submissão. Desenvolvido a partir do judô e do jiu-jítsu japonês, o BJJ (Brazilian Jiu Jitsu) promove o conceito de que uma pessoa menor e mais fraca pode se defender com sucesso contra um agressor maior e mais forte usando alavancagem e técnicas adequadas.
                 </p>
-                <p className="text-body text-neutral-text-secondary">
+                <p className="text-body text-secondary">
                   É uma modalidade que exige estratégia, paciência e muita técnica. O Jiu Jítsu é conhecido como "a arte suave" porque utiliza a força do oponente contra ele mesmo, priorizando a técnica sobre a força bruta.
                 </p>
               </div>
               
               <div className="card">
-                <h3 className="text-heading text-neutral-text-primary mb-4">
+                <h3 className="text-heading text-primary mb-4">
                   Princípios Fundamentais
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-                    <span className="text-body text-neutral-text-secondary">Alavancagem sobre força</span>
+                    <span className="text-body text-secondary">Alavancagem sobre força</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-                    <span className="text-body text-neutral-text-secondary">Técnica sobre velocidade</span>
+                    <span className="text-body text-secondary">Técnica sobre velocidade</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-                    <span className="text-body text-neutral-text-secondary">Estratégia sobre agressividade</span>
+                    <span className="text-body text-secondary">Estratégia sobre agressividade</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-                    <span className="text-body text-neutral-text-secondary">Paciência sobre pressa</span>
+                    <span className="text-body text-secondary">Paciência sobre pressa</span>
                   </div>
                 </div>
               </div>
             </div>
             
             <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
+              <h3 className="text-heading text-primary mb-4">
                 Características da Aula
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Clock className="h-5 w-5 text-indigo-500" />
-                  <span className="text-body text-neutral-text-secondary">Duração: 50 minutos</span>
+                  <span className="text-body text-secondary">Duração: 50 minutos</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Users className="h-5 w-5 text-indigo-500" />
-                  <span className="text-body text-neutral-text-secondary">Para todos os níveis</span>
+                  <span className="text-body text-secondary">Para todos os níveis</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Shield className="h-5 w-5 text-indigo-500" />
-                  <span className="text-body text-neutral-text-secondary">Foco: Arte marcial e autodefesa</span>
+                  <span className="text-body text-secondary">Foco: Arte marcial e autodefesa</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Brain className="h-5 w-5 text-indigo-500" />
-                  <span className="text-body text-neutral-text-secondary">Estratégia e técnica</span>
+                  <span className="text-body text-secondary">Estratégia e técnica</span>
                 </div>
               </div>
             </div>
@@ -102,13 +102,13 @@ export default function JiuJitsuPage() {
 
 
       {/* Benefits */}
-      <section className="py-16 bg-neutral-surface">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center mb-12">
-            <h2 className="text-display text-neutral-text-primary mb-4">
+            <h2 className="text-display text-primary mb-4">
               Benefícios do Jiu Jítsu
             </h2>
-            <p className="text-body text-neutral-text-secondary">
+            <p className="text-body text-secondary">
               Descubra como esta arte marcial pode transformar sua vida
             </p>
           </div>
@@ -120,10 +120,10 @@ export default function JiuJitsuPage() {
                   <Shield className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Autodefesa Eficaz
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Aprenda técnicas de defesa pessoal que podem ser aplicadas em diversas situações, independentemente do tamanho ou força do oponente.
               </p>
             </div>
@@ -134,10 +134,10 @@ export default function JiuJitsuPage() {
                   <Target className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Condicionamento Físico
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 O Jiu Jítsu trabalha o corpo de forma integral, melhorando a força, a resistência cardiovascular, a flexibilidade e a coordenação motora.
               </p>
             </div>
@@ -148,10 +148,10 @@ export default function JiuJitsuPage() {
                   <Brain className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Desenvolvimento Mental
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 A prática exige raciocínio estratégico, disciplina, paciência, foco e resiliência, contribuindo para o desenvolvimento mental e emocional.
               </p>
             </div>
@@ -162,10 +162,10 @@ export default function JiuJitsuPage() {
                   <Heart className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Alívio do Estresse
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 A intensidade do treino e a concentração necessária para as técnicas são excelentes para liberar tensões e aliviar o estresse.
               </p>
             </div>
@@ -176,10 +176,10 @@ export default function JiuJitsuPage() {
                   <Zap className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Aumento da Autoconfiança
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 O domínio das técnicas e a superação de desafios na luta aumentam significativamente a autoconfiança e a autoestima.
               </p>
             </div>
@@ -190,10 +190,10 @@ export default function JiuJitsuPage() {
                   <Users className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Socialização
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 O ambiente de treino é propício para fazer novas amizades e construir uma comunidade forte e unida.
               </p>
             </div>
@@ -206,37 +206,37 @@ export default function JiuJitsuPage() {
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-heading text-neutral-text-primary mb-6">
+              <h3 className="text-heading text-primary mb-6">
                 Jornada de Aprendizado
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-indigo-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Fundamentos:</strong> Posições básicas, quedas e movimentos essenciais
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-indigo-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Posições:</strong> Guarda, montada, lado, costas e suas variações
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-indigo-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Transições:</strong> Movimentos entre posições e criação de oportunidades
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-indigo-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Finalizações:</strong> Estrangulamentos, chaves de braço e perna
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-indigo-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Estratégia:</strong> Desenvolvimento do jogo pessoal e timing
                   </p>
                 </div>
@@ -244,17 +244,17 @@ export default function JiuJitsuPage() {
             </div>
 
             <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
+              <h3 className="text-heading text-primary mb-4">
                 Nossas Aulas de Jiu Jítsu
               </h3>
-              <p className="text-body text-neutral-text-secondary mb-4">
+              <p className="text-body text-secondary mb-4">
                 Na Academia Panobianco Jardim Satélite, nossas aulas de Jiu Jítsu são conduzidas por mestres e instrutores experientes e renomados, que garantem um ambiente seguro, respeitoso e desafiador para todos os níveis, desde iniciantes que nunca pisaram em um tatame até atletas experientes.
               </p>
-              <p className="text-body text-neutral-text-secondary mb-6">
+              <p className="text-body text-secondary mb-6">
                 Você aprenderá os fundamentos, as posições, as transições e as finalizações, desenvolvendo suas habilidades de forma progressiva em um ambiente que valoriza a tradição e os valores da arte marcial.
               </p>
-              <div className="bg-neutral-background rounded-lg p-4">
-                <p className="text-subtext text-neutral-text-secondary text-center">
+              <div className="bg-primary rounded-lg p-4">
+                <p className="text-subtext text-secondary text-center">
                   <strong>Horários:</strong> Consulte nossa grade de horários na recepção
                 </p>
               </div>
@@ -264,13 +264,13 @@ export default function JiuJitsuPage() {
       </section>
 
       {/* Belt System */}
-      <section className="py-16 bg-neutral-surface">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center">
-            <h2 className="text-display text-neutral-text-primary mb-6">
+            <h2 className="text-display text-primary mb-6">
               Sistema de Graduação
             </h2>
-            <p className="text-body text-neutral-text-secondary mb-12 max-w-3xl mx-auto">
+            <p className="text-body text-secondary mb-12 max-w-3xl mx-auto">
               O Jiu Jítsu possui um sistema de graduação que reconhece o progresso técnico e o tempo de dedicação. Cada faixa representa não apenas habilidade técnica, mas também valores como respeito, disciplina e perseverança.
             </p>
             
@@ -286,7 +286,7 @@ export default function JiuJitsuPage() {
                   <div className={`h-8 w-full ${belt.color} rounded-lg mb-3 flex items-center justify-center font-semibold`}>
                     {belt.name}
                   </div>
-                  <p className="text-subtext text-neutral-text-secondary">
+                  <p className="text-subtext text-secondary">
                     Faixa {belt.name}
                   </p>
                 </div>
@@ -300,10 +300,10 @@ export default function JiuJitsuPage() {
       <section className="py-16">
         <div className="container-main">
           <div className="text-center">
-            <h2 className="text-display text-neutral-text-primary mb-6">
+            <h2 className="text-display text-primary mb-6">
               Mais que uma Arte Marcial
             </h2>
-            <p className="text-body text-neutral-text-secondary mb-12 max-w-3xl mx-auto">
+            <p className="text-body text-secondary mb-12 max-w-3xl mx-auto">
               O Jiu Jítsu é uma filosofia de vida que ensina humildade, respeito e perseverança. No tatame, você aprende que sempre há algo novo para descobrir e que a jornada de aprendizado nunca termina.
             </p>
             
@@ -314,8 +314,8 @@ export default function JiuJitsuPage() {
                     <Brain className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                <h3 className="text-heading text-neutral-text-primary mb-3">Humildade</h3>
-                <p className="text-body text-neutral-text-secondary">
+                <h3 className="text-heading text-primary mb-3">Humildade</h3>
+                <p className="text-body text-secondary">
                   O tatame ensina que sempre há alguém melhor e sempre há algo novo para aprender
                 </p>
               </div>
@@ -325,8 +325,8 @@ export default function JiuJitsuPage() {
                     <Heart className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                <h3 className="text-heading text-neutral-text-primary mb-3">Respeito</h3>
-                <p className="text-body text-neutral-text-secondary">
+                <h3 className="text-heading text-primary mb-3">Respeito</h3>
+                <p className="text-body text-secondary">
                   Respeito pelos mestres, parceiros de treino e pela arte marcial
                 </p>
               </div>
@@ -336,8 +336,8 @@ export default function JiuJitsuPage() {
                     <Target className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                <h3 className="text-heading text-neutral-text-primary mb-3">Perseverança</h3>
-                <p className="text-body text-neutral-text-secondary">
+                <h3 className="text-heading text-primary mb-3">Perseverança</h3>
+                <p className="text-body text-secondary">
                   A evolução no Jiu Jítsu exige dedicação constante e superação de desafios
                 </p>
               </div>

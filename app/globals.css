@@ -8,28 +8,49 @@
       "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   }
 
+  /* Light theme (default) - IMPROVED */
   body {
-    background-color: #121212;
-    color: #ffffff; /* White for primary text - excellent contrast on dark background */
+    background-color: #ffffff;
+    color: #1e293b;
     line-height: 1.5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Dark theme - RESTORED TO ORIGINAL */
+  .dark body {
+    background-color: #121212;
+    color: #ffffff;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-md bg-primary-500 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-background;
+    @apply inline-flex items-center justify-center rounded-md bg-primary-500 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply focus:ring-offset-light-bg-primary dark:focus:ring-offset-dark-bg-primary;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-md border border-neutral-border bg-neutral-surface px-5 py-3 text-base font-semibold text-neutral-text-primary transition-colors hover:bg-neutral-border focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-background;
+    @apply inline-flex items-center justify-center rounded-md border px-5 py-3 text-base font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    /* Light theme - improved */
+    @apply border-light-border bg-light-bg-secondary text-light-text-primary hover:bg-light-border focus:ring-offset-light-bg-primary;
+    /* Dark theme - original styling */
+    @apply dark:border-dark-border dark:bg-dark-bg-card dark:text-dark-text-primary dark:hover:bg-dark-border dark:focus:ring-offset-dark-bg-primary;
   }
 
   .card {
-    @apply rounded-lg border border-neutral-border bg-neutral-surface p-6;
+    @apply rounded-lg border p-6 transition-colors;
+    /* Light theme - improved */
+    @apply border-light-border bg-light-bg-card;
+    /* Dark theme - original: both surface and cards use #1f1f1f */
+    @apply dark:border-dark-border dark:bg-dark-bg-card;
   }
 
   .input-field {
-    @apply w-full rounded-md border border-neutral-border bg-neutral-background px-4 py-3 text-base text-neutral-text-primary placeholder-neutral-text-secondary focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500;
+    @apply w-full rounded-md border px-4 py-3 text-base placeholder-opacity-50 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors;
+    /* Light theme - improved */
+    @apply border-light-border bg-light-bg-primary text-light-text-primary placeholder-light-text-muted;
+    /* Dark theme - original */
+    @apply dark:border-dark-border dark:bg-dark-bg-primary dark:text-dark-text-primary dark:placeholder-dark-text-secondary;
   }
 
   .container-main {
@@ -85,5 +106,36 @@
 
   .text-subtext {
     @apply text-sm font-normal leading-5;
+  }
+
+  /* Theme-aware text utilities */
+  .text-primary {
+    @apply text-light-text-primary dark:text-dark-text-primary;
+  }
+
+  .text-secondary {
+    @apply text-light-text-secondary dark:text-dark-text-secondary;
+  }
+
+  .text-muted {
+    @apply text-light-text-muted dark:text-dark-text-muted;
+  }
+
+  /* Theme-aware background utilities */
+  .bg-primary {
+    @apply bg-light-bg-primary dark:bg-dark-bg-primary;
+  }
+
+  .bg-secondary {
+    @apply bg-light-bg-secondary dark:bg-dark-bg-secondary;
+  }
+
+  .bg-card {
+    @apply bg-light-bg-card dark:bg-dark-bg-card;
+  }
+
+  /* Theme-aware border utilities */
+  .border-theme {
+    @apply border-light-border dark:border-dark-border;
   }
 }

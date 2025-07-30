@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function JumpPage() {
   return (
-    <div className="bg-neutral-background">
+    <div className="bg-primary">
       {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-gradient-to-br from-green-600 to-green-800">
         <div className="container-main">
@@ -34,36 +34,36 @@ export default function JumpPage() {
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-display text-neutral-text-primary mb-6">
+              <h2 className="text-display text-primary mb-6">
                 O Que é Jump?
               </h2>
-              <p className="text-body text-neutral-text-secondary mb-6">
+              <p className="text-body text-secondary mb-6">
                 Jump é uma aula de ginástica aeróbica realizada em mini-trampolins individuais. Os movimentos são coreografados e combinam saltos, corridas estacionárias e outros exercícios que utilizam a instabilidade do trampolim para intensificar o trabalho muscular e cardiovascular.
               </p>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 É uma atividade de alto impacto energético, mas de baixo impacto articular, o que a torna segura e eficaz para pessoas de diferentes idades e níveis de condicionamento físico. Prepare-se para pular, suar e se energizar!
               </p>
             </div>
             <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
+              <h3 className="text-heading text-primary mb-4">
                 Características da Aula
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Clock className="h-5 w-5 text-green-500" />
-                  <span className="text-body text-neutral-text-secondary">Duração: 50 minutos</span>
+                  <span className="text-body text-secondary">Duração: 50 minutos</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Activity className="h-5 w-5 text-green-500" />
-                  <span className="text-body text-neutral-text-secondary">Mini-trampolins individuais</span>
+                  <span className="text-body text-secondary">Mini-trampolins individuais</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Shield className="h-5 w-5 text-green-500" />
-                  <span className="text-body text-neutral-text-secondary">Baixo impacto articular</span>
+                  <span className="text-body text-secondary">Baixo impacto articular</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Zap className="h-5 w-5 text-green-500" />
-                  <span className="text-body text-neutral-text-secondary">Alto gasto energético</span>
+                  <span className="text-body text-secondary">Alto gasto energético</span>
                 </div>
               </div>
             </div>
@@ -72,13 +72,13 @@ export default function JumpPage() {
       </section>
 
       {/* Benefits */}
-      <section className="py-16 bg-neutral-surface">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center mb-12">
-            <h2 className="text-display text-neutral-text-primary mb-4">
+            <h2 className="text-display text-primary mb-4">
               Benefícios do Jump
             </h2>
-            <p className="text-body text-neutral-text-secondary">
+            <p className="text-body text-secondary">
               Descubra como o Jump pode transformar seu condicionamento físico
             </p>
           </div>
@@ -90,10 +90,10 @@ export default function JumpPage() {
                   <Zap className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Queima Calórica Elevada
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 O Jump é uma das modalidades que mais queimam calorias, sendo excelente para o emagrecimento e a manutenção do peso.
               </p>
             </div>
@@ -104,10 +104,10 @@ export default function JumpPage() {
                   <Heart className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Condicionamento Cardiovascular
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Fortalece o coração e os pulmões, aumentando a resistência e a capacidade aeróbica de forma eficaz.
               </p>
             </div>
@@ -118,10 +118,10 @@ export default function JumpPage() {
                   <Target className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Fortalecimento Muscular
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 Trabalha intensamente os músculos das pernas (quadríceps, isquiotibiais, panturrilhas) e glúteos, além de fortalecer o core.
               </p>
             </div>
@@ -132,10 +132,10 @@ export default function JumpPage() {
                   <Shield className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Baixo Impacto Articular
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 A superfície elástica do trampolim absorve o impacto, protegendo as articulações dos joelhos, tornozelos e coluna.
               </p>
             </div>
@@ -146,10 +146,10 @@ export default function JumpPage() {
                   <Activity className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Equilíbrio e Coordenação
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 A instabilidade do trampolim desafia o equilíbrio e a coordenação motora, aprimorando essas habilidades.
               </p>
             </div>
@@ -160,10 +160,10 @@ export default function JumpPage() {
                   <Heart className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-heading text-neutral-text-primary mb-3">
+              <h3 className="text-heading text-primary mb-3">
                 Bem-estar Mental
               </h3>
-              <p className="text-body text-neutral-text-secondary">
+              <p className="text-body text-secondary">
                 A atividade lúdica e a liberação de endorfinas contribuem para a redução do estresse e a melhora do humor.
               </p>
             </div>
@@ -176,31 +176,31 @@ export default function JumpPage() {
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-heading text-neutral-text-primary mb-6">
+              <h3 className="text-heading text-primary mb-6">
                 Benefícios Únicos do Jump
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-green-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Drenagem Linfática:</strong> Os saltos estimulam o sistema linfático, auxiliando na eliminação de toxinas e na redução da celulite
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-green-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Melhora da Densidade Óssea:</strong> O impacto controlado ajuda a fortalecer os ossos
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-green-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Diversão Garantida:</strong> A sensação de "voar" torna o exercício prazeroso e motivante
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-green-500 rounded-full mt-3"></div>
-                  <p className="text-body text-neutral-text-secondary">
+                  <p className="text-body text-secondary">
                     <strong>Segurança:</strong> Menor risco de lesões comparado a outras atividades de alto impacto
                   </p>
                 </div>
@@ -208,17 +208,17 @@ export default function JumpPage() {
             </div>
 
             <div className="card">
-              <h3 className="text-heading text-neutral-text-primary mb-4">
+              <h3 className="text-heading text-primary mb-4">
                 Nossas Aulas de Jump
               </h3>
-              <p className="text-body text-neutral-text-secondary mb-4">
+              <p className="text-body text-secondary mb-4">
                 Na Academia Panobianco Jardim Satélite, nossas aulas de Jump são uma experiência imersiva. Nossos instrutores são especialistas em criar playlists envolventes e em conduzir treinos desafiadores e divertidos.
               </p>
-              <p className="text-body text-neutral-text-secondary mb-6">
+              <p className="text-body text-secondary mb-6">
                 Com mini-trampolins modernos e seguros, você terá todo o suporte para pular com segurança e eficiência. A trilha sonora é cuidadosamente selecionada para te manter no ritmo e motivado.
               </p>
-              <div className="bg-neutral-background rounded-lg p-4">
-                <p className="text-subtext text-neutral-text-secondary text-center">
+              <div className="bg-primary rounded-lg p-4">
+                <p className="text-subtext text-secondary text-center">
                   <strong>Horários:</strong> Consulte nossa grade de horários na recepção
                 </p>
               </div>
@@ -228,13 +228,13 @@ export default function JumpPage() {
       </section>
 
       {/* Safety Section */}
-      <section className="py-16 bg-neutral-surface">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center">
-            <h2 className="text-display text-neutral-text-primary mb-6">
+            <h2 className="text-display text-primary mb-6">
               Segurança e Adaptação
             </h2>
-            <p className="text-body text-neutral-text-secondary mb-12 max-w-3xl mx-auto">
+            <p className="text-body text-secondary mb-12 max-w-3xl mx-auto">
               O Jump é uma modalidade segura quando praticada corretamente. Nossos instrutores oferecem orientações detalhadas e adaptações para garantir que todos possam participar com segurança.
             </p>
             
@@ -245,8 +245,8 @@ export default function JumpPage() {
                     <Shield className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-heading text-neutral-text-primary mb-3">Equipamentos Seguros</h3>
-                <p className="text-body text-neutral-text-secondary">
+                <h3 className="text-heading text-primary mb-3">Equipamentos Seguros</h3>
+                <p className="text-body text-secondary">
                   Mini-trampolins de qualidade com manutenção regular
                 </p>
               </div>
@@ -256,8 +256,8 @@ export default function JumpPage() {
                     <Users className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-heading text-neutral-text-primary mb-3">Orientação Profissional</h3>
-                <p className="text-body text-neutral-text-secondary">
+                <h3 className="text-heading text-primary mb-3">Orientação Profissional</h3>
+                <p className="text-body text-secondary">
                   Instrutores qualificados para orientar e corrigir movimentos
                 </p>
               </div>
@@ -267,8 +267,8 @@ export default function JumpPage() {
                     <Target className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-heading text-neutral-text-primary mb-3">Progressão Gradual</h3>
-                <p className="text-body text-neutral-text-secondary">
+                <h3 className="text-heading text-primary mb-3">Progressão Gradual</h3>
+                <p className="text-body text-secondary">
                   Movimentos adaptados para diferentes níveis de experiência
                 </p>
               </div>
