@@ -12,19 +12,22 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Aulas Coletivas | Academia Panobianco Jardim Satélite - Flashback, Pilates, WolfFit",
+  title:
+    "Aulas Coletivas | Academia Panobianco Jardim Satélite - Flashback, Pilates, WolfFit",
   description:
     "Descubra nossas aulas coletivas: Flashback, Pilates, WolfFit, GAP, FitDance, Jump, Muay Thai e Jiu Jítsu. Energia e diversão em grupo na Academia Panobianco Jardim Satélite.",
-  keywords: "aulas coletivas, flashback, pilates, wolffit, gap, fitdance, jump, muay thai, jiu jitsu, academia jardim satélite, são josé dos campos",
-  robots: 'index, follow',
+  keywords:
+    "aulas coletivas, flashback, pilates, wolffit, gap, fitdance, jump, muay thai, jiu jitsu, academia jardim satélite, são josé dos campos",
+  robots: "index, follow",
   openGraph: {
     title: "Aulas Coletivas | Academia Panobianco Jardim Satélite",
-    description: "Descubra nossas aulas coletivas: Flashback, Pilates, WolfFit, GAP, FitDance, Jump, Muay Thai e Jiu Jítsu.",
-    type: 'website',
-    locale: 'pt_BR',
+    description:
+      "Descubra nossas aulas coletivas: Flashback, Pilates, WolfFit, GAP, FitDance, Jump, Muay Thai e Jiu Jítsu.",
+    type: "website",
+    locale: "pt_BR",
   },
   alternates: {
-    canonical: '/aulas-coletivas',
+    canonical: "/aulas-coletivas",
   },
 };
 
@@ -107,7 +110,7 @@ export default function AulasColetivas() {
   return (
     <div className="bg-primary">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24  bg-secondary">
         <div className="container-main">
           <div className="text-center">
             <h1 className="text-4xl lg:text-6xl font-bold text-primary mb-6">
@@ -122,7 +125,7 @@ export default function AulasColetivas() {
       </section>
 
       {/* Introduction */}
-      <section className="py-16 bg-secondary">
+      <section className="py-16">
         <div className="container-main">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-display text-primary mb-6">
@@ -145,7 +148,7 @@ export default function AulasColetivas() {
       </section>
 
       {/* Classes Grid */}
-      <section className="py-16">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="text-center mb-12">
             <h2 className="text-display text-primary mb-4">
@@ -199,7 +202,7 @@ export default function AulasColetivas() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-secondary">
+      <section className="py-16">
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -227,9 +230,7 @@ export default function AulasColetivas() {
                     <Heart className="h-4 w-4 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-heading text-primary mb-2">
-                      Diversão
-                    </h3>
+                    <h3 className="text-heading text-primary mb-2">Diversão</h3>
                     <p className="text-body text-secondary">
                       Exercitar-se em grupo torna o treino mais prazeroso e
                       menos monótono.
@@ -289,7 +290,7 @@ export default function AulasColetivas() {
       </section>
 
       {/* Schedule Teaser */}
-      <section className="py-16" id="horarios">
+      <section className="py-16 bg-secondary" id="horarios">
         <div className="container-main">
           <div className="text-center">
             <h2 className="text-display text-primary mb-6">
@@ -312,7 +313,7 @@ export default function AulasColetivas() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-secondary">
+      <section className="py-16">
         <div className="container-main">
           <div className="text-center">
             <h2 className="text-display text-primary mb-6">

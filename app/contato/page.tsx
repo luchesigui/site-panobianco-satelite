@@ -66,7 +66,7 @@ export default function Contato() {
   return (
     <div className="bg-primary">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-secondary">
         <div className="container-main">
           <div className="text-center">
             <h1 className="text-4xl lg:text-6xl font-bold text-primary mb-6">
@@ -81,7 +81,7 @@ export default function Contato() {
       </section>
 
       {/* Main Content */}
-      <section className="py-16 bg-secondary">
+      <section className="py-16">
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -287,7 +287,7 @@ export default function Contato() {
       </section>
 
       {/* Location & Schedule */}
-      <section className="py-16">
+      <section className="py-16 bg-secondary">
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Location */}
@@ -359,7 +359,7 @@ export default function Contato() {
                 <div className="bg-primary rounded-lg p-4">
                   <p className="text-subtext text-secondary text-center">
                     <strong>Dica:</strong> Para evitar horários de pico, venha
-                    preferencialmente entre 9h-16h ou após 21h!
+                    entre 9h-16h ou após 21h!
                   </p>
                 </div>
               </div>
@@ -369,7 +369,7 @@ export default function Contato() {
       </section>
 
       {/* FAQ/Quick Info */}
-      <section className="py-16 bg-secondary">
+      <section className="py-16">
         <div className="container-main">
           <div className="text-center mb-12">
             <h2 className="text-display text-primary mb-4">
