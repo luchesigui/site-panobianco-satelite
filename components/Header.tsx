@@ -1,10 +1,11 @@
 "use client";
 
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import Image from "next/image";
+
 import ThemeToggle from "./ClientThemeToggle";
+import Logo from "./Logo";
 
 const navigation = [
   { name: "Sobre Nós", href: "/sobre-nos" },
@@ -22,15 +23,7 @@ export default function Header() {
       <div className="container-main">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/logo.png"
-              alt="Academia Panobianco"
-              width={120}
-              height={40}
-              className="h-10 w-auto"
-            />
-          </Link>
+          <Logo />
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -48,8 +41,8 @@ export default function Header() {
           {/* Theme Toggle and CTA */}
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
-            <Link 
-              href="https://agendamento.panobiancosatelite.com.br/" 
+            <Link
+              href="https://agendamento.panobiancosatelite.com.br/"
               className="btn-primary"
               target="_blank"
               rel="noopener noreferrer"
