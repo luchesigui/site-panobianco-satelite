@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Shield, Clock, Users, Target, Heart, Zap, Brain } from 'lucide-react'
+import SchedulingLink from '@/components/SchedulingLink'
 
 export const metadata: Metadata = {
   title: 'Muay Thai | Aulas Coletivas | Academia Panobianco Jardim Satélite',
@@ -335,9 +336,9 @@ export default function MuayThaiPage() {
               Se você busca um treino que vai além do físico, que desafia seus limites e te ensina uma poderosa arte marcial, o Muay Thai da Academia Panobianco Jardim Satélite é a sua escolha. Venha descobrir o guerreiro em você, fortalecer seu corpo e sua mente.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="https://agendamento.panobiancosatelite.com.br/" className="bg-white text-yellow-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors" target="_blank" rel="noopener noreferrer">
+              <SchedulingLink className="bg-white text-yellow-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                 Agendar Aula Experimental
-              </Link>
+              </SchedulingLink>
               <Link href="/aulas-coletivas" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-yellow-600 transition-colors">
                 Ver Outras Aulas
               </Link>

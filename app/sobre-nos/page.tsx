@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Heart, Target, Users, Award, MapPin, Dumbbell } from 'lucide-react'
+import SchedulingLink from '@/components/SchedulingLink'
 
 export const metadata: Metadata = {
   title: 'Sobre Nós | Academia Panobianco Jardim Satélite',
@@ -268,9 +269,9 @@ export default function SobreNos() {
               Venha nos visitar e descubra por que a Academia Panobianco Jardim Satélite é o lugar perfeito para você transformar seu corpo, sua mente e sua vida.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary" target="_blank" rel="noopener noreferrer">
+              <SchedulingLink>
                 Agendar Aula Experimental
-              </Link>
+              </SchedulingLink>
               <Link href="/contato" className="btn-secondary">
                 Entre em Contato
               </Link>

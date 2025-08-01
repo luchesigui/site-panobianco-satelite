@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import ThemeToggle from "./ClientThemeToggle";
 import Logo from "./Logo";
+import { useIndication } from "@/contexts/IndicationContext";
 
 const navigation = [
   { name: "Sobre Nós", href: "/sobre-nos" },
@@ -17,6 +18,7 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { getSchedulingUrl } = useIndication();
 
   return (
     <header className="bg-secondary border-b border-theme">
@@ -42,7 +44,7 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
             <Link
-              href="https://agendamento.panobiancosatelite.com.br/"
+              href={getSchedulingUrl()}
               className="btn-primary"
               target="_blank"
               rel="noopener noreferrer"
@@ -84,7 +86,7 @@ export default function Header() {
               ))}
               <div className="px-4 py-2">
                 <Link
-                  href="https://agendamento.panobiancosatelite.com.br/"
+                  href={getSchedulingUrl()}
                   className="btn-primary w-full text-center"
                   onClick={() => setMobileMenuOpen(false)}
                   target="_blank"

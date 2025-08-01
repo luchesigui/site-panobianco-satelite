@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import SchedulingLink from '@/components/SchedulingLink';
 
 export const metadata: Metadata = {
   title:
@@ -325,14 +326,9 @@ export default function AulasColetivas() {
               aula é gratuita!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="https://agendamento.panobiancosatelite.com.br/"
-                className="btn-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <SchedulingLink>
                 Experimentar Aula Gratuita
-              </Link>
+              </SchedulingLink>
             </div>
           </div>
         </div>
