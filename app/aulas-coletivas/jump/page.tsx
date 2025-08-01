@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Activity, Clock, Users, Target, Heart, Zap, Shield } from 'lucide-react'
+import SchedulingLink from '@/components/SchedulingLink'
 
 export const metadata: Metadata = {
   title: 'Jump | Aulas Coletivas | Academia Panobianco Jardim Satélite',
@@ -288,9 +289,9 @@ export default function JumpPage() {
               Se você busca um treino divertido, eficaz e cheio de energia, o Jump da Academia Panobianco Jardim Satélite é a sua próxima parada. Venha sentir a adrenalina, queimar calorias e pular rumo a uma vida mais saudável e ativa.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="https://agendamento.panobiancosatelite.com.br/" className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors" target="_blank" rel="noopener noreferrer">
+              <SchedulingLink className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                 Agendar Aula Experimental
-              </Link>
+              </SchedulingLink>
               <Link href="/aulas-coletivas" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors">
                 Ver Outras Aulas
               </Link>

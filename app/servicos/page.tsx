@@ -1,6 +1,7 @@
 import { Dumbbell, FileCheck, User, Users } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import SchedulingLink from '@/components/SchedulingLink';
 
 export const metadata: Metadata = {
   title:
@@ -203,14 +204,9 @@ export default function Servicos() {
               e descubra a modalidade que mais te inspira!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="https://agendamento.panobiancosatelite.com.br/"
-                className="btn-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <SchedulingLink>
                 Aula Experimental Gratuita
-              </Link>
+              </SchedulingLink>
               <Link href="/contato" className="btn-secondary">
                 Entre em Contato
               </Link>

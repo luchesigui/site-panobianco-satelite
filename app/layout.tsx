@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { IndicationProvider } from "@/contexts/IndicationContext";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
@@ -48,9 +49,11 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
+          <IndicationProvider>
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+          </IndicationProvider>
         </ThemeProvider>
       </body>
     </html>
