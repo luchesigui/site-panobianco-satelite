@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { IndicationProvider } from "@/contexts/IndicationContext";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
@@ -45,12 +46,41 @@ export default function RootLayout({
     <html lang="pt-BR">
       <head>
         <Script src="https://cdn.overtracking.com/t/tYnpTLPMjGZY80maV/" defer />
+        {/* Meta Pixel Code */}
+        <Script
+          id="meta-pixel"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1426944168536689');
+fbq('track', 'PageView');`,
+          }}
+        />
+        {/* End Meta Pixel Code */}
       </head>
       <body>
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=1426944168536689&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
         <ThemeProvider>
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
+          <IndicationProvider>
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+          </IndicationProvider>
         </ThemeProvider>
       </body>
     </html>

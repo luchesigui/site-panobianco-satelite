@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Dumbbell, Users, User, FileCheck, Calendar, MapPin, Clock, Star } from 'lucide-react'
+import SchedulingLink from '@/components/SchedulingLink'
 
 export const metadata: Metadata = {
   title: 'Academia Panobianco Jardim Satélite | Musculação, Aulas Coletivas e Treino Personalizado em São José dos Campos',
@@ -39,14 +40,9 @@ export default function Home() {
               Sua nova jornada de saúde e bem-estar começa aqui. Musculação, aulas coletivas, treino personalizado e muito mais em São José dos Campos.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="https://agendamento.panobiancosatelite.com.br/" 
-                className="btn-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <SchedulingLink>
                 Agende sua Aula Experimental
-              </Link>
+              </SchedulingLink>
               <Link href="/planos" className="btn-secondary">
                 Conheça Nossos Planos
               </Link>
@@ -319,15 +315,10 @@ export default function Home() {
               Agende sua aula experimental gratuita e descubra por que a Academia Panobianco Jardim Satélite é o lugar perfeito para você alcançar seus objetivos.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="https://agendamento.panobiancosatelite.com.br/" 
-                className="btn-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <SchedulingLink>
                 <Calendar className="h-5 w-5 mr-2" />
                 Agendar Aula Experimental
-              </Link>
+              </SchedulingLink>
               <Link href="/planos" className="btn-secondary">
                 Conheça Nossos Planos
               </Link>

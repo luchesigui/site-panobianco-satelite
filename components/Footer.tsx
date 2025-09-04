@@ -1,8 +1,13 @@
+"use client";
+
 import { Clock, Facebook, Instagram, MapPin } from "lucide-react";
 import Link from "next/link";
 import Logo from "./Logo";
+import { useIndication } from "@/contexts/IndicationContext";
 
 export default function Footer() {
+  const { getSchedulingUrl } = useIndication();
+  
   return (
     <footer className="bg-secondary border-t border-theme">
       <div className="container-main py-12">
@@ -83,7 +88,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="https://agendamento.panobiancosatelite.com.br/"
+                  href={getSchedulingUrl()}
                   className="text-body text-secondary hover:text-primary-500 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"

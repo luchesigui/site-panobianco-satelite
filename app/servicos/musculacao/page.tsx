@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Dumbbell, Target, Shield, TrendingUp, Users, CheckCircle } from 'lucide-react'
+import SchedulingLink from '@/components/SchedulingLink'
 
 export const metadata: Metadata = {
   title: 'Musculação | Academia Panobianco Jardim Satélite - Equipamentos Modernos',
@@ -33,9 +34,9 @@ export default function Musculacao() {
               Nossa área de musculação é um espaço amplo e bem equipado, com uma vasta gama de aparelhos modernos e seguros, projetados para atender a todas as necessidades e grupos musculares.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary" target="_blank" rel="noopener noreferrer">
+              <SchedulingLink>
                 Experimente Gratuitamente
-              </Link>
+              </SchedulingLink>
               <Link href="/planos" className="btn-secondary">
                 Conheça Nossos Planos
               </Link>
@@ -253,9 +254,9 @@ export default function Musculacao() {
               Se você busca um lugar onde a musculação é levada a sério, com estrutura de ponta, equipamentos modernos e o suporte de profissionais dedicados, a Academia Panobianco Jardim Satélite é o seu destino.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="https://agendamento.panobiancosatelite.com.br/" className="btn-primary" target="_blank" rel="noopener noreferrer">
+              <SchedulingLink>
                 Agende Sua Aula Experimental Gratuita
-              </Link>
+              </SchedulingLink>
               <Link href="/contato" className="btn-secondary">
                 Entre em Contato
               </Link>
