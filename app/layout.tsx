@@ -45,6 +45,19 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
+        <Script
+          id="gtag-external"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17525035038"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-17525035038');",
+          }}
+        />
         <Script src="https://cdn.overtracking.com/t/tYnpTLPMjGZY80maV/" defer />
         {/* Meta Pixel Code */}
         <Script
