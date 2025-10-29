@@ -59,7 +59,7 @@ export default function Planos() {
               </h3>
               <div className="mb-4">
                 <span className="text-3xl font-bold text-primary-500">
-                  R$ 129,90
+                  R$ 139,90
                 </span>
                 <span className="text-secondary">/mês</span>
               </div>
@@ -122,7 +122,7 @@ export default function Planos() {
               <h3 className="text-heading text-primary mb-3">Plano Avulso</h3>
               <div className="mb-4">
                 <span className="text-3xl font-bold text-primary-500">
-                  R$ 149,90
+                  R$ 159,90
                 </span>
                 <span className="text-secondary">/mês</span>
               </div>
