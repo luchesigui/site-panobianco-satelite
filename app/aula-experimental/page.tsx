@@ -1,9 +1,12 @@
 'use client'
 
-import type { Metadata } from 'next'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import Link from 'next/link'
-import { Calendar, Clock, Users, CheckCircle, User, Mail, Phone, MessageSquare } from 'lucide-react'
+import { format, getDay, isValid, parseISO } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+import { DayPicker } from 'react-day-picker'
+import 'react-day-picker/dist/style.css'
+import { Calendar, Clock, Users, CheckCircle, User, Phone, MessageSquare } from 'lucide-react'
 
 export default function AulaExperimental() {
   const [formData, setFormData] = useState({
@@ -21,13 +24,13 @@ export default function AulaExperimental() {
       return false;
     }
 
-    const selectedDate = new Date(`${dateValue}T00:00:00`);
+    const parsedDate = parseISO(dateValue);
 
-    if (Number.isNaN(selectedDate.getTime())) {
+    if (!isValid(parsedDate)) {
       return false;
     }
 
-    const weekDay = selectedDate.getUTCDay();
+    const weekDay = getDay(parsedDate);
     return weekDay === 1 || weekDay === 2;
   };
 
@@ -48,8 +51,18 @@ export default function AulaExperimental() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
 
-    if (name === 'data_preferencial' && value && isRestrictedDay(value)) {
-      alert('Os agendamentos estão indisponíveis às segundas e terças-feiras. Por favor, selecione outra data ou procure a recepção.')
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const disabledDays = useMemo(() => [{ daysOfWeek: [1, 2] }], [])
+
+  const selectedDate = formData.data_preferencial ? parseISO(formData.data_preferencial) : undefined
+
+  const handleDateSelect = (date?: Date) => {
+    if (!date) {
       setFormData(prev => ({
         ...prev,
         data_preferencial: ''
@@ -57,9 +70,13 @@ export default function AulaExperimental() {
       return
     }
 
+    if (isRestrictedDay(format(date, 'yyyy-MM-dd'))) {
+      return
+    }
+
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      data_preferencial: format(date, 'yyyy-MM-dd')
     }))
   }
 
@@ -192,51 +209,61 @@ export default function AulaExperimental() {
                   />
                 </div>
 
-                <div>
-                  <label htmlFor="telefone" className="block text-body text-primary mb-2">
-                    Telefone (com DDD) *
-                  </label>
-                  <input
-                    type="tel"
-                    id="telefone"
-                    name="telefone"
-                    required
-                    value={formData.telefone}
-                    onChange={handleChange}
-                    className="input-field"
-                    placeholder="(12) 99999-9999"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="data_preferencial" className="block text-body text-primary mb-2">
-                      Data Preferencial
+                    <label htmlFor="telefone" className="block text-body text-primary mb-2">
+                      Telefone (com DDD) *
                     </label>
                     <input
-                      type="date"
-                      id="data_preferencial"
-                      name="data_preferencial"
-                      value={formData.data_preferencial}
+                      type="tel"
+                      id="telefone"
+                      name="telefone"
+                      required
+                      value={formData.telefone}
                       onChange={handleChange}
                       className="input-field"
+                      placeholder="(12) 99999-9999"
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor="hora_preferencial" className="block text-body text-primary mb-2">
-                      Hora Preferencial
-                    </label>
-                    <input
-                      type="time"
-                      id="hora_preferencial"
-                      name="hora_preferencial"
-                      value={formData.hora_preferencial}
-                      onChange={handleChange}
-                      className="input-field"
-                    />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="data_preferencial" className="block text-body text-primary mb-2">
+                        Data Preferencial
+                      </label>
+                      <div className="card p-4">
+                        <DayPicker
+                          mode="single"
+                          locale={ptBR}
+                          selected={selectedDate}
+                          onSelect={handleDateSelect}
+                          disabled={disabledDays}
+                          fromDate={new Date()}
+                          weekStartsOn={1}
+                          showOutsideDays
+                        />
+                        <input type="hidden" name="data_preferencial" value={formData.data_preferencial} />
+                        <p className="text-subtext text-secondary mt-3">
+                          {selectedDate
+                            ? `Data selecionada: ${format(selectedDate, 'dd/MM/yyyy')}`
+                            : 'Selecione uma data disponível (quarta a domingo).'}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="hora_preferencial" className="block text-body text-primary mb-2">
+                        Hora Preferencial
+                      </label>
+                      <input
+                        type="time"
+                        id="hora_preferencial"
+                        name="hora_preferencial"
+                        value={formData.hora_preferencial}
+                        onChange={handleChange}
+                        className="input-field"
+                      />
+                    </div>
                   </div>
-                </div>
 
                 <div>
                   <label htmlFor="modalidade_interesse" className="block text-body text-primary mb-2">
