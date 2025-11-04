@@ -16,8 +16,29 @@ export default function AulaExperimental() {
     mensagem: ''
   })
 
+  const isRestrictedDay = (dateValue: string) => {
+    if (!dateValue) {
+      return false;
+    }
+
+    const selectedDate = new Date(`${dateValue}T00:00:00`);
+
+    if (Number.isNaN(selectedDate.getTime())) {
+      return false;
+    }
+
+    const weekDay = selectedDate.getUTCDay();
+    return weekDay === 1 || weekDay === 2;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (isRestrictedDay(formData.data_preferencial)) {
+      alert('Os agendamentos estão indisponíveis às segundas e terças-feiras. Por favor, selecione outra data ou procure a recepção.');
+      return;
+    }
+
     // Here you would handle form submission
     console.log('Form submitted:', formData)
     // For now, just show an alert
@@ -25,9 +46,20 @@ export default function AulaExperimental() {
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+
+    if (name === 'data_preferencial' && value && isRestrictedDay(value)) {
+      alert('Os agendamentos estão indisponíveis às segundas e terças-feiras. Por favor, selecione outra data ou procure a recepção.')
+      setFormData(prev => ({
+        ...prev,
+        data_preferencial: ''
+      }))
+      return
+    }
+
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [name]: value
     }))
   }
 
