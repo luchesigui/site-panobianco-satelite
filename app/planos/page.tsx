@@ -92,7 +92,7 @@ export default function Planos() {
                 </li>
                 <li className="flex items-start text-sm text-secondary">
                   <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
-                  Sem taxa de adesão
+                  Sem adesão, anuidade, ou taxa de cancelamento
                 </li>
                 <li className="flex items-start text-sm text-secondary">
                   <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
@@ -169,7 +169,7 @@ export default function Planos() {
                 </li>
                 <li className="flex items-start text-sm text-secondary">
                   <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
-                  Sem anuidade, nem taxa de cancelamento
+                  Sem adesão, anuidade, ou taxa de cancelamento
                 </li>
                 <li className="flex items-start text-sm text-secondary">
                   <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
