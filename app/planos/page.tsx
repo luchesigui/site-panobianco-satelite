@@ -1,4 +1,4 @@
-import { Check, Star, X, Zap } from "lucide-react";
+import { Check, Crown, Star, X, Zap } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -43,16 +43,88 @@ export default function Planos() {
       {/* Plans Section */}
       <section className="py-8">
         <div className="container-main">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-            {/* Plano Platinum (Recorrente) */}
-            <div className="card hover:border-primary-500 transition-colors border-primary-500">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg">
-                  <Star className="h-6 w-6 text-white" />
-                </div>
-                <span className="bg-primary-500 text-white text-xs font-semibold px-2 py-1 rounded-full">
-                  MELHOR OFERTA
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+            {/* Orange Anual (fidelidade) */}
+            <div className="card hover:border-primary-500 transition-colors">
+              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
+                <Crown className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-heading text-primary mb-3">
+                Orange Anual (fidelidade)
+              </h3>
+              <div className="mb-4">
+                <span className="text-3xl font-bold text-primary-500">
+                  R$ 119,90
                 </span>
+                <span className="text-secondary">/mês</span>
+              </div>
+              <p className="text-body text-secondary mb-6">
+                Débito automático, sem taxas, com fidelidade de 12 meses.
+              </p>
+
+              <h4 className="text-heading text-primary mb-4">Inclui:</h4>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-start text-sm text-secondary">
+                  <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
+                  Área de cardio tecnológica com esteiras e escada com YouTube e
+                  Netflix
+                </li>
+                <li className="flex items-start text-sm text-secondary">
+                  <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
+                  Musculação com equipamentos de ponta e biodinâmica exclusivas
+                </li>
+                <li className="flex items-start text-sm text-secondary">
+                  <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
+                  Acesso a todas as aulas coletivas, incluindo pilates, muai
+                  thai, jiu-jítsu e muito mais
+                </li>
+                <li className="flex items-start text-sm text-secondary">
+                  <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
+                  Trazer 5 convidados por mês
+                </li>
+                <li className="flex items-start text-sm text-secondary">
+                  <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
+                  Avaliação física gratuita
+                </li>
+                <li className="flex items-start text-sm text-secondary">
+                  <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
+                  4 acessos em outras unidades da rede
+                </li>
+                <li className="flex items-start text-sm text-secondary">
+                  <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
+                  Sem adesão, anuidade, ou taxa de cancelamento
+                </li>
+                <li className="flex items-start text-sm text-secondary">
+                  <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
+                  Panobianco APP
+                </li>
+                <li className="flex items-start text-sm text-red-500">
+                  <X className="h-4 w-4 text-red-500 mr-2 mt-0.5 flex-shrink-0" />
+                  Fidelidade de 12 meses
+                </li>
+              </ul>
+              <Link
+                href="https://panobiancosatelite.com.br/checkout"
+                className="btn-primary w-full text-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Eu Quero
+              </Link>
+              <p className="text-xs text-secondary text-center mt-3">
+                Válido para quem não teve contrato promocional nos últimos 12 meses.
+              </p>
+            </div>
+
+            {/* Plano Platinum (Recorrente) */}
+            <div className="card hover:border-primary-500 transition-colors border-primary-500 relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <span className="bg-primary-500 text-white text-xs font-semibold px-4 py-1 rounded-full whitespace-nowrap">
+                  MAIS VANTAJOSO
+                </span>
+              </div>
+              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4 mt-2">
+                <Star className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-heading text-primary mb-3">
                 Plano Platinum (recorrente)
@@ -97,7 +169,7 @@ export default function Planos() {
                 </li>
                 <li className="flex items-start text-sm text-secondary">
                   <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
-                  Sem anuidade, nem taxa de cancelamento
+                  Sem adesão, anuidade, ou taxa de cancelamento
                 </li>
                 <li className="flex items-start text-sm text-secondary">
                   <Check className="h-4 w-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
