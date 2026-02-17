@@ -1,338 +1,147 @@
-import {
-  Activity,
-  Flower2,
-  Heart,
-  Music,
-  Shield,
-  Target,
-  Users,
-  Zap,
-} from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
-import SchedulingLink from '@/components/SchedulingLink';
+
+import ContactCtaSection from "@/components/ContactCtaSection";
+import {
+	type ClassItem,
+	ModalidadesFilterGrid,
+} from "@/components/ModalidadesFilterGrid";
+import ScheduleModal from "@/components/ScheduleModal";
 
 export const metadata: Metadata = {
-  title:
-    "Aulas Coletivas | Academia Panobianco Jardim Satélite - Flashback, Pilates, WolfFit",
-  description:
-    "Descubra nossas aulas coletivas: Flashback, Pilates, WolfFit, GAP, FitDance, Jump, Muay Thai e Jiu Jítsu. Energia e diversão em grupo na Academia Panobianco Jardim Satélite.",
-  keywords:
-    "aulas coletivas, flashback, pilates, wolffit, gap, fitdance, jump, muay thai, jiu jitsu, academia jardim satélite, são josé dos campos",
-  robots: "index, follow",
-  openGraph: {
-    title: "Aulas Coletivas | Academia Panobianco Jardim Satélite",
-    description:
-      "Descubra nossas aulas coletivas: Flashback, Pilates, WolfFit, GAP, FitDance, Jump, Muay Thai e Jiu Jítsu.",
-    type: "website",
-    locale: "pt_BR",
-  },
-  alternates: {
-    canonical: "/aulas-coletivas",
-  },
+	title: "Aulas Coletivas | Panobianco Jardim Satélite",
+	description:
+		"Conheça as modalidades da unidade Jardim Satélite: Flashback, Pilates, WolfFit, GAP, FitDance, Jump, Muay Thai, Jiu Jitsu e Ritmos.",
+	alternates: { canonical: "/aulas-coletivas" },
 };
 
+const CATEGORIES = [
+	{ id: "todos", label: "Todos" },
+	{ id: "forca", label: "Força" },
+	{ id: "cardio", label: "Cardio" },
+	{ id: "mente-corpo", label: "Mente & Corpo" },
+	{ id: "danca", label: "Dança" },
+] as const;
 const classes = [
-  {
-    name: "Flashback",
-    slug: "flashback",
-    icon: Music,
-    description:
-      "Viaje no tempo e dance ao som dos maiores sucessos de décadas passadas! Uma explosão de energia e nostalgia.",
-    benefits: ["Queima calorias", "Melhora coordenação", "Diversão garantida"],
-    color: "bg-purple-500",
-  },
-  {
-    name: "Pilates",
-    slug: "pilates",
-    icon: Flower2,
-    description:
-      "Fortaleça seu core, melhore sua postura e aumente sua flexibilidade com esta modalidade de baixo impacto.",
-    benefits: ["Fortalece o core", "Melhora postura", "Aumenta flexibilidade"],
-    color: "bg-blue-500",
-  },
-  {
-    name: "WolfFit",
-    slug: "wolf-fit",
-    icon: Zap,
-    description:
-      "Experimente a intensidade da ginástica carioca! Exercícios funcionais de alta intensidade com muita ginga.",
-    benefits: ["Alta intensidade", "Força e resistência", "Coordenação motora"],
-    color: "bg-orange-500",
-  },
-  {
-    name: "GAP",
-    slug: "gap",
-    icon: Target,
-    description:
-      "Conquiste glúteos firmes, abdômen definido e pernas torneadas com exercícios localizados.",
-    benefits: ["Tonifica músculos", "Fortalece core", "Resultados visíveis"],
-    color: "bg-pink-500",
-  },
-  {
-    name: "FitDance",
-    slug: "fitdance",
-    icon: Music,
-    description:
-      "Dance, divirta-se e queime muitas calorias com coreografias de diversos ritmos musicais.",
-    benefits: ["Queima calorias", "Melhora humor", "Coordenação motora"],
-    color: "bg-red-500",
-  },
-  {
-    name: "Jump",
-    slug: "jump",
-    icon: Activity,
-    description:
-      "Salte para a diversão em mini-trampolins! Alto gasto calórico com baixo impacto nas articulações.",
-    benefits: ["Alto gasto calórico", "Baixo impacto", "Melhora equilíbrio"],
-    color: "bg-green-500",
-  },
-  {
-    name: "Muay Thai",
-    slug: "muay-thai",
-    icon: Shield,
-    description:
-      "Desenvolva força, agilidade, disciplina e autoconfiança com a arte marcial tailandesa.",
-    benefits: ["Autodefesa", "Disciplina", "Condicionamento físico"],
-    color: "bg-yellow-500",
-  },
-  {
-    name: "Jiu Jítsu",
-    slug: "jiu-jitsu",
-    icon: Shield,
-    description:
-      "Domine a arte suave e desenvolva não apenas o corpo, mas também a mente.",
-    benefits: ["Arte marcial eficaz", "Estratégia", "Autoconfiança"],
-    color: "bg-indigo-500",
-  },
+	{
+		name: "Flashback",
+		slug: "flashback",
+		icon: "music",
+		categories: ["danca"] as const,
+		description:
+			"Viaje no tempo e dance ao som dos maiores sucessos de décadas passadas! Uma explosão de energia e nostalgia.",
+		benefits: ["Queima calorias", "Melhora coordenação", "Diversão garantida"],
+		color: "bg-purple-600/20 text-purple-500",
+	},
+	{
+		name: "Pilates",
+		slug: "pilates",
+		icon: "flower2",
+		categories: ["mente-corpo"] as const,
+		description:
+			"Fortaleça seu core, melhore sua postura e aumente sua flexibilidade com esta modalidade de baixo impacto.",
+		benefits: ["Fortalece o core", "Melhora postura", "Aumenta flexibilidade"],
+		color: "bg-blue-600/20 text-blue-500",
+	},
+	{
+		name: "WolfFit",
+		slug: "wolf-fit",
+		icon: "zap",
+		categories: ["cardio", "forca"] as const,
+		description:
+			"Experimente a intensidade da ginástica carioca! Exercícios funcionais de alta intensidade com muita ginga.",
+		benefits: ["Alta intensidade", "Força e resistência", "Coordenação motora"],
+		color: "bg-orange-600/20 text-orange-500",
+	},
+	{
+		name: "GAP",
+		slug: "gap",
+		icon: "target",
+		categories: ["forca"] as const,
+		description:
+			"Conquiste glúteos firmes, abdômen definido e pernas torneadas com exercícios localizados.",
+		benefits: ["Tonifica músculos", "Fortalece core", "Resultados visíveis"],
+		color: "bg-pink-600/20 text-pink-500",
+	},
+	{
+		name: "FitDance",
+		slug: "fitdance",
+		icon: "music",
+		categories: ["danca", "cardio"] as const,
+		description:
+			"Dance, divirta-se e queime muitas calorias com coreografias de diversos ritmos musicais.",
+		benefits: ["Queima calorias", "Melhora humor", "Coordenação motora"],
+		color: "bg-red-600/20 text-red-500",
+	},
+	{
+		name: "Jump",
+		slug: "jump",
+		icon: "activity",
+		categories: ["cardio"] as const,
+		description:
+			"Salte para a diversão em mini-trampolins! Alto gasto calórico com baixo impacto nas articulações.",
+		benefits: ["Alto gasto calórico", "Baixo impacto", "Melhora equilíbrio"],
+		color: "bg-green-600/20 text-green-500",
+	},
+	{
+		name: "Muay Thai",
+		slug: "muay-thai",
+		icon: "shield",
+		categories: ["forca", "cardio"] as const,
+		description:
+			"Desenvolva força, agilidade, disciplina e autoconfiança com a arte marcial tailandesa.",
+		benefits: ["Autodefesa", "Disciplina", "Condicionamento físico"],
+		color: "bg-yellow-600/20 text-yellow-500",
+	},
+	{
+		name: "Jiu Jitsu",
+		slug: "jiu-jitsu",
+		icon: "shield",
+		categories: ["forca"] as const,
+		description:
+			"Domine a arte suave e desenvolva não apenas o corpo, mas também a mente.",
+		benefits: ["Arte marcial eficaz", "Estratégia", "Autoconfiança"],
+		color: "bg-indigo-600/20 text-indigo-500",
+	},
+	{
+		name: "Ritmos",
+		slug: "fitdance",
+		icon: "music",
+		categories: ["danca", "cardio"] as const,
+		description:
+			"Sinta a batida e deixe o corpo fluir! Uma aula vibrante que mistura diversos estilos musicais para queimar calorias sorrindo.",
+		benefits: ["Alta energia", "Expressão corporal", "Alívio de estresse"],
+		color: "bg-orange-600/20 text-primary-500",
+	},
 ];
 
 export default function AulasColetivas() {
-  return (
-    <div className="bg-primary">
-      {/* Hero Section */}
-      <section className="py-16 lg:py-24  bg-secondary">
-        <div className="container-main">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold text-primary mb-6">
-              Aulas <span className="text-primary-500">Coletivas</span>
-            </h1>
-            <p className="text-xl text-secondary max-w-3xl mx-auto">
-              Se exercitar pode ser uma experiência divertida, motivadora e
-              social. Descubra nossa variedade de aulas coletivas!
-            </p>
-          </div>
-        </div>
-      </section>
+	return (
+		<div className="font-display min-h-screen bg-background-dark text-white overflow-x-hidden">
+			<main className="flex-1 px-4 py-10 lg:px-10">
+				{/* Hero */}
+				<div className="container-main mb-12 flex flex-wrap items-end justify-between gap-6">
+					<div className="max-w-2xl space-y-4">
+						<span className="mb-4 inline-block w-fit rounded-full border border-primary-500/20 bg-primary-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.1em] text-primary-500">
+							Performance e Saúde
+						</span>
+						<h1 className="text-5xl font-black leading-none tracking-tight md:text-6xl">
+							NOSSAS MODALIDADES
+						</h1>
+						<p className="text-lg font-normal leading-relaxed text-white/60">
+							Encontre a aula ideal para o seu objetivo. Do relaxamento ao
+							máximo desempenho, temos a modalidade certa para transformar seu
+							corpo.
+						</p>
+					</div>
+					<ScheduleModal />
+				</div>
 
-      {/* Introduction */}
-      <section className="py-16">
-        <div className="container-main">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-display text-primary mb-6">
-              Energia e Diversão em Grupo
-            </h2>
-            <p className="text-body text-secondary mb-8">
-              Na Academia Panobianco Jardim Satélite, acreditamos que se
-              exercitar pode ser uma experiência divertida, motivadora e social.
-              Nossas aulas coletivas são projetadas para oferecer uma variedade
-              de opções que atendem a diferentes gostos, níveis de
-              condicionamento e objetivos.
-            </p>
-            <p className="text-body text-secondary">
-              Com instrutores energéticos e ambientes dinâmicos, você encontrará
-              a modalidade perfeita para se desafiar, queimar calorias e se
-              conectar com uma comunidade vibrante.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Classes Grid */}
-      <section className="py-16 bg-secondary">
-        <div className="container-main">
-          <div className="text-center mb-12">
-            <h2 className="text-display text-primary mb-4">
-              Nossa Grade de Aulas
-            </h2>
-            <p className="text-body text-secondary">
-              Explore todas as modalidades disponíveis e encontre a sua favorita
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {classes.map((classItem) => {
-              const IconComponent = classItem.icon;
-              return (
-                <Link
-                  key={classItem.slug}
-                  href={`/aulas-coletivas/${classItem.slug}`}
-                  className="card hover:border-primary-500 transition-colors group cursor-pointer block"
-                >
-                  <div
-                    className={`flex items-center justify-center w-12 h-12 ${classItem.color} rounded-lg mb-4 group-hover:scale-110 transition-transform`}
-                  >
-                    <IconComponent className="h-6 w-6 text-white" />
-                  </div>
-                  <h3 className="text-heading text-primary mb-3">
-                    {classItem.name}
-                  </h3>
-                  <p className="text-body text-secondary mb-4">
-                    {classItem.description}
-                  </p>
-                  <div className="mb-4">
-                    <ul className="space-y-1">
-                      {classItem.benefits.map((benefit, index) => (
-                        <li key={index} className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full"></div>
-                          <span className="text-subtext text-secondary">
-                            {benefit}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <span className="text-primary-500 group-hover:text-orange-600 transition-colors font-semibold">
-                    Saiba mais →
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-16">
-        <div className="container-main">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-display text-primary mb-6">
-                Benefícios das Aulas Coletivas
-              </h2>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-full mt-1">
-                    <Users className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-heading text-primary mb-2">
-                      Motivação
-                    </h3>
-                    <p className="text-body text-secondary">
-                      O ambiente de grupo e a energia do instrutor são grandes
-                      motivadores para manter a consistência.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3">
-                  <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-full mt-1">
-                    <Heart className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-heading text-primary mb-2">Diversão</h3>
-                    <p className="text-body text-secondary">
-                      Exercitar-se em grupo torna o treino mais prazeroso e
-                      menos monótono.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3">
-                  <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-full mt-1">
-                    <Target className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-heading text-primary mb-2">
-                      Resultados
-                    </h3>
-                    <p className="text-body text-secondary">
-                      Queime calorias, melhore o condicionamento e alcance seus
-                      objetivos de forma eficaz.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3">
-                  <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-full mt-1">
-                    <Activity className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-heading text-primary mb-2">
-                      Variedade
-                    </h3>
-                    <p className="text-body text-secondary">
-                      Experimente diferentes modalidades e mantenha seu treino
-                      sempre interessante.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card">
-              <h3 className="text-heading text-primary mb-4">
-                Para Todos os Níveis
-              </h3>
-              <p className="text-body text-secondary mb-4">
-                Nossas aulas coletivas são pensadas para acolher pessoas de
-                todos os níveis de condicionamento físico. Nossos instrutores
-                oferecem modificações e adaptações para garantir que todos
-                possam participar e se beneficiar.
-              </p>
-              <p className="text-body text-secondary mb-6">
-                Seja você um iniciante ou alguém mais experiente, encontrará
-                desafios adequados ao seu nível e objetivos pessoais.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Schedule Teaser */}
-      <section className="py-16 bg-secondary" id="horarios">
-        <div className="container-main">
-          <div className="text-center">
-            <h2 className="text-display text-primary mb-6">
-              Horários Flexíveis
-            </h2>
-            <p className="text-body text-secondary mb-8 max-w-2xl mx-auto">
-              Oferecemos diversos horários ao longo da semana para que você
-              possa encaixar as aulas na sua rotina. Confira nossa grade
-              completa e encontre o melhor horário para você.
-            </p>
-            <div className="bg-primary rounded-lg p-6 max-w-lg mx-auto">
-              <img
-                src="/images/horarios.png"
-                alt="Horários"
-                className="w-full h-auto"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16">
-        <div className="container-main">
-          <div className="text-center">
-            <h2 className="text-display text-primary mb-6">
-              Pronto para Suar a Camisa?
-            </h2>
-            <p className="text-body text-secondary mb-8 max-w-2xl mx-auto">
-              Venha experimentar nossas aulas coletivas e sinta a energia
-              contagiante da Academia Panobianco Jardim Satélite. Sua primeira
-              aula é gratuita!
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <SchedulingLink>
-                Experimentar Aula Gratuita
-              </SchedulingLink>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+				<ModalidadesFilterGrid
+					classes={classes as ClassItem[]}
+					categories={CATEGORIES}
+				/>
+				<ContactCtaSection />
+			</main>
+		</div>
+	);
 }

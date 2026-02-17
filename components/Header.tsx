@@ -4,101 +4,88 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-import ThemeToggle from "./ClientThemeToggle";
-import Logo from "./Logo";
+import Logo from "@/components/Logo";
 import { useIndication } from "@/contexts/IndicationContext";
 
 const navigation = [
-  { name: "Sobre Nós", href: "/sobre-nos" },
-  { name: "Serviços", href: "/servicos" },
-  { name: "Aulas Coletivas", href: "/aulas-coletivas" },
-  { name: "Planos", href: "/planos" },
-  { name: "Contato", href: "/contato" },
+	{ name: "Início", href: "/" },
+	{ name: "Serviços", href: "/servicos" },
+	{ name: "Aulas Coletivas", href: "/aulas-coletivas" },
+	{ name: "Planos", href: "/planos" },
+	{ name: "Contato", href: "/contato" },
 ];
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { getSchedulingUrl } = useIndication();
+	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const { getSchedulingUrl } = useIndication();
 
-  return (
-    <header className="bg-secondary border-b border-theme">
-      <div className="container-main">
-        <div className="flex items-center justify-between py-4">
-          {/* Logo */}
-          <Logo />
+	return (
+		<header className="fixed top-0 left-0 right-0 z-50 h-20 border-b border-white/10 bg-background-dark backdrop-blur-md">
+			<div className="container-main flex h-full items-center justify-between">
+				<Logo className="h-12 w-auto" width={150} height={48} />
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-body text-primary hover:text-primary-500 transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
+				<nav className="hidden items-center gap-8 md:flex">
+					{navigation.map((item) => (
+						<Link
+							key={item.name}
+							href={item.href}
+							className="text-sm font-medium text-white transition-colors hover:text-primary-500"
+						>
+							{item.name}
+						</Link>
+					))}
+				</nav>
 
-          {/* Theme Toggle and CTA */}
-          <div className="hidden md:flex items-center space-x-4">
-            <ThemeToggle />
-            <Link
-              href={getSchedulingUrl()}
-              className="btn-primary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Aula Experimental
-            </Link>
-          </div>
+				<div className="flex items-center gap-4">
+					<Link
+						href={getSchedulingUrl()}
+						className="hidden items-center justify-center rounded-full bg-primary-500 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-primary-500/20 transition-all hover:bg-primary-500/90 md:inline-flex"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Agendar Aula Experimental
+					</Link>
+				</div>
 
-          {/* Mobile menu button and theme toggle */}
-          <div className="md:hidden flex items-center space-x-2">
-            <ThemeToggle />
-            <button
-              type="button"
-              className="p-2 rounded-md text-primary hover:text-primary-500 transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
-        </div>
+				<button
+					type="button"
+					className="rounded-md p-2 text-white transition-colors hover:text-primary-500 md:hidden"
+					onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+					aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+				>
+					{mobileMenuOpen ? (
+						<X className="size-6" />
+					) : (
+						<Menu className="size-6" />
+					)}
+				</button>
+			</div>
 
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden border-t border-theme">
-            <div className="space-y-1 py-4">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="block px-4 py-2 text-body text-primary hover:text-primary-500 hover:bg-primary rounded-md transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="px-4 py-2">
-                <Link
-                  href={getSchedulingUrl()}
-                  className="btn-primary w-full text-center"
-                  onClick={() => setMobileMenuOpen(false)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Aula Experimental
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-    </header>
-  );
+			{mobileMenuOpen && (
+				<div className="border-t border-white/10 bg-background-dark md:hidden">
+					<div className="container-main space-y-1 py-4">
+						{navigation.map((item) => (
+							<Link
+								key={item.name}
+								href={item.href}
+								className="block rounded-md px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/5 hover:text-primary-500"
+								onClick={() => setMobileMenuOpen(false)}
+							>
+								{item.name}
+							</Link>
+						))}
+						<Link
+							href={getSchedulingUrl()}
+							className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-primary-500 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-500/90"
+							onClick={() => setMobileMenuOpen(false)}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							Agendar Aula Experimental
+						</Link>
+					</div>
+				</div>
+			)}
+		</header>
+	);
 }

@@ -1,219 +1,179 @@
-import { Dumbbell, FileCheck, User, Users } from "lucide-react";
+import {
+	Activity,
+	ArrowRight,
+	Bath,
+	Clock,
+	Dumbbell,
+	User,
+	Users,
+} from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import SchedulingLink from '@/components/SchedulingLink';
+
+import ContactCtaSection from "@/components/ContactCtaSection";
+import SchedulingLink from "@/components/SchedulingLink";
 
 export const metadata: Metadata = {
-  title:
-    "Serviços | Academia Panobianco Jardim Satélite - Musculação, Personal e Avaliação Física",
-  description:
-    "Conheça todos os serviços da Academia Panobianco: musculação completa, treino personalizado, avaliação física e aulas coletivas em São José dos Campos.",
-  keywords:
-    "serviços academia, musculação, treino personalizado, avaliação física, personal trainer, academia jardim satélite, são josé dos campos",
-  robots: "index, follow",
-  openGraph: {
-    title: "Serviços | Academia Panobianco Jardim Satélite",
-    description:
-      "Oferecemos uma gama completa de serviços: musculação, treino personalizado, avaliação física e aulas coletivas.",
-    type: "website",
-    locale: "pt_BR",
-  },
-  alternates: {
-    canonical: "/servicos",
-  },
+	title:
+		"Serviços | Academia Panobianco Jardim Satélite - Musculação, Personal e Aulas Coletivas",
+	description:
+		"Conheça todos os serviços da Panobianco: equipamentos de última geração, treino personalizado, aulas coletivas, avaliação física e vestiários completos.",
+	keywords:
+		"serviços academia, musculação, treino personalizado, aulas coletivas, academia jardim satélite, são josé dos campos",
+	robots: "index, follow",
+	openGraph: {
+		title: "Serviços | Academia Panobianco Jardim Satélite",
+		description:
+			"Equipamentos de última geração, treino personalizado, aulas coletivas e muito mais.",
+		type: "website",
+		locale: "pt_BR",
+	},
+	alternates: {
+		canonical: "/servicos",
+	},
 };
 
+const heroBg =
+	"https://lh3.googleusercontent.com/aida-public/AB6AXuD6j1Igrr46kOIL_Mp_ZrPPILbdU5gcwWL0sz2sTgs2zMpwWr5TkOL0Z2WBfc2rxe3UZxoQ95GfFiYgdyUPYQubEZEBVUNyXPH6asUt6uKrS4J6eqs2Z6296jiMNW3BLA1NVeltlMGOe37mkW4TgEKHnbsUOIkSH7pBJAtXUkQXv_RkyyF2WMY-h01_A0obQSGHP_1HQbu0cAKxAzz-qiInK2a0q0XJJGaA1u8CbEn2rn-tmKyu43yE96Ompp5OQOVyblW_QfKYnxg";
+
+const services = [
+	{
+		title: "Equipamentos de Última Geração",
+		description:
+			"Máquinas importadas e ergonômicas para máxima eficiência e segurança no seu treino, otimizando cada repetição.",
+		icon: Dumbbell,
+		href: "/servicos/musculacao",
+	},
+	{
+		title: "Treino Personalizado",
+		description:
+			"Profissionais qualificados para montar sua ficha de acordo com seus objetivos específicos, do emagrecimento à hipertrofia.",
+		icon: User,
+		href: "/servicos/treino-personalizado",
+	},
+	{
+		title: "Aulas Coletivas",
+		description:
+			"FitDance, Ritmos, Funcional e muito mais em um ambiente contagiante e motivador que faz você esquecer do esforço.",
+		icon: Users,
+		href: "/aulas-coletivas",
+	},
+	{
+		title: "Avaliação Física",
+		description:
+			"Avaliações periódicas de composição corporal e evolução para acompanhar seus resultados e ajustar seu treino.",
+		icon: Activity,
+	},
+	{
+		title: "Vestiários Completos",
+		description:
+			"Conforto e praticidade com chuveiros aquecidos, secadores e armários seguros para o seu pós-treino premium.",
+		icon: Bath,
+	},
+	{
+		title: "Horário Estendido",
+		description:
+			"Flexibilidade total para você treinar quando quiser, desde as primeiras horas da manhã até tarde da noite.",
+		icon: Clock,
+	},
+];
+
 export default function Servicos() {
-  return (
-    <div className="bg-primary">
-      {/* Hero Section */}
-      <section className="py-16 lg:py-24">
-        <div className="container-main">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold text-primary mb-6">
-              Nossos <span className="text-primary-500">Serviços</span>
-            </h1>
-            <p className="text-xl text-secondary mb-8 max-w-3xl mx-auto">
-              Oferecemos uma gama completa de serviços e modalidades para
-              atender a todas as suas necessidades de saúde e bem-estar.
-            </p>
-          </div>
-        </div>
-      </section>
+	return (
+		<div className="font-display min-h-screen bg-background-dark text-white overflow-x-hidden">
+			{/* Hero */}
+			<section className="relative w-full overflow-hidden py-20">
+				<div className="absolute inset-0 z-0">
+					<Image
+						src={heroBg}
+						alt="Ambiente moderno da academia Panobianco com equipamentos e iluminação"
+						fill
+						className="object-cover opacity-30 scale-105"
+					/>
+					<div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/80 to-transparent" />
+				</div>
+				<div className="container-main relative z-10 mx-auto max-w-[960px] space-y-8 text-center">
+					<div className="mb-4 inline-block rounded-full border border-primary-500/30 bg-primary-500/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-primary-500">
+						Infraestrutura Premium
+					</div>
+					<h1 className="text-5xl font-black leading-tight tracking-tight text-white md:text-7xl">
+						Nossos Serviços
+					</h1>
+					<p className="mx-auto max-w-2xl text-lg font-medium leading-relaxed text-slate-300 md:text-xl">
+						Descubra por que a Panobianco é a escolha certa para quem busca
+						resultados reais com a melhor infraestrutura da região.
+					</p>
+					<div className="flex flex-col items-center justify-center gap-4 pt-6 sm:flex-row">
+						<SchedulingLink className="w-full rounded-full bg-primary-500 px-10 py-5 text-lg font-black text-white shadow-lg shadow-primary-500/20 transition-all hover:bg-primary-500/90 sm:w-auto">
+							Agende uma visita
+						</SchedulingLink>
+						<Link
+							href="/contato"
+							className="w-full rounded-full border border-white/10 bg-white/5 px-10 py-5 text-lg font-bold text-white backdrop-blur-sm transition-all hover:bg-white/10 sm:w-auto"
+						>
+							Ver Unidades
+						</Link>
+					</div>
+				</div>
+			</section>
 
-      {/* Services Overview */}
-      <section className="py-16">
-        <div className="container-main">
-          <div className="text-center mb-12">
-            <h2 className="text-display text-primary mb-4">
-              Nossos Principais Serviços
-            </h2>
-            <p className="text-body text-secondary max-w-2xl mx-auto">
-              Nosso objetivo é proporcionar uma experiência de treino
-              diversificada e eficaz, com o suporte de profissionais
-              qualificados e uma estrutura de ponta.
-            </p>
-          </div>
+			{/* Services Grid */}
+			<section className="container-main py-16">
+				<div className="mb-12 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+					<div className="space-y-2">
+						<h2 className="text-3xl font-black text-white">
+							O que oferecemos para você
+						</h2>
+						<div className="h-1.5 w-20 rounded-full bg-primary-500" />
+					</div>
+					<p className="hidden font-medium text-slate-400 md:block">
+						Foco total no seu bem-estar e saúde.
+					</p>
+				</div>
+				<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+					{services.map((service) => {
+						const Icon = service.icon;
+						const cardContent = (
+							<>
+								<div className="mb-6 flex size-16 items-center justify-center rounded-2xl bg-white/5 transition-colors group-hover:bg-primary-500">
+									<Icon className="size-10 text-primary-500 transition-colors group-hover:text-white" />
+								</div>
+								<h3 className="mb-3 text-xl font-bold text-white">
+									{service.title}
+								</h3>
+								<p className="leading-relaxed text-slate-400">
+									{service.description}
+								</p>
+								{service.href && (
+									<span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-primary-500">
+										Saiba mais
+										<ArrowRight className="size-4" />
+									</span>
+								)}
+							</>
+						);
+						return "href" in service && service.href ? (
+							<Link
+								key={service.title}
+								href={service.href}
+								className="glass-card group rounded-xl p-8 transition-all hover:border-primary-500 hover:-translate-y-1"
+							>
+								{cardContent}
+							</Link>
+						) : (
+							<div
+								key={service.title}
+								className="glass-card group rounded-xl p-8 transition-all"
+							>
+								{cardContent}
+							</div>
+						);
+					})}
+				</div>
+			</section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Musculação */}
-            <div className="card hover:border-primary-500 transition-colors">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
-                <Dumbbell className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-heading text-primary mb-3">Musculação</h3>
-              <p className="text-body text-secondary mb-4">
-                A musculação é a base para o desenvolvimento de força,
-                resistência e definição muscular. Em nossa academia, você
-                encontrará uma área de musculação ampla e equipada com aparelhos
-                modernos e seguros, que atendem a todos os grupos musculares.
-              </p>
-              <p className="text-body text-secondary mb-6">
-                Nossos professores estão sempre à disposição para orientar na
-                execução correta dos exercícios e montar um plano de treino
-                personalizado, focado em seus objetivos individuais. Seja para
-                ganho de massa, emagrecimento ou condicionamento físico geral, a
-                musculação é essencial para um corpo forte e saudável.
-              </p>
-              <Link href="/servicos/musculacao" className="btn-primary">
-                Saiba mais sobre Musculação
-              </Link>
-            </div>
-
-            {/* Treino Personalizado */}
-            <div className="card hover:border-primary-500 transition-colors">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
-                <User className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-heading text-primary mb-3">
-                Treino Personalizado
-              </h3>
-              <p className="text-body text-secondary mb-4">
-                Para quem busca resultados mais rápidos e um acompanhamento
-                exclusivo, o treino personalizado é a escolha ideal. Nossos
-                personal trainers são especialistas em diversas áreas do fitness
-                e desenvolverão um programa de treino sob medida para você.
-              </p>
-              <p className="text-body text-secondary mb-6">
-                Com atenção individualizada, você terá a motivação e a
-                orientação necessárias para superar desafios e otimizar seus
-                resultados. Invista em você e acelere sua jornada fitness com o
-                treino personalizado.
-              </p>
-              <Link
-                href="/servicos/treino-personalizado"
-                className="btn-primary"
-              >
-                Saiba mais sobre Treino Personalizado
-              </Link>
-            </div>
-
-            {/* Aulas Coletivas */}
-            <div className="card hover:border-primary-500 transition-colors">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
-                <Users className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-heading text-primary mb-3">
-                Aulas Coletivas
-              </h3>
-              <p className="text-body text-secondary mb-4">
-                As aulas coletivas são uma excelente opção para quem busca se
-                exercitar de forma dinâmica, divertida e em grupo. Oferecemos
-                uma variedade de modalidades que promovem o condicionamento
-                físico, a coordenação motora e o bem-estar mental.
-              </p>
-              <p className="text-body text-secondary mb-6">
-                Nossos instrutores são energéticos e criam um ambiente
-                motivador, onde você pode interagir com outros alunos e
-                desfrutar de cada momento do treino. De alta intensidade a
-                atividades mais relaxantes, temos a aula coletiva perfeita para
-                você.
-              </p>
-              <Link href="/aulas-coletivas" className="btn-primary">
-                Explore nossas Aulas Coletivas
-              </Link>
-            </div>
-
-            {/* Avaliação Física */}
-            <div className="card hover:border-primary-500 transition-colors">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
-                <FileCheck className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-heading text-primary mb-3">
-                Avaliação Física
-              </h3>
-              <p className="text-body text-secondary mb-4">
-                Antes de iniciar qualquer programa de treino, a avaliação física
-                é fundamental para identificar seu nível de condicionamento
-                atual, suas necessidades e seus objetivos. Nossos profissionais
-                realizam uma análise completa.
-              </p>
-              <p className="text-body text-secondary mb-6">
-                A avaliação inclui medições corporais, testes de força e
-                flexibilidade, e uma conversa detalhada sobre seu histórico de
-                saúde. Com base nesses dados, é possível criar um plano de
-                treino seguro e eficaz, que maximize seus resultados e minimize
-                o risco de lesões.
-              </p>
-              <Link href="/contato" className="btn-primary">
-                Agende sua Avaliação
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Services */}
-      <section className="py-16">
-        <div className="container-main">
-          <div className="text-center mb-12">
-            <h2 className="text-display text-primary mb-4">Planos e Adesão</h2>
-            <p className="text-body text-secondary max-w-2xl mx-auto">
-              Oferecemos diversas opções de planos de adesão, flexíveis e
-              adaptados às suas necessidades.
-            </p>
-          </div>
-
-          <div className="card text-center max-w-2xl mx-auto">
-            <h3 className="text-heading text-primary mb-4">
-              Flexibilidade para o Seu Bolso
-            </h3>
-            <p className="text-body text-secondary mb-6">
-              Seja mensal, trimestral ou anual, temos a modalidade ideal para
-              você iniciar sua jornada fitness. Além disso, aceitamos Gympass e
-              outros convênios, facilitando seu acesso à nossa estrutura e
-              serviços de alta qualidade.
-            </p>
-            <Link href="/planos" className="btn-primary">
-              Conheça Nossos Planos
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16">
-        <div className="container-main">
-          <div className="card text-center">
-            <h2 className="text-display text-primary mb-4">
-              Pronto para Começar?
-            </h2>
-            <p className="text-body text-secondary mb-6 max-w-2xl mx-auto">
-              Na Academia Panobianco Jardim Satélite, estamos comprometidos em
-              oferecer a você o melhor em fitness e bem-estar. Venha nos visitar
-              e descubra a modalidade que mais te inspira!
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <SchedulingLink>
-                Aula Experimental Gratuita
-              </SchedulingLink>
-              <Link href="/contato" className="btn-secondary">
-                Entre em Contato
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+			<ContactCtaSection />
+		</div>
+	);
 }
