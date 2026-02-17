@@ -43,14 +43,12 @@ const services = [
 		description:
 			"Máquinas importadas e ergonômicas para máxima eficiência e segurança no seu treino, otimizando cada repetição.",
 		icon: Dumbbell,
-		href: "/servicos/musculacao",
 	},
 	{
 		title: "Treino Personalizado",
 		description:
 			"Profissionais qualificados para montar sua ficha de acordo com seus objetivos específicos, do emagrecimento à hipertrofia.",
 		icon: User,
-		href: "/servicos/treino-personalizado",
 	},
 	{
 		title: "Aulas Coletivas",
