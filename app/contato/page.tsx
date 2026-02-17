@@ -210,13 +210,13 @@ export default function Contato() {
 
 					{/* Right: Map + Form */}
 					<div className="lg:col-span-2 flex flex-col gap-8">
-						<div className="group relative h-[420px] w-full overflow-hidden rounded-xl border border-white/10">
+						<div className="group relative h-[420px] w-full overflow-hidden rounded-xl border border-white/10 lg:h-auto lg:min-h-0 lg:flex-1">
 							<Image
 								src={mapImage}
 								alt="Localização Panobianco Jardim Satélite"
 								fill
 								sizes="(max-width: 1024px) 100vw, 66vw"
-								className="object-contain object-center grayscale brightness-50 contrast-125 transition-all duration-700 group-hover:brightness-75"
+								className="object-cover object-center grayscale brightness-50 contrast-125 transition-all duration-700 group-hover:brightness-75"
 							/>
 							<div className="absolute inset-0 flex items-center justify-center">
 								<div className="relative">
