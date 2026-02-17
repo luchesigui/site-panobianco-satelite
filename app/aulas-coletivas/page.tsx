@@ -104,7 +104,7 @@ const classes = [
 	},
 	{
 		name: "Ritmos",
-		slug: "fitdance",
+		slug: "ritmos",
 		icon: "music",
 		categories: ["danca", "cardio"] as const,
 		description:
