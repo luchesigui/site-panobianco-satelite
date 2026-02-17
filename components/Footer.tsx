@@ -1,7 +1,6 @@
 "use client";
 
 import {
-	Dumbbell,
 	Facebook,
 	Instagram,
 	Mail,
@@ -11,6 +10,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+import Logo from "@/components/Logo";
 import {
 	CONTACT_EMAIL,
 	FACEBOOK_URL,
@@ -27,13 +27,8 @@ export default function Footer() {
 			<div className="container-main">
 				<div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-4">
 					<div className="md:col-span-2">
-						<div className="mb-6 flex items-center gap-3">
-							<div className="flex size-8 items-center justify-center rounded-full bg-primary-500">
-								<Dumbbell className="size-4 text-white" />
-							</div>
-							<span className="font-display text-xl font-black uppercase tracking-tighter">
-								Panobianco
-							</span>
+						<div className="mb-6">
+							<Logo className="h-10 w-auto" width={140} height={40} />
 						</div>
 						<p className="mb-6 max-w-sm text-gray-400">
 							Transformando vidas através do movimento. A Panobianco Jardim
