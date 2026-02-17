@@ -20,7 +20,6 @@ export const metadata: Metadata = {
 	creator: "Academia Panobianco Jardim Satélite",
 	publisher: "Academia Panobianco Jardim Satélite",
 	robots: "index, follow",
-	viewport: "width=device-width, initial-scale=1",
 	openGraph: {
 		type: "website",
 		locale: "pt_BR",
@@ -35,6 +34,11 @@ export const metadata: Metadata = {
 		description:
 			"Academia completa em São José dos Campos com musculação, aulas coletivas e treino personalizado.",
 	},
+};
+
+export const viewport = {
+	width: "device-width",
+	initialScale: 1,
 };
 
 export default function RootLayout({
