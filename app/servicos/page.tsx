@@ -34,8 +34,7 @@ export const metadata: Metadata = {
 	},
 };
 
-const heroBg =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuD6j1Igrr46kOIL_Mp_ZrPPILbdU5gcwWL0sz2sTgs2zMpwWr5TkOL0Z2WBfc2rxe3UZxoQ95GfFiYgdyUPYQubEZEBVUNyXPH6asUt6uKrS4J6eqs2Z6296jiMNW3BLA1NVeltlMGOe37mkW4TgEKHnbsUOIkSH7pBJAtXUkQXv_RkyyF2WMY-h01_A0obQSGHP_1HQbu0cAKxAzz-qiInK2a0q0XJJGaA1u8CbEn2rn-tmKyu43yE96Ompp5OQOVyblW_QfKYnxg";
+const heroBg = "/images/servicos.webp";
 
 const services = [
 	{

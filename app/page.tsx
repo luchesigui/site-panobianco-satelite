@@ -1,6 +1,3 @@
-import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import {
 	ArrowRight,
 	Check,
@@ -11,8 +8,12 @@ import {
 	Snowflake,
 	Star,
 } from "lucide-react";
-import SchedulingLink from "@/components/SchedulingLink";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+
 import ContactCtaSection from "@/components/ContactCtaSection";
+import SchedulingLink from "@/components/SchedulingLink";
 
 export const metadata: Metadata = {
 	title: "Panobianco Jardim Satélite | Sua Melhor Versão Começa Aqui",
@@ -68,24 +69,21 @@ const modalities = [
 		description:
 			"Treinos de força e hipertrofia com acompanhamento profissional qualificado.",
 		href: "/servicos/musculacao",
-		image:
-			"https://lh3.googleusercontent.com/aida-public/AB6AXuDCoXnT7JS2QEwDU7QdroljqvRxJRUGWh2g8mc2y-RdDLjLRs571G109BfMqjaDneg0PT9506dHvdI2KCdZy43NfXFpdEwKQhuE2dgfYcGmtLvqrmbrbpZ35h-Qml5_pP2GFpKaInl_GLvzuvwVlayM7l98zveoPLrT0bovAwrrzWfJUrl5HoDIxkP72NHdG0YL6M2JbQ0d35AfhoMXm61P_iDFSGN94z7OpOPlP7XkCz_C_4D-9QtcJoU8tRQ69AXDEiS1nuWcjaw",
+		image: "/images/modalidades/musculacao.png",
 	},
 	{
 		name: "Aulas Coletivas",
 		description:
 			"FitDance, Yoga, Pilates e muito mais para queimar calorias com diversão.",
 		href: "/aulas-coletivas",
-		image:
-			"https://lh3.googleusercontent.com/aida-public/AB6AXuDfZcVMwc5VY41pfoe315MsWfw5sfbzESX0YijVXD0EQFd_2jbVlFifkmJX85f0UGL-JjbL_Hj4bhiv-IRCK3skUus45fqI8F9yQlH3ww_F-z4VDnjI-bDGm68hKkHmI4vsHxn8byWBjRKsjN-i6rBeBbSdj0BDrnzVMJlocIVtJ8TIrult1cI9_QMwYWIVyXsu-9NBsqkW5Y5s711AUU2qLB27P132XsnY_i-SKocUc1OeRyZvkaST9fE23AwWyqMaNzP0VVMA1gw",
+		image: "/images/modalidades/aulas-coletivas.png",
 	},
 	{
 		name: "Treino Personalizado",
 		description:
 			"Atenção total focada nos seus objetivos individuais e performance.",
 		href: "/servicos/treino-personalizado",
-		image:
-			"https://lh3.googleusercontent.com/aida-public/AB6AXuAPBiPbdsi-hkmFQeX4yhQtvk5LHX1ryHSd2XKa-xrMe_YlN7SvE3jJrSlueamk4G8HV5T1T-ccDK-VERRuJwAHd__uvBkzMxlBtE319oLegqEOJTJjyRqQz7w_jeo9eE5irl6kO3_2ycq7bixiKrnj-KRc2B911nYXlr9UfsgPjFKN1P7iEFYz6YRCSQ7iJIJH7KixGMEJrUiIeXDIeEeLCjslYkgAwSivF6q271jrU06G9Z-DcvhGA7kQmUZxoTWryDXGuDPnePM",
+		image: "/images/modalidades/treino-personalizado.png",
 	},
 ];
 
@@ -132,13 +130,12 @@ const testimonials = [
 ];
 
 const avatarUrls = [
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuBklqKZ_FtEGcwEZXaIQb5ccXHdPH9Sy-LJe0HkPZwwBShUU1cb8t290b5_LD5Ey8a1sJ1CmNLPNGfNRMmIHyekbzE0iafTj0nx-aRtKXxlTT7DA-bpQNzZ7WBf3Z7y1-HHk12y9dL-LgtV7-w2mYzbA19bi77wYEyNAtQk7jv_4A0PA-FEeS3D04NTbBTae3Bj9XKZ29NN5gFP-OhWey6i4QD4OKXhn6seMiRgVJHk644bMwxwapyZ7-PrV2bzcCHZf2au4MOBnn8",
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuDYIpngSB-e2BGQCwOGxTO5ZxZY7siHNUXjBWWxObbeWUM-QVjvNNBpN5e26ijfNrI8DCb_rcaYeVrXYAExCOzg5fmtuzp1TFqGrneTjioffO3Obu8nlDfM_975yrpVaULXs2CJxoj9CUAjr2rhEYGX2uTGMQMzIiMyTB3xWS7em_pcI4aBP9ZwZjyeE6K3Vb1qW5qqsc5IklVmPMfReQsNWxLq4ggmIJwgfJwEBQGklZiFvt9kHQejx4Z-CJV7hw40ixEX3sfpgDc",
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuBaGert_E1xGNZDPpS2euOL6WHQ1LhMlJJU1wtSa1Aw35uNifh_4CQuPtfHkdp_zhl5AFHWPwBSF_BACmc0ccsHaJgfdk1eT0vjQh9vcmo5o_t8XATkNJMeLoWS5Sz4dESohjiIA3einP70Tfv96woI3qFBWdnVWB9hlHkaWjR8z4F_LSv26ECVnj7FCKalDy_1tzlzMzJRXgc4oVF15oUCmHMv0HdffZc96LACWcgE2d-nStj3CR6s3aVLZh3q79noqNgFvRWvMT0",
+	"https://lh3.googleusercontent.com/a-/ALV-UjWh4mRXj1Qy76S7Z635sDJI_rFLKCQ-llKXXUZwDN0sE_afjUrK=w72-h72-p-rp-mo-br100",
+	"https://lh3.googleusercontent.com/a-/ALV-UjX69vMqtUkLPKp8WBV-fBIwXwTtEGCIRNYgki4Q7s4uu4Ceneb_uw=w72-h72-p-rp-mo-br100",
+	"https://lh3.googleusercontent.com/a-/ALV-UjXzmGDXAj6KBOJpLFXhHVDzT8y6jQA9GwiokrSg5I14azjyNqZ6Uw=w72-h72-p-rp-mo-br100",
 ];
 
-const whyUsImage =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuBLbPhRJ4F4yJrPRArGiGL_WHFaEpIlowzIif1AZoRMsXXgT4MgplDecNMU0uOM060XszAEl75xOAQR98Fjkn6R9Lvck0Y5dfj7inalSaX5Rhq_dvelysVcY8MjPYnhuNr7dr9Kcojt-aOlI4eognJ7aS1JTwdiATy0oaYDoOqfdXwBQ4fq3oxelcjV7n5GsWt_Nr0OBnV8Fz1vgF-nmIv1DP2SGVLR_X_sxjn-t1Alr9WwQJNtFy5ngfgeIJ6Wj7WxLVXTs9mrU8I";
+const whyUsImage = "/images/panobianco-jardim-satelite.webp";
 
 const mapImage =
 	"https://lh3.googleusercontent.com/aida-public/AB6AXuAkx_hnH45N70uVuzeOUB9m5kdYGwy94NxsBZdFRxbT1qzRTtKcoR0MYC9csc53tbqizczIFJ4Lsmx9T55LmLqxq52xSeNzxOnW6MeZJNQ-xPX8Sk_4W5bEjpN8Iw8L4uxgYxqmWGvHZ9O_pbGl2y5qBRP064PZdOS8412JW1WvTOrYPv2F5e4VxpnzChQRlWuWia-NAmsOEfsMoXfhZoc5GCbhi5O79kxbpbFKYKbzFORAyVnuxFneVmK-dgOLZixGnmihbIEqaU8";
@@ -202,7 +199,10 @@ export default function Home() {
 								))}
 							</div>
 							<div>
-								<div className="flex gap-0.5 text-primary-500">
+								<div
+									className="flex gap-0.5 text-primary-500"
+									title="4.9 estrelas"
+								>
 									{[1, 2, 3, 4, 5].map((n) => (
 										<Star
 											key={`hero-star-${n}`}
@@ -211,7 +211,7 @@ export default function Home() {
 									))}
 								</div>
 								<p className="text-xs font-medium text-gray-400">
-									+500 alunos satisfeitos no Jardim Satélite
+									+2000 alunos satisfeitos no Jardim Satélite
 								</p>
 							</div>
 						</div>
@@ -382,11 +382,6 @@ export default function Home() {
 									</p>
 								</div>
 								<div className="flex items-center gap-4">
-									<div
-										className={`size-12 rounded-full ${
-											t.featured ? "bg-primary-500" : "bg-primary-500/20"
-										}`}
-									/>
 									<div>
 										<p
 											className={`font-bold ${t.featured ? "text-white" : ""}`}
