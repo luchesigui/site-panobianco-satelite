@@ -1,10 +1,11 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { ThemeProvider } from "@/contexts/ThemeContext";
 import { IndicationProvider } from "@/contexts/IndicationContext";
-import { Inter } from "next/font/google";
-import type { Metadata } from "next";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import "./globals.css";
 
 const inter = Inter({
@@ -53,10 +54,28 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
+	const gtmScript = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-54RZX6VV');`;
+
 	return (
 		<html lang="pt-BR" className={inter.variable}>
-			<head />
+			<head>
+				{/* biome-ignore lint/security/noDangerouslySetInnerHtml: GTM requires inline script in head */}
+				<script dangerouslySetInnerHTML={{ __html: gtmScript }} />
+			</head>
 			<body>
+				<noscript>
+					<iframe
+						src="https://www.googletagmanager.com/ns.html?id=GTM-54RZX6VV"
+						height="0"
+						width="0"
+						style={{ display: "none", visibility: "hidden" }}
+						title="Google Tag Manager"
+					/>
+				</noscript>
 				<ThemeProvider>
 					<IndicationProvider>
 						<Header />
