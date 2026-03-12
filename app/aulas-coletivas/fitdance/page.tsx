@@ -1,24 +1,17 @@
+import { Activity, Flame, Music, Smile, Users } from "lucide-react";
 import type { Metadata } from "next";
-import {
-	Activity,
-	Flame,
-	Music,
-	Smile,
-	Users,
-} from "lucide-react";
+
 import ModalidadePage from "@/components/ModalidadePage";
 
-const HERO_IMAGE =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuDvY7d9og05JHMluqLNNVGstUOc-lde3RQBYc7ei5XnNAwX5gyGo3ZEznqss3RMph1Q8kqJrkDbKOlIuWE-Lhybi0q5vl04PwIUduWSc36IXLba8Z7nYDleT8-n1-cCPJmsmC08MfOIVeDHOukP2S-QBPKCny_t0v9O04AiucXISr5fWaND1byggiP2AZCh9FZQIuVJk_GFqNnWTfnHAUBtDgtUvqXrBZK79AUitRNKFaBQy7IEL7Dob0XKHiXP-xFiW4C4eg-LXfI";
+const HERO_IMAGE = "/images/aulas-coletivas/fitdance/fitdance.png";
 
 const ABOUT_IMAGES = [
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuBs9kSpMi5MjVw6cMZNEiGSMcCDClbWE0kGkTOIORwKZEmAzpYNERHefZtqRnZQdart5ftunyqpCcEwb1uP63ziOBhnpxlH5oSaM3i55ACXvzKByR3VS3XDw5-lc8FInfe2nJjH9tk7fGrqZ_eGTbsChSC9ixNU6LBG1pQmvSai207GS9pATIq8WTNNpyu5mXJ22Wvto0hQrMLLv0pgN6uHOYex0cLEXYEgHvra5aB92BTZx3rTaBxobK5CcL-kXIgB7K1OaX9fw1I",
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuBXD8cjAQRNDF8hlm87PDHXZfW0encr23Hi4p0Vr05lO03du_grs-1mHbWEUFlKBZ9ZtG-k9FveIbhkx-FMtUEps2l-inFDN61pH60pzFmnOLQ54RBRkpIPKEV0eK6Cl3kGk9VBRrfR6o9OpSjfdHNUx7pF3hRAITXvNGJhFm1nCxpc2D0rG2jWpXH5Z_xGdvw5T6UQ2ZCrer1Ba7p9hsi3f621xqKJvOdRU4mEOJ9vlcOGKFlkctRC5UD4CczJSDcv1C3r2M1apWg",
+	"/images/aulas-coletivas/fitdance/fitdance-small-1.jpg",
+	"/images/aulas-coletivas/fitdance/fitdance-small-2.jpg",
 ];
 
 export const metadata: Metadata = {
-	title:
-		"FitDance | Aulas Coletivas | Academia Panobianco Jardim Satélite",
+	title: "FitDance | Aulas Coletivas | Academia Panobianco Jardim Satélite",
 	description:
 		"Mova-se, divirta-se e transforme o seu treino em uma verdadeira festa. Coreografias contagiantes com alto gasto calórico.",
 };

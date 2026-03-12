@@ -1,18 +1,11 @@
+import { Accessibility, Flame, Heart, Target, Zap } from "lucide-react";
 import type { Metadata } from "next";
-import {
-	Accessibility,
-	Flame,
-	Heart,
-	Target,
-	Zap,
-} from "lucide-react";
+
 import ModalidadePage from "@/components/ModalidadePage";
 
-const HERO_IMAGE =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuB0hrL_dWZnYXD6I7VgxMuT2xlCIllmWd7r8afBfdo_5bNbjYljwGM4lRBywQrDn2ZHdQwyDRuVDmnsA4iOdRccjo-AMNJMMZzTrNwv5dMrMEWyQAuYZ1XUpGLj4zS-KKPIfcJ66p7D1qho46JVX-eWWrF7GG6tUn5QGInCn1hbG_krdaWbO-CVALYjYMYsY-7tREsaWHf4SQFZE8edAPDd7e4TYj-2a109_BLDIGFui58eitkiVYoXizWoJArb9b-PiH2TbG-zoJQ";
+const HERO_IMAGE = "/images/aulas-coletivas/gap/gap.jpg";
 
-const ABOUT_IMAGE =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuBb3vaVdYZ30sWb24w-dElipunlju4Kej8hjzDOIyBhoTj_zxNdj4pHqxtTMgUrSQB48IPuZFJdhuSFN2P9xNuvFKjcKWd0APxeIkhBDtCaY8PgWUGLl8bEm23_cOTZ6YwUhJ-PBU76KjJBkaRm_YMniCmAX_im83DjAKtxZxP4_gZdC8ayhuctqqtHIzDkbob69TS9LyotG_5y4wqvGcm9_6Nh0tDBfwsG48LmqkTspAaJi6-38CWToq5VptpuJdh2tSeCJ6BJm-E";
+const ABOUT_IMAGE = "/images/aulas-coletivas/gap/gap-small.jpg";
 
 export const metadata: Metadata = {
 	title:

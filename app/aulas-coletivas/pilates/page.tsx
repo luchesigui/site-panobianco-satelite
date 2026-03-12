@@ -1,22 +1,14 @@
+import { Accessibility, Brain, Dumbbell, Flower2, Leaf } from "lucide-react";
 import type { Metadata } from "next";
-import {
-	Accessibility,
-	Brain,
-	Dumbbell,
-	Flower2,
-	Leaf,
-} from "lucide-react";
+
 import ModalidadePage from "@/components/ModalidadePage";
 
-const HERO_IMAGE =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuDzATy2FVAPiFy2N8au0XzLheq4tA83avnl79tJvKPb2w7FDWJegC0dC9oqGp_t6wuZD2BegZ_edjAW0EdqyKNK8EafRZuDSUIDC6P8X1svJ_liwTjNHPDzuwP22VrSv2xnhi2Wi7VjZ-VSy-HDyKrXOF7gLk-WvLhQ5Gp9nCmbILxB0R8pabIHbeFV0Q_UDm_k8bYRV8kc9-o89GpPASj1aapEldyNRKViYnuhaYf6MeHL7SSXvK6uGLXIGAG8ZLUaxpJgVGoPzMo";
+const HERO_IMAGE = "/images/aulas-coletivas/pilates/pilates.jpg";
 
-const ABOUT_IMAGE =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuC1yOOgOIlMGpqfL0Z5INamj2NWTSgOsCl66Lh_RuJ4woVDnBKjMG3OxGSlit8fwm1vycNBYH_5VuGmxFBC04qhMUOgdXODOLF-KE4n6PqHEJ0aVwUrzaJFA_c0fcdExAaWO74S2Rh1Pn29U2iM3BnVyvrB418-cbAcXOS_ZAz8Ry7D9unh1esjSodk-motyzopUZwF33dbbFPHF0wP6SGiBCrxFnVSgOgTyKCPVikAv-r8Btx7izviilHXR5AEqygZxKKPkGBF3u4";
+const ABOUT_IMAGE = "/images/aulas-coletivas/pilates/pilates-small.jpg";
 
 export const metadata: Metadata = {
-	title:
-		"Pilates | Aulas Coletivas | Academia Panobianco Jardim Satélite",
+	title: "Pilates | Aulas Coletivas | Academia Panobianco Jardim Satélite",
 	description:
 		"Equilíbrio entre corpo e mente. Fortalecimento, flexibilidade e consciência corporal com instrutores certificados.",
 };

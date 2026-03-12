@@ -3,15 +3,13 @@ import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
 
-const HERO_IMAGE =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuA7XYOIjta5JwuA8ybd29dBtmsMH9L_tbYqXjWYjiBqYHraFXV8f6j5BZfbGNa7AnLJK-c4v47c7Zao_6DjzbivGDCnQMjUwaTyBhvf1caw4yy39rQiN14_DLXy5XGaYn4hQ-2XCeXhSsmuYyjlMQWybd3TVXedYMQvFABExRkV0IFK9BL4zEkZcF4uPR5KCXNunEHrELQDx-nfxrClmEfZtdi4RaQmowQjTPLcZTcyvYE2Zpew7UhDyIkIU3wDA9FBuW3sGFMiboo";
+const HERO_IMAGE = "/images/aulas-coletivas/wolffit/wolffit.jpg";
 
-const ABOUT_IMAGE =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuCnu7QL3vwxJrQNPP4E_d6bEyO1j_frlQKaSpSXQ5ExbS5OwC2ZFJ5U7SwvO9Z2fIBEKloMigXT1aXTmLAMjdDI9pc2iIrNxNr9FK3GqJ53bk8nyIAa1zBmyJfmDq7HkhjV7boVGiF3PblF-2JGmdF2IPVyefsvp2a5-62P1cBFBq0dmHYHCmYf3IXi8KE-3Fl3LJtle2vXFjheyDXEl4EiU8cX-7QFkcasRExYS9iGG-5rYxKj9aiO3eA6Qi6kIQlooDGd4qWvYZo";
+const ABOUT_IMAGE = "/images/aulas-coletivas/wolffit/wolffit-small.jpg";
 
 const CARIOCA_IMAGES = [
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuBQ_6jK0HMeZHlJn9_1Ai-hqh5WUXRFZlkrskEGopbzv7-PZ1YyoswoUWDaQLzPVOXsnzR9rZLrhDiVVwpxmdWvlF1bHufZ41ImIb0mMueMiKs-x_sXTDnl1EoLJ6XUMEPuTVw7V6BugkKcGAJwfShh-bBtQFzpYAFPVcbH8ttVcM31PKiJmCRO1wR74UJNsXrwbu3uHC0KHIZ8VT_IwOC73WutzdoGEY9p3GIv3sJqe5vyIsMjtkjDBwBwMekXdUWiSSjNd6Q_oGo",
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuATwzRBqDbeO8LZccFGnykG9c2cfTOIcaRvY6t32fCNiWWqdmNb9C4upX9n1hO7RCOBBXa0QI1R6llRqTjvMadWE2GXnuYWNzQYTFzwK-tohsGnjOWfkM7fiDsXplaq7x7mGy2H-chSyOIBmBd6EEdtGumbVcI4eOfBuDmWVhETYbRhVCRjZYm2JYmM5HxmeOyrTNujsLsGxzNVSqIImPN4ygBLcZhHtREmeinmiLy1U6uKu2_9298SzuHT-4UETYfawCYgjoNMJ4Y",
+	"/images/aulas-coletivas/wolffit/carioca-1.png",
+	"/images/aulas-coletivas/wolffit/carioca-2.png",
 ];
 
 export const metadata: Metadata = {

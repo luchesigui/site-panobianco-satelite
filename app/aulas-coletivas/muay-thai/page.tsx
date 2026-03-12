@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
 
-const HERO_IMAGE =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuDMOLWZ53HbmvZ9apwsiVukF1KhxwIp6ph2TA17MSyyLUJP0ZBYqxTxPxbxsxfEO-DByRLwAnWVZwt_1ac4fUDTkKD9KmfVHvwcS8U2j9bCCMgtiLwdg2u4x0sZsvWAqNHA2IHshesyCKjuxYNLW1cG-sw6Um4s0OGmMJvadovZGSBo6Hpnkh2bCjiSD6y2TafwhcTFeWiyIQDDdxPovlISXumJ_aa5AbLePUcF0LTQSSYbtBkkHFJAZUwNbpiCpSGSv_r-o0-7BWg";
+const HERO_IMAGE = "/images/aulas-coletivas/muay-thai/muay-thai.jpg";
+
+const ABOUT_IMAGE = "/images/aulas-coletivas/muay-thai/muay-thai-small.jpg";
 
 export const metadata: Metadata = {
 	title: "Muay Thai | Aulas Coletivas | Academia Panobianco Jardim Satélite",
@@ -30,6 +31,7 @@ export default function MuayThaiPage() {
 			/>
 			<ModalidadePage.About
 				title="O Que é Muay Thai?"
+				imageSrc={ABOUT_IMAGE}
 				paragraphs={[
 					'O Muay Thai é uma arte marcial tailandesa milenar, reconhecida mundialmente pela sua eficácia e disciplina. Chamada de "A Arte das Oito Armas", ela utiliza combinadamente os punhos, cotovelos, joelhos e canelas, criando um sistema de combate completo e dinâmico.',
 					"Na Panobianco Satélite, nossas aulas são projetadas para transformar não apenas o seu físico, mas sua postura mental. Focamos na técnica refinada, no condicionamento físico de elite e na construção de um espírito inabalável.",

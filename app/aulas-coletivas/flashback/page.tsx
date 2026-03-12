@@ -3,8 +3,7 @@ import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
 
-const HERO_IMAGE =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuAMnhU5tyB-1yJdOUpitd7nqqyTOBqaJHwFtHUyBQN5tJg4XgW-4WMHBCAOskwA39AwavXLMVu-tnNehar2RdBxcD5dFKXc2NoFKzzD4Z5iYrq8beLa8wprFiWijzYAb_p_oYet1QcTdSl2pVKolGZ-xbogEY6L6vbey10h-sxJJd-cJFq79gewNjzJj5cnBFDDuQIuygrtGW_5uFhl1ZR1p_Y6_Z4S1kKzZdaPayCWIq-kPHDL_so9XRmzR41teCHm_pN4WILvNbg";
+const HERO_IMAGE = "/images/aulas-coletivas/flashback/flashback.png";
 
 export const metadata: Metadata = {
 	title: "Flashback | Aulas Coletivas | Academia Panobianco Jardim Satélite",
@@ -29,6 +28,7 @@ export default function FlashbackPage() {
 			/>
 			<ModalidadePage.About
 				title="O Que é o Flashback?"
+				imageSrc="/images/aulas-coletivas/flashback/flashback-small.jpg"
 				paragraphs={[
 					"O Flashback é uma modalidade de aula coletiva que combina movimentos aeróbicos coreografados ao som dos maiores sucessos das décadas de 70, 80 e 90.",
 					"É a fusão perfeita entre dança, nostalgia e exercício físico de alta intensidade emocional, projetada para queimar calorias enquanto você se diverte com clássicos inesquecíveis de artistas que marcaram gerações. Prepare-se para suar a camisa com um sorriso no rosto.",

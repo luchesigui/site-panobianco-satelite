@@ -1,22 +1,14 @@
+import { Activity, Flame, Shield, Target, Zap } from "lucide-react";
 import type { Metadata } from "next";
-import {
-	Activity,
-	Flame,
-	Shield,
-	Target,
-	Zap,
-} from "lucide-react";
+
 import ModalidadePage from "@/components/ModalidadePage";
 
-const HERO_IMAGE =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuCbpnc3eJfLmn_pAusAyFOYExqLf1pyjxMs78c9TCn8Aoj72-I2_IeYMFbQOPmYNY-xk7WnX5oVkG9EaEQKQ6Xz1KXYA5RS_PrjhuYKn8_oTHOlBmsecT8jXwO4ytnyjyda4j0o_vN8y_X1i9aXbN57QpckUmoKZTQrngHE7Zgjc-_YSrFh67rmvjBcbWhrKwThl82yHi5atoUeMeRIHg-TsA8PgXJ2RyXpiR7Rl3jUX2p8J8D-B0rYOk5a4BC2RXjctgIHkW_hfwg";
+const HERO_IMAGE = "/images/aulas-coletivas/jump/jump.jpg";
 
-const ABOUT_IMAGE =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuDFwH8EIIaI69TGqTXoMwPxDjqZ14j_bv6S8BvI8VVxeMmxgQoULr8Rcc7G8XA9ry564TFrU5TqfIcNHh_H-zUvyhAG1qtLglHcccUa1cbbnhGzfSQnyLQd2nwg2aqdgEtSlQzaJ1tFNv79Rgef6zi92pE8Uwx-otrJsmWQZT6u7RfFtiCpK6nkZEOIJKaqPWB3x6VwfqjWzxE09CW9c3VR7AF2vl8hwGza8ejlmzs9Q4HxJMbKkhKmKk9k7dDsXumVWBu5gQ1ufsI";
+const ABOUT_IMAGE = "/images/aulas-coletivas/jump/jump-small-1.jpg";
 
 export const metadata: Metadata = {
-	title:
-		"Jump | Aulas Coletivas | Academia Panobianco Jardim Satélite",
+	title: "Jump | Aulas Coletivas | Academia Panobianco Jardim Satélite",
 	description:
 		"Aumente sua energia e queime até 600 calorias em uma aula super dinâmica sobre o mini-trampolim.",
 };
@@ -90,7 +82,7 @@ export default function JumpPage() {
 					"Postura Correta",
 				]}
 				accentClass="bg-primary-500"
-				imageSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuALmNnC3GItWneBzAA2cEkLXkFGddgmPFbBIO0JDU3sC19m8b2Su-rEu1gSPwknH1WVH0wQ8We3uBxP0PEcK5yENSIRTlv7aE5x4VHRmwaxp2w_7MTRgv9SS5sgSLxYKP5Hbb7a6JlruM4Zk5mTuQxkokS-ZNq2tkXwxbJuYw1Eq7RqU09bFDmw52b3oAHwHnCDaRyjfe1i9adtU6M5L6WGQUHIVww-rZW0y-6TKCJhCKeFg-WpKDdzUwX51fhVA-2DQUt1d_y-4hs"
+				imageSrc="/images/aulas-coletivas/jump/jump-small-2.jpg"
 				imagePosition="left"
 			/>
 			<ModalidadePage.Classes

@@ -3,11 +3,9 @@ import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
 
-const HERO_IMAGE =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuDZDp9zP90mj1t4rDidYZrV4RHToK-aBdmaqPlaOERoXAlvV_ZY31lOLmG4RLxzDuKSTT5PkN5Jv23L3R714oXKaiUTy1U5_hW7qAVpe5dCm6niSbhnIRPLqVUj4STpsnEziK9L6YFyj9P0xajK0AHMLE8N3sK2dDcg7RQDf-f2GG-e1AMjKId5WNxa_lfen3u4tjyWExeLHM-4NUycXewcbyz6oIYUrdXTlZSltsr_Um17TaLagEtYXdq9jxjJ-w1hcvT40at6Vl0";
+const HERO_IMAGE = "/images/aulas-coletivas/jiu-jitsu/jiu-jitsu.jpg";
 
-const ABOUT_IMAGE =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuBhwlGO0vH28p22YrxoD1uYAhVg8Rnqd9qXa9W9rndSRRLcjpjM-Bq5iJhTMQDjhTZD6013V4CKsgeOo-mDAEJfNlR4b5VQeppzUMWbnfE4LMClZLv2rmSTjqQ5Ieune24hvMiNa1k7aue-MjdFTZoJSC_kKzFxO5twnuuoPmTur4oJekWxVFhx0_F98m2OtLgMUSoMOuCZg5WaNL3L1IFeN6_oqV4EwDKu4tOIDKvKu_QeKv_vj9-ewQfdmCqiCaSrIFQ9rLCAZtw";
+const ABOUT_IMAGE = "/images/aulas-coletivas/jiu-jitsu/jiu-jitsu-small.jpg";
 
 export const metadata: Metadata = {
 	title: "Jiu Jitsu | Aulas Coletivas | Academia Panobianco Jardim Satélite",
@@ -37,6 +35,7 @@ export default function JiuJitsuPage() {
 				paragraphs={[
 					'O Jiu Jitsu, conhecido como a "Arte Suave", é um sistema de combate focado no domínio do adversário através de alavancas, torções e pressões, levando a luta para o solo.',
 					"Na Panobianco Satélite, ensinamos que a técnica supera a força bruta. É uma modalidade que permite que um praticante menor e mais fraco se defenda e vença um oponente maior, utilizando os princípios da física e do equilíbrio.",
+					"Também oferecemos uma aula de Jiu Jitsu exclusiva para crianças, onde os pequenos aprendem disciplina, respeito e autodefesa em um ambiente seguro e divertido.",
 				]}
 				featureCard={{
 					title: "Diferenciais",
