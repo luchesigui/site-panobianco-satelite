@@ -91,7 +91,7 @@ npm run dev
 - **Sobre Nós** (`/sobre-nos`) - História, missão, valores, equipe
 - **Aulas Coletivas** (`/aulas-coletivas`) - Overview de todas as modalidades
 - **Contato** (`/contato`) - Formulário, informações, FAQ
-- **Aula Experimental** (`/aula-experimental`) - Agendamento gratuito
+- **Agendamento de aula experimental** - Via WhatsApp (CTAs em todo o site)
 
 ### 🔄 Em Desenvolvimento
 - Páginas individuais de cada aula coletiva

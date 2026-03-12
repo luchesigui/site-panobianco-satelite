@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SchedulingLink from "@/components/SchedulingLink";
+import { WHATSAPP_AULA_EXPERIMENTAL } from "@/lib/constants";
 
 export type ModalidadeFinalCtaProps = {
 	title: string;
@@ -28,7 +29,7 @@ export default function ModalidadeFinalCta({
 						</SchedulingLink>
 						{showWhatsApp && (
 							<Link
-								href="https://wa.me/5512992192268"
+								href={WHATSAPP_AULA_EXPERIMENTAL}
 								target="_blank"
 								rel="noopener noreferrer"
 								className="inline-flex items-center justify-center gap-3 rounded-full border border-white/30 bg-white/20 px-10 py-5 text-xl font-bold text-white transition-all hover:bg-white/30"

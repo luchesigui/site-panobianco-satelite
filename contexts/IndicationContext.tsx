@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 
-import { SCHEDULING_BASE_URL } from "@/lib/constants";
+import { WHATSAPP_AULA_EXPERIMENTAL } from "@/lib/constants";
 
 interface IndicationContextType {
 	indication: string | null;
@@ -40,14 +40,13 @@ export function IndicationProvider({ children }: IndicationProviderProps) {
 		}
 	}, []);
 
-	const getSchedulingUrl = (baseUrl: string = SCHEDULING_BASE_URL) => {
+	const getSchedulingUrl = (baseUrl: string = WHATSAPP_AULA_EXPERIMENTAL) => {
 		if (!indication) {
 			return baseUrl;
 		}
-
-		const url = new URL(baseUrl);
-		url.searchParams.set("indicacao", indication);
-		return url.toString();
+		// Append indicacao to WhatsApp (or other) URL
+		const separator = baseUrl.includes("?") ? "&" : "?";
+		return `${baseUrl}${separator}indicacao=${encodeURIComponent(indication)}`;
 	};
 
 	return (
