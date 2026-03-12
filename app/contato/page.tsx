@@ -1,429 +1,325 @@
 "use client";
 
-import { Clock, Facebook, Instagram, MapPin, Phone, Send } from "lucide-react";
+import {
+	ArrowRight,
+	Clock,
+	Facebook,
+	Instagram,
+	MapPin,
+	MessageCircle,
+	Phone,
+	Send,
+} from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
+import ContactCtaSection from "@/components/ContactCtaSection";
+import {
+	FACEBOOK_URL,
+	GOOGLE_MAPS_URL,
+	INSTAGRAM_URL,
+	PHONE_DISPLAY,
+	WHATSAPP_PHONE,
+	WHATSAPP_URL,
+} from "@/lib/constants";
+
+const heroBg = "/images/fachada.png";
+
+const mapImage = "/images/av-cidade-jardim-391.webp";
+
 export default function Contato() {
-  const [formData, setFormData] = useState({
-    nome: "",
-    email: "",
-    telefone: "",
-    assunto: "",
-    mensagem: "",
-  });
+	const [formData, setFormData] = useState({
+		nome: "",
+		email: "",
+		telefone: "",
+		assunto: "",
+		mensagem: "",
+	});
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [submitMessage, setSubmitMessage] = useState("");
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState("");
+	const handleSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+		setIsSubmitting(true);
+		setSubmitMessage("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitMessage("");
+		try {
+			const response = await fetch("/api/contact/", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(formData),
+			});
 
-    try {
-      const response = await fetch("/api/contact/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+			const data = await response.json();
+			if (response.ok) {
+				setSubmitMessage(
+					"Mensagem enviada com sucesso! Entraremos em contato em breve.",
+				);
+				setFormData({
+					nome: "",
+					email: "",
+					telefone: "",
+					assunto: "",
+					mensagem: "",
+				});
+			} else {
+				setSubmitMessage(
+					data.error || "Erro ao enviar mensagem. Tente novamente.",
+				);
+			}
+		} catch {
+			setSubmitMessage("Erro ao enviar mensagem. Tente novamente.");
+		} finally {
+			setIsSubmitting(false);
+		}
+	};
 
-      const data = await response.json();
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => {
+		setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+	};
 
-      if (response.ok) {
-        setSubmitMessage(
-          "Mensagem enviada com sucesso! Entraremos em contato em breve."
-        );
-        setFormData({
-          nome: "",
-          email: "",
-          telefone: "",
-          assunto: "",
-          mensagem: "",
-        });
-      } else {
-        setSubmitMessage(
-          data.error || "Erro ao enviar mensagem. Tente novamente."
-        );
-      }
-    } catch (error) {
-      setSubmitMessage("Erro ao enviar mensagem. Tente novamente.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+	return (
+		<div className="font-display min-h-screen bg-background-dark text-white antialiased overflow-x-hidden">
+			{/* Hero */}
+			<section className="relative h-[300px] w-full overflow-hidden md:h-[400px]">
+				<div
+					className="absolute inset-0 bg-cover bg-center"
+					style={{
+						backgroundImage: `linear-gradient(0deg, rgba(24, 18, 16, 1) 0%, rgba(24, 18, 16, 0.5) 60%, rgba(24, 18, 16, 0.2) 100%), url("${heroBg}")`,
+					}}
+				/>
+				<div className="container-main relative flex h-full flex-col justify-end pb-12">
+					<div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary-500">
+						<MapPin className="size-4" />
+						São José dos Campos, SP
+					</div>
+					<h1 className="max-w-2xl text-4xl font-black leading-[1.1] md:text-6xl">
+						Venha nos visitar no{" "}
+						<span className="text-primary-500">Jardim Satélite</span>
+					</h1>
+				</div>
+			</section>
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
+			{/* Content Grid: Cards + Form */}
+			<section className="container-main py-12">
+				<div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+					{/* Left: Address, Hours, Contact */}
+					<div className="space-y-6 lg:col-span-1">
+						<div className="flex flex-col gap-4 rounded-xl border border-white/10 bg-white/5 p-8">
+							<div className="flex size-12 items-center justify-center rounded-full bg-primary-500/10 text-primary-500">
+								<MapPin className="size-6" />
+							</div>
+							<div>
+								<h3 className="mb-2 text-xl font-bold">Nosso Endereço</h3>
+								<p className="leading-relaxed text-gray-400">
+									Av. Cidade Jardim, 391 - Jardim Satélite
+									<br />
+									São José dos Campos - SP, 12231-675
+								</p>
+							</div>
+							<a
+								href={GOOGLE_MAPS_URL}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="group mt-4 flex h-12 w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 font-bold text-white transition-all hover:bg-white/10"
+							>
+								<ArrowRight className="size-5 text-primary-500 transition-transform group-hover:scale-110" />
+								Ver no Google Maps
+							</a>
+						</div>
 
-  return (
-    <div className="bg-primary">
-      {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-secondary">
-        <div className="container-main">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold text-primary mb-6">
-              Entre em <span className="text-primary-500">Contato</span>
-            </h1>
-            <p className="text-xl text-secondary max-w-3xl mx-auto">
-              Estamos sempre prontos para te atender! Tire suas dúvidas, agende
-              sua aula experimental ou saiba mais sobre nossos planos.
-            </p>
-          </div>
-        </div>
-      </section>
+						<div className="rounded-xl border border-white/10 bg-white/5 p-8">
+							<div className="mb-6 flex items-center gap-3">
+								<div className="flex size-10 items-center justify-center rounded-full bg-primary-500/10 text-primary-500">
+									<Clock className="size-5" />
+								</div>
+								<h3 className="text-xl font-bold">Funcionamento</h3>
+							</div>
+							<div className="space-y-4">
+								<div className="flex items-center justify-between border-b border-white/5 pb-3">
+									<span className="text-gray-400">Segunda à Sexta</span>
+									<span className="font-bold">06:00 - 23:00</span>
+								</div>
+								<div className="flex items-center justify-between border-b border-white/5 pb-3">
+									<span className="text-gray-400">Sábado</span>
+									<span className="font-bold">08:00 - 18:00</span>
+								</div>
+								<div className="flex items-center justify-between">
+									<span className="text-gray-400">Domingo</span>
+									<span className="font-bold text-primary-500">
+										09:00 - 14:00
+									</span>
+								</div>
+							</div>
+						</div>
 
-      {/* Main Content */}
-      <section className="py-16">
-        <div className="container-main">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div>
-              <h2 className="text-display text-primary mb-6">
-                Envie sua Mensagem
-              </h2>
-              <p className="text-body text-secondary mb-8">
-                Preencha o formulário abaixo e retornaremos em até 24 horas
-                úteis. Sua primeira aula experimental é gratuita!
-              </p>
+						<div className="flex flex-col gap-4 rounded-xl border border-white/10 bg-white/5 p-8">
+							<div className="mb-2 flex items-center gap-3">
+								<div className="flex size-10 items-center justify-center rounded-full bg-primary-500/10 text-primary-500">
+									<Phone className="size-5" />
+								</div>
+								<h3 className="text-xl font-bold">Contato</h3>
+							</div>
+							<div className="flex flex-col gap-3">
+								<a
+									href={`tel:+${WHATSAPP_PHONE}`}
+									className="group flex items-center gap-3 text-gray-300 transition-colors hover:text-primary-500"
+								>
+									<span className="flex size-8 items-center justify-center rounded-full bg-white/5 transition-colors group-hover:bg-primary-500/20">
+										<Phone className="size-4" />
+									</span>
+									{PHONE_DISPLAY}
+								</a>
+								<a
+									href={WHATSAPP_URL}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="group flex items-center gap-3 text-gray-300 transition-colors hover:text-green-500"
+								>
+									<span className="flex size-8 items-center justify-center rounded-full bg-white/5 transition-colors group-hover:bg-green-500/20">
+										<MessageCircle className="size-4" />
+									</span>
+									WhatsApp Oficial
+								</a>
+								<div className="flex gap-2 pt-2">
+									<a
+										href={INSTAGRAM_URL}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="flex size-10 items-center justify-center rounded-full bg-white/5 text-white/80 transition-colors hover:bg-primary-500 hover:text-white"
+										aria-label="Instagram"
+									>
+										<Instagram className="size-5" />
+									</a>
+									<a
+										href={FACEBOOK_URL}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="flex size-10 items-center justify-center rounded-full bg-white/5 text-white/80 transition-colors hover:bg-primary-500 hover:text-white"
+										aria-label="Facebook"
+									>
+										<Facebook className="size-5" />
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="nome"
-                    className="block text-body text-primary mb-2"
-                  >
-                    Nome Completo *
-                  </label>
-                  <input
-                    type="text"
-                    id="nome"
-                    name="nome"
-                    required
-                    value={formData.nome}
-                    onChange={handleChange}
-                    className="input-field"
-                    placeholder="Seu nome completo"
-                    disabled={isSubmitting}
-                  />
-                </div>
+					{/* Right: Map + Form */}
+					<div className="lg:col-span-2 flex flex-col gap-8">
+						<div className="group relative h-[420px] w-full overflow-hidden rounded-xl border border-white/10 lg:h-auto lg:min-h-0 lg:flex-1">
+							<Image
+								src={mapImage}
+								alt="Localização Panobianco Jardim Satélite"
+								fill
+								sizes="(max-width: 1024px) 100vw, 66vw"
+								className="object-cover object-center grayscale brightness-50 contrast-125 transition-all duration-700 group-hover:brightness-75"
+							/>
+							<div className="absolute inset-0 flex items-center justify-center">
+								<div className="relative">
+									<div className="absolute inset-0 size-16 animate-ping rounded-full bg-primary-500/40" />
+									<div className="relative flex size-10 items-center justify-center rounded-full border-4 border-white/10 bg-primary-500 shadow-2xl shadow-primary-500/50">
+										<MapPin className="size-5 text-white" />
+									</div>
+									<div className="absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-primary-500/50 bg-white/10 px-3 py-1 text-xs font-bold">
+										Panobianco Satélite
+									</div>
+								</div>
+							</div>
+						</div>
 
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-body text-primary mb-2"
-                  >
-                    E-mail *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="input-field"
-                    placeholder="seu@email.com"
-                    disabled={isSubmitting}
-                  />
-                </div>
+						<article className="rounded-xl border border-white/10 bg-white/5 p-6">
+							<h2 className="text-2xl font-black">Envie sua Mensagem</h2>
+							<p className="mt-2 text-sm text-white/65">
+								Preencha os dados e nossa equipe retorna o mais rápido possível.
+							</p>
 
-                <div>
-                  <label
-                    htmlFor="telefone"
-                    className="block text-body text-primary mb-2"
-                  >
-                    Telefone (com DDD)
-                  </label>
-                  <input
-                    type="tel"
-                    id="telefone"
-                    name="telefone"
-                    value={formData.telefone}
-                    onChange={handleChange}
-                    className="input-field"
-                    placeholder="(12) 99999-9999"
-                    disabled={isSubmitting}
-                  />
-                </div>
+							<form onSubmit={handleSubmit} className="mt-6 space-y-4">
+								<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+									<input
+										type="text"
+										id="nome"
+										name="nome"
+										required
+										value={formData.nome}
+										onChange={handleChange}
+										className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none"
+										placeholder="Nome completo"
+										disabled={isSubmitting}
+									/>
+									<input
+										type="email"
+										id="email"
+										name="email"
+										required
+										value={formData.email}
+										onChange={handleChange}
+										className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none"
+										placeholder="E-mail"
+										disabled={isSubmitting}
+									/>
+								</div>
+								<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+									<input
+										type="tel"
+										id="telefone"
+										name="telefone"
+										value={formData.telefone}
+										onChange={handleChange}
+										className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none"
+										placeholder="Telefone"
+										disabled={isSubmitting}
+									/>
+									<input
+										type="text"
+										id="assunto"
+										name="assunto"
+										value={formData.assunto}
+										onChange={handleChange}
+										className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none"
+										placeholder="Assunto"
+										disabled={isSubmitting}
+									/>
+								</div>
+								<textarea
+									id="mensagem"
+									name="mensagem"
+									required
+									rows={6}
+									value={formData.mensagem}
+									onChange={handleChange}
+									className="w-full resize-none rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none"
+									placeholder="Mensagem"
+									disabled={isSubmitting}
+								/>
+								<button
+									type="submit"
+									className="inline-flex h-12 items-center justify-center rounded-full bg-primary-500 px-6 text-sm font-bold text-white transition-colors hover:bg-primary-500/90 disabled:opacity-70"
+									disabled={isSubmitting}
+								>
+									<Send className="mr-2 size-4" />
+									{isSubmitting ? "Enviando..." : "Enviar Mensagem"}
+								</button>
+								{submitMessage && (
+									<p
+										className={`rounded-lg border px-4 py-3 text-sm ${
+											submitMessage.includes("sucesso")
+												? "border-green-400/40 bg-green-500/15 text-green-200"
+												: "border-red-400/40 bg-red-500/15 text-red-200"
+										}`}
+									>
+										{submitMessage}
+									</p>
+								)}
+							</form>
+						</article>
+					</div>
+				</div>
+			</section>
 
-                <div>
-                  <label
-                    htmlFor="assunto"
-                    className="block text-body text-primary mb-2"
-                  >
-                    Assunto
-                  </label>
-                  <input
-                    type="text"
-                    id="assunto"
-                    name="assunto"
-                    value={formData.assunto}
-                    onChange={handleChange}
-                    className="input-field"
-                    placeholder="Sobre o que você gostaria de falar?"
-                    disabled={isSubmitting}
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="mensagem"
-                    className="block text-body text-primary mb-2"
-                  >
-                    Sua Mensagem *
-                  </label>
-                  <textarea
-                    id="mensagem"
-                    name="mensagem"
-                    required
-                    rows={5}
-                    value={formData.mensagem}
-                    onChange={handleChange}
-                    className="input-field resize-none"
-                    placeholder="Conte-nos como podemos te ajudar..."
-                    disabled={isSubmitting}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="btn-primary w-full"
-                  disabled={isSubmitting}
-                >
-                  <Send className="h-5 w-5 mr-2" />
-                  {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
-                </button>
-
-                {submitMessage && (
-                  <div
-                    className={`p-4 rounded-lg ${
-                      submitMessage.includes("sucesso")
-                        ? "bg-green-100 text-green-800 border border-green-200"
-                        : "bg-red-100 text-red-800 border border-red-200"
-                    }`}
-                  >
-                    {submitMessage}
-                  </div>
-                )}
-              </form>
-            </div>
-
-            {/* Contact Information */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-display text-primary mb-6">
-                  Nossos Canais de Atendimento
-                </h2>
-
-                <div className="space-y-6">
-                  {/* Phone */}
-                  <div className="card">
-                    <div className="flex items-start space-x-4">
-                      <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg">
-                        <Phone className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="text-heading text-primary mb-2">
-                          Telefone/WhatsApp
-                        </h3>
-                        <p className="text-body text-secondary mb-2">
-                          Para um atendimento rápido e direto
-                        </p>
-                        <a
-                          href="https://wa.me/5512992192268"
-                          className="text-primary-500 hover:text-orange-600 transition-colors font-semibold"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          (12) 99219-2268
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Social Media */}
-                  <div className="card">
-                    <h3 className="text-heading text-primary mb-4">
-                      Redes Sociais
-                    </h3>
-                    <p className="text-body text-secondary mb-4">
-                      Siga-nos para ficar por dentro das novidades e dicas de
-                      treino!
-                    </p>
-                    <div className="flex space-x-4">
-                      <a
-                        href="https://instagram.com/panobiancosjcsatelite"
-                        className="flex items-center space-x-2 text-secondary hover:text-primary-500 transition-colors"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Instagram className="h-5 w-5" />
-                        <span>Instagram</span>
-                      </a>
-                      <a
-                        href="https://facebook.com/panobiancosjcsatelitesp"
-                        className="flex items-center space-x-2 text-secondary hover:text-primary-500 transition-colors"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Facebook className="h-5 w-5" />
-                        <span>Facebook</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Location & Schedule */}
-      <section className="py-16 bg-secondary">
-        <div className="container-main">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Location */}
-            <div>
-              <h2 className="text-display text-primary mb-6">
-                Nossa Localização
-              </h2>
-              <div className="card">
-                <div className="flex items-start space-x-4 mb-6">
-                  <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg">
-                    <MapPin className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-heading text-primary mb-2">
-                      Academia Panobianco Jardim Satélite
-                    </h3>
-                    <p className="text-body text-secondary">
-                      Av. Cidade Jardim, 391
-                      <br />
-                      Jardim Satélite
-                      <br />
-                      São José dos Campos - SP
-                      <br />
-                      CEP: 12231-675
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Schedule */}
-            <div>
-              <h2 className="text-display text-primary mb-6">
-                Horário de Funcionamento
-              </h2>
-              <div className="card">
-                <div className="flex items-start space-x-4 mb-6">
-                  <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg">
-                    <Clock className="h-6 w-6 text-primary" />
-                  </div>
-                  <div className="space-y-4 flex-1">
-                    <div className="flex justify-between items-center pb-2 border-b border-neutral-border">
-                      <span className="text-body text-primary font-semibold">
-                        Segunda a Sexta
-                      </span>
-                      <span className="text-body text-secondary">
-                        05h00 às 23h00
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center pb-2 border-b border-neutral-border">
-                      <span className="text-body text-primary font-semibold">
-                        Sábado
-                      </span>
-                      <span className="text-body text-secondary">
-                        08h00 às 18h00
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-body text-primary font-semibold">
-                        Domingo
-                      </span>
-                      <span className="text-body text-secondary">
-                        09h00 às 13h00
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-primary rounded-lg p-4">
-                  <p className="text-subtext text-secondary text-center">
-                    <strong>Dica:</strong> Para evitar horários de pico, venha
-                    entre 9h-16h ou após 21h!
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ/Quick Info */}
-      <section className="py-16">
-        <div className="container-main">
-          <div className="text-center mb-12">
-            <h2 className="text-display text-primary mb-4">
-              Perguntas Frequentes
-            </h2>
-            <p className="text-body text-secondary">
-              Algumas dúvidas comuns sobre nossa academia
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="card">
-              <h3 className="text-heading text-primary mb-3">
-                Como agendar minha aula experimental?
-              </h3>
-              <p className="text-body text-secondary">
-                Você pode agendar através do formulário nesta página, pelo
-                WhatsApp (12) 99219-2268 ou diretamente na recepção da academia.
-              </p>
-            </div>
-
-            <div className="card">
-              <h3 className="text-heading text-primary mb-3">
-                Preciso levar alguma coisa na primeira visita?
-              </h3>
-              <p className="text-body text-secondary">
-                Apenas roupas confortáveis para exercício, tênis e uma garrafa
-                de água. Temos vestiários completos com chuveiros.
-              </p>
-            </div>
-
-            <div className="card">
-              <h3 className="text-heading text-primary mb-3">
-                Vocês aceitam Gympass/TotalPass?
-              </h3>
-              <p className="text-body text-secondary">
-                Sim! Aceitamos Gympass a partir do plano Basic e TotalPass a
-                partir do TP1+. Entre em contato para mais informações sobre
-                parcerias corporativas.
-              </p>
-            </div>
-
-            <div className="card">
-              <h3 className="text-heading text-primary mb-3">
-                Tem estacionamento?
-              </h3>
-              <p className="text-body text-secondary">
-                Nossa localização oferece fácil acesso e opções de
-                estacionamento nas proximidades, além de transporte público.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+			<ContactCtaSection />
+		</div>
+	);
 }

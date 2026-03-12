@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { FileText, Scale, Shield, AlertTriangle, Phone, Mail, MapPin } from 'lucide-react'
+import SchedulingLink from '@/components/SchedulingLink'
 
 export const metadata: Metadata = {
   title: 'Termos de Uso | Academia Panobianco Jardim Satélite',
@@ -228,12 +229,9 @@ export default function TermosDeUso() {
               Agora que você conhece nossos termos, que tal agendar uma aula experimental e conhecer nossa academia?
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/aula-experimental"
-                className="btn-primary"
-              >
+              <SchedulingLink className="btn-primary">
                 Agendar Aula Experimental
-              </Link>
+              </SchedulingLink>
               <Link
                 href="/politica-de-privacidade"
                 className="btn-secondary"

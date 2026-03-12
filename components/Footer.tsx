@@ -1,79 +1,60 @@
 "use client";
 
-import { Clock, Facebook, Instagram, MapPin } from "lucide-react";
+import { Facebook, Instagram, Mail, MessageSquare, Phone } from "lucide-react";
 import Link from "next/link";
-import Logo from "./Logo";
-import { useIndication } from "@/contexts/IndicationContext";
+
+import Logo from "@/components/Logo";
+import {
+  CONTACT_EMAIL,
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  PHONE_DISPLAY,
+  WHATSAPP_PHONE,
+  WHATSAPP_URL,
+} from "@/lib/constants";
 
 export default function Footer() {
-  const { getSchedulingUrl } = useIndication();
-  
   return (
-    <footer className="bg-secondary border-t border-theme">
-      <div className="container-main py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Informações da Academia */}
-          <div>
-            <div className="flex items-center mb-4">
-              <Logo
-                className="h-8 w-auto"
-                width={120}
-                height={32}
-                showLink={false}
-              />
+    <footer className="border-t border-white/10 bg-background-dark py-16 text-white">
+      <div className="container-main">
+        <div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-4">
+          <div className="md:col-span-2">
+            <div className="mb-6">
+              <Logo className="h-10 w-auto" width={140} height={40} />
             </div>
-            <p className="text-body text-secondary mb-4">
-              Sua academia completa no Jardim Satélite. Musculação, aulas
-              coletivas e treino personalizado.
+            <p className="mb-6 max-w-sm text-gray-400">
+              Transformando vidas através do movimento. A Panobianco Jardim
+              Satélite é o seu destino premium para saúde e bem-estar.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex gap-4">
               <a
-                href="https://instagram.com/panobiancosjcsatelite"
-                className="text-secondary hover:text-primary-500 transition-colors"
-                aria-label="Instagram"
+                href={INSTAGRAM_URL}
+                className="glass-card flex size-10 items-center justify-center rounded-full transition-colors hover:bg-primary-500"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Instagram"
               >
-                <Instagram className="h-5 w-5" />
+                <Instagram className="size-5" />
               </a>
               <a
-                href="https://facebook.com/panobiancosjcsatelitesp"
-                className="text-secondary hover:text-primary-500 transition-colors"
-                aria-label="Facebook"
+                href={FACEBOOK_URL}
+                className="glass-card flex size-10 items-center justify-center rounded-full transition-colors hover:bg-primary-500"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Facebook"
               >
-                <Facebook className="h-5 w-5" />
+                <Facebook className="size-5" />
               </a>
             </div>
           </div>
 
-          {/* Links Rápidos */}
           <div>
-            <h3 className="text-heading font-bold text-primary mb-4">
-              Links Rápidos
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/sobre-nos"
-                  className="text-body text-secondary hover:text-primary-500 transition-colors"
-                >
-                  Sobre Nós
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/servicos"
-                  className="text-body text-secondary hover:text-primary-500 transition-colors"
-                >
-                  Serviços
-                </Link>
-              </li>
+            <h4 className="mb-6 font-bold">Links Rápidos</h4>
+            <ul className="space-y-4 text-sm text-gray-400">
               <li>
                 <Link
                   href="/aulas-coletivas"
-                  className="text-body text-secondary hover:text-primary-500 transition-colors"
+                  className="transition-colors hover:text-primary-500"
                 >
                   Aulas Coletivas
                 </Link>
@@ -81,98 +62,82 @@ export default function Footer() {
               <li>
                 <Link
                   href="/planos"
-                  className="text-body text-secondary hover:text-primary-500 transition-colors"
+                  className="transition-colors hover:text-primary-500"
                 >
-                  Planos
+                  Planos para Empresas
                 </Link>
               </li>
               <li>
                 <Link
-                  href={getSchedulingUrl()}
-                  className="text-body text-secondary hover:text-primary-500 transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#"
+                  className="transition-colors hover:text-primary-500"
                 >
-                  Aula Experimental
+                  Seja um Franqueado
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="transition-colors hover:text-primary-500"
+                >
+                  Trabalhe Conosco
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contato */}
           <div>
-            <h3 className="text-heading font-bold text-primary mb-4">
-              Contato
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-primary-500 mt-0.5" />
-                <div>
-                  <p className="text-body text-secondary">
-                    Av. Cidade Jardim, 391
-                    <br />
-                    Jardim Satélite
-                    <br />
-                    São José dos Campos - SP
-                    <br />
-                    12231-675
-                  </p>
-                </div>
+            <h4 className="mb-6 font-bold">Contato</h4>
+            <ul className="space-y-4 text-sm text-gray-400">
+              <li className="flex items-center gap-2">
+                <Phone className="size-4 shrink-0" />
+                <a
+                  href={`tel:+${WHATSAPP_PHONE}`}
+                  className="transition-colors hover:text-primary-500"
+                >
+                  {PHONE_DISPLAY}
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="size-4 shrink-0" />
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="transition-colors hover:text-primary-500"
+                >
+                  {CONTACT_EMAIL}
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <MessageSquare className="size-4 shrink-0" />
+                <a
+                  href={WHATSAPP_URL}
+                  className="transition-colors hover:text-primary-500"
+                >
+                  WhatsApp: {PHONE_DISPLAY}
+                </a>
               </li>
             </ul>
           </div>
-
-          {/* Horário de Funcionamento */}
-          <div>
-            <h3 className="text-heading font-bold text-primary mb-4">
-              Horário de Funcionamento
-            </h3>
-            <div className="space-y-2">
-              <div className="flex items-start space-x-3">
-                <Clock className="h-5 w-5 text-primary-500 mt-0.5" />
-                <div>
-                  <p className="text-body text-secondary">
-                    <strong>Segunda a Sexta:</strong>
-                    <br />
-                    05h00 às 23h00
-                  </p>
-                  <p className="text-body text-secondary mt-2">
-                    <strong>Sábado:</strong>
-                    <br />
-                    08h00 às 18h00
-                  </p>
-                  <p className="text-body text-secondary mt-2">
-                    <strong>Domingo:</strong>
-                    <br />
-                    09h00 às 13h00
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-theme mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-subtext text-secondary">
-              © {new Date().getFullYear()} Academia Panobianco Jardim Satélite.
-              Todos os direitos reservados.
-            </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link
-                href="/politica-de-privacidade"
-                className="text-subtext text-secondary hover:text-primary-500 transition-colors"
-              >
-                Política de Privacidade
-              </Link>
-              <Link
-                href="/termos-de-uso"
-                className="text-subtext text-secondary hover:text-primary-500 transition-colors"
-              >
-                Termos de Uso
-              </Link>
-            </div>
+        <div className="flex flex-col border-t border-white/5 pt-12 md:flex-row md:items-center md:justify-between md:gap-6">
+          <p className="text-xs text-gray-500">
+            © {new Date().getFullYear()} Panobianco Jardim Satélite. Todos os
+            direitos reservados.
+          </p>
+          <div className="flex gap-8 text-xs text-gray-500">
+            <Link
+              href="/politica-de-privacidade"
+              className="transition-colors hover:text-white"
+            >
+              Política de Privacidade
+            </Link>
+            <Link
+              href="/termos-de-uso"
+              className="transition-colors hover:text-white"
+            >
+              Termos de Uso
+            </Link>
           </div>
         </div>
       </div>

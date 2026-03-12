@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
       "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   }
 
@@ -54,40 +54,23 @@
   }
 
   .container-main {
-    @apply mx-auto px-4;
-    width: 100%;
-    max-width: 540px; /* Small: 540px */
+    @apply mx-auto w-full px-4 sm:px-6 lg:px-8;
+    max-width: 80rem; /* 1280px - Stitch max-w-7xl */
   }
 
-  /* Responsive container widths based on schema */
-  @media (min-width: 576px) {
-    .container-main {
-      max-width: 540px; /* Small: 540px */
-    }
+  /* Stitch design utilities */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  @media (min-width: 768px) {
-    .container-main {
-      max-width: 720px; /* Medium: 720px */
-    }
-  }
-
-  @media (min-width: 992px) {
-    .container-main {
-      max-width: 960px; /* Large: 960px */
-    }
-  }
-
-  @media (min-width: 1200px) {
-    .container-main {
-      max-width: 1140px; /* X-Large: 1140px */
-    }
-  }
-
-  @media (min-width: 1400px) {
-    .container-main {
-      max-width: 1320px; /* XX-Large: 1320px */
-    }
+  .hero-gradient {
+    background: linear-gradient(
+      to bottom,
+      rgba(18, 10, 8, 0.4),
+      rgba(18, 10, 8, 1)
+    );
   }
 }
 
@@ -137,5 +120,20 @@
   /* Theme-aware border utilities */
   .border-theme {
     @apply border-light-border dark:border-dark-border;
+  }
+
+  /* Modalidade filter grid – enter animation */
+  @keyframes modalidade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  .animate-modalidade-in {
+    animation: modalidade-in 0.4s ease-out forwards;
   }
 }
