@@ -19,6 +19,10 @@ export const WHATSAPP_AVULSO = `https://api.whatsapp.com/send/?phone=${WHATSAPP_
 /** WhatsApp link with pre-filled message for treino personalizado */
 export const WHATSAPP_PERSONAL = `${WHATSAPP_URL}?text=${encodeURIComponent("Olá! Eu vim do site e tenho interesse em um acompanhamento personalizado com um personal.")}`;
 
+/** WhatsApp link with pre-filled message for aula experimental */
+export const WHATSAPP_AULA_EXPERIMENTAL =
+	"https://api.whatsapp.com/send/?phone=5512992192268&text=Ol%C3%A1,%20vim%20do%20site%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental.";
+
 /** Google Maps location URL */
 export const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/VsDJ6rDYJjea2H9Y7";
 

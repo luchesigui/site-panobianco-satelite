@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import Logo from "@/components/Logo";
-import { useIndication } from "@/contexts/IndicationContext";
+import { WHATSAPP_AULA_EXPERIMENTAL } from "@/lib/constants";
 
 const navigation = [
 	{ name: "Início", href: "/" },
@@ -17,7 +17,6 @@ const navigation = [
 
 export default function Header() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-	const { getSchedulingUrl } = useIndication();
 
 	return (
 		<header className="fixed top-0 left-0 right-0 z-50 h-20 border-b border-white/10 bg-background-dark backdrop-blur-md">
@@ -38,7 +37,7 @@ export default function Header() {
 
 				<div className="flex items-center gap-4">
 					<Link
-						href={getSchedulingUrl()}
+						href={WHATSAPP_AULA_EXPERIMENTAL}
 						className="hidden items-center justify-center rounded-full bg-primary-500 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-primary-500/20 transition-all hover:bg-primary-500/90 md:inline-flex"
 						target="_blank"
 						rel="noopener noreferrer"
@@ -75,7 +74,7 @@ export default function Header() {
 							</Link>
 						))}
 						<Link
-							href={getSchedulingUrl()}
+							href={WHATSAPP_AULA_EXPERIMENTAL}
 							className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-primary-500 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-500/90"
 							onClick={() => setMobileMenuOpen(false)}
 							target="_blank"

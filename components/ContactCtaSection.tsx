@@ -2,11 +2,9 @@
 
 import Link from "next/link";
 
-import { useIndication } from "@/contexts/IndicationContext";
-import { WHATSAPP_URL } from "@/lib/constants";
+import { WHATSAPP_AULA_EXPERIMENTAL, WHATSAPP_URL } from "@/lib/constants";
 
 export default function ContactCtaSection() {
-	const { getSchedulingUrl } = useIndication();
 
 	return (
 		<section className="bg-background-dark py-16">
@@ -25,7 +23,7 @@ export default function ContactCtaSection() {
 
 						<div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
 							<Link
-								href={getSchedulingUrl()}
+								href={WHATSAPP_AULA_EXPERIMENTAL}
 								target="_blank"
 								rel="noopener noreferrer"
 								className="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-primary-500 transition-colors hover:bg-white/95"
