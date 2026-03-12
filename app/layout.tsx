@@ -3,8 +3,15 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { IndicationProvider } from "@/contexts/IndicationContext";
+import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
+
+const inter = Inter({
+	subsets: ["latin"],
+	display: "swap",
+	variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
 	title: {
@@ -47,13 +54,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="pt-BR">
-			<head>
-				<link
-					href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-					rel="stylesheet"
-				/>
-			</head>
+		<html lang="pt-BR" className={inter.variable}>
+			<head />
 			<body>
 				<ThemeProvider>
 					<IndicationProvider>

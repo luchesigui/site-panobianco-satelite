@@ -8,8 +8,8 @@ const HERO_IMAGE = "/images/aulas-coletivas/wolffit/wolffit.jpg";
 const ABOUT_IMAGE = "/images/aulas-coletivas/wolffit/wolffit-small.jpg";
 
 const CARIOCA_IMAGES = [
-	"/images/aulas-coletivas/wolffit/carioca-1.png",
-	"/images/aulas-coletivas/wolffit/carioca-2.png",
+	"/images/aulas-coletivas/wolffit/carioca-1.webp",
+	"/images/aulas-coletivas/wolffit/carioca-2.webp",
 ];
 
 export const metadata: Metadata = {

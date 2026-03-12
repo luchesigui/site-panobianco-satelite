@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
 
-const HERO_IMAGE = "/images/aulas-coletivas/flashback/flashback.png";
+const HERO_IMAGE = "/images/aulas-coletivas/flashback/flashback.webp";
 
 export const metadata: Metadata = {
 	title: "Flashback | Aulas Coletivas | Academia Panobianco Jardim Satélite",

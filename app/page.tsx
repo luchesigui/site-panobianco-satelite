@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 	},
 };
 
-const heroImage = "images/fachada.png";
+const heroImage = "/images/fachada.png";
 
 const features = [
 	{

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
 
-const HERO_IMAGE = "/images/aulas-coletivas/fitdance/fitdance.png";
+const HERO_IMAGE = "/images/aulas-coletivas/fitdance/fitdance.webp";
 
 const ABOUT_IMAGES = [
 	"/images/aulas-coletivas/fitdance/fitdance-small-1.jpg",

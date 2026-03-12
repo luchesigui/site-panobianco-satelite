@@ -2,7 +2,7 @@
 const nextConfig = {
   trailingSlash: true,
   images: {
-    unoptimized: true,
+    unoptimized: false,
     remotePatterns: [
       { protocol: "https", hostname: "lh3.googleusercontent.com", pathname: "/**" },
     ],

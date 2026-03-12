@@ -100,6 +100,7 @@ export default function ModalidadeAbout({
 										alt={imageAlt ?? ""}
 										width={600}
 										height={600}
+										sizes="(max-width: 1024px) 100vw, 600px"
 										className="h-full w-full object-cover"
 									/>
 								</div>
@@ -145,6 +146,7 @@ export default function ModalidadeAbout({
 											alt={imageAlt ?? ""}
 											width={400}
 											height={600}
+											sizes="(max-width: 1024px) 50vw, 400px"
 											className="h-full w-full object-cover"
 										/>
 									</div>

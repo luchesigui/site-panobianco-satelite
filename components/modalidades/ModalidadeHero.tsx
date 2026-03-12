@@ -36,7 +36,7 @@ export default function ModalidadeHero({
 							fill
 							className="object-cover object-center"
 							priority
-							sizes="100vw"
+							sizes="(max-width: 1280px) 100vw, 1280px"
 						/>
 						<div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent" />
 					</div>
