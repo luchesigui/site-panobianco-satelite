@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
+import { CONTACT_EMAIL } from "@/lib/constants";
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -31,7 +33,7 @@ export async function POST(request: NextRequest) {
 
     // Send email using Resend
     const data = await resend.emails.send({
-      from: "Panobianco Website <onboarding@resend.dev>",
+      from: `Panobianco Website <${CONTACT_EMAIL}>`,
       to: ["gui.olhenrique@gmail.com"],
       subject: `Nova mensagem do site${assunto ? ` - ${assunto}` : ""}`,
       html: `

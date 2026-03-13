@@ -205,7 +205,7 @@ export default function TermosDeUso() {
                     </div>
                     <div className="flex items-center">
                       <Mail className="w-5 h-5 text-primary-600 mr-3" />
-                      <span className="text-body text-secondary">contato@panobiancosatelite.com.br</span>
+                      <span className="text-body text-secondary">sjc.satelite@panobiancoacademia.com.br</span>
                     </div>
                   </div>
                   <p className="text-sm text-secondary mt-6">

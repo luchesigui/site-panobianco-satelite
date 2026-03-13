@@ -27,6 +27,15 @@ const heroBg = "/images/fachada.png";
 
 const mapImage = "/images/av-cidade-jardim-391.webp";
 
+function formatPhone(value: string): string {
+	const digits = value.replace(/\D/g, "").slice(0, 11);
+	if (digits.length <= 2) return digits ? `(${digits}` : "";
+	if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+	if (digits.length <= 10)
+		return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+	return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+}
+
 export default function Contato() {
 	const [formData, setFormData] = useState({
 		nome: "",
@@ -77,7 +86,10 @@ export default function Contato() {
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
 	) => {
-		setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+		const { name, value } = e.target;
+		const nextValue =
+			name === "telefone" ? formatPhone(value) : value;
+		setFormData((prev) => ({ ...prev, [name]: nextValue }));
 	};
 
 	return (
@@ -269,7 +281,7 @@ export default function Contato() {
 										value={formData.telefone}
 										onChange={handleChange}
 										className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none"
-										placeholder="Telefone"
+										placeholder="(12) 99999-9999"
 										disabled={isSubmitting}
 									/>
 									<input
