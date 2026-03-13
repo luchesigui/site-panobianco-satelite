@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Footer from "@/components/Footer";
@@ -62,10 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 	return (
 		<html lang="pt-BR" className={inter.variable}>
-			<head>
-				{/* biome-ignore lint/security/noDangerouslySetInnerHtml: GTM requires inline script in head */}
-				<script dangerouslySetInnerHTML={{ __html: gtmScript }} />
-			</head>
+			<head />
 			<body>
 				<noscript>
 					<iframe
@@ -76,6 +74,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						title="Google Tag Manager"
 					/>
 				</noscript>
+				{/* GTM loads after page is interactive so it runs reliably in Next.js App Router */}
+				<Script id="gtm" strategy="afterInteractive">
+					{gtmScript}
+				</Script>
 				<ThemeProvider>
 					<IndicationProvider>
 						<Header />
