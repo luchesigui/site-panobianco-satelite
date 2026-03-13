@@ -14,6 +14,7 @@ import Link from "next/link";
 
 import ContactCtaSection from "@/components/ContactCtaSection";
 import SchedulingLink from "@/components/SchedulingLink";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
 	title: "Panobianco Jardim Satélite | Sua Melhor Versão Começa Aqui",
@@ -141,8 +142,23 @@ const mapImage =
 	"https://lh3.googleusercontent.com/aida-public/AB6AXuAkx_hnH45N70uVuzeOUB9m5kdYGwy94NxsBZdFRxbT1qzRTtKcoR0MYC9csc53tbqizczIFJ4Lsmx9T55LmLqxq52xSeNzxOnW6MeZJNQ-xPX8Sk_4W5bEjpN8Iw8L4uxgYxqmWGvHZ9O_pbGl2y5qBRP064PZdOS8412JW1WvTOrYPv2F5e4VxpnzChQRlWuWia-NAmsOEfsMoXfhZoc5GCbhi5O79kxbpbFKYKbzFORAyVnuxFneVmK-dgOLZixGnmihbIEqaU8";
 
 export default function Home() {
+	const webPageSchema = {
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		name: "Panobianco Jardim Satélite | Sua Melhor Versão Começa Aqui",
+		description:
+			"Nova landing page da Panobianco Jardim Satélite com serviços, aulas coletivas, planos e localização da unidade.",
+		url: SITE_URL,
+	};
+
 	return (
 		<div className="font-display bg-background-dark text-white overflow-x-hidden">
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(webPageSchema),
+				}}
+			/>
 			{/* Hero */}
 			<section className="relative flex min-h-screen items-center overflow-hidden pt-20">
 				<div className="absolute inset-0 z-0">

@@ -13,13 +13,57 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import ContactCtaSection from "@/components/ContactCtaSection";
-import { CHECKOUT_URL, WHATSAPP_AVULSO } from "@/lib/constants";
+import {
+	CHECKOUT_URL,
+	SITE_URL,
+	WHATSAPP_AVULSO,
+} from "@/lib/constants";
 
 export const metadata: Metadata = {
 	title: "Planos | Panobianco Jardim Satélite",
 	description:
 		"Compare os planos da unidade Jardim Satélite: Orange Anual, Platinum Recorrente e Avulso. Escolha o ideal para sua evolução.",
 	alternates: { canonical: "/planos" },
+};
+
+const webPageSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebPage",
+	name: "Planos | Panobianco Jardim Satélite",
+	description:
+		"Compare os planos da unidade Jardim Satélite: Orange Anual, Platinum Recorrente e Avulso. Escolha o ideal para sua evolução.",
+	url: `${SITE_URL}/planos`,
+};
+
+const faqSchema = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: [
+		{
+			"@type": "Question",
+			name: "Posso cancelar o Plano Platinum a qualquer momento?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Sim! O Plano Platinum não possui fidelidade. Você pode solicitar o cancelamento diretamente na recepção com 30 dias de antecedência do próximo vencimento.",
+			},
+		},
+		{
+			"@type": "Question",
+			name: "Quais são as unidades inclusas no plano recorrente?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Com o plano Platinum, você tem acesso livre a todas as unidades da rede Panobianco. Basta apresentar seu CPF em qualquer recepção.",
+			},
+		},
+		{
+			"@type": "Question",
+			name: "Aceita Wellhub/Gympass e TotalPass?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Sim! Aceitamos Wellhub (antigo Gympass) e TotalPass. Entre em contato ou venha nos visitar para saber quais planos estão disponíveis para a sua categoria.",
+			},
+		},
+	],
 };
 
 const orangeBenefits = [
@@ -50,6 +94,18 @@ const avulsoExclude = "Menos praticidade, pois precisa renovar mês a mês";
 export default function Planos() {
 	return (
 		<div className="font-display min-h-screen bg-background-dark text-white overflow-x-hidden">
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(webPageSchema),
+				}}
+			/>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(faqSchema),
+				}}
+			/>
 			<main className="relative overflow-hidden pb-24 pt-16">
 				{/* Decorative background */}
 				<div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-full -translate-x-1/2 bg-gradient-to-b from-primary-500/10 to-transparent" />

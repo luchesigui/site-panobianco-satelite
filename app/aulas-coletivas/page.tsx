@@ -6,12 +6,22 @@ import {
 	ModalidadesFilterGrid,
 } from "@/components/ModalidadesFilterGrid";
 import ScheduleModal from "@/components/ScheduleModal";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
 	title: "Aulas Coletivas | Panobianco Jardim Satélite",
 	description:
 		"Conheça as modalidades da unidade Jardim Satélite: Flashback, Pilates, WolfFit, GAP, FitDance, Jump, Muay Thai, Jiu Jitsu e Ritmos.",
 	alternates: { canonical: "/aulas-coletivas" },
+};
+
+const webPageSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebPage",
+	name: "Aulas Coletivas | Panobianco Jardim Satélite",
+	description:
+		"Conheça as modalidades da unidade Jardim Satélite: Flashback, Pilates, WolfFit, GAP, FitDance, Jump, Muay Thai, Jiu Jitsu e Ritmos.",
+	url: `${SITE_URL}/aulas-coletivas`,
 };
 
 const CATEGORIES = [
@@ -117,6 +127,12 @@ const classes = [
 export default function AulasColetivas() {
 	return (
 		<div className="font-display min-h-screen bg-background-dark text-white overflow-x-hidden">
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(webPageSchema),
+				}}
+			/>
 			<main className="flex-1 px-4 py-10 lg:px-10">
 				{/* Hero */}
 				<div className="container-main mb-12 flex flex-wrap items-end justify-between gap-6">

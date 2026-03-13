@@ -3,6 +3,9 @@
  * Update these values when links or contact details change.
  */
 
+/** Canonical site URL for sitemap, schema, and absolute links */
+export const SITE_URL = "https://panobiancosatelite.com.br";
+
 /** Checkout URL for plan subscriptions (evo-totem / W12) */
 export const CHECKOUT_URL =
   "https://evo-totem.w12app.com.br/panobiancos/312/site/DBFZAlP1qByypx5j5uphag%5BEQUAL%5D%5BEQUAL%5D";

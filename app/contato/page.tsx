@@ -19,6 +19,7 @@ import {
 	GOOGLE_MAPS_URL,
 	INSTAGRAM_URL,
 	PHONE_DISPLAY,
+	SITE_URL,
 	WHATSAPP_PHONE,
 	WHATSAPP_URL,
 } from "@/lib/constants";
@@ -92,8 +93,23 @@ export default function Contato() {
 		setFormData((prev) => ({ ...prev, [name]: nextValue }));
 	};
 
+	const webPageSchema = {
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		name: "Contato | Academia Panobianco Jardim Satélite",
+		description:
+			"Entre em contato com a Panobianco Jardim Satélite. Endereço, horários, telefone, WhatsApp e formulário de contato.",
+		url: `${SITE_URL}/contato`,
+	};
+
 	return (
 		<div className="font-display min-h-screen bg-background-dark text-white antialiased overflow-x-hidden">
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(webPageSchema),
+				}}
+			/>
 			{/* Hero */}
 			<section className="relative h-[300px] w-full overflow-hidden md:h-[400px]">
 				<div

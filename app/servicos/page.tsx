@@ -13,6 +13,7 @@ import Link from "next/link";
 
 import ContactCtaSection from "@/components/ContactCtaSection";
 import SchedulingLink from "@/components/SchedulingLink";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
 	title:
@@ -76,9 +77,24 @@ const services = [
 	},
 ];
 
+const webPageSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebPage",
+	name: "Serviços | Academia Panobianco Jardim Satélite",
+	description:
+		"Conheça todos os serviços da Panobianco: equipamentos de última geração, treino personalizado, aulas coletivas, avaliação física e vestiários completos.",
+	url: `${SITE_URL}/servicos`,
+};
+
 export default function Servicos() {
 	return (
 		<div className="font-display min-h-screen bg-background-dark text-white overflow-x-hidden">
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(webPageSchema),
+				}}
+			/>
 			{/* Hero */}
 			<section className="relative w-full overflow-hidden py-20">
 				<div className="absolute inset-0 z-0">

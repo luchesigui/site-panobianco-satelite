@@ -7,7 +7,41 @@ import { GTMHead, GTM_ID } from "@/components/GTM";
 import Header from "@/components/Header";
 import { IndicationProvider } from "@/contexts/IndicationContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import {
+	CONTACT_EMAIL,
+	FACEBOOK_URL,
+	INSTAGRAM_URL,
+	SITE_URL,
+	WHATSAPP_PHONE,
+	YOUTUBE_URL,
+} from "@/lib/constants";
 import "./globals.css";
+
+const organizationSchema = {
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	"@id": `${SITE_URL}#organization`,
+	name: "Academia Panobianco Jardim Satélite",
+	url: SITE_URL,
+	logo: `${SITE_URL}/logo.webp`,
+	sameAs: [INSTAGRAM_URL, FACEBOOK_URL, YOUTUBE_URL],
+	contactPoint: {
+		"@type": "ContactPoint",
+		telephone: `+${WHATSAPP_PHONE}`,
+		contactType: "customer service",
+		email: CONTACT_EMAIL,
+		areaServed: "BR",
+		availableLanguage: "Portuguese",
+	},
+};
+
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	url: SITE_URL,
+	name: "Academia Panobianco Jardim Satélite",
+	publisher: { "@id": `${SITE_URL}#organization` },
+};
 
 const inter = Inter({
   subsets: ["latin"],
@@ -57,6 +91,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={inter.variable}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
+        />
+      </head>
       <body>
         <GTMHead />
         <noscript>

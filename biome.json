@@ -7,6 +7,9 @@
 			"correctness": {
 				"noUnusedImports": { "level": "error", "fix": "safe" },
 				"noUnusedVariables": "error"
+			},
+			"security": {
+				"noDangerouslySetInnerHtml": "off"
 			}
 		}
 	},

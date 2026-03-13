@@ -120,25 +120,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col border-t border-white/5 pt-12 md:flex-row md:items-center md:justify-between md:gap-6">
+        <div className="border-t border-white/5 pt-12">
           <p className="text-xs text-gray-500">
             © {new Date().getFullYear()} Panobianco Jardim Satélite. Todos os
             direitos reservados.
           </p>
-          <div className="flex gap-8 text-xs text-gray-500">
-            <Link
-              href="/politica-de-privacidade"
-              className="transition-colors hover:text-white"
-            >
-              Política de Privacidade
-            </Link>
-            <Link
-              href="/termos-de-uso"
-              className="transition-colors hover:text-white"
-            >
-              Termos de Uso
-            </Link>
-          </div>
         </div>
       </div>
     </footer>
