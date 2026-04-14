@@ -29,7 +29,11 @@ const VIDEOS = [
   },
   {
     title: "Enviando mensagem para lead recém criado",
-    id: "l5T88AUBbkU",
+    id: "8Xef5MXseog",
+  },
+  {
+    title: "Documentação de Erro",
+    id: "BJcLSupCkzY",
   },
 ] as const;
 
