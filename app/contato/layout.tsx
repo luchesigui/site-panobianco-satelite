@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Contato | Academia Panobianco Jardim Satélite - Fale Conosco',
-  description: 'Entre em contato com a Academia Panobianco Jardim Satélite. Av. Cidade Jardim, 391, São José dos Campos. Telefone: (12) 99219-2268.',
+  description: 'Entre em contato com a Academia Panobianco Jardim Satélite. Av. Cidade Jardim, 391, São José dos Campos. Telefone: (12) 98708-2269.',
   keywords: 'contato academia panobianco, endereço academia jardim satélite, telefone academia são josé dos campos, horário funcionamento',
   robots: 'index, follow',
   openGraph: {

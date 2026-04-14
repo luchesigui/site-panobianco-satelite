@@ -15,6 +15,7 @@ import Link from "next/link";
 import ContactCtaSection from "@/components/ContactCtaSection";
 import {
 	CHECKOUT_URL,
+	PHONE_DISPLAY,
 	SITE_URL,
 	WHATSAPP_AVULSO,
 } from "@/lib/constants";
@@ -297,7 +298,7 @@ export default function Planos() {
 							<div className="space-y-1 text-sm text-stone-400">
 								<p>Fale com nossa equipe</p>
 								<p>pelo WhatsApp oficial</p>
-								<p>(12) 9219-2268</p>
+								<p>{PHONE_DISPLAY}</p>
 							</div>
 						</div>
 					</div>

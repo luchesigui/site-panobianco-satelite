@@ -11,7 +11,7 @@ export const CHECKOUT_URL =
   "https://evo-totem.w12app.com.br/panobiancos/312/site/DBFZAlP1qByypx5j5uphag%5BEQUAL%5D%5BEQUAL%5D";
 
 /** WhatsApp business number (E.164 format) */
-export const WHATSAPP_PHONE = "5512992192268";
+export const WHATSAPP_PHONE = "5512987082269";
 
 /** Plain WhatsApp chat link */
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_PHONE}`;
@@ -37,4 +37,4 @@ export const YOUTUBE_URL = "https://youtube.com/@panobianco";
 export const CONTACT_EMAIL = "sjc.satelite@panobiancoacademia.com.br";
 
 /** Phone number formatted for display */
-export const PHONE_DISPLAY = "(12) 9219-2268";
+export const PHONE_DISPLAY = "(12) 98708-2269";
