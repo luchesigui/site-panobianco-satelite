@@ -2,6 +2,7 @@ import { Brain, Shield, Target, Users, Zap } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
+import { SITE_URL } from "@/lib/constants";
 
 const HERO_IMAGE = "/images/aulas-coletivas/jiu-jitsu/jiu-jitsu.jpg";
 
@@ -13,9 +14,23 @@ export const metadata: Metadata = {
 		"Desenvolva disciplina, autodefesa e condicionamento físico de elite. A Arte Suave para transformar seu corpo e sua mente.",
 };
 
+const serviceSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	name: "Aula de Jiu Jitsu",
+	description:
+		"Modalidade focada em técnica, disciplina, autodefesa e condicionamento físico completo.",
+	url: `${SITE_URL}/aulas-coletivas/jiu-jitsu`,
+	provider: { "@id": `${SITE_URL}#organization` },
+};
+
 export default function JiuJitsuPage() {
 	return (
 		<ModalidadePage>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+			/>
 			<ModalidadePage.Hero
 				badge="Modalidade Premium"
 				title="JIU"

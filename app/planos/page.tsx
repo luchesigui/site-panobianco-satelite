@@ -14,7 +14,7 @@ import Link from "next/link";
 
 import ContactCtaSection from "@/components/ContactCtaSection";
 import {
-	CHECKOUT_URL,
+	PLANS,
 	PHONE_DISPLAY,
 	SITE_URL,
 	WHATSAPP_AVULSO,
@@ -67,6 +67,33 @@ const faqSchema = {
 	],
 };
 
+const plansSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	name: "Planos Academia Panobianco Jardim Satélite",
+	serviceType: "Plano de Academia",
+	provider: { "@id": `${SITE_URL}#organization` },
+	url: `${SITE_URL}/planos`,
+	offers: [
+		{
+			"@type": "Offer",
+			name: PLANS.orange.label,
+			price: PLANS.orange.price,
+			priceCurrency: "BRL",
+			url: `${SITE_URL}/checkout?plan=orange`,
+			availability: "https://schema.org/InStock",
+		},
+		{
+			"@type": "Offer",
+			name: PLANS.platinum.label,
+			price: PLANS.platinum.price,
+			priceCurrency: "BRL",
+			url: `${SITE_URL}/checkout?plan=platinum`,
+			availability: "https://schema.org/InStock",
+		},
+	],
+};
+
 const orangeBenefits = [
 	"Área de cardio tecnológica com esteiras e escada com YouTube e Netflix",
 	"Musculação com equipamentos de ponta e biodinâmica exclusivas",
@@ -105,6 +132,12 @@ export default function Planos() {
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{
 					__html: JSON.stringify(faqSchema),
+				}}
+			/>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(plansSchema),
 				}}
 			/>
 			<main className="relative overflow-hidden pb-24 pt-16">
@@ -169,9 +202,7 @@ export default function Planos() {
 								meses.
 							</p>
 							<Link
-								href={CHECKOUT_URL}
-								target="_blank"
-								rel="noopener noreferrer"
+								href="/checkout?plan=orange"
 								className="mt-auto flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all hover:bg-primary-500/90"
 							>
 								Assinar Agora
@@ -213,9 +244,7 @@ export default function Planos() {
 								))}
 							</ul>
 							<Link
-								href={CHECKOUT_URL}
-								target="_blank"
-								rel="noopener noreferrer"
+								href="/checkout?plan=platinum"
 								className="mt-auto flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all hover:bg-primary-500/90"
 							>
 								Assinar Agora

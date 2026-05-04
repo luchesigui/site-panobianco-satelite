@@ -2,6 +2,7 @@ import { Accessibility, Flame, Heart, Target, Zap } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
+import { SITE_URL } from "@/lib/constants";
 
 const HERO_IMAGE = "/images/aulas-coletivas/gap/gap.jpg";
 
@@ -14,9 +15,23 @@ export const metadata: Metadata = {
 		"Glúteos, Abdômen e Pernas. O treino focado que você precisa para definir e fortalecer os membros inferiores e o core.",
 };
 
+const serviceSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	name: "Aula de GAP",
+	description:
+		"Treino focado em glúteos, abdômen e pernas para definição, força e resistência.",
+	url: `${SITE_URL}/aulas-coletivas/gap`,
+	provider: { "@id": `${SITE_URL}#organization` },
+};
+
 export default function GAPPage() {
 	return (
 		<ModalidadePage>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+			/>
 			<ModalidadePage.Hero
 				badge="Aulas Coletivas"
 				title="GAP"

@@ -2,6 +2,7 @@ import { Activity, Flame, Heart, Users, Zap } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
+import { SITE_URL } from "@/lib/constants";
 
 const HERO_IMAGE = "/images/aulas-coletivas/wolffit/wolffit.jpg";
 
@@ -18,9 +19,23 @@ export const metadata: Metadata = {
 		"Treino funcional de alta intensidade que combina força, cardio e agilidade. Experimente a energia do Wolf Fit.",
 };
 
+const serviceSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	name: "Aula de Wolf Fit",
+	description:
+		"Treino funcional de alta intensidade que combina força, cardio e agilidade para evolução completa.",
+	url: `${SITE_URL}/aulas-coletivas/wolf-fit`,
+	provider: { "@id": `${SITE_URL}#organization` },
+};
+
 export default function WolfFitPage() {
 	return (
 		<ModalidadePage>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+			/>
 			<ModalidadePage.Hero
 				badge="Alta Performance"
 				title="WOLF"

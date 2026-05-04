@@ -2,6 +2,7 @@ import { Activity, Flame, Music, Smile, Users } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
+import { SITE_URL } from "@/lib/constants";
 
 const HERO_IMAGE = "/images/aulas-coletivas/ritmos/ritmos.jpg";
 
@@ -13,9 +14,23 @@ export const metadata: Metadata = {
 		"Aumente sua energia, queime calorias e divirta-se ao som dos melhores ritmos musicais em uma aula contagiante e cheia de vida.",
 };
 
+const serviceSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	name: "Aula de Ritmos",
+	description:
+		"Aula coletiva baseada em dança para queima calórica, condicionamento e bem-estar.",
+	url: `${SITE_URL}/aulas-coletivas/ritmos`,
+	provider: { "@id": `${SITE_URL}#organization` },
+};
+
 export default function RitmosPage() {
 	return (
 		<ModalidadePage>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+			/>
 			<ModalidadePage.Hero
 				title="RITMOS"
 				description="Aumente sua energia, queime calorias e divirta-se ao som dos melhores ritmos musicais em uma aula contagiante e cheia de vida."

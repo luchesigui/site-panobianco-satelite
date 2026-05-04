@@ -1,5 +1,3 @@
-"use client";
-
 import { Facebook, Instagram, Mail, MessageSquare, Phone } from "lucide-react";
 import Link from "next/link";
 

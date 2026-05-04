@@ -2,6 +2,7 @@ import { Brain, Flame, Shield, Target, Zap } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
+import { SITE_URL } from "@/lib/constants";
 
 const HERO_IMAGE = "/images/aulas-coletivas/muay-thai/muay-thai.jpg";
 
@@ -13,9 +14,23 @@ export const metadata: Metadata = {
 		"Domine técnicas milenares, queime até 1.000 calorias por aula e fortaleça corpo e mente na unidade mais premium da Panobianco.",
 };
 
+const serviceSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	name: "Aula de Muay Thai",
+	description:
+		"Arte marcial para autodefesa, condicionamento físico e disciplina com treinos intensos.",
+	url: `${SITE_URL}/aulas-coletivas/muay-thai`,
+	provider: { "@id": `${SITE_URL}#organization` },
+};
+
 export default function MuayThaiPage() {
 	return (
 		<ModalidadePage>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+			/>
 			<ModalidadePage.Hero
 				badge="Artes Marciais"
 				title="Muay"

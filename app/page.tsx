@@ -130,6 +130,35 @@ const testimonials = [
 	},
 ];
 
+const localBusinessReviewsSchema = {
+	"@context": "https://schema.org",
+	"@type": "LocalBusiness",
+	"@id": `${SITE_URL}#organization`,
+	review: [
+		{
+			"@type": "Review",
+			author: { "@type": "Person", name: "Angela" },
+			reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+			reviewBody:
+				"Linda academia, aparelhos modernos, local limpo e tem até elevador. Participei da aula FitDance com o professor Ed, excelente profissional, educado e atencioso.",
+		},
+		{
+			"@type": "Review",
+			author: { "@type": "Person", name: "Vanessa" },
+			reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+			reviewBody:
+				"O que eu mais gostei foi a atenção dos professores. Sempre estimulando a treinar da forma correta e com treinos personalizados.",
+		},
+		{
+			"@type": "Review",
+			author: { "@type": "Person", name: "Liliane" },
+			reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+			reviewBody:
+				"Estrutura impecável, com três pavimentos bem organizados, elevador e banheiros com chuveiros.",
+		},
+	],
+};
+
 const avatarUrls = [
 	"https://lh3.googleusercontent.com/a-/ALV-UjWh4mRXj1Qy76S7Z635sDJI_rFLKCQ-llKXXUZwDN0sE_afjUrK=w72-h72-p-rp-mo-br100",
 	"https://lh3.googleusercontent.com/a-/ALV-UjX69vMqtUkLPKp8WBV-fBIwXwTtEGCIRNYgki4Q7s4uu4Ceneb_uw=w72-h72-p-rp-mo-br100",
@@ -157,6 +186,12 @@ export default function Home() {
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{
 					__html: JSON.stringify(webPageSchema),
+				}}
+			/>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(localBusinessReviewsSchema),
 				}}
 			/>
 			{/* Hero */}

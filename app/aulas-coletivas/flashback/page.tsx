@@ -2,6 +2,7 @@ import { Activity, Flame, Music, Smile, Users } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
+import { SITE_URL } from "@/lib/constants";
 
 const HERO_IMAGE = "/images/aulas-coletivas/flashback/flashback.webp";
 
@@ -11,9 +12,23 @@ export const metadata: Metadata = {
 		"Reviva os melhores ritmos das décadas passadas. Queime calorias, melhore a coordenação e divirta-se na aula de Flashback.",
 };
 
+const serviceSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	name: "Aula de Flashback",
+	description:
+		"Reviva os melhores ritmos das décadas passadas enquanto transforma seu corpo com energia e diversão.",
+	url: `${SITE_URL}/aulas-coletivas/flashback`,
+	provider: { "@id": `${SITE_URL}#organization` },
+};
+
 export default function FlashbackPage() {
 	return (
 		<ModalidadePage>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+			/>
 			<ModalidadePage.Hero
 				title="FLASHBACK"
 				badge="Aula Coletiva"

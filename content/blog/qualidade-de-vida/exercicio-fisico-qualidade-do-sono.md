@@ -17,6 +17,19 @@ featuredImageAlt: ""
 relatedSlugs:
   - "bem-estar-e-reducao-do-estresse-academia"
   - "pilates-saude-mental-sao-jose-dos-campos"
+howto:
+  name: "Como melhorar o sono com exercício físico"
+  steps:
+    - name: "Defina um horário fixo para treinar"
+      text: "Treine em horários consistentes para ajudar a regular seu ritmo circadiano."
+    - name: "Escolha modalidades adequadas ao seu turno"
+      text: "Prefira aeróbicos moderados, musculação e Pilates, ajustando intensidade quando o treino for noturno."
+    - name: "Evite estímulos tarde da noite"
+      text: "Reduza cafeína após 14h e deixe exercícios muito intensos longe da hora de dormir."
+    - name: "Crie um ritual pré-sono"
+      text: "Use rotina de desaceleração com pouca luz, banho morno e menos telas para facilitar o adormecer."
+    - name: "Monitore seu padrão semanal"
+      text: "Observe como seu sono responde aos horários de treino e ajuste a rotina conforme seu corpo."
 ---
 
 Você já reparou como dorme melhor nos dias em que se movimenta mais? Não é impressão sua — é biologia. A relação entre exercício físico e qualidade do sono é uma das mais bem documentadas da ciência do comportamento humano, e entendê-la pode mudar completamente a forma como você enxerga sua rotina na academia.

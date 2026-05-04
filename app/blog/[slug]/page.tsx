@@ -101,6 +101,24 @@ export default async function BlogPostPage({ params }: Props) {
 		],
 	};
 
+	const howToSchema =
+		post.howto && post.howto.steps?.length
+			? {
+					"@context": "https://schema.org",
+					"@type": "HowTo",
+					name: post.howto.name,
+					description: post.description,
+					inLanguage: "pt-BR",
+					totalTime: `PT${post.readingTimeMinutes}M`,
+					step: post.howto.steps.map((step, index) => ({
+						"@type": "HowToStep",
+						position: index + 1,
+						name: step.name,
+						text: step.text,
+					})),
+				}
+			: null;
+
 	return (
 		<>
 			<script
@@ -117,6 +135,15 @@ export default async function BlogPostPage({ params }: Props) {
 					__html: JSON.stringify(breadcrumbSchema),
 				}}
 			/>
+			{howToSchema && (
+				<script
+					type="application/ld+json"
+					// biome-ignore lint/security/noDangerouslySetInnerHtml: trusted static JSON-LD
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify(howToSchema),
+					}}
+				/>
+			)}
 			<BlogArticle
 				headline={post.headline}
 				category={post.category}

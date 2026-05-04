@@ -2,6 +2,7 @@ import { Activity, Flame, Shield, Target, Zap } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
+import { SITE_URL } from "@/lib/constants";
 
 const HERO_IMAGE = "/images/aulas-coletivas/jump/jump.jpg";
 
@@ -13,9 +14,23 @@ export const metadata: Metadata = {
 		"Aumente sua energia e queime até 600 calorias em uma aula super dinâmica sobre o mini-trampolim.",
 };
 
+const serviceSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	name: "Aula de Jump",
+	description:
+		"Aula dinâmica no mini-trampolim com alto gasto calórico e baixo impacto articular.",
+	url: `${SITE_URL}/aulas-coletivas/jump`,
+	provider: { "@id": `${SITE_URL}#organization` },
+};
+
 export default function JumpPage() {
 	return (
 		<ModalidadePage>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+			/>
 			<ModalidadePage.Hero
 				badge="Alta Intensidade"
 				title="JUMP"

@@ -86,6 +86,45 @@ const webPageSchema = {
 	url: `${SITE_URL}/servicos`,
 };
 
+const faqSchema = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: [
+		{
+			"@type": "Question",
+			name: "Quais serviços a Panobianco Satélite oferece?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Oferecemos musculação com equipamentos modernos, treino personalizado, aulas coletivas, avaliação física e vestiários completos.",
+			},
+		},
+		{
+			"@type": "Question",
+			name: "Como funciona o treino personalizado?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Um profissional avalia seus objetivos e condicionamento para montar um treino individual, com ajustes frequentes para acelerar sua evolução com segurança.",
+			},
+		},
+		{
+			"@type": "Question",
+			name: "A academia oferece avaliação física?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Sim. A avaliação física acompanha composição corporal e evolução para orientar melhor os ajustes de treino.",
+			},
+		},
+		{
+			"@type": "Question",
+			name: "Posso combinar musculação com aulas coletivas?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Sim. A combinação de musculação e aulas coletivas melhora condicionamento, acelera resultados e torna a rotina mais dinâmica.",
+			},
+		},
+	],
+};
+
 export default function Servicos() {
 	return (
 		<div className="font-display min-h-screen bg-background-dark text-white overflow-x-hidden">
@@ -93,6 +132,12 @@ export default function Servicos() {
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{
 					__html: JSON.stringify(webPageSchema),
+				}}
+			/>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(faqSchema),
 				}}
 			/>
 			{/* Hero */}

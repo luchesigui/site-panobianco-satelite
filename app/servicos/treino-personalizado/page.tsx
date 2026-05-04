@@ -10,7 +10,7 @@ import {
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { WHATSAPP_PERSONAL } from "@/lib/constants";
+import { SITE_URL, WHATSAPP_PERSONAL } from "@/lib/constants";
 
 export const metadata: Metadata = {
 	title:
@@ -32,9 +32,33 @@ export const metadata: Metadata = {
 	},
 };
 
+const breadcrumbSchema = {
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	itemListElement: [
+		{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+		{
+			"@type": "ListItem",
+			position: 2,
+			name: "Serviços",
+			item: `${SITE_URL}/servicos`,
+		},
+		{
+			"@type": "ListItem",
+			position: 3,
+			name: "Treino Personalizado",
+			item: `${SITE_URL}/servicos/treino-personalizado`,
+		},
+	],
+};
+
 export default function TreinoPersonalizado() {
 	return (
 		<div className="bg-primary">
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+			/>
 			{/* Hero Section */}
 			<section className="py-16 lg:py-24">
 				<div className="container-main">

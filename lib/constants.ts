@@ -38,3 +38,23 @@ export const CONTACT_EMAIL = "sjc.satelite@panobiancoacademia.com.br";
 
 /** Phone number formatted for display */
 export const PHONE_DISPLAY = "(12) 98708-2269";
+
+/** Plans available for online checkout */
+export const PLANS = {
+  orange: {
+    label: "Orange Anual",
+    description: "Plano com fidelidade de 12 meses.",
+    price: 119.9,
+    priceDisplay: "R$ 119,90/mês",
+    badge: null as string | null,
+  },
+  platinum: {
+    label: "Plano Platinum (recorrente)",
+    description: "Débito automático, sem taxas e sem fidelidade.",
+    price: 139.9,
+    priceDisplay: "R$ 139,90/mês",
+    badge: "MAIS VANTAJOSO" as string | null,
+  },
+} as const;
+
+export type PlanKey = keyof typeof PLANS;

@@ -19,11 +19,45 @@ import "./globals.css";
 
 const organizationSchema = {
 	"@context": "https://schema.org",
-	"@type": "Organization",
+	"@type": "LocalBusiness",
 	"@id": `${SITE_URL}#organization`,
 	name: "Academia Panobianco Jardim Satélite",
 	url: SITE_URL,
 	logo: `${SITE_URL}/logo.webp`,
+	priceRange: "$$",
+	aggregateRating: {
+		"@type": "AggregateRating",
+		ratingValue: 4.9,
+		reviewCount: 200,
+		bestRating: 5,
+		worstRating: 1,
+	},
+	openingHoursSpecification: [
+		{
+			"@type": "OpeningHoursSpecification",
+			dayOfWeek: [
+				"Monday",
+				"Tuesday",
+				"Wednesday",
+				"Thursday",
+				"Friday",
+			],
+			opens: "06:00",
+			closes: "23:00",
+		},
+		{
+			"@type": "OpeningHoursSpecification",
+			dayOfWeek: "Saturday",
+			opens: "08:00",
+			closes: "18:00",
+		},
+		{
+			"@type": "OpeningHoursSpecification",
+			dayOfWeek: "Sunday",
+			opens: "09:00",
+			closes: "14:00",
+		},
+	],
 	sameAs: [INSTAGRAM_URL, FACEBOOK_URL, YOUTUBE_URL],
 	contactPoint: {
 		"@type": "ContactPoint",

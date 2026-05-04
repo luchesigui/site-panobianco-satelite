@@ -18,6 +18,19 @@ relatedSlugs:
   - "hipertrofia-muscular-academia-jardim-satelite"
   - "personal-trainer-sao-jose-dos-campos"
   - "treino-de-forca-beneficios-sao-jose-dos-campos"
+howto:
+  name: "Como começar musculação do zero"
+  steps:
+    - name: "Faça avaliação física inicial"
+      text: "Agende sua avaliação para mapear condicionamento, histórico e objetivo antes de iniciar o treino."
+    - name: "Comece com treino full body"
+      text: "Treine corpo inteiro 3 vezes por semana, com dias de descanso entre sessões."
+    - name: "Priorize técnica antes da carga"
+      text: "Aprenda execução correta dos exercícios e só aumente peso com estabilidade e segurança."
+    - name: "Aplique sobrecarga progressiva"
+      text: "Evolua gradualmente cargas, repetições ou séries para manter estímulo e progresso."
+    - name: "Cuide da recuperação"
+      text: "Durma bem, hidrate-se e mantenha alimentação adequada para acelerar adaptação muscular."
 ---
 
 Iniciar na musculação pode parecer intimidador. São muitos aparelhos, terminologias desconhecidas, pessoas que já parecem saber exatamente o que estão fazendo — e você ali, sem saber por onde começar. Se você mora em São José dos Campos e está pensando em dar esse primeiro passo, este guia foi escrito especialmente para você. A **musculação para iniciantes em São José dos Campos** não precisa ser difícil quando existe estrutura, profissional capacitado e um ambiente acolhedor do seu lado.

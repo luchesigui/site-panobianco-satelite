@@ -2,6 +2,7 @@ import { Activity, Flame, Music, Smile, Users } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
+import { SITE_URL } from "@/lib/constants";
 
 const HERO_IMAGE = "/images/aulas-coletivas/fitdance/fitdance.webp";
 
@@ -16,9 +17,23 @@ export const metadata: Metadata = {
 		"Mova-se, divirta-se e transforme o seu treino em uma verdadeira festa. Coreografias contagiantes com alto gasto calórico.",
 };
 
+const serviceSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	name: "Aula de FitDance",
+	description:
+		"Coreografias contagiantes com alto gasto calórico para transformar treino em diversão.",
+	url: `${SITE_URL}/aulas-coletivas/fitdance`,
+	provider: { "@id": `${SITE_URL}#organization` },
+};
+
 export default function FitDancePage() {
 	return (
 		<ModalidadePage>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+			/>
 			<ModalidadePage.Hero
 				badge="Aulas Coletivas"
 				title="FIT"

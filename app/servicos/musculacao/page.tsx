@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Dumbbell, Target, Shield, TrendingUp, Users, CheckCircle } from 'lucide-react'
 import SchedulingLink from '@/components/SchedulingLink'
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: 'Musculação | Academia Panobianco Jardim Satélite - Equipamentos Modernos',
@@ -19,9 +20,33 @@ export const metadata: Metadata = {
   },
 }
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Serviços",
+      item: `${SITE_URL}/servicos`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Musculação",
+      item: `${SITE_URL}/servicos/musculacao`,
+    },
+  ],
+};
+
 export default function Musculacao() {
   return (
     <div className="bg-primary">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Hero Section */}
       <section className="py-16 lg:py-24">
         <div className="container-main">

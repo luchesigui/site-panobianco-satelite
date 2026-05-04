@@ -2,6 +2,7 @@ import { Accessibility, Brain, Dumbbell, Flower2, Leaf } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
+import { SITE_URL } from "@/lib/constants";
 
 const HERO_IMAGE = "/images/aulas-coletivas/pilates/pilates.jpg";
 
@@ -13,9 +14,23 @@ export const metadata: Metadata = {
 		"Equilíbrio entre corpo e mente. Fortalecimento, flexibilidade e consciência corporal com instrutores certificados.",
 };
 
+const serviceSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	name: "Aula de Pilates",
+	description:
+		"Fortalecimento, flexibilidade e consciência corporal com instrutores certificados.",
+	url: `${SITE_URL}/aulas-coletivas/pilates`,
+	provider: { "@id": `${SITE_URL}#organization` },
+};
+
 export default function PilatesPage() {
 	return (
 		<ModalidadePage>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+			/>
 			<ModalidadePage.Hero
 				badge="Bem-estar Premium"
 				title="PILATES"

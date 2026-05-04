@@ -18,6 +18,13 @@ export type BlogPost = {
 	featuredImageSrc: string;
 	featuredImageAlt: string;
 	relatedSlugs: string[];
+	howto?: {
+		name: string;
+		steps: Array<{
+			name: string;
+			text: string;
+		}>;
+	};
 };
 
 export type BlogPostWithContent = BlogPost & { contentHtml: string };
@@ -59,6 +66,7 @@ export function getAllPosts(): BlogPost[] {
 				featuredImageSrc: data.featuredImageSrc ?? "",
 				featuredImageAlt: data.featuredImageAlt ?? "",
 				relatedSlugs: data.relatedSlugs ?? [],
+				howto: data.howto,
 			});
 		}
 	}
@@ -99,6 +107,7 @@ export async function getPostBySlug(
 			featuredImageSrc: data.featuredImageSrc ?? "",
 			featuredImageAlt: data.featuredImageAlt ?? "",
 			relatedSlugs: data.relatedSlugs ?? [],
+			howto: data.howto,
 			contentHtml,
 		};
 	}

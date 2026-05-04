@@ -24,6 +24,45 @@ const webPageSchema = {
 	url: `${SITE_URL}/aulas-coletivas`,
 };
 
+const faqSchema = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: [
+		{
+			"@type": "Question",
+			name: "Quais aulas coletivas estão disponíveis na Panobianco Satélite?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "A unidade oferece modalidades como Flashback, Pilates, Wolf Fit, GAP, FitDance, Jump, Muay Thai, Jiu Jitsu e Ritmos.",
+			},
+		},
+		{
+			"@type": "Question",
+			name: "Preciso de experiência prévia para participar?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Não. As aulas são adaptadas para iniciantes e avançados, com orientação constante dos instrutores.",
+			},
+		},
+		{
+			"@type": "Question",
+			name: "As aulas coletivas ajudam no emagrecimento?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Sim. Modalidades como Jump, FitDance e Wolf Fit elevam o gasto calórico e contribuem para perda de gordura quando combinadas com rotina consistente.",
+			},
+		},
+		{
+			"@type": "Question",
+			name: "Como escolher a melhor modalidade para meu objetivo?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Você pode começar pela aula que mais combina com seu perfil e contar com a equipe para orientar a melhor combinação conforme seu objetivo.",
+			},
+		},
+	],
+};
+
 const CATEGORIES = [
 	{ id: "todos", label: "Todos" },
 	{ id: "forca", label: "Força" },
@@ -131,6 +170,12 @@ export default function AulasColetivas() {
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{
 					__html: JSON.stringify(webPageSchema),
+				}}
+			/>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(faqSchema),
 				}}
 			/>
 			<main className="flex-1 px-4 py-10 lg:px-10">

@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 import { WHATSAPP_AULA_EXPERIMENTAL, WHATSAPP_URL } from "@/lib/constants";
