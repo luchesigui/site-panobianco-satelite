@@ -72,6 +72,51 @@
       rgba(18, 10, 8, 1)
     );
   }
+
+  .prose-blog h2 {
+    @apply mt-10 mb-4 text-2xl font-bold text-white;
+  }
+
+  .prose-blog h3 {
+    @apply mt-8 mb-3 text-xl font-bold text-white;
+  }
+
+  .prose-blog p {
+    @apply mb-5 leading-relaxed text-gray-300;
+  }
+
+  .prose-blog ul {
+    @apply mb-5 list-none space-y-2;
+  }
+
+  .prose-blog ul li {
+    @apply flex gap-3 text-gray-300;
+  }
+
+  .prose-blog ul li::before {
+    content: "";
+    @apply mt-2 block size-2 shrink-0 rounded-full bg-primary-500;
+  }
+
+  .prose-blog ol {
+    @apply mb-5 list-decimal pl-6 space-y-2;
+  }
+
+  .prose-blog ol li {
+    @apply text-gray-300;
+  }
+
+  .prose-blog a {
+    @apply text-primary-500 underline-offset-2 hover:underline;
+  }
+
+  .prose-blog strong {
+    @apply font-bold text-white;
+  }
+
+  .prose-blog blockquote {
+    @apply my-6 border-l-4 border-primary-500 pl-4 italic text-gray-400;
+  }
 }
 
 @layer utilities {
