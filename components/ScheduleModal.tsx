@@ -4,11 +4,16 @@ import { ArrowRight, Calendar, X } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { trackScheduleModalOpened } from "@/lib/analytics";
+
 export default function ScheduleModal() {
 	const [isOpen, setIsOpen] = useState(false);
 	const backdropRef = useRef<HTMLButtonElement>(null);
 
-	const open = useCallback(() => setIsOpen(true), []);
+	const open = useCallback(() => {
+		trackScheduleModalOpened();
+		setIsOpen(true);
+	}, []);
 	const close = useCallback(() => setIsOpen(false), []);
 
 	useEffect(() => {

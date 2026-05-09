@@ -3,6 +3,16 @@
 import { useState, useEffect, useRef } from "react";
 import { ArrowLeft, Lock, Trophy, BookOpen } from "lucide-react";
 import { WHATSAPP_PHONE } from "@/lib/constants";
+import {
+  trackQuizStarted,
+  trackQuizGoalSelected,
+  trackQuizPlanSelected,
+  trackQuizLeadCaptured,
+  trackQuizWhatsappClicked,
+  trackQuizEbookViewed,
+  trackQuizEbookCaptured,
+  trackQuizStepCompleted,
+} from "@/lib/analytics";
 
 // ─── TYPES ────────────────────────────────────────────────────────────────────
 
@@ -534,6 +544,19 @@ export default function QuizClient() {
     const updatedAnswers = { ...answers, [fieldKey]: value };
     const nextId = resolveNext(step, updatedAnswers);
 
+    // Tracking — fires before state transitions
+    trackQuizStepCompleted(step.id, step.phase);
+    if (fieldKey === "firstName") trackQuizStarted();
+    if (fieldKey === "goal") trackQuizGoalSelected(value);
+    if (fieldKey === "plan") {
+      const planLabels: Record<string, string> = {
+        orange: "Orange Anual",
+        platinum_rec: "Platinum Recorrente",
+        platinum_month: "Platinum Mensal",
+      };
+      trackQuizPlanSelected(value, planLabels[value] ?? value);
+    }
+
     if (nextId === "success_screen") {
       setAnswers(updatedAnswers);
       setScreen("success");
@@ -560,6 +583,7 @@ export default function QuizClient() {
   };
 
   const handleCaptureSubmit = (contact: { email: string; whatsapp: string }) => {
+    trackQuizLeadCaptured(answers.plan ?? "");
     setAnswers((p) => ({ ...p, ...contact }));
     setScreen("success");
   };
@@ -914,6 +938,7 @@ function ScreenSuccess({
             href={waLink}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackQuizWhatsappClicked(answers.plan ?? "")}
             className="flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_20px_rgba(255,94,41,0.3)] transition-all hover:bg-primary-500/90 active:scale-95"
           >
             Falar com a equipe agora →
@@ -933,6 +958,10 @@ function ScreenSuccess({
 function ScreenEbook({ answers }: { answers: Answers }) {
   const [email, setEmail] = useState(answers.email ?? "");
   const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    trackQuizEbookViewed();
+  }, []);
 
   if (done) {
     return (
@@ -1004,7 +1033,12 @@ function ScreenEbook({ answers }: { answers: Answers }) {
           />
 
           <button
-            onClick={() => email.includes("@") && setDone(true)}
+            onClick={() => {
+              if (email.includes("@")) {
+                trackQuizEbookCaptured();
+                setDone(true);
+              }
+            }}
             disabled={!email.includes("@")}
             className="flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_20px_rgba(255,94,41,0.3)] transition-all hover:bg-primary-500/90 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
           >
