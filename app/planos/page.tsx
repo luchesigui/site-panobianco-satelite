@@ -10,6 +10,7 @@ import {
 	Zap,
 } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import ContactCtaSection from "@/components/ContactCtaSection";
 import PlanCTAButton from "@/components/PlanCTAButton";
@@ -61,7 +62,7 @@ const faqSchema = {
 			name: "Aceita Wellhub/Gympass e TotalPass?",
 			acceptedAnswer: {
 				"@type": "Answer",
-				text: "Sim! Aceitamos Wellhub (antigo Gympass) e TotalPass. Entre em contato ou venha nos visitar para saber quais planos estão disponíveis para a sua categoria.",
+				text: "Sim! Aceitamos Wellhub (antigo Gympass) e TotalPass. Entre em contato ou venha nos visitar para saber quais planos estão disponíveis para a sua categoria. Se for o seu caso, preencha o pré-cadastro em panobiancosatelite.com.br/parceiros.",
 			},
 		},
 	],
@@ -80,7 +81,7 @@ const plansSchema = {
 			name: PLANS.orange.label,
 			price: PLANS.orange.price,
 			priceCurrency: "BRL",
-			url: `${SITE_URL}/checkout?plan=orange`,
+			url: `${SITE_URL}/checkout/orange`,
 			availability: "https://schema.org/InStock",
 		},
 		{
@@ -88,7 +89,7 @@ const plansSchema = {
 			name: PLANS.platinum.label,
 			price: PLANS.platinum.price,
 			priceCurrency: "BRL",
-			url: `${SITE_URL}/checkout?plan=platinum`,
+			url: `${SITE_URL}/checkout/platinum`,
 			availability: "https://schema.org/InStock",
 		},
 	],
@@ -203,7 +204,7 @@ export default function Planos() {
 							</p>
 							<PlanCTAButton
 								plan="orange"
-								href="/checkout?plan=orange"
+								href="/checkout/orange"
 								destination="checkout"
 								className="mt-auto flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all hover:bg-primary-500/90"
 							>
@@ -247,7 +248,7 @@ export default function Planos() {
 							</ul>
 							<PlanCTAButton
 								plan="platinum"
-								href="/checkout?plan=platinum"
+								href="/checkout/platinum"
 								destination="checkout"
 								className="mt-auto flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all hover:bg-primary-500/90"
 							>
@@ -378,7 +379,14 @@ export default function Planos() {
 								<div className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-relaxed text-stone-400">
 									Sim! Aceitamos Wellhub (antigo Gympass) e TotalPass. Entre em
 									contato ou venha nos visitar para saber quais planos estão
-									disponíveis para a sua categoria.
+									disponíveis para a sua categoria. Se for o seu caso,{" "}
+									<Link
+										href="/parceiros"
+										className="text-primary-500 underline hover:text-primary-400"
+									>
+										preencha o pré-cadastro aqui
+									</Link>
+									.
 								</div>
 							</details>
 						</div>
