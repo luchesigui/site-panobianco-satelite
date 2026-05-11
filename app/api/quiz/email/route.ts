@@ -6,6 +6,7 @@ import { Resend } from "resend";
 import { CONTACT_EMAIL } from "@/lib/constants";
 import {
   buildEmailHtml,
+  selectCtaContent,
   selectCtaHref,
   selectTemplate,
   TEMPLATES,
@@ -73,7 +74,8 @@ export async function POST(request: NextRequest) {
     const subject = tpl.subject.replace("{Nome}", firstName);
     const ctaHref = selectCtaHref(plan);
     const tag = tpl.tag.replace("{Nome}", firstName);
-    const html = buildEmailHtml({ firstName, ...tpl, tag, ctaHref });
+    const { ctaLabel, ctaNote } = selectCtaContent(key, plan);
+    const html = buildEmailHtml({ firstName, ...tpl, tag, ctaHref, ctaLabel, ctaNote });
 
     const idempotencyKey = quizEmailIdempotencyKey({
       firstName,

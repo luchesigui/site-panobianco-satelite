@@ -191,8 +191,8 @@ export const TEMPLATES: Record<TemplateKey, TemplateConfig> = {
       "Nossa equipe está pronta pra te atender ainda essa semana, sem burocracia e sem enrolação.",
     ],
     highlight: "&ldquo;A maioria das pessoas não falha por falta de esforço. Falha por falta de estrutura e de um ambiente que as mantenha no caminho.&rdquo;",
-    ctaLabel: "Falar com a equipe agora →",
-    ctaNote: "Responda esse e-mail ou acesse o WhatsApp. Atendemos de segunda a sábado.",
+    ctaLabel: "Quero começar minha transformação →",
+    ctaNote: "Nossa equipe entra em contato em até 24h.",
   },
 
   "lw-saude": {
@@ -385,6 +385,20 @@ export const TEMPLATES: Record<TemplateKey, TemplateConfig> = {
 };
 
 // ─── SELECTORS ───────────────────────────────────────────────────────────────
+
+const PLATINUM_MONTH_CTA = {
+  ctaLabel: "Falar com a equipe →",
+  ctaNote: "Nossa equipe responde no WhatsApp. Atendemos de segunda a sábado.",
+} as const;
+
+export function selectCtaContent(
+  key: TemplateKey,
+  plan: string,
+): { ctaLabel: string; ctaNote: string } {
+  if (plan === "platinum_month") return PLATINUM_MONTH_CTA;
+  const { ctaLabel, ctaNote } = TEMPLATES[key];
+  return { ctaLabel, ctaNote };
+}
 
 export function selectTemplate(
   goal: string,
