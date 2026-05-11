@@ -85,6 +85,145 @@ export async function createEvoProspect(input: EvoProspectInput): Promise<number
   }
 }
 
+const PARTNER_MEMBERSHIP_IDS = { wellhub: 11369, totalpass: 12436 } as const;
+
+export interface PartnerMemberInput {
+  name: string;
+  lastName: string;
+  cpf: string;
+  email: string;
+  phone: string;
+  birthdate: string; // YYYY-MM-DD
+  gender: "M" | "F";
+  partner: "wellhub" | "totalpass";
+  zipCode: string;
+  partnerId: string; // Wellhub or TotalPass member ID
+}
+
+export interface PartnerMemberResult {
+  success: boolean;
+  error?: string;
+  idCliente?: number;
+  linkAceiteContrato?: string;
+}
+
+export async function createPartnerMember(
+  input: PartnerMemberInput,
+): Promise<PartnerMemberResult> {
+  const missing = ["EVO_DNS", "EVO_TOKEN", "EVO_BRANCH_ID"].filter(
+    (k) => !process.env[k],
+  );
+  if (missing.length > 0) {
+    console.error("[evo] missing env vars:", missing);
+    return { success: false, error: "Erro de configuração do servidor." };
+  }
+
+  const idBranch = Number(process.env.EVO_BRANCH_ID);
+
+  const partnerLabel = input.partner === "wellhub" ? "Wellhub" : "TotalPass";
+  const partnerId = input.partnerId.trim();
+  const prospectBody: Record<string, unknown> = {
+    name: input.name,
+    lastName: input.lastName,
+    email: input.email,
+    cellphone: input.phone.replace(/\D/g, ""),
+    birthday: `${input.birthdate}T00:00:00`,
+    gender: input.gender,
+    cpf: input.cpf.replace(/\D/g, ""),
+    zipCode: input.zipCode.replace(/\D/g, ""),
+    idBranch,
+    temperature: 3,
+    notes: `Cadastro via site — parceiro: ${partnerLabel}. ID ${partnerLabel}: ${partnerId}.`,
+  };
+  if (input.partner === "wellhub") {
+    prospectBody.tokenGympass = partnerId;
+  } else {
+    prospectBody.additionalFieldName = "ID TotalPass";
+    prospectBody.additionalFieldValue = partnerId;
+  }
+
+  const prospectRes = await fetch(`${EVO_BASE}/api/v1/prospects`, {
+    method: "POST",
+    headers: {
+      Authorization: evoAuthHeader(),
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },
+    body: JSON.stringify(prospectBody),
+  });
+
+  const prospectRaw = await prospectRes.text();
+  console.log("[evo] partner prospect", prospectRes.status, prospectRaw);
+
+  let idProspect: number | null = null;
+  if (prospectRes.status === 409) {
+    try {
+      const c = JSON.parse(prospectRaw);
+      idProspect = c.idProspect ?? c.id ?? c.prospectId ?? null;
+    } catch {
+      return { success: false, error: "CPF já cadastrado no sistema." };
+    }
+  } else if (!prospectRes.ok) {
+    console.error("[evo] prospect failed:", prospectRes.status, prospectRaw);
+    return { success: false, error: "Erro ao criar cadastro. Tente novamente." };
+  } else {
+    try {
+      const d = JSON.parse(prospectRaw);
+      idProspect = d.idProspect ?? d.id ?? d.prospectId ?? null;
+    } catch {
+      return { success: false, error: "Erro ao processar resposta do servidor." };
+    }
+  }
+
+  if (!idProspect) {
+    return { success: false, error: "Erro ao criar cadastro. Tente novamente." };
+  }
+
+  const saleBody = {
+    idBranch,
+    idMembership: PARTNER_MEMBERSHIP_IDS[input.partner],
+    membershipValue: 0,
+    idProspect,
+    payment: 6,
+    totalInstallments: 1,
+  };
+
+  const saleRes = await fetch(`${EVO_BASE}/api/v2/sales`, {
+    method: "POST",
+    headers: {
+      Authorization: evoAuthHeader(),
+      "Content-Type": "application/json",
+      accept: "application/json",
+      culture: "pt-BR",
+    },
+    body: JSON.stringify(saleBody),
+  });
+
+  const saleRaw = await saleRes.text();
+  console.log("[evo] partner sale", saleRes.status, saleRaw);
+
+  if (!saleRes.ok) {
+    console.error("[evo] sale failed:", saleRes.status, saleRaw);
+    return { success: false, error: "Cadastro criado, mas erro ao vincular plano. Contate a recepção." };
+  }
+
+  try {
+    const saleData = JSON.parse(saleRaw);
+    const idCliente: number | null = saleData.idCliente ?? null;
+    const linkAceiteContrato: string | undefined =
+      saleData.clienteContratos?.[0]?.linkAceiteContrato ?? undefined;
+
+    if (!idCliente) {
+      console.warn("[evo] idCliente not found in sale response:", saleRaw);
+    }
+
+    return { success: true, idCliente: idCliente ?? undefined, linkAceiteContrato };
+  } catch {
+    console.error("[evo] failed to parse sale response");
+    return { success: true };
+  }
+}
+
 export async function createCheckoutLink(
   plan: "orange" | "platinum",
   idProspect?: number | null,
