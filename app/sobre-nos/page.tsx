@@ -41,7 +41,7 @@ export default function SobreNos() {
               </p>
             </div>
             <div className="card">
-              <div className="flex items-center justify-center w-16 h-16 bg-primary-500 rounded-full mb-6 mx-auto">
+              <div className="flex items-center justify-center size-16 bg-primary-500 rounded-full mb-6 mx-auto">
                 <Heart className="h-8 w-8 text-primary" />
               </div>
               <h3 className="text-heading text-primary text-center mb-4">
@@ -69,7 +69,7 @@ export default function SobreNos() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             <div className="card text-center">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4 mx-auto">
+              <div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4 mx-auto">
                 <Award className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-heading text-primary mb-3">
@@ -81,7 +81,7 @@ export default function SobreNos() {
             </div>
 
             <div className="card text-center">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4 mx-auto">
+              <div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4 mx-auto">
                 <Heart className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-heading text-primary mb-3">
@@ -93,7 +93,7 @@ export default function SobreNos() {
             </div>
 
             <div className="card text-center">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4 mx-auto">
+              <div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4 mx-auto">
                 <Target className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-heading text-primary mb-3">
@@ -105,7 +105,7 @@ export default function SobreNos() {
             </div>
 
             <div className="card text-center">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4 mx-auto">
+              <div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4 mx-auto">
                 <Users className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-heading text-primary mb-3">
@@ -117,7 +117,7 @@ export default function SobreNos() {
             </div>
 
             <div className="card text-center">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4 mx-auto">
+              <div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4 mx-auto">
                 <Dumbbell className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-heading text-primary mb-3">

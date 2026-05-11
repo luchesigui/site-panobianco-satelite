@@ -13,7 +13,7 @@ export default function ContactCtaSection() {
 				<div className="rounded-2xl bg-gradient-to-r from-primary-500 to-primary-500/90 p-8 shadow-xl shadow-primary-500/20 md:p-12">
 					<div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
 						<div>
-							<h2 className="font-display text-3xl font-black uppercase italic text-white">
+							<h2 className="font-display text-3xl font-semibold uppercase italic text-white">
 								Pronto para começar?
 							</h2>
 							<p className="mt-2 max-w-2xl text-base text-white/90">

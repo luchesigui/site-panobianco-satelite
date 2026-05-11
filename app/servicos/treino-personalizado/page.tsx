@@ -106,7 +106,7 @@ export default function TreinoPersonalizado() {
 
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 						<div className="card hover:border-primary-500 transition-colors">
-							<div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
+							<div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
 								<Target className="h-6 w-6 text-white" />
 							</div>
 							<h3 className="text-heading text-primary mb-3">
@@ -120,7 +120,7 @@ export default function TreinoPersonalizado() {
 						</div>
 
 						<div className="card hover:border-primary-500 transition-colors">
-							<div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
+							<div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
 								<Shield className="h-6 w-6 text-white" />
 							</div>
 							<h3 className="text-heading text-primary mb-3">
@@ -134,7 +134,7 @@ export default function TreinoPersonalizado() {
 						</div>
 
 						<div className="card hover:border-primary-500 transition-colors">
-							<div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
+							<div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
 								<Zap className="h-6 w-6 text-white" />
 							</div>
 							<h3 className="text-heading text-primary mb-3">
@@ -148,7 +148,7 @@ export default function TreinoPersonalizado() {
 						</div>
 
 						<div className="card hover:border-primary-500 transition-colors">
-							<div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
+							<div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
 								<Users className="h-6 w-6 text-white" />
 							</div>
 							<h3 className="text-heading text-primary mb-3">
@@ -162,7 +162,7 @@ export default function TreinoPersonalizado() {
 						</div>
 
 						<div className="card hover:border-primary-500 transition-colors">
-							<div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
+							<div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
 								<Clock className="h-6 w-6 text-white" />
 							</div>
 							<h3 className="text-heading text-primary mb-3">
@@ -176,7 +176,7 @@ export default function TreinoPersonalizado() {
 						</div>
 
 						<div className="card hover:border-primary-500 transition-colors">
-							<div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
+							<div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
 								<TrendingUp className="h-6 w-6 text-white" />
 							</div>
 							<h3 className="text-heading text-primary mb-3">
@@ -217,26 +217,26 @@ export default function TreinoPersonalizado() {
 								orientação. Ao escolher um de nossos personal trainers, você
 								terá um parceiro dedicado à sua saúde e ao seu bem-estar.
 							</p>
-							<ul className="space-y-3">
-								<li className="flex items-start space-x-3">
+							<ul className="gap-y-3">
+								<li className="flex items-start gap-x-3">
 									<CheckCircle className="h-5 w-5 text-primary-500 mt-0.5" />
 									<span className="text-body text-secondary">
 										Certificações reconhecidas nacionalmente
 									</span>
 								</li>
-								<li className="flex items-start space-x-3">
+								<li className="flex items-start gap-x-3">
 									<CheckCircle className="h-5 w-5 text-primary-500 mt-0.5" />
 									<span className="text-body text-secondary">
 										Experiência em diversas modalidades
 									</span>
 								</li>
-								<li className="flex items-start space-x-3">
+								<li className="flex items-start gap-x-3">
 									<CheckCircle className="h-5 w-5 text-primary-500 mt-0.5" />
 									<span className="text-body text-secondary">
 										Especialização em diferentes objetivos
 									</span>
 								</li>
-								<li className="flex items-start space-x-3">
+								<li className="flex items-start gap-x-3">
 									<CheckCircle className="h-5 w-5 text-primary-500 mt-0.5" />
 									<span className="text-body text-secondary">
 										Atualização constante em novas técnicas
@@ -248,39 +248,39 @@ export default function TreinoPersonalizado() {
 							<h4 className="text-heading text-primary mb-4">
 								Áreas de Especialização
 							</h4>
-							<div className="space-y-3">
-								<div className="flex items-center space-x-3">
-									<div className="w-2 h-2 bg-primary-500 rounded-full"></div>
+							<div className="gap-y-3">
+								<div className="flex items-center gap-x-3">
+									<div className="size-2 bg-primary-500 rounded-full"></div>
 									<span className="text-body text-secondary">
 										Emagrecimento e queima de gordura
 									</span>
 								</div>
-								<div className="flex items-center space-x-3">
-									<div className="w-2 h-2 bg-primary-500 rounded-full"></div>
+								<div className="flex items-center gap-x-3">
+									<div className="size-2 bg-primary-500 rounded-full"></div>
 									<span className="text-body text-secondary">
 										Ganho de massa muscular
 									</span>
 								</div>
-								<div className="flex items-center space-x-3">
-									<div className="w-2 h-2 bg-primary-500 rounded-full"></div>
+								<div className="flex items-center gap-x-3">
+									<div className="size-2 bg-primary-500 rounded-full"></div>
 									<span className="text-body text-secondary">
 										Performance esportiva
 									</span>
 								</div>
-								<div className="flex items-center space-x-3">
-									<div className="w-2 h-2 bg-primary-500 rounded-full"></div>
+								<div className="flex items-center gap-x-3">
+									<div className="size-2 bg-primary-500 rounded-full"></div>
 									<span className="text-body text-secondary">
 										Reabilitação e fisioterapia
 									</span>
 								</div>
-								<div className="flex items-center space-x-3">
-									<div className="w-2 h-2 bg-primary-500 rounded-full"></div>
+								<div className="flex items-center gap-x-3">
+									<div className="size-2 bg-primary-500 rounded-full"></div>
 									<span className="text-body text-secondary">
 										Condicionamento físico geral
 									</span>
 								</div>
-								<div className="flex items-center space-x-3">
-									<div className="w-2 h-2 bg-primary-500 rounded-full"></div>
+								<div className="flex items-center gap-x-3">
+									<div className="size-2 bg-primary-500 rounded-full"></div>
 									<span className="text-body text-secondary">
 										Treinamento funcional
 									</span>
@@ -305,7 +305,7 @@ export default function TreinoPersonalizado() {
 
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 						<div className="text-center">
-							<div className="flex items-center justify-center w-16 h-16 bg-primary-500 rounded-full mx-auto mb-4">
+							<div className="flex items-center justify-center size-16 bg-primary-500 rounded-full mx-auto mb-4">
 								<span className="text-2xl font-bold text-white">1</span>
 							</div>
 							<h3 className="text-heading text-primary mb-3">
@@ -319,7 +319,7 @@ export default function TreinoPersonalizado() {
 						</div>
 
 						<div className="text-center">
-							<div className="flex items-center justify-center w-16 h-16 bg-primary-500 rounded-full mx-auto mb-4">
+							<div className="flex items-center justify-center size-16 bg-primary-500 rounded-full mx-auto mb-4">
 								<span className="text-2xl font-bold text-white">2</span>
 							</div>
 							<h3 className="text-heading text-primary mb-3">
@@ -333,7 +333,7 @@ export default function TreinoPersonalizado() {
 						</div>
 
 						<div className="text-center">
-							<div className="flex items-center justify-center w-16 h-16 bg-primary-500 rounded-full mx-auto mb-4">
+							<div className="flex items-center justify-center size-16 bg-primary-500 rounded-full mx-auto mb-4">
 								<span className="text-2xl font-bold text-white">3</span>
 							</div>
 							<h3 className="text-heading text-primary mb-3">
@@ -347,7 +347,7 @@ export default function TreinoPersonalizado() {
 						</div>
 
 						<div className="text-center">
-							<div className="flex items-center justify-center w-16 h-16 bg-primary-500 rounded-full mx-auto mb-4">
+							<div className="flex items-center justify-center size-16 bg-primary-500 rounded-full mx-auto mb-4">
 								<span className="text-2xl font-bold text-white">4</span>
 							</div>
 							<h3 className="text-heading text-primary mb-3">

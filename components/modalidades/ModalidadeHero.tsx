@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import SchedulingLink from "@/components/SchedulingLink";
 
 export type ModalidadeHeroProps = {
@@ -60,7 +61,7 @@ export default function ModalidadeHero({
 							{badge}
 						</span>
 					)}
-					<h1 className="mb-6 text-6xl font-black uppercase leading-tight tracking-tighter text-white md:text-8xl">
+					<h1 className="mb-6 text-6xl font-semibold uppercase leading-tight tracking-tighter text-white md:text-8xl">
 						{title}
 						{titleHighlight != null && (
 							<>
@@ -79,12 +80,12 @@ export default function ModalidadeHero({
 						<SchedulingLink className="inline-flex items-center justify-center gap-2 rounded-full bg-primary-500 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-primary-500/20 transition-all hover:bg-primary-500/90">
 							Agendar Aula Experimental
 						</SchedulingLink>
-						<a
+						<Link
 							href="/aulas-coletivas"
 							className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition-all hover:bg-white/20"
 						>
 							Ver Outras Aulas
-						</a>
+						</Link>
 					</div>
 					{stats && stats.length > 0 && (
 						<div className="mt-10 flex flex-wrap items-center gap-6">

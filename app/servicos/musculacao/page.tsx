@@ -85,7 +85,7 @@ export default function Musculacao() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <div className="card hover:border-primary-500 transition-colors">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
+              <div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
                 <TrendingUp className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-heading text-primary mb-3">
@@ -97,7 +97,7 @@ export default function Musculacao() {
             </div>
 
             <div className="card hover:border-primary-500 transition-colors">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
+              <div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
                 <Shield className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-heading text-primary mb-3">
@@ -109,7 +109,7 @@ export default function Musculacao() {
             </div>
 
             <div className="card hover:border-primary-500 transition-colors">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
+              <div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
                 <Target className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-heading text-primary mb-3">
@@ -121,7 +121,7 @@ export default function Musculacao() {
             </div>
 
             <div className="card hover:border-primary-500 transition-colors">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
+              <div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
                 <CheckCircle className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-heading text-primary mb-3">
@@ -133,7 +133,7 @@ export default function Musculacao() {
             </div>
 
             <div className="card hover:border-primary-500 transition-colors">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
+              <div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
                 <Dumbbell className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-heading text-primary mb-3">
@@ -145,7 +145,7 @@ export default function Musculacao() {
             </div>
 
             <div className="card hover:border-primary-500 transition-colors">
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-500 rounded-lg mb-4">
+              <div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
                 <Shield className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-heading text-primary mb-3">
@@ -175,7 +175,7 @@ export default function Musculacao() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             <div className="text-center">
-              <div className="flex items-center justify-center w-16 h-16 bg-primary-500 rounded-lg mx-auto mb-4">
+              <div className="flex items-center justify-center size-16 bg-primary-500 rounded-lg mx-auto mb-4">
                 <Dumbbell className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-heading text-primary mb-3">
@@ -187,7 +187,7 @@ export default function Musculacao() {
             </div>
 
             <div className="text-center">
-              <div className="flex items-center justify-center w-16 h-16 bg-primary-500 rounded-lg mx-auto mb-4">
+              <div className="flex items-center justify-center size-16 bg-primary-500 rounded-lg mx-auto mb-4">
                 <Target className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-heading text-primary mb-3">
@@ -199,7 +199,7 @@ export default function Musculacao() {
             </div>
 
             <div className="text-center">
-              <div className="flex items-center justify-center w-16 h-16 bg-primary-500 rounded-lg mx-auto mb-4">
+              <div className="flex items-center justify-center size-16 bg-primary-500 rounded-lg mx-auto mb-4">
                 <Users className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-heading text-primary mb-3">
@@ -234,20 +234,20 @@ export default function Musculacao() {
               <p className="text-body text-secondary mb-6">
                 Nossos professores trabalham em conjunto com você para elaborar um plano de treino de musculação personalizado, levando em consideração seus objetivos, nível de condicionamento físico, histórico de saúde e preferências.
               </p>
-              <ul className="space-y-3">
-                <li className="flex items-start space-x-3">
+              <ul className="gap-y-3">
+                <li className="flex items-start gap-x-3">
                   <CheckCircle className="h-5 w-5 text-primary-500 mt-0.5" />
                   <span className="text-body text-secondary">Avaliação completa do seu condicionamento atual</span>
                 </li>
-                <li className="flex items-start space-x-3">
+                <li className="flex items-start gap-x-3">
                   <CheckCircle className="h-5 w-5 text-primary-500 mt-0.5" />
                   <span className="text-body text-secondary">Plano de treino adaptado aos seus objetivos</span>
                 </li>
-                <li className="flex items-start space-x-3">
+                <li className="flex items-start gap-x-3">
                   <CheckCircle className="h-5 w-5 text-primary-500 mt-0.5" />
                   <span className="text-body text-secondary">Acompanhamento e ajustes regulares</span>
                 </li>
-                <li className="flex items-start space-x-3">
+                <li className="flex items-start gap-x-3">
                   <CheckCircle className="h-5 w-5 text-primary-500 mt-0.5" />
                   <span className="text-body text-secondary">Orientação sobre execução correta dos exercícios</span>
                 </li>

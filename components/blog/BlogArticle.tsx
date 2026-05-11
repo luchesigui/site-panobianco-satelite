@@ -55,7 +55,7 @@ export default function BlogArticle({
 					</span>
 
 					{/* Title */}
-					<h1 className="mb-6 text-4xl font-black leading-none tracking-tight md:text-5xl">
+					<h1 className="mb-6 text-4xl font-semibold leading-none tracking-tight md:text-5xl">
 						{headline}
 					</h1>
 

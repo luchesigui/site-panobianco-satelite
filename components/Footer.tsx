@@ -20,7 +20,7 @@ export default function Footer() {
             <div className="mb-6">
               <Logo className="h-10 w-auto" width={140} height={40} />
             </div>
-            <p className="mb-6 max-w-sm text-gray-400">
+            <p className="mb-6 max-w-sm text-neutral-400">
               Transformando vidas através do movimento. A Panobianco Jardim
               Satélite é o seu destino premium para saúde e bem-estar.
             </p>
@@ -48,7 +48,7 @@ export default function Footer() {
 
           <div>
             <h4 className="mb-6 font-bold">Links Rápidos</h4>
-            <ul className="space-y-4 text-sm text-gray-400">
+            <ul className="space-y-4 text-sm text-neutral-400">
               <li>
                 <Link
                   href="/blog"
@@ -94,7 +94,7 @@ export default function Footer() {
 
           <div>
             <h4 className="mb-6 font-bold">Contato</h4>
-            <ul className="space-y-4 text-sm text-gray-400">
+            <ul className="space-y-4 text-sm text-neutral-400">
               <li className="flex items-center gap-2">
                 <Phone className="size-4 shrink-0" />
                 <a
@@ -127,7 +127,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/5 pt-12">
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-neutral-500" suppressHydrationWarning>
             © {new Date().getFullYear()} Panobianco Jardim Satélite. Todos os
             direitos reservados.
           </p>

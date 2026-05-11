@@ -40,7 +40,7 @@ export default function ModalidadeAbout({
 					<div
 						className={`space-y-6 ${imagePosition === "left" ? "lg:order-2" : "lg:order-1"}`}
 					>
-						<h2 className="text-4xl font-black mb-8 leading-tight text-white md:text-5xl">
+						<h2 className="text-4xl font-semibold mb-8 leading-tight text-white md:text-5xl">
 							{title}
 							{titleHighlight && (
 								<>
@@ -163,7 +163,7 @@ export default function ModalidadeAbout({
 									{featureCard.items.map((item) => (
 										<li
 											key={item}
-											className="flex items-center gap-3 text-gray-400"
+											className="flex items-center gap-3 text-neutral-400"
 										>
 											<div className={`size-2 rounded-full ${accentClass}`} />
 											<span>{item}</span>

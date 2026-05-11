@@ -22,10 +22,10 @@ export default function BlogCard({ post }: Props) {
 				<h2 className="mb-3 line-clamp-2 text-lg font-bold text-white transition-colors group-hover:text-primary-500">
 					{post.headline}
 				</h2>
-				<p className="mb-4 line-clamp-3 flex-1 text-sm text-gray-400">
+				<p className="mb-4 line-clamp-3 flex-1 text-sm text-neutral-400">
 					{post.description}
 				</p>
-				<div className="flex items-center gap-2 text-xs text-gray-500">
+				<div className="flex items-center gap-2 text-xs text-neutral-500">
 					<time dateTime={post.publishedAt}>{date}</time>
 					<span>·</span>
 					<span>{post.readingTimeMinutes} min de leitura</span>

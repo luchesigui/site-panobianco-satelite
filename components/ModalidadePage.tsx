@@ -45,8 +45,8 @@ function ModalidadeClasses({
 						</h3>
 						{description && (
 							<>
-								<p className="mb-4 leading-relaxed text-gray-400">{description}</p>
-								<p className="mb-6 leading-relaxed text-gray-400">
+								<p className="mb-4 leading-relaxed text-neutral-400">{description}</p>
+								<p className="mb-6 leading-relaxed text-neutral-400">
 									A trilha sonora e as coreografias são pensadas para manter
 									você motivado. Consulte a grade de horários na recepção ou
 									entre em contato.
@@ -54,7 +54,7 @@ function ModalidadeClasses({
 							</>
 						)}
 						<div className="rounded-xl bg-primary-500/20 p-4">
-							<p className="text-center text-sm text-gray-300">
+							<p className="text-center text-sm text-neutral-300">
 								<strong>Horários:</strong> Consulte nossa grade na recepção ou
 								entre em contato
 							</p>
@@ -66,7 +66,7 @@ function ModalidadeClasses({
 						</h3>
 						<ul className="space-y-4">
 							{highlights.map((item) => (
-								<li key={item} className="flex items-start gap-3 text-gray-400">
+								<li key={item} className="flex items-start gap-3 text-neutral-400">
 									<div className={`mt-1.5 size-2 shrink-0 rounded-full ${accentClass}`} />
 									<span>{item}</span>
 								</li>
