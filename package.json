@@ -8,9 +8,11 @@
 		"start": "next start",
 		"lint": "next lint",
 		"lint:biome": "biome check .",
-		"format": "biome check --write ."
+		"format": "biome check --write .",
+		"resend:sync-quiz-templates": "tsx scripts/sync-quiz-resend-templates.ts"
 	},
 	"dependencies": {
+		"@neondatabase/serverless": "^1.1.0",
 		"gray-matter": "^4.0.3",
 		"lucide-react": "^0.294.0",
 		"next": "14.2.35",
@@ -31,6 +33,7 @@
 		"postcss": "^8",
 		"sharp": "^0.33.5",
 		"tailwindcss": "^3.3.0",
+		"tsx": "^4.21.0",
 		"typescript": "^5"
 	}
 }

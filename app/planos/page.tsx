@@ -10,9 +10,9 @@ import {
 	Zap,
 } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import ContactCtaSection from "@/components/ContactCtaSection";
+import PlanCTAButton from "@/components/PlanCTAButton";
 import {
 	PLANS,
 	PHONE_DISPLAY,
@@ -201,12 +201,14 @@ export default function Planos() {
 								Válido para quem não teve contrato promocional nos últimos 12
 								meses.
 							</p>
-							<Link
+							<PlanCTAButton
+								plan="orange"
 								href="/checkout?plan=orange"
+								destination="checkout"
 								className="mt-auto flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all hover:bg-primary-500/90"
 							>
 								Assinar Agora
-							</Link>
+							</PlanCTAButton>
 						</article>
 
 						{/* Platinum Recorrente - MAIS VANTAJOSO */}
@@ -243,12 +245,14 @@ export default function Planos() {
 									</li>
 								))}
 							</ul>
-							<Link
+							<PlanCTAButton
+								plan="platinum"
 								href="/checkout?plan=platinum"
+								destination="checkout"
 								className="mt-auto flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all hover:bg-primary-500/90"
 							>
 								Assinar Agora
-							</Link>
+							</PlanCTAButton>
 						</article>
 
 						{/* Plano Avulso */}
@@ -285,14 +289,14 @@ export default function Planos() {
 									<span>{avulsoExclude}</span>
 								</li>
 							</ul>
-							<a
+							<PlanCTAButton
+								plan="avulso"
 								href={WHATSAPP_AVULSO}
-								target="_blank"
-								rel="noopener noreferrer"
+								destination="whatsapp"
 								className="mt-auto flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all hover:bg-primary-500/90"
 							>
 								Falar no WhatsApp
-							</a>
+							</PlanCTAButton>
 						</article>
 					</div>
 

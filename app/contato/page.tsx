@@ -23,6 +23,7 @@ import {
 	WHATSAPP_PHONE,
 	WHATSAPP_URL,
 } from "@/lib/constants";
+import { trackContactFormSubmitted } from "@/lib/analytics";
 
 const heroBg = "/images/fachada.png";
 
@@ -62,6 +63,7 @@ export default function Contato() {
 
 			const data = await response.json();
 			if (response.ok) {
+				trackContactFormSubmitted(true);
 				setSubmitMessage(
 					"Mensagem enviada com sucesso! Entraremos em contato em breve.",
 				);
@@ -73,11 +75,13 @@ export default function Contato() {
 					mensagem: "",
 				});
 			} else {
+				trackContactFormSubmitted(false);
 				setSubmitMessage(
 					data.error || "Erro ao enviar mensagem. Tente novamente.",
 				);
 			}
 		} catch {
+			trackContactFormSubmitted(false);
 			setSubmitMessage("Erro ao enviar mensagem. Tente novamente.");
 		} finally {
 			setIsSubmitting(false);
