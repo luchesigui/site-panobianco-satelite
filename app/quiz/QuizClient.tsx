@@ -13,6 +13,7 @@ import {
   trackQuizEbookCaptured,
   trackQuizStepCompleted,
 } from "@/lib/analytics";
+import { useQuizSession } from "@/hooks/useQuizSession";
 
 // ─── TYPES ────────────────────────────────────────────────────────────────────
 
@@ -507,6 +508,7 @@ export default function QuizClient() {
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState<"forward" | "back">("forward");
   const [screen, setScreen] = useState<"success" | "ebook" | null>(null);
+  const { persistStep } = useQuizSession();
 
   const currentId = history[history.length - 1];
   const step = STEPS[STEP_INDEX[currentId]];
@@ -557,6 +559,8 @@ export default function QuizClient() {
       trackQuizPlanSelected(value, planLabels[value] ?? value);
     }
 
+    persistStep(step.id, step.phase, updatedAnswers);
+
     if (nextId === "success_screen") {
       setAnswers(updatedAnswers);
       setScreen("success");
@@ -584,7 +588,23 @@ export default function QuizClient() {
 
   const handleCaptureSubmit = (contact: { email: string; whatsapp: string }) => {
     trackQuizLeadCaptured(answers.plan ?? "");
-    setAnswers((p) => ({ ...p, ...contact }));
+    const finalAnswers = { ...answers, ...contact };
+    setAnswers(finalAnswers);
+    persistStep("capture", "decisao", finalAnswers, true);
+    fetch("/api/quiz/email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstName: answers.firstName,
+        email: contact.email,
+        plan: answers.plan,
+        goal: answers.goal,
+        loseWeightWhy: answers.loseWeightWhy,
+        muscleWhy: answers.muscleWhy,
+        energyMissing: answers.energyMissing,
+        healthMotivation: answers.healthMotivation,
+      }),
+    }).catch(() => {});
     setScreen("success");
   };
 
@@ -907,7 +927,7 @@ function ScreenSuccess({
 }) {
   const planLabel = PLAN_LABELS[answers.plan] ?? "escolhido";
   const waLink = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(
-    `Olá! Fiz o quiz e quero o plano ${planLabel}.`,
+    `Olá, vim do quiz e gostaria de mais informações.`,
   )}`;
 
   return (
@@ -926,11 +946,10 @@ function ScreenSuccess({
           {/* Plan confirmation */}
           <div className="mb-8 rounded-xl border border-primary-500/20 bg-primary-500/8 p-5 text-left">
             <p className="text-sm leading-relaxed text-white/75">
-              <strong className="text-white">{answers.firstName}</strong>, você escolheu o plano{" "}
-              <strong className="text-primary-500">{planLabel}</strong>. Nossa equipe vai entrar em
-              contato pelo WhatsApp{" "}
-              <strong className="text-white">{answers.whatsapp}</strong> para fechar tudo com você.
-              🎉
+              <strong className="text-white">{answers.firstName}</strong>, em breve você vai receber
+              um e-mail com o resultado do seu quiz e a indicação do plano{" "}
+              <strong className="text-primary-500">{planLabel}</strong>. Se ficou alguma dúvida,
+              fale com a gente pelo WhatsApp — é rapidinho! 😊
             </p>
           </div>
 
@@ -941,7 +960,7 @@ function ScreenSuccess({
             onClick={() => trackQuizWhatsappClicked(answers.plan ?? "")}
             className="flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_20px_rgba(255,94,41,0.3)] transition-all hover:bg-primary-500/90 active:scale-95"
           >
-            Falar com a equipe agora →
+            Tirar dúvidas pelo WhatsApp →
           </a>
         </div>
 
@@ -1036,6 +1055,16 @@ function ScreenEbook({ answers }: { answers: Answers }) {
             onClick={() => {
               if (email.includes("@")) {
                 trackQuizEbookCaptured();
+                fetch("/api/quiz/email", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    firstName: answers.firstName ?? "amigo(a)",
+                    email,
+                    plan: "too_expensive",
+                    goal: answers.goal ?? "health",
+                  }),
+                }).catch(() => {});
                 setDone(true);
               }
             }}
