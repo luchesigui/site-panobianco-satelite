@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Footer from "@/components/Footer";
-import { GTMHead, GTM_ID } from "@/components/GTM";
+import { GTM_ID } from "@/components/GTM";
 import Header from "@/components/Header";
 import { IndicationProvider } from "@/contexts/IndicationContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
@@ -127,6 +127,15 @@ export default function RootLayout({
     <html lang="pt-BR" className={inter.variable}>
       <head>
         <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`,
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
@@ -140,7 +149,6 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <GTMHead />
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}

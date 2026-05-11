@@ -507,6 +507,7 @@ export default function QuizClient() {
   const [visible, setVisible] = useState(true);
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState<"forward" | "back">("forward");
+  const quizStartedTracked = useRef(false);
   const [screen, setScreen] = useState<"success" | "ebook" | null>(null);
   const { persistStep } = useQuizSession();
 
@@ -548,7 +549,6 @@ export default function QuizClient() {
 
     // Tracking — fires before state transitions
     trackQuizStepCompleted(step.id, step.phase);
-    if (fieldKey === "firstName") trackQuizStarted();
     if (fieldKey === "goal") trackQuizGoalSelected(value);
     if (fieldKey === "plan") {
       const planLabels: Record<string, string> = {
@@ -735,9 +735,17 @@ export default function QuizClient() {
               {step.type === "text_input" && (
                 <TextInputBlock
                   value={textInput}
-                  onChange={(v) =>
-                    setTextInput(step.mask === "date" ? applyDateMask(v) : v)
-                  }
+                  onChange={(v) => {
+                    if (
+                      step.fieldKey === "firstName" &&
+                      v.length === 1 &&
+                      !quizStartedTracked.current
+                    ) {
+                      quizStartedTracked.current = true;
+                      trackQuizStarted();
+                    }
+                    setTextInput(step.mask === "date" ? applyDateMask(v) : v);
+                  }}
                   placeholder={step.placeholder}
                   inputType={step.inputType}
                   inputMode={step.inputMode}
