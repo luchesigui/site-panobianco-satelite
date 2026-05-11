@@ -551,12 +551,7 @@ export default function QuizClient() {
     trackQuizStepCompleted(step.id, step.phase);
     if (fieldKey === "goal") trackQuizGoalSelected(value);
     if (fieldKey === "plan") {
-      const planLabels: Record<string, string> = {
-        orange: "Orange Anual",
-        platinum_rec: "Platinum Recorrente",
-        platinum_month: "Platinum Mensal",
-      };
-      trackQuizPlanSelected(value, planLabels[value] ?? value);
+      trackQuizPlanSelected(value, PLAN_LABELS[value] ?? value);
     }
 
     persistStep(step.id, step.phase, updatedAnswers);
