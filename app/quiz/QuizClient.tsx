@@ -593,14 +593,17 @@ export default function QuizClient() {
 
   const advance = (fieldKey: string, value: string) => {
     if (animating) return;
-    const updatedAnswers = { ...answers, [fieldKey]: value };
+    
+    // If it's the first name, extract only the first word (in case they put full name)
+    const finalValue = fieldKey === "firstName" ? value.trim().split(/\s+/)[0] : value;
+    const updatedAnswers = { ...answers, [fieldKey]: finalValue };
     const nextId = resolveNext(step, updatedAnswers);
 
     // Tracking — fires before state transitions
     trackQuizStepCompleted(step.id, step.phase);
-    if (fieldKey === "goal") trackQuizGoalSelected(value);
+    if (fieldKey === "goal") trackQuizGoalSelected(finalValue);
     if (fieldKey === "plan") {
-      trackQuizPlanSelected(value, PLAN_LABELS[value] ?? value);
+      trackQuizPlanSelected(finalValue, PLAN_LABELS[finalValue] ?? finalValue);
     }
 
     persistStep(step.id, step.phase, updatedAnswers);

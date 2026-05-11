@@ -40,7 +40,7 @@ function quizEmailIdempotencyKey(input: {
 export async function POST(request: NextRequest) {
   const body = await request.json();
   const {
-    firstName,
+    firstName: rawFirstName,
     email,
     whatsapp,
     plan,
@@ -60,6 +60,8 @@ export async function POST(request: NextRequest) {
     energyMissing?: string;
     healthMotivation?: string;
   };
+
+  const firstName = rawFirstName?.trim().split(/\s+/)[0] || "";
 
   if (!firstName || !email) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });

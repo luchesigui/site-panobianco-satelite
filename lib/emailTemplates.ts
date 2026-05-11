@@ -161,7 +161,8 @@ function buildEmailHtmlInner(
 
 export function buildEmailHtml(params: EmailParams): string {
   const { firstName, ctaHref, ...rest } = params;
-  return buildEmailHtmlInner(firstName, ctaHref, rest);
+  const displayFirstName = firstName.trim().split(/\s+/)[0];
+  return buildEmailHtmlInner(displayFirstName, ctaHref, rest);
 }
 
 /** HTML for a Resend-hosted template — uses {{{FIRST_NAME}}} and {{{CTA_HREF}}}. */
