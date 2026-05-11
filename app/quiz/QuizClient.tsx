@@ -947,9 +947,8 @@ function ScreenSuccess({
           <div className="mb-8 rounded-xl border border-primary-500/20 bg-primary-500/8 p-5 text-left">
             <p className="text-sm leading-relaxed text-white/75">
               <strong className="text-white">{answers.firstName}</strong>, em breve você vai receber
-              um e-mail com o resultado do seu quiz e a indicação do plano{" "}
-              <strong className="text-primary-500">{planLabel}</strong>. Se ficou alguma dúvida,
-              fale com a gente pelo WhatsApp — é rapidinho! 😊
+              um e-mail com o resultado do seu quiz. Se ficou alguma dúvida,
+              fale com a gente pelo WhatsApp, é rapidinho! 😊
             </p>
           </div>
 
