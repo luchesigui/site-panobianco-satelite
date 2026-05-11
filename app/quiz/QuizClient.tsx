@@ -645,6 +645,8 @@ export default function QuizClient() {
         firstName: answers.firstName,
         email: contact.email,
         whatsapp: contact.whatsapp,
+        sex: answers.sex,
+        birthdate: answers.birthdate,
         plan: answers.plan,
         goal: answers.goal,
         loseWeightWhy: answers.loseWeightWhy,

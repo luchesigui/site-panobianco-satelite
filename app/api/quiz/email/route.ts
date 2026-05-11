@@ -4,6 +4,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 import { CONTACT_EMAIL } from "@/lib/constants";
+import { createEvoProspect } from "@/lib/evo";
 import {
   buildEmailHtml,
   selectCtaContent,
@@ -43,6 +44,8 @@ export async function POST(request: NextRequest) {
     firstName: rawFirstName,
     email,
     whatsapp,
+    sex,
+    birthdate,
     plan,
     goal,
     loseWeightWhy,
@@ -53,6 +56,8 @@ export async function POST(request: NextRequest) {
     firstName: string;
     email: string;
     whatsapp?: string;
+    sex?: string;
+    birthdate?: string;
     plan: string;
     goal: string;
     loseWeightWhy?: string;
@@ -69,14 +74,37 @@ export async function POST(request: NextRequest) {
 
   if (!process.env.RESEND_API_KEY) {
     console.error("[quiz/email] RESEND_API_KEY not configured");
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, idProspect: null });
+  }
+
+  // Create EVO prospect — awaited so idProspect is available for the checkout URL in the email.
+  // Failure is non-fatal: the rest of the flow continues with idProspect = null.
+  let idProspect: number | null = null;
+  if (sex && birthdate && whatsapp) {
+    try {
+      idProspect = await createEvoProspect({
+        firstName,
+        email,
+        phone: whatsapp,
+        birthdate,
+        gender: sex as "M" | "F",
+        goal,
+        plan,
+      });
+    } catch (err) {
+      console.error("[quiz/email] EVO prospect error:", err);
+    }
   }
 
   try {
     const key = selectTemplate(goal, plan, loseWeightWhy, muscleWhy, energyMissing, healthMotivation);
     const tpl = TEMPLATES[key];
     const subject = tpl.subject.replace("{Nome}", firstName);
-    const ctaHref = selectCtaHref(plan);
+    const baseCtaHref = selectCtaHref(plan);
+    const ctaHref =
+      idProspect && baseCtaHref.includes("/checkout/")
+        ? `${baseCtaHref}?idProspect=${idProspect}`
+        : baseCtaHref;
     const tag = tpl.tag.replace("{Nome}", firstName);
     const { ctaLabel, ctaNote } = selectCtaContent(key, plan);
     const html = buildEmailHtml({ firstName, ...tpl, tag, ctaHref, ctaLabel, ctaNote });
@@ -93,7 +121,7 @@ export async function POST(request: NextRequest) {
     });
 
     const resend = new Resend(process.env.RESEND_API_KEY);
-    
+
     // 1. Send email to the user
     const result = await resend.emails.send(
       {
@@ -121,7 +149,7 @@ export async function POST(request: NextRequest) {
     // 2. Notify admin (Gui Henrique)
     try {
       const isEbook = plan === "too_expensive";
-      
+
       const goalLabels: Record<string, string> = {
         lose_weight: "Emagrecer e perder gordura",
         gain_muscle: "Ganhar massa e definição",
@@ -153,6 +181,7 @@ export async function POST(request: NextRequest) {
             <p><strong>WhatsApp:</strong> ${whatsapp || "Não informado"}</p>
             <p><strong>Objetivo:</strong> ${goalLabel}</p>
             <p><strong>Plano Escolhido:</strong> ${planLabel}</p>
+            ${idProspect ? `<p><strong>EVO Prospect ID:</strong> ${idProspect}</p>` : ""}
             ${isEbook ? '<p style="background: #fff4f0; padding: 10px; border-radius: 5px; border-left: 4px solid #ff5e29;"><strong>Nota:</strong> Este usuário achou os planos caros e foi para o fluxo do e-book.</p>' : ""}
             <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
             <p style="font-size: 12px; color: #999;">Enviado automaticamente pelo sistema de Quiz.</p>
@@ -166,5 +195,5 @@ export async function POST(request: NextRequest) {
     console.error("[quiz/email] unexpected error:", err);
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, idProspect });
 }

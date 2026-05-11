@@ -10,8 +10,10 @@ type PlanParam = (typeof VALID_PLANS)[number];
 
 export default async function CheckoutPage({
   params,
+  searchParams,
 }: {
   params: { plan: string };
+  searchParams: { idProspect?: string };
 }) {
   const plan = params.plan as PlanParam;
 
@@ -19,9 +21,11 @@ export default async function CheckoutPage({
     notFound();
   }
 
+  const idProspect = searchParams.idProspect ? Number(searchParams.idProspect) : undefined;
+
   let url: string;
   try {
-    url = await createCheckoutLink(plan);
+    url = await createCheckoutLink(plan, idProspect);
   } catch (err) {
     console.error(`[checkout/${plan}]`, err);
     url = `${SITE_URL}/planos`;
