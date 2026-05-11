@@ -31,7 +31,7 @@ interface TemplateConfig {
   ctaStyle?: string;
 }
 
-type TemplateKey =
+export type TemplateKey =
   | "lw-autoestima"
   | "lw-saude"
   | "lw-evento"
@@ -167,13 +167,13 @@ export function buildEmailHtml(params: EmailParams): string {
 /** HTML for a Resend-hosted template — uses {{{FIRST_NAME}}} and {{{CTA_HREF}}}. */
 export function buildResendQuizTemplateHtml(key: TemplateKey): string {
   const tpl = TEMPLATES[key];
-  const tag = tpl.tag.replaceAll("{Nome}", RESEND_FIRST_NAME);
+  const tag = tpl.tag.split("{Nome}").join(RESEND_FIRST_NAME);
   return buildEmailHtmlInner(RESEND_FIRST_NAME, RESEND_CTA_HREF, { ...tpl, tag });
 }
 
 /** Default subject for Resend template ({{{FIRST_NAME}}} where quiz copy used {Nome}). */
 export function quizResendTemplateSubject(key: TemplateKey): string {
-  return TEMPLATES[key].subject.replaceAll("{Nome}", RESEND_FIRST_NAME);
+  return TEMPLATES[key].subject.split("{Nome}").join(RESEND_FIRST_NAME);
 }
 
 // ─── TEMPLATE CONTENT ────────────────────────────────────────────────────────
