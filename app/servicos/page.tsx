@@ -147,6 +147,7 @@ export default function Servicos() {
 						src={heroBg}
 						alt="Ambiente moderno da academia Panobianco com equipamentos e iluminação"
 						fill
+						sizes="100vw"
 						className="object-cover opacity-30 scale-105"
 					/>
 					<div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/80 to-transparent" />
@@ -155,10 +156,10 @@ export default function Servicos() {
 					<div className="mb-4 inline-block rounded-full border border-primary-500/30 bg-primary-500/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-primary-500">
 						Infraestrutura Premium
 					</div>
-					<h1 className="text-5xl font-black leading-tight tracking-tight text-white md:text-7xl">
+					<h1 className="text-5xl font-semibold leading-tight tracking-tight text-white md:text-7xl">
 						Nossos Serviços
 					</h1>
-					<p className="mx-auto max-w-2xl text-lg font-medium leading-relaxed text-slate-300 md:text-xl">
+					<p className="mx-auto max-w-2xl text-lg font-medium leading-relaxed text-neutral-300 md:text-xl">
 						Descubra por que a Panobianco é a escolha certa para quem busca
 						resultados reais com a melhor infraestrutura da região.
 					</p>
@@ -180,12 +181,12 @@ export default function Servicos() {
 			<section className="container-main py-16">
 				<div className="mb-12 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
 					<div className="space-y-2">
-						<h2 className="text-3xl font-black text-white">
+						<h2 className="text-3xl font-semibold text-white">
 							O que oferecemos para você
 						</h2>
 						<div className="h-1.5 w-20 rounded-full bg-primary-500" />
 					</div>
-					<p className="hidden font-medium text-slate-400 md:block">
+					<p className="hidden font-medium text-neutral-400 md:block">
 						Foco total no seu bem-estar e saúde.
 					</p>
 				</div>
@@ -200,7 +201,7 @@ export default function Servicos() {
 								<h3 className="mb-3 text-xl font-bold text-white">
 									{service.title}
 								</h3>
-								<p className="leading-relaxed text-slate-400">
+								<p className="leading-relaxed text-neutral-400">
 									{service.description}
 								</p>
 								{service.href && (

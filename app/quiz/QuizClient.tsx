@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useReducer, useRef } from "react";
 import { ArrowLeft, Lock, Trophy, BookOpen } from "lucide-react";
 import { WHATSAPP_PHONE } from "@/lib/constants";
 import {
@@ -498,17 +498,69 @@ const applyPhoneMask = (v: string) => {
   return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
 };
 
+// ─── QUIZ REDUCER ─────────────────────────────────────────────────────────────
+
+type QuizState = {
+  history: string[];
+  answers: Answers;
+  textInput: string;
+  visible: boolean;
+  animating: boolean;
+  direction: "forward" | "back";
+  screen: "success" | "ebook" | null;
+};
+
+type QuizAction =
+  | { type: "TRANSITION_START"; direction: "forward" | "back" }
+  | { type: "TRANSITION_COMMIT_FORWARD"; answers: Answers; nextId: string | null }
+  | { type: "TRANSITION_COMMIT_BACK"; history: string[] }
+  | { type: "TRANSITION_END" }
+  | { type: "SET_SCREEN"; screen: "success" | "ebook" }
+  | { type: "SET_ANSWERS"; answers: Answers }
+  | { type: "SET_TEXT_INPUT"; textInput: string };
+
+const initialQuizState: QuizState = {
+  history: ["firstName"],
+  answers: {},
+  textInput: "",
+  visible: true,
+  animating: false,
+  direction: "forward",
+  screen: null,
+};
+
+function quizReducer(state: QuizState, action: QuizAction): QuizState {
+  switch (action.type) {
+    case "TRANSITION_START":
+      return { ...state, animating: true, visible: false, direction: action.direction };
+    case "TRANSITION_COMMIT_FORWARD":
+      return {
+        ...state,
+        answers: action.answers,
+        textInput: "",
+        history: action.nextId ? [...state.history, action.nextId] : state.history,
+        visible: true,
+        animating: false,
+      };
+    case "TRANSITION_COMMIT_BACK":
+      return { ...state, history: action.history, visible: true, animating: false };
+    case "TRANSITION_END":
+      return { ...state, visible: true, animating: false };
+    case "SET_SCREEN":
+      return { ...state, screen: action.screen };
+    case "SET_ANSWERS":
+      return { ...state, answers: action.answers };
+    case "SET_TEXT_INPUT":
+      return { ...state, textInput: action.textInput };
+  }
+}
+
 // ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
 
 export default function QuizClient() {
-  const [history, setHistory] = useState<string[]>(["firstName"]);
-  const [answers, setAnswers] = useState<Answers>({});
-  const [textInput, setTextInput] = useState("");
-  const [visible, setVisible] = useState(true);
-  const [animating, setAnimating] = useState(false);
-  const [direction, setDirection] = useState<"forward" | "back">("forward");
+  const [state, dispatch] = useReducer(quizReducer, initialQuizState);
+  const { history, answers, textInput, visible, animating, direction, screen } = state;
   const quizStartedTracked = useRef(false);
-  const [screen, setScreen] = useState<"success" | "ebook" | null>(null);
   const { persistStep } = useQuizSession();
 
   const currentId = history[history.length - 1];
@@ -516,22 +568,19 @@ export default function QuizClient() {
 
   useEffect(() => {
     if (step?.type === "text_input") {
-      setTextInput(answers[step.fieldKey] ?? "");
+      dispatch({ type: "SET_TEXT_INPUT", textInput: answers[step.fieldKey] ?? "" });
     } else {
-      setTextInput("");
+      dispatch({ type: "SET_TEXT_INPUT", textInput: "" });
     }
   }, [currentId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const transition = (fn: () => void, dir: "forward" | "back" = "forward") => {
+  const transition = (
+    commitAction: QuizAction & { type: "TRANSITION_COMMIT_FORWARD" | "TRANSITION_COMMIT_BACK" },
+    dir: "forward" | "back" = "forward",
+  ) => {
     if (animating) return;
-    setDirection(dir);
-    setAnimating(true);
-    setVisible(false);
-    setTimeout(() => {
-      fn();
-      setVisible(true);
-      setAnimating(false);
-    }, 280);
+    dispatch({ type: "TRANSITION_START", direction: dir });
+    setTimeout(() => dispatch(commitAction), 280);
   };
 
   const resolveNext = (currentStep: Step, updatedAnswers: Answers): string | null => {
@@ -557,34 +606,34 @@ export default function QuizClient() {
     persistStep(step.id, step.phase, updatedAnswers);
 
     if (nextId === "success_screen") {
-      setAnswers(updatedAnswers);
-      setScreen("success");
+      dispatch({ type: "SET_ANSWERS", answers: updatedAnswers });
+      dispatch({ type: "SET_SCREEN", screen: "success" });
       return;
     }
     if (nextId === "ebook_screen") {
-      setAnswers(updatedAnswers);
-      setScreen("ebook");
+      dispatch({ type: "SET_ANSWERS", answers: updatedAnswers });
+      dispatch({ type: "SET_SCREEN", screen: "ebook" });
       return;
     }
 
-    transition(() => {
-      setAnswers(updatedAnswers);
-      setTextInput("");
-      if (nextId) setHistory((h) => [...h, nextId]);
-    }, "forward");
+    transition(
+      { type: "TRANSITION_COMMIT_FORWARD", answers: updatedAnswers, nextId },
+      "forward",
+    );
   };
 
   const goBack = () => {
     if (history.length <= 1 || animating) return;
-    transition(() => {
-      setHistory((h) => h.slice(0, -1));
-    }, "back");
+    transition(
+      { type: "TRANSITION_COMMIT_BACK", history: history.slice(0, -1) },
+      "back",
+    );
   };
 
   const handleCaptureSubmit = (contact: { email: string; whatsapp: string }) => {
     trackQuizLeadCaptured(answers.plan ?? "");
     const finalAnswers = { ...answers, ...contact };
-    setAnswers(finalAnswers);
+    dispatch({ type: "SET_ANSWERS", answers: finalAnswers });
     persistStep("capture", "decisao", finalAnswers, true);
     fetch("/api/quiz/email", {
       method: "POST",
@@ -600,7 +649,7 @@ export default function QuizClient() {
         healthMotivation: answers.healthMotivation,
       }),
     }).catch(() => {});
-    setScreen("success");
+    dispatch({ type: "SET_SCREEN", screen: "success" });
   };
 
   const getQuestion = (): string => {
@@ -677,8 +726,8 @@ export default function QuizClient() {
         {/* Progress bar */}
         <div className="mb-8 h-0.5 w-full overflow-hidden rounded-full bg-white/5">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-primary-500 to-orange-400 shadow-[0_0_8px_rgba(255,94,41,0.4)]"
-            style={{ width: `${progress}%`, transition: "width 0.5s cubic-bezier(0.4,0,0.2,1)" }}
+            className="h-full w-full origin-left rounded-full bg-gradient-to-r from-primary-500 to-orange-400 shadow-[0_0_8px_rgba(255,94,41,0.4)] transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"
+            style={{ transform: `scaleX(${progress / 100})` }}
           />
         </div>
 
@@ -739,7 +788,7 @@ export default function QuizClient() {
                       quizStartedTracked.current = true;
                       trackQuizStarted();
                     }
-                    setTextInput(step.mask === "date" ? applyDateMask(v) : v);
+                    dispatch({ type: "SET_TEXT_INPUT", textInput: step.mask === "date" ? applyDateMask(v) : v });
                   }}
                   placeholder={step.placeholder}
                   inputType={step.inputType}
@@ -877,7 +926,7 @@ function CaptureBlock({
     <div className="flex flex-col gap-5">
       <div className="text-center">
         <div className="mb-4 text-5xl">🎯</div>
-        <h2 className="mb-2 text-2xl font-black leading-snug text-white">
+        <h2 className="mb-2 text-2xl font-semibold leading-snug text-white">
           Quase lá, {answers.firstName}!
         </h2>
         <p className="text-sm leading-relaxed text-white/50">
@@ -941,7 +990,7 @@ function ScreenSuccess({
         <div className="w-full rounded-xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
           <Trophy className="mx-auto mb-5 size-14 text-primary-500" />
 
-          <h2 className="mb-3 text-2xl font-black leading-snug text-white md:text-3xl">
+          <h2 className="mb-3 text-2xl font-semibold leading-snug text-white md:text-3xl">
             {resultData.headline}
           </h2>
           <p className="mb-8 leading-relaxed text-white/55">{resultData.sub}</p>
@@ -991,7 +1040,7 @@ function ScreenEbook({ answers }: { answers: Answers }) {
         <div className="relative mx-auto flex max-w-xl flex-col items-center px-4 pt-16">
           <div className="w-full rounded-xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
             <div className="mb-5 text-5xl">📬</div>
-            <h2 className="mb-3 text-2xl font-black text-white">
+            <h2 className="mb-3 text-2xl font-semibold text-white">
               Obrigado, {answers.firstName}!
             </h2>
             <p className="leading-relaxed text-white/55">
@@ -1015,17 +1064,17 @@ function ScreenEbook({ answers }: { answers: Answers }) {
       <div className="relative mx-auto flex max-w-xl flex-col items-center px-4 pt-16">
         <div className="w-full rounded-xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
           <div className="mb-5 text-center text-5xl">🤗</div>
-          <h2 className="mb-3 text-center text-2xl font-black text-white">
+          <h2 className="mb-3 text-center text-2xl font-semibold text-white">
             A gente entende, {answers.firstName}.
           </h2>
           <p className="mb-4 leading-relaxed text-white/55">
-            Sabemos que o momento financeiro nem sempre permite. E tudo bem — o que importa é que a
+            Sabemos que o momento financeiro nem sempre permite. E tudo bem, o que importa é que a
             preocupação com a sua saúde já está aqui.
           </p>
           <p className="mb-6 leading-relaxed text-white/55">
             Pensando nisso, criamos um{" "}
             <strong className="text-white">e-book completo</strong> com tudo que você precisa pra
-            começar a se movimentar em casa — pra sair do lugar agora, do seu jeito.
+            começar a se movimentar em casa, pra sair do lugar agora, do seu jeito.
           </p>
 
           {/* Ebook card */}

@@ -152,7 +152,7 @@ export default function Planos() {
 						<span className="mb-4 inline-block rounded-full bg-primary-500/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-primary-500">
 							Unidade Jardim Satélite
 						</span>
-						<h1 className="mb-6 text-4xl font-black leading-[1.1] tracking-tight md:text-6xl">
+						<h1 className="mb-6 text-4xl font-semibold leading-[1.1] tracking-tight md:text-6xl">
 							Escolha o plano ideal para sua{" "}
 							<span className="italic text-primary-500">evolução</span>
 						</h1>

@@ -47,7 +47,7 @@ export default function TreinamentoPage() {
     <div className="font-display min-h-screen bg-background-dark text-white antialiased overflow-x-hidden">
       <section className="relative border-b border-white/10 bg-gradient-to-b from-white/5 to-transparent">
         <div className="container-main py-12 md:py-16">
-          <h1 className="text-4xl font-black leading-tight md:text-5xl">
+          <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
             Treinamento <span className="text-primary-500">em vídeo</span>
           </h1>
           <p className="mt-4 max-w-2xl text-sm text-white/65 md:text-base">
@@ -64,7 +64,7 @@ export default function TreinamentoPage() {
                 <h2 className="text-lg font-bold leading-snug lg:text-xl">
                   {video.title}
                 </h2>
-                <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black">
+                <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-gray-950">
                   <iframe
                     title={video.title}
                     src={`https://www.youtube.com/embed/${video.id}`}

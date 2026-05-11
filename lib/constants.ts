@@ -57,5 +57,3 @@ export const PLANS = {
     badge: "MAIS VANTAJOSO" as string | null,
   },
 } as const;
-
-export type PlanKey = keyof typeof PLANS;

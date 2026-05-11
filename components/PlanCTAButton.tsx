@@ -19,7 +19,7 @@ export default function PlanCTAButton({
   className,
   children,
 }: PlanCTAButtonProps) {
-  const handleClick = () => {
+  const trackPlanCta = () => {
     trackPlanCtaClicked(plan, destination);
     if (destination === "whatsapp") {
       trackWhatsappClicked("plan_avulso", "avulso");
@@ -28,7 +28,7 @@ export default function PlanCTAButton({
 
   if (destination === "checkout") {
     return (
-      <Link href={href} className={className} onClick={handleClick}>
+      <Link href={href} className={className} onClick={trackPlanCta}>
         {children}
       </Link>
     );
@@ -40,7 +40,7 @@ export default function PlanCTAButton({
       target="_blank"
       rel="noopener noreferrer"
       className={className}
-      onClick={handleClick}
+      onClick={trackPlanCta}
     >
       {children}
     </a>

@@ -51,7 +51,7 @@ export default function BlogPage() {
 					<span className="inline-block w-fit rounded-full border border-primary-500/20 bg-primary-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.1em] text-primary-500">
 						Blog
 					</span>
-					<h1 className="text-5xl font-black leading-none tracking-tight md:text-6xl">
+					<h1 className="text-5xl font-semibold leading-none tracking-tight md:text-6xl">
 						SAÚDE & BEM-ESTAR
 					</h1>
 					<p className="text-lg font-normal leading-relaxed text-white/60">

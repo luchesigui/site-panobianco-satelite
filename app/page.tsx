@@ -217,11 +217,11 @@ export default function Home() {
 							</span>
 							Matrículas Abertas - Unidade Jardim Satélite
 						</div>
-						<h1 className="mb-6 text-5xl font-black leading-[1.1] tracking-tight md:text-7xl">
+						<h1 className="mb-6 text-5xl font-semibold leading-[1.1] tracking-tight md:text-7xl">
 							Pronto para sua <br />
 							<span className="italic text-primary-500">melhor versão?</span>
 						</h1>
-						<p className="mb-10 max-w-2xl text-lg leading-relaxed text-gray-300 md:text-xl">
+						<p className="mb-10 max-w-2xl text-lg leading-relaxed text-neutral-300 md:text-xl">
 							A unidade Jardim Satélite oferece infraestrutura premium,
 							equipamentos de última geração e os melhores especialistas para
 							você transformar seu corpo e mente.
@@ -238,7 +238,7 @@ export default function Home() {
 							</Link>
 						</div>
 						<div className="mt-12 flex items-center gap-6">
-							<div className="flex -space-x-3">
+							<div className="flex -gap-x-3">
 								{avatarUrls.map((url) => (
 									<Image
 										key={url}
@@ -262,7 +262,7 @@ export default function Home() {
 										/>
 									))}
 								</div>
-								<p className="text-xs font-medium text-gray-400">
+								<p className="text-xs font-medium text-neutral-400">
 									+2000 alunos satisfeitos no Jardim Satélite
 								</p>
 							</div>
@@ -287,7 +287,7 @@ export default function Home() {
 									</div>
 									<div>
 										<h3 className="mb-2 text-xl font-bold">{item.title}</h3>
-										<p className="text-gray-400">{item.description}</p>
+										<p className="text-neutral-400">{item.description}</p>
 									</div>
 								</div>
 							);
@@ -303,10 +303,10 @@ export default function Home() {
 						<h2 className="mb-4 text-sm font-bold uppercase tracking-widest text-primary-500">
 							O que oferecemos
 						</h2>
-						<h3 className="mb-6 text-4xl font-black md:text-5xl">
+						<h3 className="mb-6 text-4xl font-semibold md:text-5xl">
 							Nossas Modalidades
 						</h3>
-						<p className="mx-auto max-w-2xl text-gray-400">
+						<p className="mx-auto max-w-2xl text-neutral-400">
 							Diversas opções de treino para você nunca cair na rotina e
 							alcançar seus objetivos específicos.
 						</p>
@@ -328,7 +328,7 @@ export default function Home() {
 								<div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-90" />
 								<div className="absolute bottom-0 left-0 w-full p-8">
 									<h4 className="mb-2 text-2xl font-bold">{mod.name}</h4>
-									<p className="mb-4 text-sm text-gray-300">
+									<p className="mb-4 text-sm text-neutral-300">
 										{mod.description}
 									</p>
 									<span className="flex items-center gap-2 font-bold text-primary-500">
@@ -350,13 +350,13 @@ export default function Home() {
 				<div className="container-main">
 					<div className="flex flex-col items-center gap-16 lg:flex-row">
 						<div className="lg:w-1/2">
-							<h2 className="mb-8 text-4xl font-black leading-tight md:text-5xl">
+							<h2 className="mb-8 text-4xl font-semibold leading-tight md:text-5xl">
 								Por que escolher a Panobianco{" "}
 								<span className="italic text-primary-500">
 									Jardim Satélite?
 								</span>
 							</h2>
-							<ul className="space-y-6">
+							<ul className="gap-y-6">
 								{whyUs.map((item) => {
 									const Icon = item.icon;
 									return (
@@ -366,7 +366,7 @@ export default function Home() {
 											</span>
 											<div>
 												<h4 className="text-lg font-bold">{item.title}</h4>
-												<p className="text-gray-400">{item.description}</p>
+												<p className="text-neutral-400">{item.description}</p>
 											</div>
 										</li>
 									);
@@ -399,7 +399,7 @@ export default function Home() {
 			<section className="overflow-hidden bg-background-dark py-24">
 				<div className="container-main">
 					<div className="mb-16 text-center">
-						<h3 className="text-4xl font-black uppercase tracking-tighter">
+						<h3 className="text-4xl font-semibold uppercase tracking-tighter">
 							O que nossos{" "}
 							<span className="text-primary-500">Alunos Dizem</span>
 						</h3>
@@ -426,8 +426,8 @@ export default function Home() {
 									<p
 										className={`mb-8 italic ${
 											t.featured
-												? "font-medium leading-relaxed text-gray-100"
-												: "text-gray-300"
+												? "font-medium leading-relaxed text-neutral-100"
+												: "text-neutral-300"
 										}`}
 									>
 										&quot;{t.quote}&quot;
@@ -458,6 +458,7 @@ export default function Home() {
 									src={mapImage}
 									alt="Localização Panobianco Jardim Satélite"
 									fill
+									sizes="(max-width: 1024px) 100vw, 50vw"
 									className="object-cover grayscale opacity-50 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100"
 								/>
 								<div className="absolute inset-0 bg-primary-500/10 mix-blend-multiply" />
@@ -474,11 +475,11 @@ export default function Home() {
 							</div>
 						</div>
 						<div className="p-8">
-							<h3 className="mb-6 text-3xl font-black">
+							<h3 className="mb-6 text-3xl font-semibold">
 								Horários de{" "}
 								<span className="text-primary-500">Funcionamento</span>
 							</h3>
-							<div className="space-y-4">
+							<div className="gap-y-4">
 								<div className="flex items-center justify-between border-b border-white/10 pb-4">
 									<span className="font-medium">Segunda a Sexta</span>
 									<span className="font-bold text-primary-500">
@@ -504,7 +505,7 @@ export default function Home() {
 									<p className="font-bold">
 										Av. Cidade Jardim, 391 - Jardim Satélite
 									</p>
-									<p className="text-sm text-gray-400">
+									<p className="text-sm text-neutral-400">
 										São José dos Campos - SP, 12231-675
 									</p>
 								</div>
@@ -517,10 +518,10 @@ export default function Home() {
 			{/* Planos anchor section - minimal for nav target */}
 			<section id="planos" className="scroll-mt-24 bg-background-dark py-12">
 				<div className="container-main text-center">
-					<h2 className="mb-4 text-4xl font-black md:text-5xl">
+					<h2 className="mb-4 text-4xl font-semibold md:text-5xl">
 						Planos que cabem no seu bolso
 					</h2>
-					<p className="mx-auto max-w-2xl text-gray-400">
+					<p className="mx-auto max-w-2xl text-neutral-400">
 						Orange Anual, Platinum Recorrente e avulso. Escolha o que combina
 						com você.
 					</p>

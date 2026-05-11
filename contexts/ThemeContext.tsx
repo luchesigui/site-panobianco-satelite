@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, use, useEffect, useReducer, ReactNode } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -10,42 +10,41 @@ interface ThemeContextType {
   mounted: boolean;
 }
 
+type State = { theme: Theme; mounted: boolean };
+type Action = { type: 'INIT'; theme: Theme } | { type: 'TOGGLE' };
+
+function reducer(state: State, action: Action): State {
+  if (action.type === 'INIT') return { theme: action.theme, mounted: true };
+  return { ...state, theme: state.theme === 'dark' ? 'light' : 'dark' };
+}
+
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light');
-  const [mounted, setMounted] = useState(false);
+  const [state, dispatch] = useReducer(reducer, { theme: 'light', mounted: false });
 
   useEffect(() => {
-    setMounted(true);
-    const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
-    }
+    const savedTheme = localStorage.getItem('theme') as Theme | null;
+    const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    dispatch({ type: 'INIT', theme: savedTheme ?? preferred });
   }, []);
 
-  useEffect(() => {
-    if (mounted) {
-      localStorage.setItem('theme', theme);
-      document.documentElement.classList.toggle('dark', theme === 'dark');
-    }
-  }, [theme, mounted]);
-
   const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+    const next = state.theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', next);
+    document.documentElement.classList.toggle('dark', next === 'dark');
+    dispatch({ type: 'TOGGLE' });
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, mounted }}>
+    <ThemeContext.Provider value={{ theme: state.theme, toggleTheme, mounted: state.mounted }}>
       {children}
     </ThemeContext.Provider>
   );
 }
 
 export function useTheme() {
-  const context = useContext(ThemeContext);
+  const context = use(ThemeContext);
   if (context === undefined) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }

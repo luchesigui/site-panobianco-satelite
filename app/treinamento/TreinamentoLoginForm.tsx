@@ -8,7 +8,7 @@ const inputClassName =
 	"w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none";
 
 export default function TreinamentoLoginForm() {
-	const router = useRouter();
+	const { refresh } = useRouter();
 	const [login, setLogin] = useState("");
 	const [senha, setSenha] = useState("");
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,7 +29,7 @@ export default function TreinamentoLoginForm() {
 			const data = await response.json().catch(() => ({}));
 
 			if (response.ok) {
-				router.refresh();
+				refresh();
 				return;
 			}
 
@@ -47,7 +47,7 @@ export default function TreinamentoLoginForm() {
 
 	return (
 		<article className="mx-auto max-w-md rounded-xl border border-white/10 bg-white/5 p-6">
-			<h2 className="text-2xl font-black">Acesso ao treinamento</h2>
+			<h2 className="text-2xl font-semibold">Acesso ao treinamento</h2>
 			<p className="mt-2 text-sm text-white/65">
 				Informe o login e a senha fornecidos pela equipe.
 			</p>

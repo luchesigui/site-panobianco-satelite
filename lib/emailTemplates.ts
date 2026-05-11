@@ -50,7 +50,7 @@ export type TemplateKey =
 // ─── HTML BUILDER ─────────────────────────────────────────────────────────────
 
 /** Resend template variables (reserved — do not re-declare in template `variables`). */
-export const RESEND_FIRST_NAME = "{{{FIRST_NAME}}}";
+const RESEND_FIRST_NAME = "{{{FIRST_NAME}}}";
 export const RESEND_CTA_HREF = "{{{CTA_HREF}}}";
 
 function buildEmailHtmlInner(

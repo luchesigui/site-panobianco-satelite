@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, use, useEffect, useState } from "react";
 
 import { WHATSAPP_AULA_EXPERIMENTAL } from "@/lib/constants";
 
@@ -57,7 +57,7 @@ export function IndicationProvider({ children }: IndicationProviderProps) {
 }
 
 export function useIndication() {
-	const context = useContext(IndicationContext);
+	const context = use(IndicationContext);
 	if (context === undefined) {
 		throw new Error("useIndication must be used within an IndicationProvider");
 	}

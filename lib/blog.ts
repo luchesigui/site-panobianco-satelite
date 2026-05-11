@@ -83,34 +83,37 @@ export async function getPostBySlug(
 			fs.statSync(path.join(contentDir, name)).isDirectory(),
 		);
 
+	let matchedFileContents: string | null = null;
+	let matchedData: ReturnType<typeof matter> | null = null;
 	for (const theme of themes) {
 		const filePath = path.join(contentDir, theme, `${slug}.md`);
 		if (!fs.existsSync(filePath)) continue;
-
-		const fileContents = fs.readFileSync(filePath, "utf8");
-		const { data, content } = matter(fileContents);
-
-		const processedContent = await remark().use(html).process(content);
-		const contentHtml = processedContent.toString();
-
-		return {
-			slug,
-			title: data.title ?? "",
-			headline: data.headline ?? "",
-			description: data.description ?? "",
-			publishedAt: data.publishedAt ?? "",
-			updatedAt: data.updatedAt ?? "",
-			category: data.category ?? "",
-			theme: data.theme ?? "",
-			keywords: data.keywords ?? [],
-			readingTimeMinutes: data.readingTimeMinutes ?? 5,
-			featuredImageSrc: data.featuredImageSrc ?? "",
-			featuredImageAlt: data.featuredImageAlt ?? "",
-			relatedSlugs: data.relatedSlugs ?? [],
-			howto: data.howto,
-			contentHtml,
-		};
+		matchedFileContents = fs.readFileSync(filePath, "utf8");
+		matchedData = matter(matchedFileContents);
+		break;
 	}
 
-	return null;
+	if (!matchedData) return null;
+
+	const { data, content } = matchedData;
+	const processedContent = await remark().use(html).process(content);
+	const contentHtml = processedContent.toString();
+
+	return {
+		slug,
+		title: data.title ?? "",
+		headline: data.headline ?? "",
+		description: data.description ?? "",
+		publishedAt: data.publishedAt ?? "",
+		updatedAt: data.updatedAt ?? "",
+		category: data.category ?? "",
+		theme: data.theme ?? "",
+		keywords: data.keywords ?? [],
+		readingTimeMinutes: data.readingTimeMinutes ?? 5,
+		featuredImageSrc: data.featuredImageSrc ?? "",
+		featuredImageAlt: data.featuredImageAlt ?? "",
+		relatedSlugs: data.relatedSlugs ?? [],
+		howto: data.howto,
+		contentHtml,
+	};
 }
