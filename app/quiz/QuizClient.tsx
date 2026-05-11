@@ -641,6 +641,7 @@ export default function QuizClient() {
       body: JSON.stringify({
         firstName: answers.firstName,
         email: contact.email,
+        whatsapp: contact.whatsapp,
         plan: answers.plan,
         goal: answers.goal,
         loseWeightWhy: answers.loseWeightWhy,
@@ -1112,6 +1113,7 @@ function ScreenEbook({ answers }: { answers: Answers }) {
                   body: JSON.stringify({
                     firstName: answers.firstName ?? "amigo(a)",
                     email,
+                    whatsapp: answers.whatsapp,
                     plan: "too_expensive",
                     goal: answers.goal ?? "health",
                   }),

@@ -42,6 +42,7 @@ export async function POST(request: NextRequest) {
   const {
     firstName,
     email,
+    whatsapp,
     plan,
     goal,
     loseWeightWhy,
@@ -51,6 +52,7 @@ export async function POST(request: NextRequest) {
   } = body as {
     firstName: string;
     email: string;
+    whatsapp?: string;
     plan: string;
     goal: string;
     loseWeightWhy?: string;
@@ -89,6 +91,8 @@ export async function POST(request: NextRequest) {
     });
 
     const resend = new Resend(process.env.RESEND_API_KEY);
+    
+    // 1. Send email to the user
     const result = await resend.emails.send(
       {
         from:
@@ -107,9 +111,54 @@ export async function POST(request: NextRequest) {
     );
 
     if (result.error) {
-      console.error("[quiz/email] Resend error:", result.error);
+      console.error("[quiz/email] Resend error (user):", result.error);
     } else {
       console.log(`[quiz/email] sent template=${key} to=${email} id=${result.data?.id}`);
+    }
+
+    // 2. Notify admin (Gui Henrique)
+    try {
+      const isEbook = plan === "too_expensive";
+      
+      const goalLabels: Record<string, string> = {
+        lose_weight: "Emagrecer e perder gordura",
+        gain_muscle: "Ganhar massa e definição",
+        energy: "Ter mais disposição e energia",
+        health: "Saúde, bem-estar e qualidade de vida",
+      };
+
+      const planLabels: Record<string, string> = {
+        orange: "Orange Anual (R$ 119,90)",
+        platinum_rec: "Platinum Recorrente (R$ 139,90)",
+        platinum_month: "Platinum Mensal (R$ 159,90)",
+        too_expensive: "E-book (Planos caros)",
+      };
+
+      const goalLabel = goalLabels[goal] || goal;
+      const planLabel = planLabels[plan] || plan;
+
+      await resend.emails.send({
+        from: `Panobianco Quiz <${CONTACT_EMAIL}>`,
+        to: ["gui.olhenrique@gmail.com"],
+        subject: isEbook ? `🎯 Lead EBOOK: ${firstName}` : `🎯 Novo Lead Quiz: ${firstName}`,
+        html: `
+          <div style="font-family: sans-serif; max-width: 600px; color: #333;">
+            <h2 style="color: #ff5e29;">${isEbook ? "Novo Lead de Ebook" : "Novo Lead do Quiz"}</h2>
+            <p>Um novo usuário completou o quiz no site.</p>
+            <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
+            <p><strong>Nome:</strong> ${firstName}</p>
+            <p><strong>E-mail:</strong> ${email}</p>
+            <p><strong>WhatsApp:</strong> ${whatsapp || "Não informado"}</p>
+            <p><strong>Objetivo:</strong> ${goalLabel}</p>
+            <p><strong>Plano Escolhido:</strong> ${planLabel}</p>
+            ${isEbook ? '<p style="background: #fff4f0; padding: 10px; border-radius: 5px; border-left: 4px solid #ff5e29;"><strong>Nota:</strong> Este usuário achou os planos caros e foi para o fluxo do e-book.</p>' : ""}
+            <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
+            <p style="font-size: 12px; color: #999;">Enviado automaticamente pelo sistema de Quiz.</p>
+          </div>
+        `,
+      });
+    } catch (adminErr) {
+      console.error("[quiz/email] failed to notify admin:", adminErr);
     }
   } catch (err) {
     console.error("[quiz/email] unexpected error:", err);
