@@ -34,7 +34,8 @@ export const FACEBOOK_URL = "https://facebook.com/panobiancosjcsatelitesp";
 export const YOUTUBE_URL = "https://youtube.com/@panobianco";
 
 /** Contact email */
-export const CONTACT_EMAIL = "sjc.satelite@panobiancoacademia.com.br";
+export const CONTACT_EMAIL =
+  process.env.CONTACT_EMAIL ?? "sjc.satelite@panobiancoacademia.com.br";
 
 /** Phone number formatted for display */
 export const PHONE_DISPLAY = "(12) 98708-2269";
