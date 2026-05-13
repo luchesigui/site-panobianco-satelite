@@ -1,207 +1,281 @@
 {
-  "designSystemProfile": {
-    "name": "Panobianco Agendamento Digital",
-    "version": "1.0.0",
-    "description": "A design system profile based on the Panobianco class scheduling website. It features a dark theme with a vibrant green accent, focusing on clarity and ease of use for a streamlined user experience.",
-    "style": "Dark, Modern, Minimalist",
-    "theme": "Dark",
-    "coreElements": {
-      "colorPalette": {
-        "description": "The palette is built on a dark foundation with shades of grey for depth, and a strong, energetic green for primary actions and highlights.",
-        "primary": {
-          "500": {
-            "value": "#22c55e",
-            "description": "Main brand color for buttons, links, and active states."
-          }
-        },
-        "neutral": {
-          "background": {
-            "value": "#121212",
-            "description": "Base background color of the application."
-          },
-          "surface": {
-            "value": "#1f1f1f",
-            "description": "Background for elevated surfaces like cards and headers."
-          },
-          "border": {
-            "value": "#333333",
-            "description": "Default border color for components like cards and inputs."
-          },
-          "textPrimary": {
-            "value": "#ffffff",
-            "description": "Primary text color for headings and important information."
-          },
-          "textSecondary": {
-            "value": "#a3a3a3",
-            "description": "Secondary text color for less important details and descriptions."
-          }
-        },
-        "state": {
-          "disabled": {
-            "background": {
-              "value": "#3f3f46",
-              "description": "Background color for disabled elements."
-            },
-            "text": {
-              "value": "#71717a",
-              "description": "Text color for disabled elements."
-            }
-          },
-          "focus": {
-            "ring": {
-              "value": "#22c55e",
-              "description": "Color for focus rings on interactive elements like inputs."
-            }
-          }
-        }
-      },
-      "typography": {
-        "description": "Uses a standard system sans-serif font stack for broad compatibility and a clean, modern look. The typographic scale is clear and hierarchical.",
-        "fontFamily": {
-          "sans": {
-            "value": "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
-            "description": "Primary font stack."
-          }
-        },
-        "scale": [
-          {
-            "name": "Display",
-            "size": "1.875rem",
-            "weight": "700",
-            "lineHeight": "2.25rem",
-            "use": "Main page titles."
-          },
-          {
-            "name": "Heading",
-            "size": "1.25rem",
-            "weight": "700",
-            "lineHeight": "1.75rem",
-            "use": "Section titles."
-          },
-          {
-            "name": "Body",
-            "size": "1rem",
-            "weight": "400",
-            "lineHeight": "1.5rem",
-            "use": "Default text for paragraphs and labels."
-          },
-          {
-            "name": "Subtext",
-            "size": "0.875rem",
-            "weight": "400",
-            "lineHeight": "1.25rem",
-            "use": "Helper text and secondary information."
-          }
-        ]
-      },
-      "spacing": {
-        "description": "A consistent spacing scale (likely based on a 0.25rem unit) is used for padding, margins, and gaps to ensure a harmonious layout.",
-        "baseUnit": "0.25rem",
-        "scale": {
-          "xs": "0.5rem",
-          "sm": "0.75rem",
-          "md": "1rem",
-          "lg": "1.5rem",
-          "xl": "2rem",
-          "2xl": "3rem"
-        }
-      },
-      "layout": {
-        "description": "The primary layout is a single, centered column that is responsive and constrained for optimal readability on larger screens.",
-        "container": {
-          "maxWidth": "768px",
-          "padding": "1rem"
-        },
-        "structure": "Single-column, centered"
-      },
-      "effects": {
-        "borderRadius": {
-          "sm": "0.25rem",
-          "md": "0.5rem",
-          "lg": "0.75rem",
-          "full": "9999px"
-        },
-        "boxShadow": {
-          "none": "none"
-        }
-      }
-    },
-    "components": {
-      "description": "Core UI components that form the building blocks of the application interface.",
-      "button": {
-        "description": "Buttons are used for primary user actions.",
-        "baseStyle": {
-          "display": "inline-flex",
-          "alignItems": "center",
-          "justifyContent": "center",
-          "borderRadius": "0.5rem",
-          "fontWeight": "600",
-          "fontSize": "1rem",
-          "padding": "0.75rem 1.25rem",
-          "transition": "background-color 0.2s ease-in-out"
-        },
-        "variants": {
-          "primary": {
-            "backgroundColor": "colorPalette.primary.500",
-            "color": "colorPalette.neutral.textPrimary",
-            "hover": {
-              "backgroundColor": "darken(colorPalette.primary.500, 10%)"
-            }
-          }
-        },
-        "states": {
-          "disabled": {
-            "backgroundColor": "colorPalette.state.disabled.background",
-            "color": "colorPalette.state.disabled.text",
-            "cursor": "not-allowed"
-          }
-        }
-      },
-      "inputField": {
-        "description": "Text inputs for forms and data entry.",
-        "baseStyle": {
-          "width": "100%",
-          "backgroundColor": "colorPalette.neutral.background",
-          "border": "1px solid colorPalette.neutral.border",
-          "borderRadius": "0.5rem",
-          "color": "colorPalette.neutral.textPrimary",
-          "padding": "0.75rem 1rem",
-          "fontSize": "1rem"
-        },
-        "states": {
-          "focus": {
-            "borderColor": "colorPalette.primary.500",
-            "boxShadow": "0 0 0 2px colorPalette.primary.500"
-          }
-        }
-      },
-      "card": {
-        "description": "Cards are used to group related content, such as available time slots.",
-        "baseStyle": {
-          "backgroundColor": "colorPalette.neutral.surface",
-          "border": "1px solid colorPalette.neutral.border",
-          "borderRadius": "0.75rem",
-          "padding": "1.5rem",
-          "display": "flex",
-          "flexDirection": "column"
-        },
-        "interactions": {
-          "hover": {
-            "borderColor": "colorPalette.primary.500"
-          }
-        }
-      },
-      "header": {
-        "description": "The application header containing navigation and branding.",
-        "baseStyle": {
-          "backgroundColor": "colorPalette.neutral.surface",
-          "borderBottom": "1px solid colorPalette.neutral.border",
-          "padding": "1rem 1.5rem",
-          "display": "flex",
-          "alignItems": "center",
-          "justifyContent": "space-between"
-        }
-      }
-    }
-  }
+	"designSystemProfile": {
+		"name": "Panobianco Satélite",
+		"version": "2.0.0",
+		"description": "Design system do site Panobianco Satélite. Tema dual (light/dark) com laranja vibrante como cor primária de marca, tipografia Inter e estética moderna e limpa.",
+		"style": "Modern, Clean, Dual-theme",
+		"theme": "Light (default) / Dark",
+		"coreElements": {
+			"colorPalette": {
+				"description": "Paleta construída com laranja vibrante como cor de marca, backgrounds neutros claros (light) e escuros (dark), com suporte a tema via classe .dark.",
+				"primary": {
+					"500": {
+						"value": "#ff5e29",
+						"description": "Cor principal da marca. Usada em botões, links, destaques e estados ativos."
+					},
+					"focus": {
+						"value": "#f15927",
+						"description": "Variação mais escura do laranja para anéis de foco em elementos interativos."
+					}
+				},
+				"light": {
+					"bg": {
+						"primary": {
+							"value": "#ffffff",
+							"description": "Fundo principal no tema claro."
+						},
+						"secondary": {
+							"value": "#f8fafc",
+							"description": "Fundo de seções alternadas no tema claro."
+						},
+						"card": {
+							"value": "#ffffff",
+							"description": "Fundo de cards no tema claro."
+						}
+					},
+					"text": {
+						"primary": {
+							"value": "#1e293b",
+							"description": "Texto principal no tema claro — alto contraste."
+						},
+						"secondary": {
+							"value": "#64748b",
+							"description": "Texto secundário no tema claro."
+						},
+						"muted": {
+							"value": "#94a3b8",
+							"description": "Texto auxiliar/discreto no tema claro."
+						}
+					},
+					"border": {
+						"value": "#e2e8f0",
+						"description": "Cor de bordas no tema claro."
+					}
+				},
+				"dark": {
+					"bg": {
+						"primary": {
+							"value": "#121212",
+							"description": "Fundo principal no tema escuro."
+						},
+						"secondary": {
+							"value": "#1f1f1f",
+							"description": "Superfícies elevadas (header, seções) no tema escuro."
+						},
+						"card": {
+							"value": "#1f1f1f",
+							"description": "Fundo de cards no tema escuro."
+						}
+					},
+					"text": {
+						"primary": {
+							"value": "#ffffff",
+							"description": "Texto principal no tema escuro."
+						},
+						"secondary": {
+							"value": "#d1d5db",
+							"description": "Texto secundário e muted no tema escuro."
+						}
+					},
+					"border": {
+						"value": "#333333",
+						"description": "Cor de bordas no tema escuro."
+					}
+				},
+				"state": {
+					"disabled": {
+						"light": {
+							"background": {
+								"value": "#f1f5f9",
+								"description": "Fundo de elementos desabilitados no tema claro."
+							},
+							"text": {
+								"value": "#94a3b8",
+								"description": "Texto de elementos desabilitados no tema claro."
+							}
+						},
+						"dark": {
+							"background": {
+								"value": "#3f3f46",
+								"description": "Fundo de elementos desabilitados no tema escuro."
+							},
+							"text": {
+								"value": "#71717a",
+								"description": "Texto de elementos desabilitados no tema escuro."
+							}
+						}
+					}
+				}
+			},
+			"typography": {
+				"description": "Fonte primária Inter carregada via next/font. Fallback para system-ui e sans-serif nativo.",
+				"fontFamily": {
+					"sans": {
+						"value": "var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+						"description": "Fonte principal do projeto."
+					},
+					"display": {
+						"value": "var(--font-inter), ui-sans-serif, system-ui, sans-serif",
+						"description": "Fonte para títulos de destaque."
+					}
+				},
+				"scale": [
+					{
+						"name": "Display",
+						"className": "text-display",
+						"size": "1.875rem",
+						"weight": "700",
+						"lineHeight": "2.25rem",
+						"use": "Títulos principais de página."
+					},
+					{
+						"name": "Heading",
+						"className": "text-heading",
+						"size": "1.25rem",
+						"weight": "700",
+						"lineHeight": "1.75rem",
+						"use": "Títulos de seção."
+					},
+					{
+						"name": "Body",
+						"className": "text-body",
+						"size": "1rem",
+						"weight": "400",
+						"lineHeight": "1.5rem",
+						"use": "Texto padrão para parágrafos e labels."
+					},
+					{
+						"name": "Subtext",
+						"className": "text-subtext",
+						"size": "0.875rem",
+						"weight": "400",
+						"lineHeight": "1.25rem",
+						"use": "Texto auxiliar e informações secundárias."
+					}
+				]
+			},
+			"spacing": {
+				"description": "Escala de espaçamento baseada em múltiplos de 0.25rem, estendida no Tailwind.",
+				"baseUnit": "0.25rem",
+				"scale": {
+					"xs": "0.5rem",
+					"sm": "0.75rem",
+					"md": "1rem",
+					"lg": "1.5rem",
+					"xl": "2rem",
+					"2xl": "3rem"
+				}
+			},
+			"layout": {
+				"description": "Layout responsivo com container centralizado. Largura máxima de 1280px para o conteúdo principal.",
+				"container": {
+					"main": "1280px (80rem)",
+					"padding": "1rem (sm: 1.5rem, lg: 2rem)"
+				},
+				"containers": {
+					"sm": "540px",
+					"md": "720px",
+					"lg": "960px",
+					"xl": "1140px",
+					"xxl": "1320px",
+					"fluid": "100%"
+				},
+				"structure": "Multi-section, full-width com container centralizado"
+			},
+			"breakpoints": {
+				"xs": "0px",
+				"sm": "576px",
+				"md": "768px",
+				"lg": "992px",
+				"xl": "1200px",
+				"xxl": "1400px"
+			},
+			"effects": {
+				"borderRadius": {
+					"default": "1rem",
+					"sm": "0.25rem",
+					"md": "0.5rem",
+					"lg": "2rem",
+					"xl": "3rem",
+					"full": "9999px"
+				},
+				"transition": {
+					"default": "background-color 0.3s ease, color 0.3s ease",
+					"fast": "0.2s ease-in-out"
+				}
+			}
+		},
+		"components": {
+			"description": "Componentes base da interface, definidos como classes Tailwind em globals.css.",
+			"button": {
+				"primary": {
+					"className": "btn-primary",
+					"backgroundColor": "primary.500 (#ff5e29)",
+					"color": "#ffffff",
+					"borderRadius": "md (0.5rem)",
+					"padding": "0.75rem 1.25rem",
+					"fontWeight": "600",
+					"fontSize": "1rem",
+					"hover": { "backgroundColor": "orange-600" },
+					"focus": {
+						"ring": "2px primary.500",
+						"ringOffset": "light.bg.primary / dark.bg.primary"
+					}
+				},
+				"secondary": {
+					"className": "btn-secondary",
+					"light": {
+						"backgroundColor": "light.bg.secondary (#f8fafc)",
+						"color": "light.text.primary (#1e293b)",
+						"border": "light.border (#e2e8f0)"
+					},
+					"dark": {
+						"backgroundColor": "dark.bg.card (#1f1f1f)",
+						"color": "dark.text.primary (#ffffff)",
+						"border": "dark.border (#333333)"
+					}
+				}
+			},
+			"card": {
+				"className": "card",
+				"borderRadius": "lg (2rem)",
+				"padding": "1.5rem",
+				"light": {
+					"backgroundColor": "light.bg.card (#ffffff)",
+					"border": "light.border (#e2e8f0)"
+				},
+				"dark": {
+					"backgroundColor": "dark.bg.card (#1f1f1f)",
+					"border": "dark.border (#333333)"
+				}
+			},
+			"inputField": {
+				"className": "input-field",
+				"borderRadius": "md (0.5rem)",
+				"padding": "0.75rem 1rem",
+				"fontSize": "1rem",
+				"light": {
+					"backgroundColor": "light.bg.primary (#ffffff)",
+					"color": "light.text.primary (#1e293b)",
+					"border": "light.border (#e2e8f0)"
+				},
+				"dark": {
+					"backgroundColor": "dark.bg.primary (#121212)",
+					"color": "dark.text.primary (#ffffff)",
+					"border": "dark.border (#333333)"
+				},
+				"focus": {
+					"borderColor": "primary.500 (#ff5e29)",
+					"ring": "2px primary.500"
+				}
+			},
+			"glassCard": {
+				"className": "glass-card",
+				"background": "rgba(255, 255, 255, 0.03)",
+				"backdropFilter": "blur(10px)",
+				"border": "1px solid rgba(255, 255, 255, 0.1)",
+				"use": "Cards com efeito glassmorphism sobre fundos escuros."
+			}
+		}
+	}
 }
