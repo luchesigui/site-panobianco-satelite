@@ -28,7 +28,7 @@ export default function PlanCTAButton({
 
   if (destination === "checkout") {
     return (
-      <Link href={href} className={className} onClick={trackPlanCta}>
+      <Link href={href} className={className} onClick={trackPlanCta} target="_blank" rel="noopener noreferrer">
         {children}
       </Link>
     );
