@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 	},
 };
 
-const heroImage = "/images/fachada.png";
+const heroImage = "/images/fachada.webp";
 
 const features = [
 	{
@@ -70,21 +70,21 @@ const modalities = [
 		description:
 			"Treinos de força e hipertrofia com acompanhamento profissional qualificado.",
 		href: "/servicos/musculacao",
-		image: "/images/modalidades/musculacao.png",
+		image: "/images/modalidades/musculacao.webp",
 	},
 	{
 		name: "Aulas Coletivas",
 		description:
 			"FitDance, Yoga, Pilates e muito mais para queimar calorias com diversão.",
 		href: "/aulas-coletivas",
-		image: "/images/modalidades/aulas-coletivas.png",
+		image: "/images/modalidades/aulas-coletivas.webp",
 	},
 	{
 		name: "Treino Personalizado",
 		description:
 			"Atenção total focada nos seus objetivos individuais e performance.",
 		href: "/servicos/treino-personalizado",
-		image: "/images/modalidades/treino-personalizado.png",
+		image: "/images/modalidades/treino-personalizado.webp",
 	},
 ];
 
@@ -167,8 +167,7 @@ const avatarUrls = [
 
 const whyUsImage = "/images/panobianco-jardim-satelite.webp";
 
-const mapImage =
-	"https://lh3.googleusercontent.com/aida-public/AB6AXuAkx_hnH45N70uVuzeOUB9m5kdYGwy94NxsBZdFRxbT1qzRTtKcoR0MYC9csc53tbqizczIFJ4Lsmx9T55LmLqxq52xSeNzxOnW6MeZJNQ-xPX8Sk_4W5bEjpN8Iw8L4uxgYxqmWGvHZ9O_pbGl2y5qBRP064PZdOS8412JW1WvTOrYPv2F5e4VxpnzChQRlWuWia-NAmsOEfsMoXfhZoc5GCbhi5O79kxbpbFKYKbzFORAyVnuxFneVmK-dgOLZixGnmihbIEqaU8";
+const mapImage = "/images/av-cidade-jardim-391.webp";
 
 export default function Home() {
 	const webPageSchema = {

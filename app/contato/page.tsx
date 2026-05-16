@@ -21,7 +21,7 @@ import {
 	WHATSAPP_URL,
 } from "@/lib/constants";
 
-const heroBg = "/images/fachada.png";
+const heroBg = "/images/fachada.webp";
 
 const mapImage = "/images/av-cidade-jardim-391.webp";
 
