@@ -12,6 +12,7 @@ import {
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import AbTestImpression from "@/components/AbTestImpression";
 import ContactCtaSection from "@/components/ContactCtaSection";
 import PlanCTAButton from "@/components/PlanCTAButton";
 import QuizCtaCard from "@/components/QuizCtaCard";
@@ -21,6 +22,7 @@ import {
 	SITE_URL,
 	WHATSAPP_AVULSO,
 } from "@/lib/constants";
+import { promoOrangeFlag } from "@/lib/flags";
 
 export const metadata: Metadata = {
 	title: "Planos | Panobianco Jardim Satélite",
@@ -121,7 +123,9 @@ const avulsoBenefits = [
 ];
 const avulsoExclude = "Menos praticidade, pois precisa renovar mês a mês";
 
-export default function Planos() {
+export default async function Planos() {
+	const isPromoB = await promoOrangeFlag();
+
 	return (
 		<div className="font-display min-h-screen bg-background-dark text-white overflow-x-hidden">
 			<script
@@ -166,52 +170,111 @@ export default function Planos() {
 
 					{/* Pricing Grid */}
 					<div className="mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-6 md:grid-cols-3">
-						{/* Orange Anual */}
-						<article className="group flex flex-col rounded-xl border border-white/5 bg-white/5 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 dark:bg-[#1e1411]">
-							<div className="mb-8">
-								<div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-primary-500/20 text-primary-500">
-									<Crown className="size-5" />
+						{/* Orange Anual — A/B test: variante B exibe promoção R$0,99 primeiro mês */}
+						{isPromoB ? (
+							<article className="group relative flex flex-col rounded-xl border border-white/5 bg-white/5 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary-500/40 dark:bg-[#1e1411]">
+								<div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 rounded-full bg-primary-500 px-4 py-1 text-[10px] font-black uppercase tracking-widest text-white shadow-lg">
+									PROMOÇÃO
 								</div>
-								<h3 className="mb-2 text-2xl font-bold">Orange Anual</h3>
-								<p className="text-sm font-medium text-stone-400">
-									Plano com fidelidade de 12 meses.
-								</p>
-							</div>
-							<div className="mb-8 flex items-baseline gap-1">
-								<span className="text-sm font-medium text-stone-400">R$</span>
-								<span className="text-5xl font-black text-primary-500">
-									119,90
-								</span>
-								<span className="text-sm font-medium text-stone-400">/mês</span>
-							</div>
-							<div className="mb-4 text-sm font-bold uppercase tracking-wider">
-								Inclui:
-							</div>
-							<ul className="mb-10 flex-grow space-y-3">
-								{orangeBenefits.map((item) => (
-									<li key={item} className="flex items-start gap-3 text-sm">
-										<Check className="size-5 shrink-0 text-primary-500" />
-										<span>{item}</span>
+								<div className="mb-8 mt-2">
+									<div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-primary-500/20 text-primary-500">
+										<Crown className="size-5" />
+									</div>
+									<h3 className="mb-2 text-2xl font-bold">Orange Anual</h3>
+									<p className="text-sm font-medium text-stone-400">
+										Plano com fidelidade de 12 meses.
+									</p>
+								</div>
+								<div className="mb-8">
+									<div className="flex items-baseline gap-1">
+										<span className="text-sm font-medium text-stone-400">R$</span>
+										<span className="text-5xl font-black text-primary-500">0,99</span>
+										<span className="ml-1 text-sm font-semibold leading-tight text-stone-300">
+											na 1ª mensalidade
+										</span>
+									</div>
+									<p className="mt-1 text-sm text-stone-400">
+										R$119,90/mês a partir da 2ª mensalidade
+									</p>
+									<span className="mt-2 inline-block rounded-full bg-primary-500/10 px-3 py-0.5 text-xs font-bold text-primary-500">
+										Válido até 31/05/2026
+									</span>
+								</div>
+								<div className="mb-4 text-sm font-bold uppercase tracking-wider">
+									Inclui:
+								</div>
+								<ul className="mb-10 flex-grow space-y-3">
+									{orangeBenefits.map((item) => (
+										<li key={item} className="flex items-start gap-3 text-sm">
+											<Check className="size-5 shrink-0 text-primary-500" />
+											<span>{item}</span>
+										</li>
+									))}
+									<li className="flex items-start gap-3 text-sm text-primary-500">
+										<X className="size-5 shrink-0" />
+										<span>{orangeExclude}</span>
 									</li>
-								))}
-								<li className="flex items-start gap-3 text-sm text-primary-500">
-									<X className="size-5 shrink-0" />
-									<span>{orangeExclude}</span>
-								</li>
-							</ul>
-							<p className="mb-4 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
-								Válido para quem não teve contrato promocional nos últimos 12
-								meses.
-							</p>
-							<PlanCTAButton
-								plan="orange"
-								href="/checkout/orange"
-								destination="checkout"
-								className="mt-auto flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all hover:bg-primary-500/90"
-							>
-								Assinar Agora
-							</PlanCTAButton>
-						</article>
+								</ul>
+								<p className="mb-4 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
+									Válido para quem não teve contrato promocional nos últimos 12
+									meses.
+								</p>
+								<PlanCTAButton
+									plan="orange"
+									href="/checkout/orange"
+									destination="checkout"
+									className="mt-auto flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all hover:bg-primary-500/90"
+								>
+									Assinar Agora
+								</PlanCTAButton>
+							</article>
+						) : (
+							<article className="group flex flex-col rounded-xl border border-white/5 bg-white/5 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 dark:bg-[#1e1411]">
+								<div className="mb-8">
+									<div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-primary-500/20 text-primary-500">
+										<Crown className="size-5" />
+									</div>
+									<h3 className="mb-2 text-2xl font-bold">Orange Anual</h3>
+									<p className="text-sm font-medium text-stone-400">
+										Plano com fidelidade de 12 meses.
+									</p>
+								</div>
+								<div className="mb-8 flex items-baseline gap-1">
+									<span className="text-sm font-medium text-stone-400">R$</span>
+									<span className="text-5xl font-black text-primary-500">
+										119,90
+									</span>
+									<span className="text-sm font-medium text-stone-400">/mês</span>
+								</div>
+								<div className="mb-4 text-sm font-bold uppercase tracking-wider">
+									Inclui:
+								</div>
+								<ul className="mb-10 flex-grow space-y-3">
+									{orangeBenefits.map((item) => (
+										<li key={item} className="flex items-start gap-3 text-sm">
+											<Check className="size-5 shrink-0 text-primary-500" />
+											<span>{item}</span>
+										</li>
+									))}
+									<li className="flex items-start gap-3 text-sm text-primary-500">
+										<X className="size-5 shrink-0" />
+										<span>{orangeExclude}</span>
+									</li>
+								</ul>
+								<p className="mb-4 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
+									Válido para quem não teve contrato promocional nos últimos 12
+									meses.
+								</p>
+								<PlanCTAButton
+									plan="orange"
+									href="/checkout/orange"
+									destination="checkout"
+									className="mt-auto flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all hover:bg-primary-500/90"
+								>
+									Assinar Agora
+								</PlanCTAButton>
+							</article>
+						)}
 
 						{/* Platinum Recorrente - MAIS VANTAJOSO */}
 						<article className="group relative flex flex-col rounded-xl border border-white/5 bg-white/5 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 dark:bg-[#1e1411]">
@@ -403,6 +466,11 @@ export default function Planos() {
 							</details>
 						</div>
 					</div>
+
+					<AbTestImpression
+						experiment="promo-orange"
+						variant={isPromoB ? "b" : "a"}
+					/>
 				</div>
 			</main>
 

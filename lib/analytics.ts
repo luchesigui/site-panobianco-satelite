@@ -74,3 +74,10 @@ export const trackContactFormSubmitted = (success: boolean) =>
 
 export const trackScheduleModalOpened = () =>
   sendGTMEvent({ event: "schedule_modal_opened" });
+
+// ─── A/B Testing ──────────────────────────────────────────────────────────────
+
+export const trackAbTestImpression = (
+  experiment: string,
+  variant: "a" | "b",
+) => sendGTMEvent({ event: "ab_test_impression", experiment, variant });
