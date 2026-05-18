@@ -12,6 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import ContactCtaSection from "@/components/ContactCtaSection";
+import QuizCtaCard from "@/components/QuizCtaCard";
 import SchedulingLink from "@/components/SchedulingLink";
 import { SITE_URL } from "@/lib/constants";
 
@@ -167,12 +168,6 @@ export default function Servicos() {
 						<SchedulingLink className="w-full rounded-full bg-primary-500 px-10 py-5 text-lg font-black text-white shadow-lg shadow-primary-500/20 transition-all hover:bg-primary-500/90 sm:w-auto">
 							Agende uma visita
 						</SchedulingLink>
-						<Link
-							href="/contato"
-							className="w-full rounded-full border border-white/10 bg-white/5 px-10 py-5 text-lg font-bold text-white backdrop-blur-sm transition-all hover:bg-white/10 sm:w-auto"
-						>
-							Ver Unidades
-						</Link>
 					</div>
 				</div>
 			</section>
@@ -229,6 +224,17 @@ export default function Servicos() {
 							</div>
 						);
 					})}
+				</div>
+
+				{/* Quiz CTA */}
+				<div className="mx-auto mt-16 max-w-5xl">
+					<QuizCtaCard
+						variant="default"
+						source="servicos_hub"
+						headline="Não sabe qual treino combina com você?"
+						subhead="Em 1 minuto, te indicamos o serviço ideal pro seu objetivo — com recomendação personalizada no e-mail."
+						ctaLabel="Descobrir em 1 minuto"
+					/>
 				</div>
 			</section>
 

@@ -1,8 +1,36 @@
 import type { ReactNode } from "react";
 import ContactCtaSection from "@/components/ContactCtaSection";
+import QuizCtaCard from "@/components/QuizCtaCard";
 import ModalidadeAbout from "@/components/modalidades/ModalidadeAbout";
 import ModalidadeBenefits from "@/components/modalidades/ModalidadeBenefits";
 import ModalidadeHero from "@/components/modalidades/ModalidadeHero";
+
+type ModalidadeContactCtaProps = {
+	modalidade?: string;
+};
+
+function ModalidadeContactCta({ modalidade }: ModalidadeContactCtaProps = {}) {
+	const source = (modalidade ? `modalidade_${modalidade}` : "modalidade_generic") as
+		| `modalidade_${string}`;
+	return (
+		<>
+			<section className="bg-background-dark py-8">
+				<div className="container-main">
+					<div className="mx-auto max-w-4xl">
+						<QuizCtaCard
+							variant="compact"
+							source={source}
+							headline="Essa modalidade combina com você?"
+							subhead="Faça o quiz e receba uma recomendação personalizada pro seu objetivo — sem compromisso."
+							ctaLabel="Descobrir"
+						/>
+					</div>
+				</div>
+			</section>
+			<ContactCtaSection />
+		</>
+	);
+}
 
 type ModalidadePageRootProps = {
 	children: ReactNode;
@@ -84,7 +112,7 @@ type ModalidadePageCompound = typeof ModalidadePageRoot & {
 	About: typeof ModalidadeAbout;
 	Benefits: typeof ModalidadeBenefits;
 	Classes: typeof ModalidadeClasses;
-	ContactCta: typeof ContactCtaSection;
+	ContactCta: typeof ModalidadeContactCta;
 };
 
 const ModalidadePage = Object.assign(ModalidadePageRoot, {
@@ -92,7 +120,7 @@ const ModalidadePage = Object.assign(ModalidadePageRoot, {
 	About: ModalidadeAbout,
 	Benefits: ModalidadeBenefits,
 	Classes: ModalidadeClasses,
-	ContactCta: ContactCtaSection,
+	ContactCta: ModalidadeContactCta,
 }) as ModalidadePageCompound;
 
 export default ModalidadePage;

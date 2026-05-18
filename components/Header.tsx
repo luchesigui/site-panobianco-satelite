@@ -1,12 +1,12 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { Menu, Sparkles, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
 import Logo from "@/components/Logo";
 import { WHATSAPP_AULA_EXPERIMENTAL } from "@/lib/constants";
-import { trackWhatsappClicked } from "@/lib/analytics";
+import { trackQuizCtaClicked, trackWhatsappClicked } from "@/lib/analytics";
 
 const navigation = [
 	{ name: "Início", href: "/" },
@@ -77,8 +77,19 @@ export default function Header() {
 							</Link>
 						))}
 						<Link
+							href="/quiz"
+							className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-primary-500/40 bg-primary-500/10 px-5 py-3 text-sm font-bold text-primary-500 transition-colors hover:bg-primary-500/20"
+							onClick={() => {
+								setMobileMenuOpen(false);
+								trackQuizCtaClicked("header_mobile");
+							}}
+						>
+							<Sparkles className="size-4" />
+							Fazer o Quiz (60s)
+						</Link>
+						<Link
 							href={WHATSAPP_AULA_EXPERIMENTAL}
-							className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-primary-500 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-500/90"
+							className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-primary-500 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-500/90"
 							onClick={() => {
 								setMobileMenuOpen(false);
 								trackWhatsappClicked("header_cta", "aula_experimental");

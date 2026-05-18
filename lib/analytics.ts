@@ -27,6 +27,25 @@ export const trackQuizEbookCaptured = () =>
 export const trackQuizStepCompleted = (step_id: string, phase: string) =>
   sendGTMEvent({ event: "quiz_step_completed", step_id, phase });
 
+export type QuizCtaSource =
+  | "home_pos_modalidades"
+  | "planos_topo"
+  | "planos_pos_grid"
+  | "aulas_coletivas_pre_filtro"
+  | "contact_cta_global"
+  | "servicos_hub"
+  | "musculacao"
+  | "personal"
+  | "sobre_nos"
+  | "blog_article"
+  | "footer"
+  | "header_mobile"
+  | "promo_orange"
+  | `modalidade_${string}`;
+
+export const trackQuizCtaClicked = (source: QuizCtaSource) =>
+  sendGTMEvent({ event: "quiz_cta_clicked", source });
+
 // ─── WhatsApp ──────────────────────────────────────────────────────────────────
 
 export type WhatsappSource =

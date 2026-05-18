@@ -13,6 +13,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import ContactCtaSection from "@/components/ContactCtaSection";
+import QuizCtaBanner from "@/components/QuizCtaBanner";
 import SchedulingLink from "@/components/SchedulingLink";
 import { SITE_URL } from "@/lib/constants";
 
@@ -340,6 +341,9 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
+
+			{/* Quiz CTA Banner */}
+			<QuizCtaBanner source="home_pos_modalidades" />
 
 			{/* Why Us */}
 			<section

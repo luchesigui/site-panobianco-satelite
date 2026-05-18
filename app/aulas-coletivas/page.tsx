@@ -5,6 +5,7 @@ import {
 	type ClassItem,
 	ModalidadesFilterGrid,
 } from "@/components/ModalidadesFilterGrid";
+import QuizCtaBanner from "@/components/QuizCtaBanner";
 import ScheduleModal from "@/components/ScheduleModal";
 import { SITE_URL } from "@/lib/constants";
 
@@ -196,6 +197,19 @@ export default function AulasColetivas() {
 					</div>
 					<ScheduleModal />
 				</div>
+
+				<QuizCtaBanner
+					source="aulas_coletivas_pre_filtro"
+					eyebrow="Quiz de modalidade"
+					headline={
+						<>
+							9 modalidades. Qual é{" "}
+							<span className="italic text-primary-500">a sua</span>?
+						</>
+					}
+					subhead="Em 1 minuto, te indicamos a aula que mais combina com seu objetivo e ritmo — com recomendação personalizada no e-mail."
+					ctaLabel="Descobrir Minha Aula"
+				/>
 
 				<ModalidadesFilterGrid
 					classes={classes as ClassItem[]}

@@ -14,6 +14,7 @@ import Link from "next/link";
 
 import ContactCtaSection from "@/components/ContactCtaSection";
 import PlanCTAButton from "@/components/PlanCTAButton";
+import QuizCtaCard from "@/components/QuizCtaCard";
 import {
 	PLANS,
 	PHONE_DISPLAY,
@@ -299,6 +300,17 @@ export default function Planos() {
 								Falar no WhatsApp
 							</PlanCTAButton>
 						</article>
+					</div>
+
+					{/* Quiz CTA — Pós-grid (resgate de indecisão) */}
+					<div className="mx-auto mt-16 max-w-5xl">
+						<QuizCtaCard
+							variant="default"
+							source="planos_pos_grid"
+							headline="Ainda na dúvida?"
+							subhead="Em 60 segundos, te ajudamos a escolher o plano certo — sem compromisso, com recomendação personalizada por e-mail."
+							ctaLabel="Fazer o Quiz"
+						/>
 					</div>
 
 					{/* Info cards: Horários, Localização, Dúvidas */}

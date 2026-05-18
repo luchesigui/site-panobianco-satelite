@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Heart, Target, Users, Award, MapPin, Dumbbell } from 'lucide-react'
+import QuizCtaCard from '@/components/QuizCtaCard'
 import SchedulingLink from '@/components/SchedulingLink'
 
 export const metadata: Metadata = {
@@ -254,6 +255,21 @@ export default function SobreNos() {
                 Nossa equipe de instrutores é o nosso maior orgulho. Com expertise e paixão, eles oferecem um acompanhamento personalizado e motivador.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quiz CTA */}
+      <section className="py-12">
+        <div className="container-main">
+          <div className="mx-auto max-w-5xl">
+            <QuizCtaCard
+              variant="default"
+              source="sobre_nos"
+              headline="Pronto pra descobrir seu lugar aqui?"
+              subhead="Em 1 minuto, te ajudamos a montar seu caminho na Panobianco — sob medida pro seu objetivo."
+              ctaLabel="Descobrir Meu Caminho"
+            />
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Dumbbell, Target, Shield, TrendingUp, Users, CheckCircle } from 'lucide-react'
+import QuizCtaCard from '@/components/QuizCtaCard'
 import SchedulingLink from '@/components/SchedulingLink'
 import { SITE_URL } from "@/lib/constants";
 
@@ -264,6 +265,21 @@ export default function Musculacao() {
                 <strong>Objetivos atendidos:</strong> Ganho de massa muscular, emagrecimento, fortalecimento, reabilitação, condicionamento físico geral e muito mais.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quiz CTA */}
+      <section className="py-12">
+        <div className="container-main">
+          <div className="mx-auto max-w-4xl">
+            <QuizCtaCard
+              variant="compact"
+              source="musculacao"
+              headline="Musculação é pra você?"
+              subhead="Faça o quiz e descubra o treino, plano e frequência ideal pro seu objetivo."
+              ctaLabel="Fazer o Quiz"
+            />
           </div>
         </div>
       </section>

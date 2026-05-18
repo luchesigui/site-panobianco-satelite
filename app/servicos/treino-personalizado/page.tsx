@@ -10,6 +10,7 @@ import {
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import QuizCtaCard from "@/components/QuizCtaCard";
 import { SITE_URL, WHATSAPP_PERSONAL } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -359,6 +360,21 @@ export default function TreinoPersonalizado() {
 								e a alcançar novos patamares.
 							</p>
 						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Quiz CTA */}
+			<section className="py-12">
+				<div className="container-main">
+					<div className="mx-auto max-w-4xl">
+						<QuizCtaCard
+							variant="compact"
+							source="personal"
+							headline="Vale a pena ter um personal?"
+							subhead="Em 60s te ajudamos a entender se um treino personalizado faz sentido pro seu momento."
+							ctaLabel="Descobrir Agora"
+						/>
 					</div>
 				</div>
 			</section>

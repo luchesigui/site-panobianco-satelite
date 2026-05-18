@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import ContactCtaSection from "@/components/ContactCtaSection";
+import QuizCtaCard from "@/components/QuizCtaCard";
 
 type Props = {
 	headline: string;
@@ -74,6 +75,17 @@ export default function BlogArticle({
 						// biome-ignore lint/security/noDangerouslySetInnerHtml: trusted static markdown content
 						dangerouslySetInnerHTML={{ __html: contentHtml }}
 					/>
+
+					{/* Quiz CTA — pós artigo */}
+					<div className="mt-12">
+						<QuizCtaCard
+							variant="soft"
+							source="blog_article"
+							headline="Quer um plano personalizado pra atingir esse objetivo?"
+							subhead="Em 60s, te indicamos qual plano e treino combinam com o que você acabou de ler."
+							ctaLabel="Fazer o Quiz"
+						/>
+					</div>
 				</div>
 			</div>
 

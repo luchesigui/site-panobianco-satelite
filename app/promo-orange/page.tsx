@@ -2,6 +2,7 @@ import { Bebas_Neue, Montserrat, Roboto } from "next/font/google";
 import { Check, Dumbbell, Music2, Users, Zap } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 import PlanCTAButton from "@/components/PlanCTAButton";
 import { SITE_URL } from "@/lib/constants";
@@ -364,6 +365,21 @@ export default function PromoOrange() {
 						>
 							Matricule-se agora
 						</PlanCTAButton>
+
+						{/* Quiz discreto */}
+						<p
+							className={`${roboto.className} mt-3 text-center text-xs`}
+							style={{ color: "rgba(255,255,255,0.6)" }}
+						>
+							Ainda em dúvida?{" "}
+							<Link
+								href="/quiz"
+								className="underline transition-colors hover:text-[#ff6101]"
+								style={{ color: "#ff6101" }}
+							>
+								Faça o quiz e descubra se o Orange Anual é pra você
+							</Link>
+						</p>
 
 						{/* Benefits: 2 columns */}
 						<div

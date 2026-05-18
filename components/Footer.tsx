@@ -51,6 +51,17 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-neutral-400">
               <li>
                 <Link
+                  href="/quiz"
+                  className="inline-flex items-center gap-2 transition-colors hover:text-primary-500"
+                >
+                  Faça o Quiz
+                  <span className="rounded-full bg-primary-500/20 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-primary-500">
+                    Novo
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/blog"
                   className="transition-colors hover:text-primary-500"
                 >
