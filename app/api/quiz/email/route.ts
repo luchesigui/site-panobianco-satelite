@@ -93,6 +93,7 @@ export async function POST(request: NextRequest) {
         gender: sex as "M" | "F",
         goal,
         plan,
+        healthMotivation,
       });
     } catch (err) {
       console.error("[quiz/email] EVO prospect error:", err);
