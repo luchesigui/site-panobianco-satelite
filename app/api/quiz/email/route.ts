@@ -82,11 +82,14 @@ export async function POST(request: NextRequest) {
   let idProspect: number | null = null;
   if (sex && birthdate && whatsapp) {
     try {
+      const parts = birthdate.split("/");
+      const birthdateISO =
+        parts.length === 3 ? `${parts[2]}-${parts[1]}-${parts[0]}` : birthdate;
       idProspect = await createEvoProspect({
         firstName,
         email,
         phone: whatsapp,
-        birthdate,
+        birthdate: birthdateISO,
         gender: sex as "M" | "F",
         goal,
         plan,

@@ -48,6 +48,7 @@ export async function createEvoProspect(input: EvoProspectInput): Promise<number
     idBranch: Number(process.env.EVO_BRANCH_ID),
     notes: `Lead do quiz online. Objetivo: ${goalLabel}. Plano: ${planLabel}.`,
     temperature: 3,
+    mktChannel: "Site",
   };
 
   const res = await fetch(`${EVO_BASE}/api/v1/prospects`, {
