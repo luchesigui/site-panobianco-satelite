@@ -567,6 +567,13 @@ export default function QuizClient() {
   const step = STEPS[STEP_INDEX[currentId]];
 
   useEffect(() => {
+    if (!quizStartedTracked.current) {
+      quizStartedTracked.current = true;
+      trackQuizStarted();
+    }
+  }, []);
+
+  useEffect(() => {
     if (step?.type === "text_input") {
       dispatch({ type: "SET_TEXT_INPUT", textInput: answers[step.fieldKey] ?? "" });
     } else {
@@ -786,14 +793,6 @@ export default function QuizClient() {
                 <TextInputBlock
                   value={textInput}
                   onChange={(v) => {
-                    if (
-                      step.fieldKey === "firstName" &&
-                      v.length === 1 &&
-                      !quizStartedTracked.current
-                    ) {
-                      quizStartedTracked.current = true;
-                      trackQuizStarted();
-                    }
                     dispatch({ type: "SET_TEXT_INPUT", textInput: step.mask === "date" ? applyDateMask(v) : v });
                   }}
                   placeholder={step.placeholder}

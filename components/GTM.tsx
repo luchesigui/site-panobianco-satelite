@@ -9,6 +9,7 @@ declare global {
 export function sendGTMEvent(data: Record<string, unknown>): void {
   if (typeof window !== "undefined") {
     window.dataLayer = window.dataLayer ?? [];
+    console.log("📊 [GTM Push]:", data.event, data);
     window.dataLayer.push(data);
   }
 }
