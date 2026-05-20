@@ -16,6 +16,8 @@ out/
 # IDE
 .vscode/
 .idea/
+.antigravitycli
+.claude/settings.local.json
 
 # OS
 .DS_Store
