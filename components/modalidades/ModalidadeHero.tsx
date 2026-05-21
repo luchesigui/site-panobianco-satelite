@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+
 import SchedulingLink from "@/components/SchedulingLink";
 
 export type ModalidadeHeroProps = {
@@ -44,7 +45,9 @@ export default function ModalidadeHero({
 				</>
 			)}
 			{!heroImageSrc && (
-				<div className={`absolute inset-0 z-0 bg-gradient-to-br ${accentGradient}`} />
+				<div
+					className={`absolute inset-0 z-0 bg-gradient-to-br ${accentGradient}`}
+				/>
 			)}
 
 			<div className="container-main relative z-10 w-full">
@@ -66,13 +69,13 @@ export default function ModalidadeHero({
 						{titleHighlight != null && (
 							<>
 								{" "}
-								<span className="italic text-primary-500">{titleHighlight}</span>
+								<span className="italic text-primary-500">
+									{titleHighlight}
+								</span>
 							</>
 						)}
 					</h1>
-					{subtitle && (
-						<p className="mb-2 text-lg text-white/90">{subtitle}</p>
-					)}
+					{subtitle && <p className="mb-2 text-lg text-white/90">{subtitle}</p>}
 					<p className="mb-8 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl">
 						{description}
 					</p>

@@ -51,8 +51,7 @@ function filterByCategory(
 }
 
 export function ModalidadesFilterGrid({ classes, categories }: Props) {
-	const [selectedCategory, setSelectedCategory] =
-		useState<CategoryId>("todos");
+	const [selectedCategory, setSelectedCategory] = useState<CategoryId>("todos");
 
 	const filteredClasses = useMemo(
 		() => filterByCategory(classes, selectedCategory),

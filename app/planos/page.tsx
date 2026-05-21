@@ -17,8 +17,8 @@ import ContactCtaSection from "@/components/ContactCtaSection";
 import PlanCTAButton from "@/components/PlanCTAButton";
 import QuizCtaCard from "@/components/QuizCtaCard";
 import {
-	PLANS,
 	PHONE_DISPLAY,
+	PLANS,
 	SITE_URL,
 	WHATSAPP_AVULSO,
 } from "@/lib/constants";
@@ -187,8 +187,12 @@ export default async function Planos() {
 								</div>
 								<div className="mb-8">
 									<div className="flex items-baseline gap-1">
-										<span className="text-sm font-medium text-stone-400">R$</span>
-										<span className="text-5xl font-black text-primary-500">0,99</span>
+										<span className="text-sm font-medium text-stone-400">
+											R$
+										</span>
+										<span className="text-5xl font-black text-primary-500">
+											0,99
+										</span>
 										<span className="ml-1 text-sm font-semibold leading-tight text-stone-300">
 											na 1ª mensalidade
 										</span>
@@ -244,7 +248,9 @@ export default async function Planos() {
 									<span className="text-5xl font-black text-primary-500">
 										119,90
 									</span>
-									<span className="text-sm font-medium text-stone-400">/mês</span>
+									<span className="text-sm font-medium text-stone-400">
+										/mês
+									</span>
 								</div>
 								<div className="mb-4 text-sm font-bold uppercase tracking-wider">
 									Inclui:

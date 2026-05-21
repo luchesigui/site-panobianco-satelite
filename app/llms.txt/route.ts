@@ -1,10 +1,10 @@
+import { getAllPosts } from "@/lib/blog";
 import {
 	CONTACT_EMAIL,
 	PHONE_DISPLAY,
 	SITE_URL,
 	WHATSAPP_URL,
 } from "@/lib/constants";
-import { getAllPosts } from "@/lib/blog";
 
 export function GET() {
 	const topPostsByCategory = Object.entries(

@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useState } from "react";
 
 import Logo from "@/components/Logo";
-import { WHATSAPP_AULA_EXPERIMENTAL } from "@/lib/constants";
 import { trackQuizCtaClicked, trackWhatsappClicked } from "@/lib/analytics";
+import { WHATSAPP_AULA_EXPERIMENTAL } from "@/lib/constants";
 
 const navigation = [
 	{ name: "Início", href: "/" },
@@ -43,7 +43,9 @@ export default function Header() {
 						className="hidden items-center justify-center rounded-full bg-primary-500 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-primary-500/20 transition-all hover:bg-primary-500/90 md:inline-flex"
 						target="_blank"
 						rel="noopener noreferrer"
-						onClick={() => trackWhatsappClicked("header_cta", "aula_experimental")}
+						onClick={() =>
+							trackWhatsappClicked("header_cta", "aula_experimental")
+						}
 					>
 						Agendar Aula Experimental
 					</Link>

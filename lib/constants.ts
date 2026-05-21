@@ -8,7 +8,7 @@ export const SITE_URL = "https://panobiancosatelite.com.br";
 
 /** Checkout URL for plan subscriptions (evo-totem / W12) */
 export const CHECKOUT_URL =
-  "https://evo-totem.w12app.com.br/panobiancos/312/site/DBFZAlP1qByypx5j5uphag%5BEQUAL%5D%5BEQUAL%5D";
+	"https://evo-totem.w12app.com.br/panobiancos/312/site/DBFZAlP1qByypx5j5uphag%5BEQUAL%5D%5BEQUAL%5D";
 
 /** WhatsApp business number (E.164 format) */
 export const WHATSAPP_PHONE = "5512987082269";
@@ -35,25 +35,25 @@ export const YOUTUBE_URL = "https://youtube.com/@panobianco";
 
 /** Contact email */
 export const CONTACT_EMAIL =
-  process.env.CONTACT_EMAIL ?? "sjc.satelite@panobiancoacademia.com.br";
+	process.env.CONTACT_EMAIL ?? "sjc.satelite@panobiancoacademia.com.br";
 
 /** Phone number formatted for display */
 export const PHONE_DISPLAY = "(12) 98708-2269";
 
 /** Plans available for online checkout */
 export const PLANS = {
-  orange: {
-    label: "Orange Anual",
-    description: "Plano com fidelidade de 12 meses.",
-    price: 119.9,
-    priceDisplay: "R$ 119,90/mês",
-    badge: null as string | null,
-  },
-  platinum: {
-    label: "Plano Platinum (recorrente)",
-    description: "Débito automático, sem taxas e sem fidelidade.",
-    price: 139.9,
-    priceDisplay: "R$ 139,90/mês",
-    badge: "MAIS VANTAJOSO" as string | null,
-  },
+	orange: {
+		label: "Orange Anual",
+		description: "Plano com fidelidade de 12 meses.",
+		price: 119.9,
+		priceDisplay: "R$ 119,90/mês",
+		badge: null as string | null,
+	},
+	platinum: {
+		label: "Plano Platinum (recorrente)",
+		description: "Débito automático, sem taxas e sem fidelidade.",
+		price: 139.9,
+		priceDisplay: "R$ 139,90/mês",
+		badge: "MAIS VANTAJOSO" as string | null,
+	},
 } as const;

@@ -3,182 +3,186 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  }
+	html {
+		font-family:
+			var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+			BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+			"Noto Sans", sans-serif;
+	}
 
-  /* Light theme (default) - IMPROVED */
-  body {
-    background-color: #ffffff;
-    color: #1e293b;
-    line-height: 1.5;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
+	/* Light theme (default) - IMPROVED */
+	body {
+		background-color: #ffffff;
+		color: #1e293b;
+		line-height: 1.5;
+		transition:
+			background-color 0.3s ease,
+			color 0.3s ease;
+	}
 
-  /* Dark theme - RESTORED TO ORIGINAL */
-  .dark body {
-    background-color: #121212;
-    color: #ffffff;
-  }
+	/* Dark theme - RESTORED TO ORIGINAL */
+	.dark body {
+		background-color: #121212;
+		color: #ffffff;
+	}
 }
 
 @layer components {
-  .btn-primary {
-    @apply inline-flex items-center justify-center rounded-md bg-primary-500 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-    @apply focus:ring-offset-light-bg-primary dark:focus:ring-offset-dark-bg-primary;
-  }
+	.btn-primary {
+		@apply inline-flex items-center justify-center rounded-md bg-primary-500 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+		@apply focus:ring-offset-light-bg-primary dark:focus:ring-offset-dark-bg-primary;
+	}
 
-  .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-md border px-5 py-3 text-base font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-    /* Light theme - improved */
-    @apply border-light-border bg-light-bg-secondary text-light-text-primary hover:bg-light-border focus:ring-offset-light-bg-primary;
-    /* Dark theme - original styling */
-    @apply dark:border-dark-border dark:bg-dark-bg-card dark:text-dark-text-primary dark:hover:bg-dark-border dark:focus:ring-offset-dark-bg-primary;
-  }
+	.btn-secondary {
+		@apply inline-flex items-center justify-center rounded-md border px-5 py-3 text-base font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+		/* Light theme - improved */
+		@apply border-light-border bg-light-bg-secondary text-light-text-primary hover:bg-light-border focus:ring-offset-light-bg-primary;
+		/* Dark theme - original styling */
+		@apply dark:border-dark-border dark:bg-dark-bg-card dark:text-dark-text-primary dark:hover:bg-dark-border dark:focus:ring-offset-dark-bg-primary;
+	}
 
-  .card {
-    @apply rounded-lg border p-6 transition-colors;
-    /* Light theme - improved */
-    @apply border-light-border bg-light-bg-card;
-    /* Dark theme - original: both surface and cards use #1f1f1f */
-    @apply dark:border-dark-border dark:bg-dark-bg-card;
-  }
+	.card {
+		@apply rounded-lg border p-6 transition-colors;
+		/* Light theme - improved */
+		@apply border-light-border bg-light-bg-card;
+		/* Dark theme - original: both surface and cards use #1f1f1f */
+		@apply dark:border-dark-border dark:bg-dark-bg-card;
+	}
 
-  .input-field {
-    @apply w-full rounded-md border px-4 py-3 text-base placeholder-opacity-50 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors;
-    /* Light theme - improved */
-    @apply border-light-border bg-light-bg-primary text-light-text-primary placeholder-light-text-muted;
-    /* Dark theme - original */
-    @apply dark:border-dark-border dark:bg-dark-bg-primary dark:text-dark-text-primary dark:placeholder-dark-text-secondary;
-  }
+	.input-field {
+		@apply w-full rounded-md border px-4 py-3 text-base placeholder-opacity-50 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors;
+		/* Light theme - improved */
+		@apply border-light-border bg-light-bg-primary text-light-text-primary placeholder-light-text-muted;
+		/* Dark theme - original */
+		@apply dark:border-dark-border dark:bg-dark-bg-primary dark:text-dark-text-primary dark:placeholder-dark-text-secondary;
+	}
 
-  .container-main {
-    @apply mx-auto w-full px-4 sm:px-6 lg:px-8;
-    max-width: 80rem; /* 1280px - Stitch max-w-7xl */
-  }
+	.container-main {
+		@apply mx-auto w-full px-4 sm:px-6 lg:px-8;
+		max-width: 80rem; /* 1280px - Stitch max-w-7xl */
+	}
 
-  /* Stitch design utilities */
-  .glass-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
+	/* Stitch design utilities */
+	.glass-card {
+		background: rgba(255, 255, 255, 0.03);
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
 
-  .hero-gradient {
-    background: linear-gradient(
-      to bottom,
-      rgba(18, 10, 8, 0.4),
-      rgba(18, 10, 8, 1)
-    );
-  }
+	.hero-gradient {
+		background: linear-gradient(
+			to bottom,
+			rgba(18, 10, 8, 0.4),
+			rgba(18, 10, 8, 1)
+		);
+	}
 
-  .prose-blog h2 {
-    @apply mt-10 mb-4 text-2xl font-bold text-white;
-  }
+	.prose-blog h2 {
+		@apply mt-10 mb-4 text-2xl font-bold text-white;
+	}
 
-  .prose-blog h3 {
-    @apply mt-8 mb-3 text-xl font-bold text-white;
-  }
+	.prose-blog h3 {
+		@apply mt-8 mb-3 text-xl font-bold text-white;
+	}
 
-  .prose-blog p {
-    @apply mb-5 leading-relaxed text-gray-300;
-  }
+	.prose-blog p {
+		@apply mb-5 leading-relaxed text-gray-300;
+	}
 
-  .prose-blog ul {
-    @apply mb-5 list-none space-y-2;
-  }
+	.prose-blog ul {
+		@apply mb-5 list-none space-y-2;
+	}
 
-  .prose-blog ul li {
-    @apply flex gap-3 text-gray-300;
-  }
+	.prose-blog ul li {
+		@apply flex gap-3 text-gray-300;
+	}
 
-  .prose-blog ul li::before {
-    content: "";
-    @apply mt-2 block size-2 shrink-0 rounded-full bg-primary-500;
-  }
+	.prose-blog ul li::before {
+		content: "";
+		@apply mt-2 block size-2 shrink-0 rounded-full bg-primary-500;
+	}
 
-  .prose-blog ol {
-    @apply mb-5 list-decimal pl-6 space-y-2;
-  }
+	.prose-blog ol {
+		@apply mb-5 list-decimal pl-6 space-y-2;
+	}
 
-  .prose-blog ol li {
-    @apply text-gray-300;
-  }
+	.prose-blog ol li {
+		@apply text-gray-300;
+	}
 
-  .prose-blog a {
-    @apply text-primary-500 underline-offset-2 hover:underline;
-  }
+	.prose-blog a {
+		@apply text-primary-500 underline-offset-2 hover:underline;
+	}
 
-  .prose-blog strong {
-    @apply font-bold text-white;
-  }
+	.prose-blog strong {
+		@apply font-bold text-white;
+	}
 
-  .prose-blog blockquote {
-    @apply my-6 border-l-4 border-primary-500 pl-4 italic text-gray-400;
-  }
+	.prose-blog blockquote {
+		@apply my-6 border-l-4 border-primary-500 pl-4 italic text-gray-400;
+	}
 }
 
 @layer utilities {
-  .text-display {
-    @apply text-3xl font-bold leading-9;
-  }
+	.text-display {
+		@apply text-3xl font-bold leading-9;
+	}
 
-  .text-heading {
-    @apply text-xl font-bold leading-7;
-  }
+	.text-heading {
+		@apply text-xl font-bold leading-7;
+	}
 
-  .text-body {
-    @apply text-base font-normal leading-6;
-  }
+	.text-body {
+		@apply text-base font-normal leading-6;
+	}
 
-  .text-subtext {
-    @apply text-sm font-normal leading-5;
-  }
+	.text-subtext {
+		@apply text-sm font-normal leading-5;
+	}
 
-  /* Theme-aware text utilities */
-  .text-primary {
-    @apply text-light-text-primary dark:text-dark-text-primary;
-  }
+	/* Theme-aware text utilities */
+	.text-primary {
+		@apply text-light-text-primary dark:text-dark-text-primary;
+	}
 
-  .text-secondary {
-    @apply text-light-text-secondary dark:text-dark-text-secondary;
-  }
+	.text-secondary {
+		@apply text-light-text-secondary dark:text-dark-text-secondary;
+	}
 
-  .text-muted {
-    @apply text-light-text-muted dark:text-dark-text-muted;
-  }
+	.text-muted {
+		@apply text-light-text-muted dark:text-dark-text-muted;
+	}
 
-  /* Theme-aware background utilities */
-  .bg-primary {
-    @apply bg-light-bg-primary dark:bg-dark-bg-primary;
-  }
+	/* Theme-aware background utilities */
+	.bg-primary {
+		@apply bg-light-bg-primary dark:bg-dark-bg-primary;
+	}
 
-  .bg-secondary {
-    @apply bg-light-bg-secondary dark:bg-dark-bg-secondary;
-  }
+	.bg-secondary {
+		@apply bg-light-bg-secondary dark:bg-dark-bg-secondary;
+	}
 
-  .bg-card {
-    @apply bg-light-bg-card dark:bg-dark-bg-card;
-  }
+	.bg-card {
+		@apply bg-light-bg-card dark:bg-dark-bg-card;
+	}
 
-  /* Theme-aware border utilities */
-  .border-theme {
-    @apply border-light-border dark:border-dark-border;
-  }
+	/* Theme-aware border utilities */
+	.border-theme {
+		@apply border-light-border dark:border-dark-border;
+	}
 
-  /* Modalidade filter grid – enter animation */
-  @keyframes modalidade-in {
-    from {
-      opacity: 0;
-      transform: translateY(10px) scale(0.98);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-  .animate-modalidade-in {
-    animation: modalidade-in 0.4s ease-out forwards;
-  }
+	/* Modalidade filter grid – enter animation */
+	@keyframes modalidade-in {
+		from {
+			opacity: 0;
+			transform: translateY(10px) scale(0.98);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+	.animate-modalidade-in {
+		animation: modalidade-in 0.4s ease-out forwards;
+	}
 }

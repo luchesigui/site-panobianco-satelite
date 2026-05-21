@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 
-import { WHATSAPP_AULA_EXPERIMENTAL, WHATSAPP_URL } from "@/lib/constants";
 import { trackWhatsappClicked } from "@/lib/analytics";
+import { WHATSAPP_AULA_EXPERIMENTAL, WHATSAPP_URL } from "@/lib/constants";
 
 export default function ContactCtaSection() {
-
 	return (
 		<section className="bg-background-dark py-16">
 			<div className="container-main">
@@ -27,7 +26,9 @@ export default function ContactCtaSection() {
 								href={WHATSAPP_AULA_EXPERIMENTAL}
 								target="_blank"
 								rel="noopener noreferrer"
-								onClick={() => trackWhatsappClicked("cta_section_aula", "aula_experimental")}
+								onClick={() =>
+									trackWhatsappClicked("cta_section_aula", "aula_experimental")
+								}
 								className="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-primary-500 transition-colors hover:bg-white/95"
 							>
 								Solicitar Aula Grátis
@@ -36,7 +37,9 @@ export default function ContactCtaSection() {
 								href={WHATSAPP_URL}
 								target="_blank"
 								rel="noopener noreferrer"
-								onClick={() => trackWhatsappClicked("cta_section_whatsapp", "support")}
+								onClick={() =>
+									trackWhatsappClicked("cta_section_whatsapp", "support")
+								}
 								className="inline-flex h-12 items-center justify-center rounded-full border border-white/30 bg-black/15 px-6 text-sm font-bold text-white transition-colors hover:bg-black/25"
 							>
 								Falar no WhatsApp

@@ -1,42 +1,42 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 import { CONTACT_EMAIL } from "@/lib/constants";
 
 export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json();
-    const { nome, email, telefone, assunto, mensagem } = body;
+	try {
+		const body = await request.json();
+		const { nome, email, telefone, assunto, mensagem } = body;
 
-    // Validate required fields
-    if (!nome || !email || !mensagem) {
-      return NextResponse.json(
-        { error: "Nome, email e mensagem são obrigatórios" },
-        { status: 400 }
-      );
-    }
+		// Validate required fields
+		if (!nome || !email || !mensagem) {
+			return NextResponse.json(
+				{ error: "Nome, email e mensagem são obrigatórios" },
+				{ status: 400 },
+			);
+		}
 
-    // Check if API key is configured
-    if (!process.env.RESEND_API_KEY) {
-      console.error("RESEND_API_KEY not configured");
-      return NextResponse.json(
-        {
-          error:
-            "Serviço de email não configurado. Tente novamente mais tarde.",
-        },
-        { status: 500 }
-      );
-    }
+		// Check if API key is configured
+		if (!process.env.RESEND_API_KEY) {
+			console.error("RESEND_API_KEY not configured");
+			return NextResponse.json(
+				{
+					error:
+						"Serviço de email não configurado. Tente novamente mais tarde.",
+				},
+				{ status: 500 },
+			);
+		}
 
-    // Initialize Resend with API key
-    const resend = new Resend(process.env.RESEND_API_KEY);
+		// Initialize Resend with API key
+		const resend = new Resend(process.env.RESEND_API_KEY);
 
-    // Send email using Resend
-    const data = await resend.emails.send({
-      from: `Panobianco Website <${CONTACT_EMAIL}>`,
-      to: ["gui.olhenrique@gmail.com"],
-      subject: `Nova mensagem do site${assunto ? ` - ${assunto}` : ""}`,
-      html: `
+		// Send email using Resend
+		const data = await resend.emails.send({
+			from: `Panobianco Website <${CONTACT_EMAIL}>`,
+			to: ["gui.olhenrique@gmail.com"],
+			subject: `Nova mensagem do site${assunto ? ` - ${assunto}` : ""}`,
+			html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #f97316;">Nova mensagem do site - Academia Panobianco</h2>
           
@@ -58,14 +58,14 @@ export async function POST(request: NextRequest) {
           </div>
         </div>
       `,
-    });
+		});
 
-    return NextResponse.json({ message: "Email enviado com sucesso!", data });
-  } catch (error) {
-    console.error("Error sending email:", error);
-    return NextResponse.json(
-      { error: "Erro interno do servidor. Tente novamente mais tarde." },
-      { status: 500 }
-    );
-  }
+		return NextResponse.json({ message: "Email enviado com sucesso!", data });
+	} catch (error) {
+		console.error("Error sending email:", error);
+		return NextResponse.json(
+			{ error: "Erro interno do servidor. Tente novamente mais tarde." },
+			{ status: 500 },
+		);
+	}
 }

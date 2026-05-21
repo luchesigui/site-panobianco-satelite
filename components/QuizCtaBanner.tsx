@@ -3,7 +3,7 @@
 import { ArrowRight, Mail, Sparkles, Timer } from "lucide-react";
 import Link from "next/link";
 
-import { trackQuizCtaClicked, type QuizCtaSource } from "@/lib/analytics";
+import { type QuizCtaSource, trackQuizCtaClicked } from "@/lib/analytics";
 
 type Props = {
 	source: QuizCtaSource;

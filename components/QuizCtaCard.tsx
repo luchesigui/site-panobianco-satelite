@@ -3,7 +3,7 @@
 import { ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 
-import { trackQuizCtaClicked, type QuizCtaSource } from "@/lib/analytics";
+import { type QuizCtaSource, trackQuizCtaClicked } from "@/lib/analytics";
 
 type Variant = "default" | "compact" | "soft";
 
@@ -18,8 +18,7 @@ type Props = {
 const containerByVariant: Record<Variant, string> = {
 	default:
 		"flex flex-col gap-6 rounded-3xl border border-primary-500/30 bg-gradient-to-br from-primary-500/15 via-primary-500/5 to-transparent p-8 md:flex-row md:items-center md:justify-between md:p-10",
-	soft:
-		"glass-card flex flex-col gap-4 rounded-2xl border border-primary-500/20 p-6 sm:flex-row sm:items-center sm:justify-between",
+	soft: "glass-card flex flex-col gap-4 rounded-2xl border border-primary-500/20 p-6 sm:flex-row sm:items-center sm:justify-between",
 	compact:
 		"flex flex-col items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 sm:flex-row sm:items-center sm:justify-between",
 };
@@ -39,8 +38,7 @@ const subheadClassByVariant: Record<Variant, string> = {
 const ctaClassByVariant: Record<Variant, string> = {
 	default:
 		"inline-flex shrink-0 items-center gap-2 rounded-full bg-primary-500 px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-primary-500/30 transition-all hover:bg-primary-500/90 hover:scale-[1.02]",
-	soft:
-		"inline-flex shrink-0 items-center gap-2 rounded-full bg-primary-500 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-500/90",
+	soft: "inline-flex shrink-0 items-center gap-2 rounded-full bg-primary-500 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-500/90",
 	compact:
 		"inline-flex shrink-0 items-center gap-2 rounded-full bg-primary-500 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-500/90",
 };

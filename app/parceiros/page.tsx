@@ -81,7 +81,9 @@ export default function ParceirosPage() {
 					linkAceiteContrato: data.linkAceiteContrato,
 				});
 			} else {
-				setErrorMessage(data.error ?? "Erro ao realizar cadastro. Tente novamente.");
+				setErrorMessage(
+					data.error ?? "Erro ao realizar cadastro. Tente novamente.",
+				);
 			}
 		} catch {
 			setErrorMessage("Erro de conexão. Tente novamente.");
@@ -95,8 +97,18 @@ export default function ParceirosPage() {
 			<main className="min-h-screen bg-[#120a08] px-4 py-16 text-white">
 				<div className="mx-auto max-w-lg text-center">
 					<div className="mb-6 inline-flex size-16 items-center justify-center rounded-full bg-green-500/20 text-green-400">
-						<svg className="size-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-							<path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+						<svg
+							className="size-8"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							strokeWidth={2}
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								d="M5 13l4 4L19 7"
+							/>
 						</svg>
 					</div>
 					<h1 className="text-2xl font-bold">Pré-cadastro concluído!</h1>
@@ -313,7 +325,9 @@ export default function ParceirosPage() {
 								onChange={handleChange}
 								disabled={isSubmitting}
 								placeholder={
-									partner === "wellhub" ? "ID do app Wellhub" : "ID do app TotalPass"
+									partner === "wellhub"
+										? "ID do app Wellhub"
+										: "ID do app TotalPass"
 								}
 								className={INPUT_CLASS}
 							/>
@@ -337,9 +351,7 @@ export default function ParceirosPage() {
 										name="gender"
 										value={g}
 										checked={form.gender === g}
-										onChange={() =>
-											setForm((prev) => ({ ...prev, gender: g }))
-										}
+										onChange={() => setForm((prev) => ({ ...prev, gender: g }))}
 										disabled={isSubmitting}
 										className="sr-only"
 									/>

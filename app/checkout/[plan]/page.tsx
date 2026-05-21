@@ -9,27 +9,29 @@ const VALID_PLANS = ["orange", "platinum"] as const;
 type PlanParam = (typeof VALID_PLANS)[number];
 
 export default async function CheckoutPage({
-  params,
-  searchParams,
+	params,
+	searchParams,
 }: {
-  params: { plan: string };
-  searchParams: { idProspect?: string };
+	params: { plan: string };
+	searchParams: { idProspect?: string };
 }) {
-  const plan = params.plan as PlanParam;
+	const plan = params.plan as PlanParam;
 
-  if (!VALID_PLANS.includes(plan)) {
-    notFound();
-  }
+	if (!VALID_PLANS.includes(plan)) {
+		notFound();
+	}
 
-  const idProspect = searchParams.idProspect ? Number(searchParams.idProspect) : undefined;
+	const idProspect = searchParams.idProspect
+		? Number(searchParams.idProspect)
+		: undefined;
 
-  let url: string;
-  try {
-    url = await createCheckoutLink(plan, idProspect);
-  } catch (err) {
-    console.error(`[checkout/${plan}]`, err);
-    url = `${SITE_URL}/planos`;
-  }
+	let url: string;
+	try {
+		url = await createCheckoutLink(plan, idProspect);
+	} catch (err) {
+		console.error(`[checkout/${plan}]`, err);
+		url = `${SITE_URL}/planos`;
+	}
 
-  redirect(url);
+	redirect(url);
 }

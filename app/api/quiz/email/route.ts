@@ -1,181 +1,207 @@
 import { createHash } from "node:crypto";
-
 import { type NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 import { CONTACT_EMAIL } from "@/lib/constants";
-import { createEvoProspect } from "@/lib/evo";
 import {
-  buildEmailHtml,
-  selectCtaContent,
-  selectCtaHref,
-  selectTemplate,
-  TEMPLATES,
+	buildEmailHtml,
+	selectCtaContent,
+	selectCtaHref,
+	selectTemplate,
+	TEMPLATES,
 } from "@/lib/emailTemplates";
+import { createEvoProspect } from "@/lib/evo";
 
 /** Stable key for Resend idempotency — same inputs ⇒ duplicate POSTs return the original send (no double emails). */
 function quizEmailIdempotencyKey(input: {
-  firstName: string;
-  email: string;
-  plan: string;
-  goal: string;
-  loseWeightWhy?: string;
-  muscleWhy?: string;
-  energyMissing?: string;
-  healthMotivation?: string;
+	firstName: string;
+	email: string;
+	plan: string;
+	goal: string;
+	loseWeightWhy?: string;
+	muscleWhy?: string;
+	energyMissing?: string;
+	healthMotivation?: string;
 }): string {
-  const canonical = JSON.stringify({
-    firstName: input.firstName.trim().toLowerCase(),
-    email: input.email.trim().toLowerCase(),
-    plan: input.plan,
-    goal: input.goal,
-    loseWeightWhy: input.loseWeightWhy ?? "",
-    muscleWhy: input.muscleWhy ?? "",
-    energyMissing: input.energyMissing ?? "",
-    healthMotivation: input.healthMotivation ?? "",
-  });
-  const suffix = createHash("sha256").update(canonical).digest("hex").slice(0, 40);
-  return `quiz-result-email/${suffix}`;
+	const canonical = JSON.stringify({
+		firstName: input.firstName.trim().toLowerCase(),
+		email: input.email.trim().toLowerCase(),
+		plan: input.plan,
+		goal: input.goal,
+		loseWeightWhy: input.loseWeightWhy ?? "",
+		muscleWhy: input.muscleWhy ?? "",
+		energyMissing: input.energyMissing ?? "",
+		healthMotivation: input.healthMotivation ?? "",
+	});
+	const suffix = createHash("sha256")
+		.update(canonical)
+		.digest("hex")
+		.slice(0, 40);
+	return `quiz-result-email/${suffix}`;
 }
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
-  const {
-    firstName: rawFirstName,
-    email,
-    whatsapp,
-    sex,
-    birthdate,
-    plan,
-    goal,
-    loseWeightWhy,
-    muscleWhy,
-    energyMissing,
-    healthMotivation,
-  } = body as {
-    firstName: string;
-    email: string;
-    whatsapp?: string;
-    sex?: string;
-    birthdate?: string;
-    plan: string;
-    goal: string;
-    loseWeightWhy?: string;
-    muscleWhy?: string;
-    energyMissing?: string;
-    healthMotivation?: string;
-  };
+	const body = await request.json();
+	const {
+		firstName: rawFirstName,
+		email,
+		whatsapp,
+		sex,
+		birthdate,
+		plan,
+		goal,
+		loseWeightWhy,
+		muscleWhy,
+		energyMissing,
+		healthMotivation,
+	} = body as {
+		firstName: string;
+		email: string;
+		whatsapp?: string;
+		sex?: string;
+		birthdate?: string;
+		plan: string;
+		goal: string;
+		loseWeightWhy?: string;
+		muscleWhy?: string;
+		energyMissing?: string;
+		healthMotivation?: string;
+	};
 
-  const firstName = rawFirstName?.trim().split(/\s+/)[0] || "";
+	const firstName = rawFirstName?.trim().split(/\s+/)[0] || "";
 
-  if (!firstName || !email) {
-    return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
-  }
+	if (!firstName || !email) {
+		return NextResponse.json(
+			{ error: "Missing required fields" },
+			{ status: 400 },
+		);
+	}
 
-  if (!process.env.RESEND_API_KEY) {
-    console.error("[quiz/email] RESEND_API_KEY not configured");
-    return NextResponse.json({ ok: true, idProspect: null });
-  }
+	if (!process.env.RESEND_API_KEY) {
+		console.error("[quiz/email] RESEND_API_KEY not configured");
+		return NextResponse.json({ ok: true, idProspect: null });
+	}
 
-  // Create EVO prospect — awaited so idProspect is available for the checkout URL in the email.
-  // Failure is non-fatal: the rest of the flow continues with idProspect = null.
-  let idProspect: number | null = null;
-  if (sex && birthdate && whatsapp) {
-    try {
-      const parts = birthdate.split("/");
-      const birthdateISO =
-        parts.length === 3 ? `${parts[2]}-${parts[1]}-${parts[0]}` : birthdate;
-      idProspect = await createEvoProspect({
-        firstName,
-        email,
-        phone: whatsapp,
-        birthdate: birthdateISO,
-        gender: sex as "M" | "F",
-        goal,
-        plan,
-        healthMotivation,
-      });
-    } catch (err) {
-      console.error("[quiz/email] EVO prospect error:", err);
-    }
-  }
+	// Create EVO prospect — awaited so idProspect is available for the checkout URL in the email.
+	// Failure is non-fatal: the rest of the flow continues with idProspect = null.
+	let idProspect: number | null = null;
+	if (sex && birthdate && whatsapp) {
+		try {
+			const parts = birthdate.split("/");
+			const birthdateISO =
+				parts.length === 3 ? `${parts[2]}-${parts[1]}-${parts[0]}` : birthdate;
+			idProspect = await createEvoProspect({
+				firstName,
+				email,
+				phone: whatsapp,
+				birthdate: birthdateISO,
+				gender: sex as "M" | "F",
+				goal,
+				plan,
+				healthMotivation,
+			});
+		} catch (err) {
+			console.error("[quiz/email] EVO prospect error:", err);
+		}
+	}
 
-  try {
-    const key = selectTemplate(goal, plan, loseWeightWhy, muscleWhy, energyMissing, healthMotivation);
-    const tpl = TEMPLATES[key];
-    const subject = tpl.subject.replace("{Nome}", firstName);
-    const baseCtaHref = selectCtaHref(plan);
-    const ctaHref =
-      idProspect && baseCtaHref.includes("/checkout/")
-        ? `${baseCtaHref}?idProspect=${idProspect}`
-        : baseCtaHref;
-    const tag = tpl.tag.replace("{Nome}", firstName);
-    const { ctaLabel, ctaNote } = selectCtaContent(key, plan);
-    const html = buildEmailHtml({ firstName, ...tpl, tag, ctaHref, ctaLabel, ctaNote });
+	try {
+		const key = selectTemplate(
+			goal,
+			plan,
+			loseWeightWhy,
+			muscleWhy,
+			energyMissing,
+			healthMotivation,
+		);
+		const tpl = TEMPLATES[key];
+		const subject = tpl.subject.replace("{Nome}", firstName);
+		const baseCtaHref = selectCtaHref(plan);
+		const ctaHref =
+			idProspect && baseCtaHref.includes("/checkout/")
+				? `${baseCtaHref}?idProspect=${idProspect}`
+				: baseCtaHref;
+		const tag = tpl.tag.replace("{Nome}", firstName);
+		const { ctaLabel, ctaNote } = selectCtaContent(key, plan);
+		const html = buildEmailHtml({
+			firstName,
+			...tpl,
+			tag,
+			ctaHref,
+			ctaLabel,
+			ctaNote,
+		});
 
-    const idempotencyKey = quizEmailIdempotencyKey({
-      firstName,
-      email,
-      plan,
-      goal,
-      loseWeightWhy,
-      muscleWhy,
-      energyMissing,
-      healthMotivation,
-    });
+		const idempotencyKey = quizEmailIdempotencyKey({
+			firstName,
+			email,
+			plan,
+			goal,
+			loseWeightWhy,
+			muscleWhy,
+			energyMissing,
+			healthMotivation,
+		});
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
+		const resend = new Resend(process.env.RESEND_API_KEY);
 
-    // 1. Send email to the user
-    const result = await resend.emails.send(
-      {
-        from:
-          process.env.NODE_ENV === "production"
-            ? `Panobianco Satélite <${CONTACT_EMAIL}>`
-            : "Panobianco Satélite <onboarding@resend.dev>",
-        to: [email],
-        subject,
-        html,
-        tags: [
-          { name: "source", value: "quiz" },
-          { name: "template", value: key.replace(/[^a-zA-Z0-9_-]/g, "-").slice(0, 256) },
-        ],
-      },
-      { idempotencyKey },
-    );
+		// 1. Send email to the user
+		const result = await resend.emails.send(
+			{
+				from:
+					process.env.NODE_ENV === "production"
+						? `Panobianco Satélite <${CONTACT_EMAIL}>`
+						: "Panobianco Satélite <onboarding@resend.dev>",
+				to: [email],
+				subject,
+				html,
+				tags: [
+					{ name: "source", value: "quiz" },
+					{
+						name: "template",
+						value: key.replace(/[^a-zA-Z0-9_-]/g, "-").slice(0, 256),
+					},
+				],
+			},
+			{ idempotencyKey },
+		);
 
-    if (result.error) {
-      console.error("[quiz/email] Resend error (user):", result.error);
-    } else {
-      console.log(`[quiz/email] sent template=${key} to=${email} id=${result.data?.id}`);
-    }
+		if (result.error) {
+			console.error("[quiz/email] Resend error (user):", result.error);
+		} else {
+			console.log(
+				`[quiz/email] sent template=${key} to=${email} id=${result.data?.id}`,
+			);
+		}
 
-    // 2. Notify admin (Gui Henrique)
-    try {
-      const isEbook = plan === "too_expensive";
+		// 2. Notify admin (Gui Henrique)
+		try {
+			const isEbook = plan === "too_expensive";
 
-      const goalLabels: Record<string, string> = {
-        lose_weight: "Emagrecer e perder gordura",
-        gain_muscle: "Ganhar massa e definição",
-        energy: "Ter mais disposição e energia",
-        health: "Saúde, bem-estar e qualidade de vida",
-      };
+			const goalLabels: Record<string, string> = {
+				lose_weight: "Emagrecer e perder gordura",
+				gain_muscle: "Ganhar massa e definição",
+				energy: "Ter mais disposição e energia",
+				health: "Saúde, bem-estar e qualidade de vida",
+			};
 
-      const planLabels: Record<string, string> = {
-        orange: "Orange Anual (R$ 119,90)",
-        platinum_rec: "Platinum Recorrente (R$ 139,90)",
-        platinum_month: "Platinum Mensal (R$ 159,90)",
-        too_expensive: "E-book (Planos caros)",
-      };
+			const planLabels: Record<string, string> = {
+				orange: "Orange Anual (R$ 119,90)",
+				platinum_rec: "Platinum Recorrente (R$ 139,90)",
+				platinum_month: "Platinum Mensal (R$ 159,90)",
+				too_expensive: "E-book (Planos caros)",
+			};
 
-      const goalLabel = goalLabels[goal] || goal;
-      const planLabel = planLabels[plan] || plan;
+			const goalLabel = goalLabels[goal] || goal;
+			const planLabel = planLabels[plan] || plan;
 
-      await resend.emails.send({
-        from: `Panobianco Quiz <${CONTACT_EMAIL}>`,
-        to: ["gui.olhenrique@gmail.com"],
-        subject: isEbook ? `🎯 Lead EBOOK: ${firstName}` : `🎯 Novo Lead Quiz: ${firstName}`,
-        html: `
+			await resend.emails.send({
+				from: `Panobianco Quiz <${CONTACT_EMAIL}>`,
+				to: ["gui.olhenrique@gmail.com"],
+				subject: isEbook
+					? `🎯 Lead EBOOK: ${firstName}`
+					: `🎯 Novo Lead Quiz: ${firstName}`,
+				html: `
           <div style="font-family: sans-serif; max-width: 600px; color: #333;">
             <h2 style="color: #ff5e29;">${isEbook ? "Novo Lead de Ebook" : "Novo Lead do Quiz"}</h2>
             <p>Um novo usuário completou o quiz no site.</p>
@@ -191,13 +217,13 @@ export async function POST(request: NextRequest) {
             <p style="font-size: 12px; color: #999;">Enviado automaticamente pelo sistema de Quiz.</p>
           </div>
         `,
-      });
-    } catch (adminErr) {
-      console.error("[quiz/email] failed to notify admin:", adminErr);
-    }
-  } catch (err) {
-    console.error("[quiz/email] unexpected error:", err);
-  }
+			});
+		} catch (adminErr) {
+			console.error("[quiz/email] failed to notify admin:", adminErr);
+		}
+	} catch (err) {
+		console.error("[quiz/email] unexpected error:", err);
+	}
 
-  return NextResponse.json({ ok: true, idProspect });
+	return NextResponse.json({ ok: true, idProspect });
 }

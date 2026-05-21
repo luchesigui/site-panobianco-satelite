@@ -2,8 +2,8 @@
 
 import { MessageCircle } from "lucide-react";
 
-import { WHATSAPP_URL } from "@/lib/constants";
 import { trackWhatsappClicked } from "@/lib/analytics";
+import { WHATSAPP_URL } from "@/lib/constants";
 
 export default function FloatingWhatsApp() {
 	return (

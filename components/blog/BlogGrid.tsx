@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import type { BlogPost } from "@/lib/blog";
 import BlogCard from "@/components/blog/BlogCard";
+import type { BlogPost } from "@/lib/blog";
 
 const PAGE_SIZE = 9;
 

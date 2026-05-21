@@ -1,17 +1,19 @@
 import type { ReactNode } from "react";
+
 import ContactCtaSection from "@/components/ContactCtaSection";
-import QuizCtaCard from "@/components/QuizCtaCard";
 import ModalidadeAbout from "@/components/modalidades/ModalidadeAbout";
 import ModalidadeBenefits from "@/components/modalidades/ModalidadeBenefits";
 import ModalidadeHero from "@/components/modalidades/ModalidadeHero";
+import QuizCtaCard from "@/components/QuizCtaCard";
 
 type ModalidadeContactCtaProps = {
 	modalidade?: string;
 };
 
 function ModalidadeContactCta({ modalidade }: ModalidadeContactCtaProps = {}) {
-	const source = (modalidade ? `modalidade_${modalidade}` : "modalidade_generic") as
-		| `modalidade_${string}`;
+	const source = (
+		modalidade ? `modalidade_${modalidade}` : "modalidade_generic"
+	) as `modalidade_${string}`;
 	return (
 		<>
 			<section className="bg-background-dark py-8">
@@ -73,7 +75,9 @@ function ModalidadeClasses({
 						</h3>
 						{description && (
 							<>
-								<p className="mb-4 leading-relaxed text-neutral-400">{description}</p>
+								<p className="mb-4 leading-relaxed text-neutral-400">
+									{description}
+								</p>
 								<p className="mb-6 leading-relaxed text-neutral-400">
 									A trilha sonora e as coreografias são pensadas para manter
 									você motivado. Consulte a grade de horários na recepção ou
@@ -94,8 +98,13 @@ function ModalidadeClasses({
 						</h3>
 						<ul className="space-y-4">
 							{highlights.map((item) => (
-								<li key={item} className="flex items-start gap-3 text-neutral-400">
-									<div className={`mt-1.5 size-2 shrink-0 rounded-full ${accentClass}`} />
+								<li
+									key={item}
+									className="flex items-start gap-3 text-neutral-400"
+								>
+									<div
+										className={`mt-1.5 size-2 shrink-0 rounded-full ${accentClass}`}
+									/>
 									<span>{item}</span>
 								</li>
 							))}

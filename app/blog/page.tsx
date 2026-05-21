@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import ContactCtaSection from "@/components/ContactCtaSection";
 import BlogGrid from "@/components/blog/BlogGrid";
+import ContactCtaSection from "@/components/ContactCtaSection";
 import { getAllPosts } from "@/lib/blog";
 import { SITE_URL } from "@/lib/constants";
 
@@ -55,9 +55,8 @@ export default function BlogPage() {
 						SAÚDE & BEM-ESTAR
 					</h1>
 					<p className="text-lg font-normal leading-relaxed text-white/60">
-						Dicas e informações sobre exercícios, saúde na terceira
-						idade, emagrecimento e qualidade de vida em São José dos
-						Campos.
+						Dicas e informações sobre exercícios, saúde na terceira idade,
+						emagrecimento e qualidade de vida em São José dos Campos.
 					</p>
 				</div>
 

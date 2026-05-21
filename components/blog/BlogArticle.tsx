@@ -33,10 +33,7 @@ export default function BlogArticle({
 						className="mb-8 flex items-center gap-2 text-sm text-white/40"
 						aria-label="Breadcrumb"
 					>
-						<Link
-							href="/"
-							className="transition-colors hover:text-primary-500"
-						>
+						<Link href="/" className="transition-colors hover:text-primary-500">
 							Início
 						</Link>
 						<span aria-hidden="true">/</span>

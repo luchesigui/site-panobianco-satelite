@@ -36,15 +36,11 @@ export function getAllPosts(): BlogPost[] {
 
 	const themes = fs
 		.readdirSync(contentDir)
-		.filter((name) =>
-			fs.statSync(path.join(contentDir, name)).isDirectory(),
-		);
+		.filter((name) => fs.statSync(path.join(contentDir, name)).isDirectory());
 
 	for (const theme of themes) {
 		const themeDir = path.join(contentDir, theme);
-		const files = fs
-			.readdirSync(themeDir)
-			.filter((f) => f.endsWith(".md"));
+		const files = fs.readdirSync(themeDir).filter((f) => f.endsWith(".md"));
 
 		for (const file of files) {
 			const slug = file.replace(/\.md$/, "");
@@ -79,9 +75,7 @@ export async function getPostBySlug(
 ): Promise<BlogPostWithContent | null> {
 	const themes = fs
 		.readdirSync(contentDir)
-		.filter((name) =>
-			fs.statSync(path.join(contentDir, name)).isDirectory(),
-		);
+		.filter((name) => fs.statSync(path.join(contentDir, name)).isDirectory());
 
 	let matchedFileContents: string | null = null;
 	let matchedData: ReturnType<typeof matter> | null = null;

@@ -1,6 +1,6 @@
-import { Bebas_Neue, Montserrat, Roboto } from "next/font/google";
 import { Check, Dumbbell, Music2, Users, Zap } from "lucide-react";
 import type { Metadata } from "next";
+import { Bebas_Neue, Montserrat, Roboto } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -225,10 +225,10 @@ export default function PromoOrange() {
 						>
 							Oferta válida até 31/05/2026,{" "}
 							<strong>exclusivamente para o Plano Orange Anual</strong>, sujeito
-							à disponibilidade da unidade escolhida. Para matrículas
-							realizadas no balcão ou outros canais, o valor promocional será
-							de R$ 9,90 no primeiro mês do Plano Orange Anual recorrente. A
-							partir da segunda mensalidade, o valor será de R$ 119,90/mês.
+							à disponibilidade da unidade escolhida. Para matrículas realizadas
+							no balcão ou outros canais, o valor promocional será de R$ 9,90 no
+							primeiro mês do Plano Orange Anual recorrente. A partir da segunda
+							mensalidade, o valor será de R$ 119,90/mês.
 						</p>
 					</div>
 				</div>
@@ -573,7 +573,12 @@ export default function PromoOrange() {
 				src={`${CDN}/69dd2248d3b853b2e0acfa9f_BG-curva-1-ambiente.svg`}
 				alt=""
 				aria-hidden="true"
-				style={{ width: "100%", maxWidth: "none", marginBottom: -3, display: "block" }}
+				style={{
+					width: "100%",
+					maxWidth: "none",
+					marginBottom: -3,
+					display: "block",
+				}}
 			/>
 
 			{/* ── Gallery Section ── */}

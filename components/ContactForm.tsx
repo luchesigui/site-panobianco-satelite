@@ -68,8 +68,7 @@ export default function ContactForm() {
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
 	) => {
 		const { name, value } = e.target;
-		const nextValue =
-			name === "telefone" ? formatPhone(value) : value;
+		const nextValue = name === "telefone" ? formatPhone(value) : value;
 		setFormData((prev) => ({ ...prev, [name]: nextValue }));
 	};
 
