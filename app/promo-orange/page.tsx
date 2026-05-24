@@ -105,30 +105,17 @@ export default function PromoOrange() {
 
 			{/* ── Hero ── */}
 			<section
+				className="pt-20 pb-28 px-4 md:py-10 flex flex-col items-center justify-center relative min-h-[75vh] md:min-h-[95vh]"
 				style={{
 					backgroundImage: `url(${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif)`,
 					backgroundPosition: "50%",
 					backgroundRepeat: "no-repeat",
 					backgroundSize: "cover",
-					minHeight: "95vh",
-					display: "flex",
-					flexDirection: "column",
-					justifyContent: "center",
-					alignItems: "center",
-					position: "relative",
-					paddingTop: 40,
-					paddingBottom: 40,
 				}}
 			>
-				{/* Price tag — center of background photo */}
+				{/* Price tag — center of background photo (desktop only) */}
 				<div
-					style={{
-						position: "absolute",
-						left: "50%",
-						top: 0,
-						transform: "translateX(-50%)",
-						pointerEvents: "none",
-					}}
+					className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none z-10"
 				>
 					<Image
 						src={`${CDN}/69dd4dc4ff04549510bc520a_selo-oferta.avif`}
@@ -139,15 +126,23 @@ export default function PromoOrange() {
 					/>
 				</div>
 
-				{/* "PRIMEIRA VEZ PANOBIANCO" sticker — bottom-left */}
+				{/* Price tag — bottom center hanging over next section (mobile only) */}
 				<div
-					style={{
-						position: "absolute",
-						bottom: "7rem",
-						left: "10%",
-						transform: "scale(1.5)",
-						pointerEvents: "none",
-					}}
+					className="md:hidden absolute pointer-events-none z-10"
+					style={{ bottom: -280, left: "5%" }}
+				>
+					<Image
+						src={`${CDN}/69dd4dc4ff04549510bc520a_selo-oferta.avif`}
+						alt="R$ 0,99 no primeiro mês"
+						width={140}
+						height={160}
+						unoptimized
+					/>
+				</div>
+
+				{/* "PRIMEIRA VEZ PANOBIANCO" sticker — bottom-left on desktop */}
+				<div
+					className="hidden md:block absolute bottom-[7rem] left-[10%] scale-150 pointer-events-none"
 				>
 					<Image
 						src={`${CDN}/69dd4dc45e2e9365f0ad294f_sticker-3%202.avif`}
@@ -160,21 +155,10 @@ export default function PromoOrange() {
 
 				{/* Text box — right side */}
 				<div
-					style={{
-						display: "flex",
-						justifyContent: "flex-end",
-						width: "95%",
-						maxWidth: 1200,
-					}}
+					className="flex justify-start md:justify-end w-[95%] max-w-[1200px]"
 				>
 					<div
-						style={{
-							width: "40%",
-							minWidth: 320,
-							display: "flex",
-							flexDirection: "column",
-							alignItems: "flex-start",
-						}}
+						className="w-full md:w-[40%] flex flex-col items-center md:items-start text-center md:text-left"
 					>
 						<h1
 							className={bebasNeue.className}
@@ -237,35 +221,19 @@ export default function PromoOrange() {
 			{/* ── Plan Card Section ── */}
 			<section
 				id="plano-orange"
-				style={{
-					backgroundColor: "#fff",
-					display: "flex",
-					flexDirection: "column",
-					justifyContent: "center",
-					alignItems: "center",
-					paddingBottom: 110,
-					position: "relative",
-				}}
+				className="bg-white flex flex-col items-center justify-center pb-16 md:pb-28 relative"
 			>
 				<div
-					style={{
-						display: "flex",
-						flexDirection: "row",
-						flexWrap: "wrap",
-						justifyContent: "space-between",
-						alignItems: "center",
-						width: "95%",
-						maxWidth: 1200,
-					}}
+					className="flex flex-col md:flex-row items-center justify-between w-[95%] max-w-[1200px] gap-8 md:gap-0"
 				>
 					{/* Left: gym image */}
-					<div style={{ flex: "0 0 55%", maxWidth: "55%" }}>
+					<div className="w-full md:w-[55%] md:max-w-[55%]">
 						<Image
 							src={`${CDN}/69dd37fcb95326a6f6a42a65_img-1-plano-orange.avif`}
 							alt="Plano Orange Anual Panobianco"
 							width={700}
 							height={800}
-							style={{ width: "100%", height: "auto", display: "block" }}
+							className="w-full h-auto block"
 							priority
 							unoptimized
 						/>
@@ -273,25 +241,14 @@ export default function PromoOrange() {
 
 					{/* Right: plan card */}
 					<div
+						className="w-full md:w-[40%] bg-white rounded-[20px] p-6 md:p-8 relative z-[2]"
 						style={{
-							flex: "0 0 40%",
-							backgroundColor: "#fff",
-							borderRadius: 20,
-							padding: 32,
 							boxShadow: "0 0 40px rgba(0,0,0,0.15)",
-							position: "relative",
-							zIndex: 2,
 						}}
 					>
 						{/* Plan name */}
 						<h2
-							className={bebasNeue.className}
-							style={{
-								fontSize: 70,
-								lineHeight: "85%",
-								margin: 0,
-								color: "#2a2f31",
-							}}
+							className={`${bebasNeue.className} text-[50px] md:text-[70px] leading-[85%] margin-0 text-[#2a2f31]`}
 						>
 							Orange Anual
 						</h2>
@@ -308,36 +265,15 @@ export default function PromoOrange() {
 							}}
 						>
 							<div
-								style={{
-									display: "flex",
-									flexDirection: "row",
-									alignItems: "center",
-									gap: 10,
-									color: "#ff6101",
-								}}
+								className="flex flex-row items-center gap-[10px] text-[#ff6101]"
 							>
 								<span
-									className={bebasNeue.className}
-									style={{
-										fontSize: 90,
-										lineHeight: "80%",
-										letterSpacing: -3,
-										fontWeight: 700,
-										color: "#ff6101",
-									}}
+									className={`${bebasNeue.className} text-[60px] xs:text-[75px] sm:text-[90px] leading-[80%] tracking-[-3px] font-bold text-[#ff6101]`}
 								>
 									R$ 0,99
 								</span>
 								<span
-									className={montserrat.className}
-									style={{
-										fontSize: 24,
-										maxWidth: 100,
-										lineHeight: "80%",
-										marginTop: 15,
-										color: "#2a2f31",
-										fontWeight: 600,
-									}}
+									className={`${montserrat.className} text-[16px] xs:text-[20px] sm:text-[24px] max-w-[140px] xs:max-w-[120px] sm:max-w-[100px] leading-[100%] xs:leading-[90%] sm:leading-[80%] sm:mt-[15px] text-[#2a2f31] font-semibold`}
 								>
 									NA PRIMEIRA MENSALIDADE
 								</span>
@@ -383,39 +319,21 @@ export default function PromoOrange() {
 
 						{/* Benefits: 2 columns */}
 						<div
-							style={{
-								display: "flex",
-								flexDirection: "row",
-								gap: 20,
-								marginTop: 20,
-							}}
+							className="flex flex-row gap-4 sm:gap-5 mt-5 justify-between w-full"
 						>
 							{/* Col 1 */}
 							<div
-								style={{
-									display: "flex",
-									flexDirection: "column",
-									gap: 12,
-								}}
+								className="flex flex-col gap-3"
 							>
 								{col1Benefits.map((item) => (
 									<div
 										key={item}
-										className={roboto.className}
-										style={{
-											display: "flex",
-											alignItems: "flex-start",
-											gap: 6,
-											maxWidth: 160,
-											fontSize: 14,
-											fontWeight: 300,
-											color: "#2a2f31",
-										}}
+										className={`${roboto.className} flex items-start gap-1.5 max-w-[135px] sm:max-w-[160px] text-[13px] sm:text-[14px] font-light text-[#2a2f31]`}
 									>
 										<Check
 											size={16}
 											color="#ff6101"
-											style={{ flexShrink: 0, marginTop: 2 }}
+											className="flex-shrink-0 mt-0.5"
 										/>
 										{item}
 									</div>
@@ -423,30 +341,17 @@ export default function PromoOrange() {
 							</div>
 							{/* Col 2 */}
 							<div
-								style={{
-									display: "flex",
-									flexDirection: "column",
-									gap: 12,
-								}}
+								className="flex flex-col gap-3"
 							>
 								{col2Benefits.map((item) => (
 									<div
 										key={item}
-										className={roboto.className}
-										style={{
-											display: "flex",
-											alignItems: "flex-start",
-											gap: 6,
-											maxWidth: 160,
-											fontSize: 14,
-											fontWeight: 300,
-											color: "#2a2f31",
-										}}
+										className={`${roboto.className} flex items-start gap-1.5 max-w-[135px] sm:max-w-[160px] text-[13px] sm:text-[14px] font-light text-[#2a2f31]`}
 									>
 										<Check
 											size={16}
 											color="#ff6101"
-											style={{ flexShrink: 0, marginTop: 2 }}
+											className="flex-shrink-0 mt-0.5"
 										/>
 										{item}
 									</div>
@@ -505,59 +410,30 @@ export default function PromoOrange() {
 					</h2>
 
 					<div
-						style={{
-							display: "flex",
-							flexWrap: "wrap",
-							justifyContent: "space-between",
-							width: "100%",
-							gap: 12,
-						}}
+						className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full"
 					>
 						{activities.map(({ label, src, icon }) => (
 							<div
 								key={label}
-								style={{
-									borderRadius: 30,
-									width: "calc(25% - 9px)",
-									minWidth: 140,
-									position: "relative",
-									overflow: "hidden",
-									aspectRatio: "3/4",
-								}}
+								className="w-full aspect-[3/4] rounded-[20px] md:rounded-[30px] relative overflow-hidden"
 							>
 								<Image
 									src={src}
 									alt={label}
 									fill
-									style={{ objectFit: "cover" }}
+									className="object-cover"
 									sizes="(max-width: 768px) 50vw, 25vw"
 								/>
 								{/* Dark gradient overlay */}
 								<div
-									style={{
-										position: "absolute",
-										inset: 0,
-										background:
-											"linear-gradient(to top, rgba(0,0,0,0.7) 30%, transparent 70%)",
-									}}
+									className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
 								/>
 								{/* Label at bottom */}
 								<div
-									className={montserrat.className}
-									style={{
-										position: "absolute",
-										bottom: 24,
-										left: 24,
-										right: 24,
-										color: "#fff",
-										fontSize: 24,
-										display: "flex",
-										flexDirection: "column",
-										gap: 8,
-									}}
+									className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 text-white flex flex-col gap-2"
 								>
 									{icon}
-									<span style={{ fontWeight: 600, lineHeight: "120%" }}>
+									<span className={`${montserrat.className} font-semibold text-[15px] xs:text-[18px] md:text-2xl leading-tight`}>
 										{label}
 									</span>
 								</div>
@@ -583,15 +459,7 @@ export default function PromoOrange() {
 
 			{/* ── Gallery Section ── */}
 			<section
-				style={{
-					backgroundColor: "#fff",
-					paddingTop: 40,
-					paddingBottom: 100,
-					display: "flex",
-					flexDirection: "column",
-					justifyContent: "flex-start",
-					alignItems: "center",
-				}}
+				className="bg-white py-10 md:py-20 flex flex-col justify-start items-center"
 			>
 				<div style={{ width: "95%", maxWidth: 1200 }}>
 					{/* Heading row */}
@@ -642,65 +510,21 @@ export default function PromoOrange() {
 						</a>
 					</div>
 
-					{/* Row 1 */}
+					{/* Responsive Grid replacing Row 1 and Row 2 */}
 					<div
-						style={{
-							display: "flex",
-							justifyContent: "space-between",
-							width: "100%",
-							gap: 6,
-						}}
+						className="grid grid-cols-2 md:grid-cols-3 gap-2 w-full"
 					>
-						{galleryRow1.map(({ src, alt }) => (
+						{[...galleryRow1, ...galleryRow2].map(({ src, alt }) => (
 							<div
 								key={src + alt}
-								style={{
-									flex: 1,
-									height: 220,
-									borderRadius: 8,
-									overflow: "hidden",
-									position: "relative",
-								}}
+								className="relative h-[140px] sm:h-[180px] md:h-[220px] rounded-lg overflow-hidden"
 							>
 								<Image
 									src={src}
 									alt={alt}
 									fill
-									style={{ objectFit: "cover" }}
-									sizes="33vw"
-									loading="lazy"
-								/>
-							</div>
-						))}
-					</div>
-
-					{/* Row 2 */}
-					<div
-						style={{
-							display: "flex",
-							justifyContent: "space-between",
-							width: "100%",
-							gap: 6,
-							marginTop: 6,
-						}}
-					>
-						{galleryRow2.map(({ src, alt }) => (
-							<div
-								key={src + alt}
-								style={{
-									flex: 1,
-									height: 220,
-									borderRadius: 8,
-									overflow: "hidden",
-									position: "relative",
-								}}
-							>
-								<Image
-									src={src}
-									alt={alt}
-									fill
-									style={{ objectFit: "cover" }}
-									sizes="33vw"
+									className="object-cover"
+									sizes="(max-width: 768px) 50vw, 33vw"
 									loading="lazy"
 								/>
 							</div>
