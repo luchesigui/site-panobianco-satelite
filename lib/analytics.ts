@@ -69,6 +69,9 @@ export const trackPlanCtaClicked = (
 export const trackContactFormSubmitted = (success: boolean) =>
 	sendGTMEvent({ event: "contact_form_submitted", success });
 
+export const trackWorkWithUsFormSubmitted = (success: boolean) =>
+  sendGTMEvent({ event: "work_with_us_form_submitted", success });
+
 // ─── Modal ─────────────────────────────────────────────────────────────────────
 
 export const trackScheduleModalOpened = () =>
