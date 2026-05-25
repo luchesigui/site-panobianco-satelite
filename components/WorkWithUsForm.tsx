@@ -197,7 +197,7 @@ export default function WorkWithUsForm() {
 						Área de Interesse <span className="text-primary-500">*</span>
 					</label>
 					<div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-						{["Professor", "Barra", "Profissional", "Instrutor", "Estágio", "Recepção", "Limpeza"].map((area) => (
+						{["Instrutor", "Estágio", "Recepção", "Limpeza"].map((area) => (
 							<label
 								key={area}
 								className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2.5 text-sm transition-colors ${

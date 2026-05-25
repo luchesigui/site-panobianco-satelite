@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
 
     const data = await resend.emails.send({
       from: `Panobianco Website <${CONTACT_EMAIL}>`,
-      to: ["gui.olhenrique@gmail.com"],
+      to: ["sjc.satelite@panobiancoacademia.com.br"],
       subject: `Novo candidato: ${nome}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
