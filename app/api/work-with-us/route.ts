@@ -16,10 +16,11 @@ export async function POST(request: NextRequest) {
     const nome = formData.get("nome") as string;
     const email = formData.get("email") as string;
     const telefone = formData.get("telefone") as string;
+    const area = formData.get("area") as string;
     const curriculo = formData.get("curriculo") as File | null;
 
     // Validate required fields
-    if (!nome || !email || !telefone || !curriculo) {
+    if (!nome || !email || !telefone || !area || !curriculo) {
       return NextResponse.json(
         { error: "Todos os campos são obrigatórios, incluindo o currículo." },
         { status: 400 }
@@ -76,6 +77,7 @@ export async function POST(request: NextRequest) {
             <p><strong>Nome:</strong> ${nome}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Telefone:</strong> ${telefone}</p>
+            <p><strong>Área de Interesse:</strong> ${area}</p>
             <p><strong>Currículo:</strong> ${curriculo.name} (${(curriculo.size / 1024).toFixed(1)} KB)</p>
           </div>
           

@@ -62,17 +62,9 @@ export default function TrabalheConosco() {
 						<h2 className="text-3xl font-bold text-white md:text-4xl">
 							Faça Parte do <span className="text-primary-500">Nosso Time</span>
 						</h2>
-						<div className="space-y-4 text-neutral-400 leading-relaxed text-sm md:text-base">
-							<p>
-								Na Academia Panobianco Jardim Satélite, acreditamos que nossos colaboradores são o coração da nossa operação. Nosso propósito é construir um ambiente onde a dedicação à saúde e ao bem-estar inspire nossos alunos a superarem seus limites todos os dias.
-							</p>
-							<p>
-								Valorizamos profissionais proativos, dispostos a aprender e genuinamente focados em oferecer um excelente atendimento aos alunos. Se você possui paixão pelo universo fitness, gosta de lidar com pessoas e tem facilidade para trabalhar em equipe, aqui é o seu lugar.
-							</p>
-							<p>
-								Seja na musculação, recepção, vendas, serviços gerais ou administração, estamos sempre em busca de talentos para fortalecer nossa equipe. Preencha o formulário e anexe seu currículo hoje mesmo.
-							</p>
-						</div>
+						<p className="text-neutral-400 leading-relaxed text-sm md:text-base">
+							Na Panobianco, valorizamos dedicação, trabalho em equipe e paixão pelo fitness. Se você quer fazer parte de um time que transforma vidas pelo movimento, preencha o formulário e envie seu currículo.
+						</p>
 
 						{/* Quick values cards */}
 						<div className="grid grid-cols-1 gap-4 pt-6 sm:grid-cols-2">

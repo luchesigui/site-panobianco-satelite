@@ -19,6 +19,7 @@ export default function WorkWithUsForm() {
 		nome: "",
 		email: "",
 		telefone: "",
+		area: "",
 	});
 	const [curriculo, setCurriculo] = useState<File | null>(null);
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -77,7 +78,7 @@ export default function WorkWithUsForm() {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 
-		if (!formData.nome || !formData.email || !formData.telefone || !curriculo) {
+		if (!formData.nome || !formData.email || !formData.telefone || !formData.area || !curriculo) {
 			setSubmitMessage("Por favor, preencha todos os campos e anexe seu currículo.");
 			return;
 		}
@@ -90,6 +91,7 @@ export default function WorkWithUsForm() {
 			dataToSend.append("nome", formData.nome);
 			dataToSend.append("email", formData.email);
 			dataToSend.append("telefone", formData.telefone);
+			dataToSend.append("area", formData.area);
 			dataToSend.append("curriculo", curriculo);
 
 			const response = await fetch("/api/work-with-us/", {
@@ -104,10 +106,11 @@ export default function WorkWithUsForm() {
 					"Currículo enviado com sucesso! Agradecemos o seu interesse em fazer parte da nossa equipe.",
 				);
 				setFormData({
-					nome: "",
-					email: "",
-					telefone: "",
-				});
+				nome: "",
+				email: "",
+				telefone: "",
+				area: "",
+			});
 				setCurriculo(null);
 				const fileInput = document.getElementById("curriculo") as HTMLInputElement;
 				if (fileInput) {
@@ -169,27 +172,69 @@ export default function WorkWithUsForm() {
 						/>
 					</div>
 				</div>
-				<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-					<div className="flex flex-col gap-1.5">
-						<label htmlFor="telefone" className="text-xs font-bold uppercase tracking-wider text-white/60">
-							Telefone / WhatsApp <span className="text-primary-500">*</span>
-						</label>
-						<input
-							type="tel"
-							id="telefone"
-							name="telefone"
-							required
-							value={formData.telefone}
-							onChange={updateFormField}
-							className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none disabled:opacity-50"
-							placeholder="(12) 99999-9999"
-							disabled={isSubmitting}
-						/>
+
+				{/* Telefone */}
+				<div className="flex flex-col gap-1.5">
+					<label htmlFor="telefone" className="text-xs font-bold uppercase tracking-wider text-white/60">
+						Telefone / WhatsApp <span className="text-primary-500">*</span>
+					</label>
+					<input
+						type="tel"
+						id="telefone"
+						name="telefone"
+						required
+						value={formData.telefone}
+						onChange={updateFormField}
+						className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none disabled:opacity-50"
+						placeholder="(12) 99999-9999"
+						disabled={isSubmitting}
+					/>
+				</div>
+
+				{/* Área de Interesse */}
+				<div className="flex flex-col gap-3">
+					<label className="text-xs font-bold uppercase tracking-wider text-white/60">
+						Área de Interesse <span className="text-primary-500">*</span>
+					</label>
+					<div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+						{["Professor", "Barra", "Profissional", "Instrutor", "Estágio", "Recepção", "Limpeza"].map((area) => (
+							<label
+								key={area}
+								className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2.5 text-sm transition-colors ${
+									formData.area === area
+										? "border-primary-500 bg-primary-500/15 text-primary-500"
+										: "border-white/15 bg-black/20 text-white/70 hover:border-white/30"
+								}`}
+							>
+								<input
+									type="radio"
+									name="area"
+									value={area}
+									checked={formData.area === area}
+									onChange={updateFormField}
+									disabled={isSubmitting}
+									className="sr-only"
+								/>
+								<span className={`size-3.5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
+									formData.area === area
+										? "border-primary-500 bg-primary-500"
+										: "border-white/30"
+								}`}>
+									{formData.area === area && (
+										<span className="size-1.5 rounded-full bg-white" />
+									)}
+								</span>
+								{area}
+							</label>
+						))}
 					</div>
-					<div className="flex flex-col gap-1.5">
-						<label htmlFor="curriculo" className="text-xs font-bold uppercase tracking-wider text-white/60">
-							Currículo (PDF, DOC, DOCX - Máx 5MB) <span className="text-primary-500">*</span>
-						</label>
+				</div>
+
+				{/* Currículo */}
+				<div className="flex flex-col gap-1.5">
+					<label htmlFor="curriculo" className="text-xs font-bold uppercase tracking-wider text-white/60">
+						Currículo (PDF, DOC, DOCX - Máx 5MB) <span className="text-primary-500">*</span>
+					</label>
 						<input
 							type="file"
 							id="curriculo"
@@ -201,8 +246,7 @@ export default function WorkWithUsForm() {
 							disabled={isSubmitting}
 						/>
 					</div>
-				</div>
-				
+
 				<button
 					type="submit"
 					className="inline-flex h-12 items-center justify-center rounded-full bg-primary-500 px-6 text-sm font-bold text-white transition-colors hover:bg-primary-500/90 disabled:opacity-70"
