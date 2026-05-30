@@ -29,19 +29,13 @@ export interface EvoProspectInput {
 	healthMotivation?: string;
 }
 
-const EVO_INTEREST_BRANCH = 312;
-
-function getInterests(goal: string, healthMotivation?: string) {
-	if (goal === "lose_weight")
-		return [{ idInterest: 104, idBranch: EVO_INTEREST_BRANCH }];
-	if (goal === "gain_muscle")
-		return [{ idInterest: 103, idBranch: EVO_INTEREST_BRANCH }];
+function getInterests(goal: string, healthMotivation?: string): number[] {
+	if (goal === "lose_weight") return [104];
+	if (goal === "gain_muscle") return [103];
 	if (goal === "health") {
-		if (healthMotivation === "stress")
-			return [{ idInterest: 101, idBranch: EVO_INTEREST_BRANCH }];
-		if (healthMotivation === "doctor")
-			return [{ idInterest: 105, idBranch: EVO_INTEREST_BRANCH }];
-		return [{ idInterest: 102, idBranch: EVO_INTEREST_BRANCH }];
+		if (healthMotivation === "stress") return [101];
+		if (healthMotivation === "doctor") return [105];
+		return [102];
 	}
 	return [];
 }
@@ -70,7 +64,6 @@ export async function createEvoProspect(
 		idBranch: Number(process.env.EVO_BRANCH_ID),
 		notes: `Lead do quiz online. Objetivo: ${goalLabel}. Plano: ${planLabel}.`,
 		temperature: 3,
-		mktChannel: "Site",
 		interests: getInterests(input.goal, input.healthMotivation),
 	};
 
