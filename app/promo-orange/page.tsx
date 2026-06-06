@@ -93,9 +93,9 @@ export default function PromoOrange() {
 					alt="Fundo Plano Orange"
 					fill
 					priority
-					unoptimized
 					className="absolute inset-0 object-cover -z-10"
 					sizes="100vw"
+					quality={70}
 				/>
 				{/* Price tag — center of background photo (desktop only) */}
 				<div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none z-10">
@@ -104,7 +104,8 @@ export default function PromoOrange() {
 						alt="R$ 0,99 no primeiro mês"
 						width={180}
 						height={200}
-						quality={75}
+						quality={65}
+						sizes="180px"
 					/>
 				</div>
 
@@ -118,7 +119,8 @@ export default function PromoOrange() {
 						alt="R$ 0,99 no primeiro mês"
 						width={140}
 						height={160}
-						quality={75}
+						quality={65}
+						sizes="140px"
 					/>
 				</div>
 
@@ -129,7 +131,8 @@ export default function PromoOrange() {
 						alt="Primeira vez Panobianco"
 						width={150}
 						height={150}
-						quality={75}
+						quality={65}
+						sizes="150px"
 					/>
 				</div>
 
@@ -211,9 +214,9 @@ export default function PromoOrange() {
 							width={700}
 							height={800}
 							className="w-full h-auto block"
-							sizes="(max-width: 768px) 95vw, (max-width: 1200px) 55vw, 660px"
+							sizes="(max-width: 768px) 80vw, (max-width: 1200px) 45vw, 600px"
 							priority
-							quality={75}
+							quality={60}
 						/>
 					</div>
 
@@ -385,7 +388,7 @@ export default function PromoOrange() {
 									fill
 									className="object-cover"
 									sizes="(max-width: 768px) 50vw, 25vw"
-									quality={75}
+									quality={60}
 								/>
 								{/* Dark gradient overlay */}
 								<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -481,7 +484,7 @@ export default function PromoOrange() {
 									className="object-cover"
 									sizes="(max-width: 768px) 50vw, 33vw"
 									loading="lazy"
-									quality={75}
+									quality={60}
 								/>
 							</div>
 						))}
