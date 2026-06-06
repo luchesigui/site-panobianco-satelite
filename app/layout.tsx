@@ -145,6 +145,10 @@ export default function RootLayout({
 			className={`${inter.variable} ${bebasNeue.variable} ${montserrat.variable} ${roboto.variable}`}
 		>
 			<head>
+				<link rel="preconnect" href="https://cdn.prod.website-files.com" />
+				<link rel="dns-prefetch" href="https://cdn.prod.website-files.com" />
+				<link rel="preconnect" href="https://www.googletagmanager.com" />
+				<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 				<Script
 					id="gtm-script"
 					strategy="afterInteractive"

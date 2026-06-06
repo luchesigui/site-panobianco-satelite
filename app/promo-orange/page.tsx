@@ -87,7 +87,7 @@ export default function PromoOrange() {
 			/>
 
 			{/* ── Hero ── */}
-			<section className="pt-20 pb-28 px-4 md:py-10 flex flex-col items-center justify-center relative min-h-[75vh] md:min-h-[95vh]">
+			<section className="pt-20 pb-28 px-4 md:py-10 flex flex-col items-center justify-center relative isolate min-h-[75vh] md:min-h-[95vh]">
 				<Image
 					src={`${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif`}
 					alt="Fundo Plano Orange"
@@ -108,10 +108,10 @@ export default function PromoOrange() {
 					/>
 				</div>
 
-				{/* Price tag — top center hanging over next section (mobile only) */}
+				{/* Price tag — bottom center hanging over next section (mobile only) */}
 				<div
 					className="md:hidden absolute pointer-events-none z-10"
-					style={{ top: 0, left: "5%" }}
+					style={{ bottom: -280, left: "5%" }}
 				>
 					<Image
 						src={`${CDN}/69dd4dc4ff04549510bc520a_selo-oferta.avif`}
