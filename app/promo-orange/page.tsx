@@ -1,27 +1,10 @@
 import { Check, Dumbbell, Music2, Users, Zap } from "lucide-react";
 import type { Metadata } from "next";
-import { Bebas_Neue, Montserrat, Roboto } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 
 import PlanCTAButton from "@/components/PlanCTAButton";
 import { SITE_URL } from "@/lib/constants";
-
-const bebasNeue = Bebas_Neue({
-	weight: "400",
-	subsets: ["latin"],
-	display: "swap",
-});
-const montserrat = Montserrat({
-	subsets: ["latin"],
-	weight: ["400", "500", "600", "700"],
-	display: "swap",
-});
-const roboto = Roboto({
-	subsets: ["latin"],
-	weight: ["300", "400"],
-	display: "swap",
-});
 
 export const metadata: Metadata = {
 	title: "Promoção Orange | Panobianco Jardim Satélite",
@@ -104,77 +87,71 @@ export default function PromoOrange() {
 			/>
 
 			{/* ── Hero ── */}
-			<section
-				className="pt-20 pb-28 px-4 md:py-10 flex flex-col items-center justify-center relative min-h-[75vh] md:min-h-[95vh]"
-				style={{
-					backgroundImage: `url(${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif)`,
-					backgroundPosition: "50%",
-					backgroundRepeat: "no-repeat",
-					backgroundSize: "cover",
-				}}
-			>
+			<section className="pt-20 pb-28 px-4 md:py-10 flex flex-col items-center justify-center relative min-h-[75vh] md:min-h-[95vh]">
+				<Image
+					src={`${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif`}
+					alt="Fundo Plano Orange"
+					fill
+					priority
+					unoptimized
+					className="absolute inset-0 object-cover -z-10"
+					sizes="100vw"
+				/>
 				{/* Price tag — center of background photo (desktop only) */}
-				<div
-					className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none z-10"
-				>
+				<div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none z-10">
 					<Image
 						src={`${CDN}/69dd4dc4ff04549510bc520a_selo-oferta.avif`}
 						alt="R$ 0,99 no primeiro mês"
 						width={180}
 						height={200}
-						unoptimized
+						quality={75}
 					/>
 				</div>
 
-				{/* Price tag — bottom center hanging over next section (mobile only) */}
+				{/* Price tag — top center hanging over next section (mobile only) */}
 				<div
 					className="md:hidden absolute pointer-events-none z-10"
-					style={{ bottom: -280, left: "5%" }}
+					style={{ top: 0, left: "5%" }}
 				>
 					<Image
 						src={`${CDN}/69dd4dc4ff04549510bc520a_selo-oferta.avif`}
 						alt="R$ 0,99 no primeiro mês"
 						width={140}
 						height={160}
-						unoptimized
+						quality={75}
 					/>
 				</div>
 
 				{/* "PRIMEIRA VEZ PANOBIANCO" sticker — bottom-left on desktop */}
-				<div
-					className="hidden md:block absolute bottom-[7rem] left-[10%] scale-150 pointer-events-none"
-				>
+				<div className="hidden md:block absolute bottom-[7rem] left-[10%] scale-150 pointer-events-none">
 					<Image
 						src={`${CDN}/69dd4dc45e2e9365f0ad294f_sticker-3%202.avif`}
 						alt="Primeira vez Panobianco"
 						width={150}
 						height={150}
-						unoptimized
+						quality={75}
 					/>
 				</div>
 
 				{/* Text box — right side */}
-				<div
-					className="flex justify-start md:justify-end w-[95%] max-w-[1200px]"
-				>
-					<div
-						className="w-full md:w-[40%] flex flex-col items-center md:items-start text-center md:text-left"
-					>
+				<div className="relative z-10 flex justify-start md:justify-end w-[95%] max-w-[1200px]">
+					<div className="w-full md:w-[40%] flex flex-col items-center md:items-start text-center md:text-left min-h-[460px] sm:min-h-[400px] md:min-h-[380px]">
 						<h1
-							className={bebasNeue.className}
+							className="font-bebas"
 							style={{
 								color: "#fff",
 								fontSize: "clamp(36px, 4.5vw, 70px)",
 								lineHeight: "90%",
 								margin: 0,
 								padding: 0,
+								fontSizeAdjust: "cap-height from-font",
 							}}
 						>
 							Faça parte da academia que mais cresce no Brasil.
 						</h1>
 
 						<p
-							className={montserrat.className}
+							className="font-montserrat"
 							style={{
 								color: "#fff",
 								fontSize: 20,
@@ -182,6 +159,7 @@ export default function PromoOrange() {
 								maxWidth: 350,
 								marginTop: 16,
 								marginBottom: 0,
+								fontSizeAdjust: "from-font",
 							}}
 						>
 							Contrate seu plano durante o mês de maio e garanta oferta
@@ -192,19 +170,20 @@ export default function PromoOrange() {
 							plan="orange"
 							href={CTA_HREF}
 							destination="checkout"
-							className={`${montserrat.className} inline-flex items-center justify-center rounded-[10px] bg-white text-[#ff6101] px-[30px] py-[15px] text-[16px] font-bold uppercase mt-[25px] mb-[24px] transition-all duration-200 hover:bg-[#f15927] hover:text-white hover:scale-[1.025] hover:shadow-[0_0_30px_0_#ff6101]`}
+							className="font-montserrat inline-flex items-center justify-center rounded-[10px] bg-white text-[#ff6101] px-[30px] py-[15px] text-[16px] font-bold uppercase mt-[25px] mb-[24px] transition-all duration-200 hover:bg-[#f15927] hover:text-white hover:scale-[1.025] hover:shadow-[0_0_30px_0_#ff6101]"
 						>
 							Ativar desconto agora
 						</PlanCTAButton>
 
 						<p
-							className={roboto.className}
+							className="font-roboto"
 							style={{
 								color: "rgba(255,255,255,0.85)",
 								fontSize: 11,
 								lineHeight: "150%",
 								maxWidth: 400,
 								margin: 0,
+								fontSizeAdjust: "from-font",
 							}}
 						>
 							Oferta válida até 31/05/2026,{" "}
@@ -223,9 +202,7 @@ export default function PromoOrange() {
 				id="plano-orange"
 				className="bg-white flex flex-col items-center justify-center pb-16 md:pb-28 relative"
 			>
-				<div
-					className="flex flex-col md:flex-row items-center justify-between w-[95%] max-w-[1200px] gap-8 md:gap-0"
-				>
+				<div className="flex flex-col md:flex-row items-center justify-between w-[95%] max-w-[1200px] gap-8 md:gap-0">
 					{/* Left: gym image */}
 					<div className="w-full md:w-[55%] md:max-w-[55%]">
 						<Image
@@ -234,8 +211,9 @@ export default function PromoOrange() {
 							width={700}
 							height={800}
 							className="w-full h-auto block"
+							sizes="(max-width: 768px) 95vw, (max-width: 1200px) 55vw, 660px"
 							priority
-							unoptimized
+							quality={75}
 						/>
 					</div>
 
@@ -247,9 +225,7 @@ export default function PromoOrange() {
 						}}
 					>
 						{/* Plan name */}
-						<h2
-							className={`${bebasNeue.className} text-[50px] md:text-[70px] leading-[85%] margin-0 text-[#2a2f31]`}
-						>
+						<h2 className="font-bebas text-[50px] md:text-[70px] leading-[85%] margin-0 text-[#2a2f31]">
 							Orange Anual
 						</h2>
 
@@ -264,22 +240,16 @@ export default function PromoOrange() {
 								paddingBottom: 20,
 							}}
 						>
-							<div
-								className="flex flex-row items-center gap-[10px] text-[#ff6101]"
-							>
-								<span
-									className={`${bebasNeue.className} text-[60px] xs:text-[75px] sm:text-[90px] leading-[80%] tracking-[-3px] font-bold text-[#ff6101]`}
-								>
+							<div className="flex flex-row items-center gap-[10px] text-[#ff6101]">
+								<span className="font-bebas text-[60px] xs:text-[75px] sm:text-[90px] leading-[80%] tracking-[-3px] font-bold text-[#ff6101]">
 									R$ 0,99
 								</span>
-								<span
-									className={`${montserrat.className} text-[16px] xs:text-[20px] sm:text-[24px] max-w-[140px] xs:max-w-[120px] sm:max-w-[100px] leading-[100%] xs:leading-[90%] sm:leading-[80%] sm:mt-[15px] text-[#2a2f31] font-semibold`}
-								>
+								<span className="text-[16px] xs:text-[20px] sm:text-[24px] max-w-[140px] xs:max-w-[120px] sm:max-w-[100px] leading-[100%] xs:leading-[90%] sm:leading-[80%] sm:mt-[15px] text-[#2a2f31] font-semibold">
 									NA PRIMEIRA MENSALIDADE
 								</span>
 							</div>
 							<p
-								className={roboto.className}
+								className="font-roboto"
 								style={{
 									color: "#ff6101",
 									fontStyle: "italic",
@@ -297,14 +267,14 @@ export default function PromoOrange() {
 							plan="orange"
 							href={CTA_HREF}
 							destination="checkout"
-							className={`${montserrat.className} flex w-full items-center justify-center rounded-[200px] bg-[#ff6101] text-white h-[50px] text-[18px] font-medium uppercase mt-[20px] transition-all duration-200 hover:scale-[1.025] hover:shadow-[0_0_15px_rgba(255,97,1,0.4)]`}
+							className="font-montserrat flex w-full items-center justify-center rounded-[200px] bg-[#ff6101] text-white h-[50px] text-[18px] font-medium uppercase mt-[20px] transition-all duration-200 hover:scale-[1.025] hover:shadow-[0_0_15px_rgba(255,97,1,0.4)]"
 						>
 							Matricule-se agora
 						</PlanCTAButton>
 
 						{/* Quiz discreto */}
 						<p
-							className={`${roboto.className} mt-3 text-center text-xs`}
+							className="font-roboto mt-3 text-center text-xs"
 							style={{ color: "rgba(255,255,255,0.6)" }}
 						>
 							Ainda em dúvida?{" "}
@@ -318,17 +288,13 @@ export default function PromoOrange() {
 						</p>
 
 						{/* Benefits: 2 columns */}
-						<div
-							className="flex flex-row gap-4 sm:gap-5 mt-5 justify-between w-full"
-						>
+						<div className="flex flex-row gap-4 sm:gap-5 mt-5 justify-between w-full">
 							{/* Col 1 */}
-							<div
-								className="flex flex-col gap-3"
-							>
+							<div className="flex flex-col gap-3">
 								{col1Benefits.map((item) => (
 									<div
 										key={item}
-										className={`${roboto.className} flex items-start gap-1.5 max-w-[135px] sm:max-w-[160px] text-[13px] sm:text-[14px] font-light text-[#2a2f31]`}
+										className="font-roboto flex items-start gap-1.5 max-w-[135px] sm:max-w-[160px] text-[13px] sm:text-[14px] font-light text-[#2a2f31]"
 									>
 										<Check
 											size={16}
@@ -340,13 +306,11 @@ export default function PromoOrange() {
 								))}
 							</div>
 							{/* Col 2 */}
-							<div
-								className="flex flex-col gap-3"
-							>
+							<div className="flex flex-col gap-3">
 								{col2Benefits.map((item) => (
 									<div
 										key={item}
-										className={`${roboto.className} flex items-start gap-1.5 max-w-[135px] sm:max-w-[160px] text-[13px] sm:text-[14px] font-light text-[#2a2f31]`}
+										className="font-roboto flex items-start gap-1.5 max-w-[135px] sm:max-w-[160px] text-[13px] sm:text-[14px] font-light text-[#2a2f31]"
 									>
 										<Check
 											size={16}
@@ -361,7 +325,7 @@ export default function PromoOrange() {
 
 						{/* Requirements */}
 						<ul
-							className={roboto.className}
+							className="font-roboto"
 							style={{
 								color: "#a7a7a7",
 								fontSize: 12,
@@ -395,7 +359,7 @@ export default function PromoOrange() {
 			>
 				<div style={{ width: "95%", maxWidth: 1200 }}>
 					<h2
-						className={bebasNeue.className}
+						className="font-bebas"
 						style={{
 							color: "#fff",
 							textAlign: "center",
@@ -409,9 +373,7 @@ export default function PromoOrange() {
 						<span style={{ color: "#ff6101" }}>aqui tem!</span>
 					</h2>
 
-					<div
-						className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full"
-					>
+					<div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full">
 						{activities.map(({ label, src, icon }) => (
 							<div
 								key={label}
@@ -423,17 +385,14 @@ export default function PromoOrange() {
 									fill
 									className="object-cover"
 									sizes="(max-width: 768px) 50vw, 25vw"
+									quality={75}
 								/>
 								{/* Dark gradient overlay */}
-								<div
-									className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
-								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 								{/* Label at bottom */}
-								<div
-									className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 text-white flex flex-col gap-2"
-								>
+								<div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 text-white flex flex-col gap-2">
 									{icon}
-									<span className={`${montserrat.className} font-semibold text-[15px] xs:text-[18px] md:text-2xl leading-tight`}>
+									<span className="font-semibold text-[15px] xs:text-[18px] md:text-2xl leading-tight">
 										{label}
 									</span>
 								</div>
@@ -458,9 +417,7 @@ export default function PromoOrange() {
 			/>
 
 			{/* ── Gallery Section ── */}
-			<section
-				className="bg-white py-10 md:py-20 flex flex-col justify-start items-center"
-			>
+			<section className="bg-white py-10 md:py-20 flex flex-col justify-start items-center">
 				<div style={{ width: "95%", maxWidth: 1200 }}>
 					{/* Heading row */}
 					<div
@@ -475,7 +432,7 @@ export default function PromoOrange() {
 						}}
 					>
 						<h2
-							className={bebasNeue.className}
+							className="font-bebas"
 							style={{
 								color: "#2a2f31",
 								fontSize: "clamp(36px, 4vw, 56px)",
@@ -489,7 +446,7 @@ export default function PromoOrange() {
 						</h2>
 						<a
 							href="#plano-orange"
-							className={montserrat.className}
+							className="font-montserrat"
 							style={{
 								backgroundColor: "#ff6101",
 								color: "#fff",
@@ -511,9 +468,7 @@ export default function PromoOrange() {
 					</div>
 
 					{/* Responsive Grid replacing Row 1 and Row 2 */}
-					<div
-						className="grid grid-cols-2 md:grid-cols-3 gap-2 w-full"
-					>
+					<div className="grid grid-cols-2 md:grid-cols-3 gap-2 w-full">
 						{[...galleryRow1, ...galleryRow2].map(({ src, alt }) => (
 							<div
 								key={src + alt}
@@ -526,6 +481,7 @@ export default function PromoOrange() {
 									className="object-cover"
 									sizes="(max-width: 768px) 50vw, 33vw"
 									loading="lazy"
+									quality={75}
 								/>
 							</div>
 						))}

@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import ContactCtaSection from "@/components/ContactCtaSection";
 import QuizCtaCard from "@/components/QuizCtaCard";
+import styles from "./BlogArticle.module.css";
 
 type Props = {
 	headline: string;
@@ -68,7 +69,7 @@ export default function BlogArticle({
 
 					{/* Article body */}
 					<div
-						className="prose-blog"
+						className={styles.proseBlog}
 						// biome-ignore lint/security/noDangerouslySetInnerHtml: trusted static markdown content
 						dangerouslySetInnerHTML={{ __html: contentHtml }}
 					/>

@@ -74,6 +74,9 @@ module.exports = {
 					"Noto Sans",
 					"sans-serif",
 				],
+				bebas: ["var(--font-bebas-neue)", "sans-serif"],
+				montserrat: ["var(--font-montserrat)", "sans-serif"],
+				roboto: ["var(--font-roboto)", "sans-serif"],
 			},
 			spacing: {
 				xs: "0.5rem",
