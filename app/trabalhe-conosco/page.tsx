@@ -1,5 +1,5 @@
+import { Briefcase } from "lucide-react";
 import type { Metadata } from "next";
-import { Briefcase, MapPin } from "lucide-react";
 
 import ContactCtaSection from "@/components/ContactCtaSection";
 import WorkWithUsForm from "@/components/WorkWithUsForm";
@@ -49,7 +49,8 @@ export default function TrabalheConosco() {
 						Trabalhe <span className="text-primary-500">Conosco</span>
 					</h1>
 					<p className="mt-4 max-w-xl text-sm text-neutral-300 md:text-base">
-						Junte-se à equipe que transforma vidas pelo movimento no Jardim Satélite. Envie seu currículo e faça parte da nossa história.
+						Junte-se à equipe que transforma vidas pelo movimento no Jardim
+						Satélite. Envie seu currículo e faça parte da nossa história.
 					</p>
 				</div>
 			</section>
@@ -63,18 +64,28 @@ export default function TrabalheConosco() {
 							Faça Parte do <span className="text-primary-500">Nosso Time</span>
 						</h2>
 						<p className="text-neutral-400 leading-relaxed text-sm md:text-base">
-							Na Panobianco, valorizamos dedicação, trabalho em equipe e paixão pelo fitness. Se você quer fazer parte de um time que transforma vidas pelo movimento, preencha o formulário e envie seu currículo.
+							Na Panobianco, valorizamos dedicação, trabalho em equipe e paixão
+							pelo fitness. Se você quer fazer parte de um time que transforma
+							vidas pelo movimento, preencha o formulário e envie seu currículo.
 						</p>
 
 						{/* Quick values cards */}
 						<div className="grid grid-cols-1 gap-4 pt-6 sm:grid-cols-2">
 							<div className="rounded-xl border border-white/5 bg-white/5 p-5">
-								<h4 className="font-semibold text-primary-500 mb-1">Dedicacão</h4>
-								<p className="text-xs text-neutral-400">Comprometimento em entregar o melhor serviço sempre.</p>
+								<h4 className="font-semibold text-primary-500 mb-1">
+									Dedicacão
+								</h4>
+								<p className="text-xs text-neutral-400">
+									Comprometimento em entregar o melhor serviço sempre.
+								</p>
 							</div>
 							<div className="rounded-xl border border-white/5 bg-white/5 p-5">
-								<h4 className="font-semibold text-primary-500 mb-1">Trabalho em Equipe</h4>
-								<p className="text-xs text-neutral-400">União de forças para construir uma comunidade saudável.</p>
+								<h4 className="font-semibold text-primary-500 mb-1">
+									Trabalho em Equipe
+								</h4>
+								<p className="text-xs text-neutral-400">
+									União de forças para construir uma comunidade saudável.
+								</p>
 							</div>
 						</div>
 					</div>

@@ -1,6 +1,5 @@
 import { Check, Dumbbell, Music2, Users, Zap } from "lucide-react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
 import PlanCTAButton from "@/components/PlanCTAButton";
@@ -88,24 +87,25 @@ export default function PromoOrange() {
 
 			{/* ── Hero ── */}
 			<section className="pt-20 pb-28 px-4 md:py-10 flex flex-col items-center justify-center relative isolate min-h-[75vh] md:min-h-[95vh]">
-				<Image
-					src={`${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif`}
-					alt="Fundo Plano Orange"
-					fill
-					priority
-					className="absolute inset-0 object-cover -z-10"
+				{/* biome-ignore lint/performance/noImgElement: manually optimized raw img tag for LCP preload and sizes matching */}
+				<img
+					src={`/_next/image?url=${encodeURIComponent(`${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif`)}&w=1920&q=65`}
+					srcSet={`/_next/image?url=${encodeURIComponent(`${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif`)}&w=640&q=65 640w, /_next/image?url=${encodeURIComponent(`${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif`)}&w=1080&q=65 1080w, /_next/image?url=${encodeURIComponent(`${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif`)}&w=1920&q=65 1920w`}
 					sizes="100vw"
-					quality={70}
+					alt="Fundo Plano Orange"
+					className="absolute inset-0 w-full h-full object-cover -z-10"
+					loading="eager"
+					fetchPriority="high"
 				/>
 				{/* Price tag — center of background photo (desktop only) */}
 				<div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none z-10">
-					<Image
-						src={`${CDN}/69dd4dc4ff04549510bc520a_selo-oferta.avif`}
+					{/* biome-ignore lint/performance/noImgElement: manually optimized raw img tag for small width matching */}
+					<img
+						src={`/_next/image?url=${encodeURIComponent(`${CDN}/69dd4dc4ff04549510bc520a_selo-oferta.avif`)}&w=256&q=60`}
 						alt="R$ 0,99 no primeiro mês"
-						width={180}
-						height={200}
-						quality={65}
-						sizes="180px"
+						width="180"
+						height="200"
+						loading="lazy"
 					/>
 				</div>
 
@@ -114,25 +114,25 @@ export default function PromoOrange() {
 					className="md:hidden absolute pointer-events-none z-10"
 					style={{ bottom: -280, left: "5%" }}
 				>
-					<Image
-						src={`${CDN}/69dd4dc4ff04549510bc520a_selo-oferta.avif`}
+					{/* biome-ignore lint/performance/noImgElement: manually optimized raw img tag for small mobile width matching */}
+					<img
+						src={`/_next/image?url=${encodeURIComponent(`${CDN}/69dd4dc4ff04549510bc520a_selo-oferta.avif`)}&w=128&q=60`}
 						alt="R$ 0,99 no primeiro mês"
-						width={140}
-						height={160}
-						quality={65}
-						sizes="140px"
+						width="140"
+						height="160"
+						loading="lazy"
 					/>
 				</div>
 
 				{/* "PRIMEIRA VEZ PANOBIANCO" sticker — bottom-left on desktop */}
 				<div className="hidden md:block absolute bottom-[7rem] left-[10%] scale-150 pointer-events-none">
-					<Image
-						src={`${CDN}/69dd4dc45e2e9365f0ad294f_sticker-3%202.avif`}
+					{/* biome-ignore lint/performance/noImgElement: manually optimized raw img tag for small width matching */}
+					<img
+						src={`/_next/image?url=${encodeURIComponent(`${CDN}/69dd4dc45e2e9365f0ad294f_sticker-3%202.avif`)}&w=256&q=60`}
 						alt="Primeira vez Panobianco"
-						width={150}
-						height={150}
-						quality={65}
-						sizes="150px"
+						width="150"
+						height="150"
+						loading="lazy"
 					/>
 				</div>
 
@@ -208,15 +208,14 @@ export default function PromoOrange() {
 				<div className="flex flex-col md:flex-row items-center justify-between w-[95%] max-w-[1200px] gap-8 md:gap-0">
 					{/* Left: gym image */}
 					<div className="w-full md:w-[55%] md:max-w-[55%]">
-						<Image
-							src={`${CDN}/69dd37fcb95326a6f6a42a65_img-1-plano-orange.avif`}
+						{/* biome-ignore lint/performance/noImgElement: manually optimized raw img tag for mobile srcSet matching */}
+						<img
+							src={`/_next/image?url=${encodeURIComponent(`${CDN}/69dd37fcb95326a6f6a42a65_img-1-plano-orange.avif`)}&w=750&q=60`}
+							srcSet={`/_next/image?url=${encodeURIComponent(`${CDN}/69dd37fcb95326a6f6a42a65_img-1-plano-orange.avif`)}&w=384&q=60 384w, /_next/image?url=${encodeURIComponent(`${CDN}/69dd37fcb95326a6f6a42a65_img-1-plano-orange.avif`)}&w=640&q=60 640w, /_next/image?url=${encodeURIComponent(`${CDN}/69dd37fcb95326a6f6a42a65_img-1-plano-orange.avif`)}&w=750&q=60 750w`}
+							sizes="(max-width: 768px) 384px, 700px"
 							alt="Plano Orange Anual Panobianco"
-							width={700}
-							height={800}
 							className="w-full h-auto block"
-							sizes="(max-width: 768px) 80vw, (max-width: 1200px) 45vw, 600px"
-							priority
-							quality={60}
+							loading="lazy"
 						/>
 					</div>
 
@@ -382,13 +381,14 @@ export default function PromoOrange() {
 								key={label}
 								className="w-full aspect-[3/4] rounded-[20px] md:rounded-[30px] relative overflow-hidden"
 							>
-								<Image
-									src={src}
-									alt={label}
-									fill
-									className="object-cover"
+								{/* biome-ignore lint/performance/noImgElement: manually optimized raw img tag for mobile srcSet matching */}
+								<img
+									src={`/_next/image?url=${encodeURIComponent(src)}&w=384&q=60`}
+									srcSet={`/_next/image?url=${encodeURIComponent(src)}&w=256&q=60 256w, /_next/image?url=${encodeURIComponent(src)}&w=384&q=60 384w, /_next/image?url=${encodeURIComponent(src)}&w=640&q=60 640w`}
 									sizes="(max-width: 768px) 50vw, 25vw"
-									quality={60}
+									alt={label}
+									className="object-cover absolute inset-0 w-full h-full"
+									loading="lazy"
 								/>
 								{/* Dark gradient overlay */}
 								<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -477,14 +477,14 @@ export default function PromoOrange() {
 								key={src + alt}
 								className="relative h-[140px] sm:h-[180px] md:h-[220px] rounded-lg overflow-hidden"
 							>
-								<Image
-									src={src}
-									alt={alt}
-									fill
-									className="object-cover"
+								{/* biome-ignore lint/performance/noImgElement: manually optimized raw img tag for mobile srcSet matching */}
+								<img
+									src={`/_next/image?url=${encodeURIComponent(src)}&w=384&q=60`}
+									srcSet={`/_next/image?url=${encodeURIComponent(src)}&w=256&q=60 256w, /_next/image?url=${encodeURIComponent(src)}&w=384&q=60 384w, /_next/image?url=${encodeURIComponent(src)}&w=640&q=60 640w`}
 									sizes="(max-width: 768px) 50vw, 33vw"
+									alt={alt}
+									className="object-cover absolute inset-0 w-full h-full"
 									loading="lazy"
-									quality={60}
 								/>
 							</div>
 						))}

@@ -25,12 +25,9 @@ export default function WorkWithUsForm() {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitMessage, setSubmitMessage] = useState("");
 
-	const updateFormField = (
-		e: React.ChangeEvent<HTMLInputElement>,
-	) => {
+	const updateFormField = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
-		const nextValue =
-			name === "telefone" ? formatPhone(value) : value;
+		const nextValue = name === "telefone" ? formatPhone(value) : value;
 		setFormData((prev) => ({ ...prev, [name]: nextValue }));
 	};
 
@@ -55,9 +52,7 @@ export default function WorkWithUsForm() {
 			}
 
 			if (file.size > 5 * 1024 * 1024) {
-				setSubmitMessage(
-					"O tamanho do currículo não pode exceder 5MB.",
-				);
+				setSubmitMessage("O tamanho do currículo não pode exceder 5MB.");
 				setCurriculo(null);
 				e.target.value = ""; // Reset input value
 				return;
@@ -78,8 +73,16 @@ export default function WorkWithUsForm() {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 
-		if (!formData.nome || !formData.email || !formData.telefone || !formData.area || !curriculo) {
-			setSubmitMessage("Por favor, preencha todos os campos e anexe seu currículo.");
+		if (
+			!formData.nome ||
+			!formData.email ||
+			!formData.telefone ||
+			!formData.area ||
+			!curriculo
+		) {
+			setSubmitMessage(
+				"Por favor, preencha todos os campos e anexe seu currículo.",
+			);
 			return;
 		}
 
@@ -106,13 +109,15 @@ export default function WorkWithUsForm() {
 					"Currículo enviado com sucesso! Agradecemos o seu interesse em fazer parte da nossa equipe.",
 				);
 				setFormData({
-				nome: "",
-				email: "",
-				telefone: "",
-				area: "",
-			});
+					nome: "",
+					email: "",
+					telefone: "",
+					area: "",
+				});
 				setCurriculo(null);
-				const fileInput = document.getElementById("curriculo") as HTMLInputElement;
+				const fileInput = document.getElementById(
+					"curriculo",
+				) as HTMLInputElement;
 				if (fileInput) {
 					fileInput.value = "";
 				}
@@ -134,13 +139,17 @@ export default function WorkWithUsForm() {
 		<article className="rounded-xl border border-white/10 bg-white/5 p-6">
 			<h2 className="text-2xl font-semibold">Envie seu Currículo</h2>
 			<p className="mt-2 text-sm text-white/65">
-				Preencha seus dados e anexe seu currículo nos formatos PDF, DOC ou DOCX de no máximo 5MB.
+				Preencha seus dados e anexe seu currículo nos formatos PDF, DOC ou DOCX
+				de no máximo 5MB.
 			</p>
 
 			<form onSubmit={handleSubmit} className="mt-6 space-y-4">
 				<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 					<div className="flex flex-col gap-1.5">
-						<label htmlFor="nome" className="text-xs font-bold uppercase tracking-wider text-white/60">
+						<label
+							htmlFor="nome"
+							className="text-xs font-bold uppercase tracking-wider text-white/60"
+						>
 							Nome Completo <span className="text-primary-500">*</span>
 						</label>
 						<input
@@ -156,7 +165,10 @@ export default function WorkWithUsForm() {
 						/>
 					</div>
 					<div className="flex flex-col gap-1.5">
-						<label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-white/60">
+						<label
+							htmlFor="email"
+							className="text-xs font-bold uppercase tracking-wider text-white/60"
+						>
 							E-mail <span className="text-primary-500">*</span>
 						</label>
 						<input
@@ -175,7 +187,10 @@ export default function WorkWithUsForm() {
 
 				{/* Telefone */}
 				<div className="flex flex-col gap-1.5">
-					<label htmlFor="telefone" className="text-xs font-bold uppercase tracking-wider text-white/60">
+					<label
+						htmlFor="telefone"
+						className="text-xs font-bold uppercase tracking-wider text-white/60"
+					>
 						Telefone / WhatsApp <span className="text-primary-500">*</span>
 					</label>
 					<input
@@ -215,11 +230,13 @@ export default function WorkWithUsForm() {
 									disabled={isSubmitting}
 									className="sr-only"
 								/>
-								<span className={`size-3.5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
-									formData.area === area
-										? "border-primary-500 bg-primary-500"
-										: "border-white/30"
-								}`}>
+								<span
+									className={`size-3.5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
+										formData.area === area
+											? "border-primary-500 bg-primary-500"
+											: "border-white/30"
+									}`}
+								>
 									{formData.area === area && (
 										<span className="size-1.5 rounded-full bg-white" />
 									)}
@@ -232,20 +249,24 @@ export default function WorkWithUsForm() {
 
 				{/* Currículo */}
 				<div className="flex flex-col gap-1.5">
-					<label htmlFor="curriculo" className="text-xs font-bold uppercase tracking-wider text-white/60">
-						Currículo (PDF, DOC, DOCX - Máx 5MB) <span className="text-primary-500">*</span>
+					<label
+						htmlFor="curriculo"
+						className="text-xs font-bold uppercase tracking-wider text-white/60"
+					>
+						Currículo (PDF, DOC, DOCX - Máx 5MB){" "}
+						<span className="text-primary-500">*</span>
 					</label>
-						<input
-							type="file"
-							id="curriculo"
-							name="curriculo"
-							required
-							accept=".pdf,.doc,.docx"
-							onChange={handleFileChange}
-							className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-2.5 text-sm text-white file:mr-4 file:rounded-md file:border-0 file:bg-white/10 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-white file:transition-colors hover:file:bg-white/20 file:cursor-pointer disabled:opacity-50"
-							disabled={isSubmitting}
-						/>
-					</div>
+					<input
+						type="file"
+						id="curriculo"
+						name="curriculo"
+						required
+						accept=".pdf,.doc,.docx"
+						onChange={handleFileChange}
+						className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-2.5 text-sm text-white file:mr-4 file:rounded-md file:border-0 file:bg-white/10 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-white file:transition-colors hover:file:bg-white/20 file:cursor-pointer disabled:opacity-50"
+						disabled={isSubmitting}
+					/>
+				</div>
 
 				<button
 					type="submit"
@@ -255,7 +276,7 @@ export default function WorkWithUsForm() {
 					<Upload className="mr-2 size-4" />
 					{isSubmitting ? "Enviando..." : "Enviar Currículo"}
 				</button>
-				
+
 				{submitMessage && (
 					<p
 						className={`rounded-lg border px-4 py-3 text-sm ${
