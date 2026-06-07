@@ -1,6 +1,5 @@
-"use client";
+import Image from "next/image";
 
-import { useEffect, useState } from "react";
 import PlanCTAButton from "./PlanCTAButton";
 
 interface HeroOrangeProps {
@@ -9,76 +8,42 @@ interface HeroOrangeProps {
 }
 
 export default function HeroOrange({ CDN, CTA_HREF }: HeroOrangeProps) {
-	const [bgLoaded, setBgLoaded] = useState(false);
-
-	useEffect(() => {
-		// Preload the background image asynchronously in the browser
-		const img = new Image();
-		img.src = `/_next/image?url=${encodeURIComponent(`${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif`)}&w=1080&q=65`;
-		img.onload = () => setBgLoaded(true);
-	}, [CDN]);
-
 	return (
 		<section className="pt-20 pb-28 px-4 md:py-10 flex flex-col items-center justify-center relative isolate min-h-[75vh] md:min-h-[95vh]">
-			{/* biome-ignore lint/performance/noImgElement: manually optimized raw img tag for background asynchronously fading in */}
-			<img
-				src={`/_next/image?url=${encodeURIComponent(`${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif`)}&w=1920&q=65`}
-				srcSet={`/_next/image?url=${encodeURIComponent(`${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif`)}&w=640&q=65 640w, /_next/image?url=${encodeURIComponent(`${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif`)}&w=1080&q=65 1080w, /_next/image?url=${encodeURIComponent(`${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif`)}&w=1920&q=65 1920w`}
-				sizes="100vw"
+			{/* Background Image (LCP) - Next.js optimized with priority preloading */}
+			<Image
+				src={`${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif`}
 				alt="Fundo Plano Orange"
-				className="absolute inset-0 w-full h-full object-cover -z-10 transition-opacity duration-700 ease-in-out"
-				style={{ opacity: bgLoaded ? 1 : 0 }}
-				loading="lazy"
+				fill
+				priority
+				className="absolute inset-0 object-cover -z-10"
+				sizes="100vw"
+				quality={70}
 			/>
-			{!bgLoaded && (
-				// Flat dark background during loading phase to prevent FOUC / flash of white
-				<div className="absolute inset-0 bg-[#2a2f31] -z-20 w-full h-full" />
-			)}
-			<noscript>
-				{/* biome-ignore lint/performance/noImgElement: SEO and JS-disabled browsers fallback */}
-				<img
-					src={`${CDN}/69dd4cd32718b6cd476e4b1e_Header_Background-plano-orange.avif`}
-					alt="Fundo Plano Orange"
-					className="absolute inset-0 w-full h-full object-cover -z-10"
-				/>
-			</noscript>
 
-			{/* Price tag — center of background photo (desktop only) */}
-			<div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none z-10">
-				{/* biome-ignore lint/performance/noImgElement: manually optimized raw img tag for small width matching */}
-				<img
-					src={`/_next/image?url=${encodeURIComponent(`${CDN}/69dd4dc4ff04549510bc520a_selo-oferta.avif`)}&w=256&q=60`}
+			{/* Price tag — centered horizontally at the top for both mobile & desktop */}
+			<div className="absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none z-10">
+				<Image
+					src={`${CDN}/69dd4dc4ff04549510bc520a_selo-oferta.avif`}
 					alt="R$ 0,99 no primeiro mês"
-					width="180"
-					height="200"
-					loading="lazy"
+					width={180}
+					height={200}
+					priority
+					className="w-[140px] md:w-[180px] h-auto"
+					sizes="(max-width: 768px) 140px, 180px"
 				/>
 			</div>
 
-			{/* Price tag — bottom center hanging over next section (mobile only) */}
-			<div
-				className="md:hidden absolute pointer-events-none z-10"
-				style={{ bottom: -280, left: "5%" }}
-			>
-				{/* biome-ignore lint/performance/noImgElement: manually optimized raw img tag for small mobile width matching */}
-				<img
-					src={`/_next/image?url=${encodeURIComponent(`${CDN}/69dd4dc4ff04549510bc520a_selo-oferta.avif`)}&w=128&q=60`}
-					alt="R$ 0,99 no primeiro mês"
-					width="140"
-					height="160"
-					loading="lazy"
-				/>
-			</div>
-
-			{/* "PRIMEIRA VEZ PANOBIANCO" sticker — bottom-left on desktop */}
-			<div className="hidden md:block absolute bottom-[7rem] left-[10%] scale-150 pointer-events-none">
-				{/* biome-ignore lint/performance/noImgElement: manually optimized raw img tag for small width matching */}
-				<img
-					src={`/_next/image?url=${encodeURIComponent(`${CDN}/69dd4dc45e2e9365f0ad294f_sticker-3%202.avif`)}&w=256&q=60`}
+			{/* "PRIMEIRA VEZ PANOBIANCO" sticker — bottom-left for both mobile & desktop */}
+			<div className="absolute bottom-4 left-[10%] md:bottom-[7rem] md:left-[10%] scale-110 md:scale-150 pointer-events-none z-10">
+				<Image
+					src={`${CDN}/69dd4dc45e2e9365f0ad294f_sticker-3%202.avif`}
 					alt="Primeira vez Panobianco"
-					width="150"
-					height="150"
-					loading="lazy"
+					width={150}
+					height={150}
+					priority
+					className="w-[100px] md:w-[150px] h-auto"
+					sizes="(max-width: 768px) 100px, 150px"
 				/>
 			</div>
 
@@ -111,8 +76,7 @@ export default function HeroOrange({ CDN, CTA_HREF }: HeroOrangeProps) {
 							fontSizeAdjust: "from-font",
 						}}
 					>
-						Contrate seu plano durante o mês de maio e garanta oferta
-						exclusiva.
+						Contrate seu plano durante o mês de maio e garanta oferta exclusiva.
 					</p>
 
 					<PlanCTAButton
@@ -136,9 +100,9 @@ export default function HeroOrange({ CDN, CTA_HREF }: HeroOrangeProps) {
 						}}
 					>
 						Oferta válida até 31/05/2026,{" "}
-						<strong>exclusivamente para o Plano Orange Anual</strong>, sujeito
-						à disponibilidade da unidade escolhida. Para matrículas realizadas
-						no balcão ou outros canais, o valor promocional será de R$ 9,90 no
+						<strong>exclusivamente para o Plano Orange Anual</strong>, sujeito à
+						disponibilidade da unidade escolhida. Para matrículas realizadas no
+						balcão ou outros canais, o valor promocional será de R$ 9,90 no
 						primeiro mês do Plano Orange Anual recorrente. A partir da segunda
 						mensalidade, o valor será de R$ 119,90/mês.
 					</p>
