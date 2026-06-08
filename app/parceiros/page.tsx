@@ -26,7 +26,7 @@ function formatCpf(value: string): string {
 	return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6, 9)}-${digits.slice(9)}`;
 }
 
-type Partner = "wellhub" | "totalpass";
+type Partner = "wellhub";
 
 const INPUT_CLASS =
 	"w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none disabled:opacity-50";
@@ -34,7 +34,7 @@ const INPUT_CLASS =
 const LABEL_CLASS = "block text-xs font-medium text-white/60 mb-1";
 
 export default function ParceirosPage() {
-	const [partner, setPartner] = useState<Partner>("wellhub");
+	const partner: Partner = "wellhub";
 	const [form, setForm] = useState({
 		name: "",
 		lastName: "",
@@ -162,27 +162,9 @@ export default function ParceirosPage() {
 				<div className="mb-8 text-center">
 					<h1 className="text-3xl font-bold">Cadastro de Parceiros</h1>
 					<p className="mt-2 text-sm text-white/60">
-						Alunos do Wellhub e TotalPass, realizem o cadastro abaixo para
+						Alunos do Wellhub, realizem o cadastro abaixo para
 						acessar a academia.
 					</p>
-				</div>
-
-				{/* Partner selector */}
-				<div className="mb-6 flex rounded-xl border border-white/10 bg-white/5 p-1">
-					{(["wellhub", "totalpass"] as Partner[]).map((p) => (
-						<button
-							key={p}
-							type="button"
-							onClick={() => setPartner(p)}
-							className={`flex-1 rounded-lg py-2.5 text-sm font-semibold transition-colors ${
-								partner === p
-									? "bg-primary-500 text-white"
-									: "text-white/50 hover:text-white"
-							}`}
-						>
-							{p === "wellhub" ? "Wellhub" : "TotalPass"}
-						</button>
-					))}
 				</div>
 
 				{/* Form */}
@@ -314,7 +296,7 @@ export default function ParceirosPage() {
 						</div>
 						<div>
 							<label className={LABEL_CLASS} htmlFor="partnerId">
-								{partner === "wellhub" ? "ID Wellhub" : "ID TotalPass"}
+								ID Wellhub
 							</label>
 							<input
 								id="partnerId"
@@ -324,11 +306,7 @@ export default function ParceirosPage() {
 								value={form.partnerId}
 								onChange={handleChange}
 								disabled={isSubmitting}
-								placeholder={
-									partner === "wellhub"
-										? "ID do app Wellhub"
-										: "ID do app TotalPass"
-								}
+								placeholder="ID do app Wellhub"
 								className={INPUT_CLASS}
 							/>
 						</div>

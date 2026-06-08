@@ -25,10 +25,10 @@
   - `app/api/contact/route.ts` (new)
   - `app/contato/page.tsx` (updated form handling)
 
-### 4. FAQ Update - Gympass/TotalPass
+### 4. FAQ Update - Gympass
 - **Changed**: Updated FAQ question and answer
 - **Old**: "Vocês aceitam Gympass?" / "Sim! Aceitamos Gympass a partir do plano Basic..."
-- **New**: "Vocês aceitam Gympass/TotalPass?" / "Sim! Aceitamos Gympass a partir do plano Basic e TotalPass a partir do TP1+..."
+- **New**: "Vocês aceitam Gympass?" / "Sim! Aceitamos Gympass a partir do plano Basic..."
 - **Location**: `app/contato/page.tsx` - FAQ section
 
 ### 5. Logo Replacement (PNG instead of SVG + Text)
@@ -66,7 +66,7 @@
 ### 7. Plans Page Updates (Latest Changes)
 - **Reduced spacing**: Decreased padding between main title and plan cards
 - **Removed sections**: 
-  - "Aceitamos Gympass e TotalPass" informational section
+  - "Aceitamos Gympass" informational section
   - "Pronto para começar?" CTA card
 - **Updated Gympass card**: Added contact link "Entre em contato conosco" that links to `/contato`
 - **Location**: `app/planos/page.tsx`

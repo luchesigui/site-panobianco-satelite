@@ -62,10 +62,10 @@ const faqSchema = {
 		},
 		{
 			"@type": "Question",
-			name: "Aceita Wellhub/Gympass e TotalPass?",
+			name: "Aceita Wellhub/Gympass?",
 			acceptedAnswer: {
 				"@type": "Answer",
-				text: "Sim! Aceitamos Wellhub (antigo Gympass) e TotalPass. Entre em contato ou venha nos visitar para saber quais planos estão disponíveis para a sua categoria. Se for o seu caso, preencha o pré-cadastro em panobiancosatelite.com.br/parceiros.",
+				text: "Sim! Aceitamos Wellhub (antigo Gympass). Entre em contato ou venha nos visitar para saber quais planos estão disponíveis para a sua categoria. Se for o seu caso, preencha o pré-cadastro em panobiancosatelite.com.br/parceiros.",
 			},
 		},
 	],
@@ -453,12 +453,12 @@ export default async function Planos() {
 							<details className="group overflow-hidden rounded-lg border border-white/10 bg-white/5">
 								<summary className="flex cursor-pointer items-center justify-between p-4 transition-colors hover:bg-white/5">
 									<span className="font-medium">
-										Aceita Wellhub/Gympass e TotalPass?
+										Aceita Wellhub/Gympass?
 									</span>
 									<ChevronDown className="size-5 shrink-0 transition-transform group-open:rotate-180" />
 								</summary>
 								<div className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-relaxed text-stone-400">
-									Sim! Aceitamos Wellhub (antigo Gympass) e TotalPass. Entre em
+									Sim! Aceitamos Wellhub (antigo Gympass). Entre em
 									contato ou venha nos visitar para saber quais planos estão
 									disponíveis para a sua categoria. Se for o seu caso,{" "}
 									<Link

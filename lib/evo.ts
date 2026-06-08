@@ -102,7 +102,7 @@ export async function createEvoProspect(
 	}
 }
 
-const PARTNER_MEMBERSHIP_IDS = { wellhub: 11369, totalpass: 12436 } as const;
+const PARTNER_MEMBERSHIP_IDS = { wellhub: 11369 } as const;
 
 export interface PartnerMemberInput {
 	name: string;
@@ -112,9 +112,9 @@ export interface PartnerMemberInput {
 	phone: string;
 	birthdate: string; // YYYY-MM-DD
 	gender: "M" | "F";
-	partner: "wellhub" | "totalpass";
+	partner: "wellhub";
 	zipCode: string;
-	partnerId: string; // Wellhub or TotalPass member ID
+	partnerId: string; // Wellhub member ID
 }
 
 export interface PartnerMemberResult {
@@ -137,7 +137,7 @@ export async function createPartnerMember(
 
 	const idBranch = Number(process.env.EVO_BRANCH_ID);
 
-	const partnerLabel = input.partner === "wellhub" ? "Wellhub" : "TotalPass";
+	const partnerLabel = "Wellhub";
 	const partnerId = input.partnerId.trim();
 	const prospectBody: Record<string, unknown> = {
 		name: input.name,
@@ -151,13 +151,8 @@ export async function createPartnerMember(
 		idBranch,
 		temperature: 3,
 		notes: `Cadastro via site — parceiro: ${partnerLabel}. ID ${partnerLabel}: ${partnerId}.`,
+		tokenGympass: partnerId,
 	};
-	if (input.partner === "wellhub") {
-		prospectBody.tokenGympass = partnerId;
-	} else {
-		prospectBody.additionalFieldName = "ID TotalPass";
-		prospectBody.additionalFieldValue = partnerId;
-	}
 
 	const prospectRes = await fetch(`${EVO_BASE}/api/v1/prospects`, {
 		method: "POST",

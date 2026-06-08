@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
 		);
 	}
 
-	if (partner !== "wellhub" && partner !== "totalpass") {
+	if (partner !== "wellhub") {
 		return NextResponse.json({ error: "Parceiro inválido." }, { status: 400 });
 	}
 

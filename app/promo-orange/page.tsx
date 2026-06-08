@@ -114,9 +114,7 @@ export default function PromoOrange() {
 				}}
 			>
 				{/* Price tag — center of background photo (desktop only) */}
-				<div
-					className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none z-10"
-				>
+				<div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none z-10">
 					<Image
 						src={`${CDN}/69dd4dc4ff04549510bc520a_selo-oferta.avif`}
 						alt="R$ 0,99 no primeiro mês"
@@ -141,9 +139,7 @@ export default function PromoOrange() {
 				</div>
 
 				{/* "PRIMEIRA VEZ PANOBIANCO" sticker — bottom-left on desktop */}
-				<div
-					className="hidden md:block absolute bottom-[7rem] left-[10%] scale-150 pointer-events-none"
-				>
+				<div className="hidden md:block absolute bottom-[7rem] left-[10%] scale-150 pointer-events-none">
 					<Image
 						src={`${CDN}/69dd4dc45e2e9365f0ad294f_sticker-3%202.avif`}
 						alt="Primeira vez Panobianco"
@@ -154,12 +150,8 @@ export default function PromoOrange() {
 				</div>
 
 				{/* Text box — right side */}
-				<div
-					className="flex justify-start md:justify-end w-[95%] max-w-[1200px]"
-				>
-					<div
-						className="w-full md:w-[40%] flex flex-col items-center md:items-start text-center md:text-left"
-					>
+				<div className="flex justify-start md:justify-end w-[95%] max-w-[1200px]">
+					<div className="w-full md:w-[40%] flex flex-col items-center md:items-start text-center md:text-left">
 						<h1
 							className={bebasNeue.className}
 							style={{
@@ -223,9 +215,7 @@ export default function PromoOrange() {
 				id="plano-orange"
 				className="bg-white flex flex-col items-center justify-center pb-16 md:pb-28 relative"
 			>
-				<div
-					className="flex flex-col md:flex-row items-center justify-between w-[95%] max-w-[1200px] gap-8 md:gap-0"
-				>
+				<div className="flex flex-col md:flex-row items-center justify-between w-[95%] max-w-[1200px] gap-8 md:gap-0">
 					{/* Left: gym image */}
 					<div className="w-full md:w-[55%] md:max-w-[55%]">
 						<Image
@@ -264,9 +254,7 @@ export default function PromoOrange() {
 								paddingBottom: 20,
 							}}
 						>
-							<div
-								className="flex flex-row items-center gap-[10px] text-[#ff6101]"
-							>
+							<div className="flex flex-row items-center gap-[10px] text-[#ff6101]">
 								<span
 									className={`${bebasNeue.className} text-[60px] xs:text-[75px] sm:text-[90px] leading-[80%] tracking-[-3px] font-bold text-[#ff6101]`}
 								>
@@ -318,13 +306,9 @@ export default function PromoOrange() {
 						</p>
 
 						{/* Benefits: 2 columns */}
-						<div
-							className="flex flex-row gap-4 sm:gap-5 mt-5 justify-between w-full"
-						>
+						<div className="flex flex-row gap-4 sm:gap-5 mt-5 justify-between w-full">
 							{/* Col 1 */}
-							<div
-								className="flex flex-col gap-3"
-							>
+							<div className="flex flex-col gap-3">
 								{col1Benefits.map((item) => (
 									<div
 										key={item}
@@ -340,9 +324,7 @@ export default function PromoOrange() {
 								))}
 							</div>
 							{/* Col 2 */}
-							<div
-								className="flex flex-col gap-3"
-							>
+							<div className="flex flex-col gap-3">
 								{col2Benefits.map((item) => (
 									<div
 										key={item}
@@ -409,9 +391,7 @@ export default function PromoOrange() {
 						<span style={{ color: "#ff6101" }}>aqui tem!</span>
 					</h2>
 
-					<div
-						className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full"
-					>
+					<div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full">
 						{activities.map(({ label, src, icon }) => (
 							<div
 								key={label}
@@ -425,15 +405,13 @@ export default function PromoOrange() {
 									sizes="(max-width: 768px) 50vw, 25vw"
 								/>
 								{/* Dark gradient overlay */}
-								<div
-									className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
-								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 								{/* Label at bottom */}
-								<div
-									className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 text-white flex flex-col gap-2"
-								>
+								<div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 text-white flex flex-col gap-2">
 									{icon}
-									<span className={`${montserrat.className} font-semibold text-[15px] xs:text-[18px] md:text-2xl leading-tight`}>
+									<span
+										className={`${montserrat.className} font-semibold text-[15px] xs:text-[18px] md:text-2xl leading-tight`}
+									>
 										{label}
 									</span>
 								</div>
@@ -458,9 +436,7 @@ export default function PromoOrange() {
 			/>
 
 			{/* ── Gallery Section ── */}
-			<section
-				className="bg-white py-10 md:py-20 flex flex-col justify-start items-center"
-			>
+			<section className="bg-white py-10 md:py-20 flex flex-col justify-start items-center">
 				<div style={{ width: "95%", maxWidth: 1200 }}>
 					{/* Heading row */}
 					<div
@@ -511,9 +487,7 @@ export default function PromoOrange() {
 					</div>
 
 					{/* Responsive Grid replacing Row 1 and Row 2 */}
-					<div
-						className="grid grid-cols-2 md:grid-cols-3 gap-2 w-full"
-					>
+					<div className="grid grid-cols-2 md:grid-cols-3 gap-2 w-full">
 						{[...galleryRow1, ...galleryRow2].map(({ src, alt }) => (
 							<div
 								key={src + alt}
