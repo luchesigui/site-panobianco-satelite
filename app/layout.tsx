@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Bebas_Neue, Inter, Montserrat, Roboto } from "next/font/google";
 import Script from "next/script";
 
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -78,6 +78,27 @@ const inter = Inter({
 	variable: "--font-inter",
 });
 
+const bebasNeue = Bebas_Neue({
+	weight: "400",
+	subsets: ["latin"],
+	display: "swap",
+	variable: "--font-bebas-neue",
+});
+
+const montserrat = Montserrat({
+	subsets: ["latin"],
+	weight: ["400", "500", "600", "700"],
+	display: "swap",
+	variable: "--font-montserrat",
+});
+
+const roboto = Roboto({
+	subsets: ["latin"],
+	weight: ["300", "400"],
+	display: "swap",
+	variable: "--font-roboto",
+});
+
 export const metadata: Metadata = {
 	title: {
 		default:
@@ -119,11 +140,18 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="pt-BR" className={inter.variable}>
+		<html
+			lang="pt-BR"
+			className={`${inter.variable} ${bebasNeue.variable} ${montserrat.variable} ${roboto.variable}`}
+		>
 			<head>
+				<link rel="preconnect" href="https://cdn.prod.website-files.com" />
+				<link rel="dns-prefetch" href="https://cdn.prod.website-files.com" />
+				<link rel="preconnect" href="https://www.googletagmanager.com" />
+				<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 				<Script
 					id="gtm-script"
-					strategy="afterInteractive"
+					strategy="lazyOnload"
 					dangerouslySetInnerHTML={{
 						__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

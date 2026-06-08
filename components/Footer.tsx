@@ -117,12 +117,18 @@ export default function Footer() {
 							</li>
 							<li className="flex items-center gap-2">
 								<Mail className="size-4 shrink-0" />
+								<span
+									dangerouslySetInnerHTML={{ __html: "<!--email_off-->" }}
+								/>
 								<a
 									href={`mailto:${CONTACT_EMAIL}`}
 									className="transition-colors hover:text-primary-500"
 								>
 									{CONTACT_EMAIL}
 								</a>
+								<span
+									dangerouslySetInnerHTML={{ __html: "<!--/email_off-->" }}
+								/>
 							</li>
 							<li className="flex items-center gap-2">
 								<MessageSquare className="size-4 shrink-0" />

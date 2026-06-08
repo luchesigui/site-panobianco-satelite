@@ -1,0 +1,7 @@
+# Target modern browsers to eliminate legacy polyfills and transpile bloat
+chrome >= 90
+safari >= 15
+firefox >= 90
+edge >= 90
+not IE 11
+not ie_mob 11
