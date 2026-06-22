@@ -105,10 +105,11 @@ const orangeBenefits = [
 	"Trazer 5 convidados por mês",
 	"Avaliação física gratuita",
 	"4 acessos em outras unidades da rede",
-	"Sem adesão, anuidade, ou taxa de cancelamento",
+	"Sem taxa de adesão ou anuidade",
 	"Panobianco APP",
 ];
-const orangeExclude = "Fidelidade de 12 meses";
+const orangeExclude =
+	"Fidelidade de 12 meses (multa de 20% do restante do contrato em caso de cancelamento antes de 1 ano)";
 
 const platinumBenefits = [
 	...orangeBenefits.slice(0, 5),

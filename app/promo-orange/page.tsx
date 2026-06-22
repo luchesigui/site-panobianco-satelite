@@ -2,8 +2,8 @@ import { Check, Dumbbell, Music2, Users, Zap } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import PlanCTAButton from "@/components/PlanCTAButton";
 import HeroOrange from "@/components/HeroOrange";
+import PlanCTAButton from "@/components/PlanCTAButton";
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ const col2Benefits = [
 	"Aulas coletivas",
 ];
 const requirements = [
-	"Fidelidade 12 meses",
+	"Fidelidade 12 meses (multa de 20% do restante do contrato em caso de cancelamento antes de 1 ano)",
 	"Pagamento recorrente mensal",
 	"Exclusivo para matrículas online",
 ];

@@ -51,7 +51,7 @@ export function GET() {
 		"## Planos",
 		"| Plano | Valor mensal | Observações |",
 		"|---|---:|---|",
-		"| Orange Anual | R$ 119,90 | Fidelidade de 12 meses |",
+		"| Orange Anual | R$ 119,90 | Fidelidade de 12 meses (multa de 20% do restante do contrato caso cancele antes) |",
 		"| Platinum Recorrente | R$ 139,90 | Sem fidelidade, débito automático |",
 		"| Avulso | R$ 159,90 | Pagamento mês a mês |",
 		"",
