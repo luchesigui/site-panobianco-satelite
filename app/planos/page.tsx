@@ -108,8 +108,7 @@ const orangeBenefits = [
 	"Sem taxa de adesão ou anuidade",
 	"Panobianco APP",
 ];
-const orangeExclude =
-	"Fidelidade de 12 meses (multa de 20% do restante do contrato em caso de cancelamento antes de 1 ano)";
+const orangeExclude = "Fidelidade de 12 meses";
 
 const platinumBenefits = [
 	...orangeBenefits.slice(0, 5),
@@ -202,7 +201,7 @@ export default async function Planos() {
 										R$119,90/mês a partir da 2ª mensalidade
 									</p>
 									<span className="mt-2 inline-block rounded-full bg-primary-500/10 px-3 py-0.5 text-xs font-bold text-primary-500">
-										Válido até 31/05/2026
+										Válido até 30/06/2026
 									</span>
 								</div>
 								<div className="mb-4 text-sm font-bold uppercase tracking-wider">
@@ -220,9 +219,13 @@ export default async function Planos() {
 										<span>{orangeExclude}</span>
 									</li>
 								</ul>
-								<p className="mb-4 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
+								<p className="mb-2 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
 									Válido para quem não teve contrato promocional nos últimos 12
 									meses.
+								</p>
+								<p className="mb-4 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
+									Em caso de cancelamento antes de 1 ano, a multa é de 20% do
+									restante do contrato.
 								</p>
 								<PlanCTAButton
 									plan="orange"
@@ -268,9 +271,13 @@ export default async function Planos() {
 										<span>{orangeExclude}</span>
 									</li>
 								</ul>
-								<p className="mb-4 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
+								<p className="mb-2 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
 									Válido para quem não teve contrato promocional nos últimos 12
 									meses.
+								</p>
+								<p className="mb-4 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
+									Em caso de cancelamento antes de 1 ano, a multa é de 20% do
+									restante do contrato.
 								</p>
 								<PlanCTAButton
 									plan="orange"
@@ -453,15 +460,13 @@ export default async function Planos() {
 							</details>
 							<details className="group overflow-hidden rounded-lg border border-white/10 bg-white/5">
 								<summary className="flex cursor-pointer items-center justify-between p-4 transition-colors hover:bg-white/5">
-									<span className="font-medium">
-										Aceita Wellhub/Gympass?
-									</span>
+									<span className="font-medium">Aceita Wellhub/Gympass?</span>
 									<ChevronDown className="size-5 shrink-0 transition-transform group-open:rotate-180" />
 								</summary>
 								<div className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-relaxed text-stone-400">
-									Sim! Aceitamos Wellhub (antigo Gympass). Entre em
-									contato ou venha nos visitar para saber quais planos estão
-									disponíveis para a sua categoria. Se for o seu caso,{" "}
+									Sim! Aceitamos Wellhub (antigo Gympass). Entre em contato ou
+									venha nos visitar para saber quais planos estão disponíveis
+									para a sua categoria. Se for o seu caso,{" "}
 									<Link
 										href="/parceiros"
 										className="text-primary-500 underline hover:text-primary-400"

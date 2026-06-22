@@ -76,7 +76,8 @@ export default function HeroOrange({ CDN, CTA_HREF }: HeroOrangeProps) {
 							fontSizeAdjust: "from-font",
 						}}
 					>
-						Contrate seu plano durante o mês de maio e garanta oferta exclusiva.
+						Contrate seu plano durante o mês de junho e garanta oferta
+						exclusiva.
 					</p>
 
 					<PlanCTAButton
@@ -99,7 +100,7 @@ export default function HeroOrange({ CDN, CTA_HREF }: HeroOrangeProps) {
 							fontSizeAdjust: "from-font",
 						}}
 					>
-						Oferta válida até 31/05/2026,{" "}
+						Oferta válida até 30/06/2026,{" "}
 						<strong>exclusivamente para o Plano Orange Anual</strong>, sujeito à
 						disponibilidade da unidade escolhida. Para matrículas realizadas no
 						balcão ou outros canais, o valor promocional será de R$ 9,90 no

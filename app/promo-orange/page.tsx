@@ -9,7 +9,7 @@ import { SITE_URL } from "@/lib/constants";
 export const metadata: Metadata = {
 	title: "Promoção Orange | Panobianco Jardim Satélite",
 	description:
-		"Primeira mensalidade por R$ 0,99. Orange Anual com acesso completo à academia. Válido até 31/05.",
+		"Primeira mensalidade por R$ 0,99. Orange Anual com acesso completo à academia. Válido até 30/06.",
 	alternates: { canonical: "/promo-orange" },
 	robots: "noindex, nofollow",
 };
@@ -75,7 +75,7 @@ const offerSchema = {
 	priceCurrency: "BRL",
 	url: `${SITE_URL}/promo-orange`,
 	availability: "https://schema.org/InStock",
-	validThrough: "2026-05-31",
+	validThrough: "2026-06-30",
 };
 
 export default function PromoOrange() {

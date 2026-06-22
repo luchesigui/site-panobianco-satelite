@@ -162,8 +162,8 @@ export default function ParceirosPage() {
 				<div className="mb-8 text-center">
 					<h1 className="text-3xl font-bold">Cadastro de Parceiros</h1>
 					<p className="mt-2 text-sm text-white/60">
-						Alunos do Wellhub, realizem o cadastro abaixo para
-						acessar a academia.
+						Alunos do Wellhub, realizem o cadastro abaixo para acessar a
+						academia.
 					</p>
 				</div>
 
