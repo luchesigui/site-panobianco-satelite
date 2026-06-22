@@ -219,13 +219,10 @@ export default async function Planos() {
 										<span>{orangeExclude}</span>
 									</li>
 								</ul>
-								<p className="mb-2 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
-									Válido para quem não teve contrato promocional nos últimos 12
-									meses.
-								</p>
 								<p className="mb-4 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
-									Em caso de cancelamento antes de 1 ano, a multa é de 20% do
-									restante do contrato.
+									Válido para quem não teve contrato promocional nos últimos 12
+									meses. Em caso de cancelamento antes de 1 ano, a multa é de
+									20% do restante do contrato.
 								</p>
 								<PlanCTAButton
 									plan="orange"
@@ -271,13 +268,10 @@ export default async function Planos() {
 										<span>{orangeExclude}</span>
 									</li>
 								</ul>
-								<p className="mb-2 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
-									Válido para quem não teve contrato promocional nos últimos 12
-									meses.
-								</p>
 								<p className="mb-4 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
-									Em caso de cancelamento antes de 1 ano, a multa é de 20% do
-									restante do contrato.
+									Válido para quem não teve contrato promocional nos últimos 12
+									meses. Em caso de cancelamento antes de 1 ano, a multa é de
+									20% do restante do contrato.
 								</p>
 								<PlanCTAButton
 									plan="orange"
