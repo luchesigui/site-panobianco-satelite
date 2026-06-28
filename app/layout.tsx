@@ -6,6 +6,7 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Footer from "@/components/Footer";
 import { GTM_ID } from "@/components/GTM";
 import Header from "@/components/Header";
+import LayoutWrapper from "@/components/LayoutWrapper";
 import { IndicationProvider } from "@/contexts/IndicationContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import {
@@ -185,10 +186,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				</noscript>
 				<ThemeProvider>
 					<IndicationProvider>
-						<Header />
-						<main className="min-h-screen pt-20">{children}</main>
-						<Footer />
-						<FloatingWhatsApp />
+						<LayoutWrapper>{children}</LayoutWrapper>
 					</IndicationProvider>
 				</ThemeProvider>
 			</body>

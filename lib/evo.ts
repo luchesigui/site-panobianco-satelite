@@ -283,3 +283,121 @@ export async function createCheckoutLink(
 		throw new Error("No cartCheckoutLink in EVO response");
 	return data.cartCheckoutLink as string;
 }
+
+export interface EvoAuthResult {
+	idMember?: number;
+	idBranch?: number;
+	idEnterprise?: number;
+	name?: string;
+	dns?: string;
+	successAuthenticate: boolean;
+	urlResetPassword?: string;
+	urlMemberArea?: string;
+}
+
+export interface EvoMemberProfile {
+	idMember: number;
+	photo?: string;
+	firstName: string;
+	lastName: string;
+	email: string;
+	gender?: string;
+	birthDate?: string;
+	slug?: string;
+	registerDate?: string;
+	idBranch?: number;
+	branchName?: string;
+	accessBlocked?: boolean;
+	blockedReason?: string;
+	document?: string;
+	documentId?: string;
+	maritalStatus?: string;
+	totalFitCoins?: number;
+	membershipStatus?: string;
+}
+
+export async function authenticateEvoMember(
+	email: string,
+	password: string,
+): Promise<EvoAuthResult | null> {
+	const missing = ["EVO_DNS", "EVO_TOKEN"].filter((k) => !process.env[k]);
+	if (missing.length > 0) {
+		console.error("[evo] missing env vars for auth:", missing);
+		return null;
+	}
+
+	const params = new URLSearchParams({
+		email,
+		password,
+		changePassword: "false",
+	});
+
+	const res = await fetch(
+		`${EVO_BASE}/api/v1/members/auth?${params.toString()}`,
+		{
+			method: "POST",
+			headers: {
+				Authorization: evoAuthHeader(),
+				"Content-Type": "application/json",
+				accept: "application/json",
+			},
+		},
+	);
+
+	if (!res.ok) {
+		if (res.status === 400) {
+			try {
+				const data = await res.json();
+				if (data.errors && data.errors.length > 0) {
+					console.log("[evo] auth validation message:", data.errors[0].value);
+					return {
+						successAuthenticate: false,
+					};
+				}
+			} catch {
+				// ignorar e cair no log genérico
+			}
+		}
+		console.error("[evo] auth failed with status:", res.status);
+		return null;
+	}
+
+	try {
+		const data = await res.json();
+		return data as EvoAuthResult;
+	} catch (err) {
+		console.error("[evo] failed to parse auth response:", err);
+		return null;
+	}
+}
+
+export async function getEvoMemberProfile(
+	idMember: number,
+): Promise<EvoMemberProfile | null> {
+	const missing = ["EVO_DNS", "EVO_TOKEN"].filter((k) => !process.env[k]);
+	if (missing.length > 0) {
+		console.error("[evo] missing env vars for profile:", missing);
+		return null;
+	}
+
+	const res = await fetch(`${EVO_BASE}/api/v2/members/${idMember}`, {
+		method: "GET",
+		headers: {
+			Authorization: evoAuthHeader(),
+			accept: "application/json",
+		},
+	});
+
+	if (!res.ok) {
+		console.error("[evo] profile fetch failed with status:", res.status);
+		return null;
+	}
+
+	try {
+		const data = await res.json();
+		return data as EvoMemberProfile;
+	} catch (err) {
+		console.error("[evo] failed to parse profile response:", err);
+		return null;
+	}
+}
