@@ -70,7 +70,7 @@ export default function ScheduleModal() {
 							<X className="size-5" />
 						</button>
 						<Image
-							src="/images/horarios.webp"
+							src="/images/horarios.webp?v=20260803"
 							alt="Grade de horários - Panobianco Jardim Satélite"
 							width={900}
 							height={600}
