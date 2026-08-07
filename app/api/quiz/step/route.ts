@@ -2,6 +2,8 @@ import { type NextRequest, NextResponse } from "next/server";
 
 import { sql } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 // Simple sliding-window rate limiter: max 20 requests per minute per IP.
 // Module-level map persists across requests within the same Fluid Compute instance.
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();

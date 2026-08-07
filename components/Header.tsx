@@ -13,6 +13,7 @@ const navigation = [
 	{ name: "Serviços", href: "/servicos" },
 	{ name: "Aulas Coletivas", href: "/aulas-coletivas" },
 	{ name: "Planos", href: "/planos" },
+	{ name: "Sorteio", href: "/sorteio" },
 	{ name: "Blog", href: "/blog" },
 	{ name: "Contato", href: "/contato" },
 ];

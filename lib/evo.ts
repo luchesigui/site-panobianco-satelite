@@ -252,6 +252,63 @@ export async function createPartnerMember(
 	}
 }
 
+export interface EvoMemberLookup {
+	idMember: number;
+	name: string;
+	email?: string;
+}
+
+export async function findMemberByEmailOrCpf(
+	identifier: string,
+): Promise<EvoMemberLookup | null> {
+	const missing = ["EVO_DNS", "EVO_TOKEN"].filter((k) => !process.env[k]);
+	if (missing.length > 0) {
+		console.error("[evo] missing env vars:", missing);
+		return null;
+	}
+
+	const digits = identifier.replace(/\D/g, "");
+	const isCpf = !identifier.includes("@") && digits.length === 11;
+	const params = new URLSearchParams(
+		isCpf ? { document: digits } : { email: identifier },
+	);
+	if (process.env.EVO_BRANCH_ID) {
+		params.set("idBranch", process.env.EVO_BRANCH_ID);
+	}
+
+	const res = await fetch(`${EVO_BASE}/api/v2/members?${params}`, {
+		headers: {
+			Authorization: evoAuthHeader(),
+			accept: "application/json",
+		},
+	});
+
+	const raw = await res.text();
+	console.log("[evo] member lookup", res.status);
+
+	if (!res.ok) return null;
+
+	try {
+		const list = JSON.parse(raw);
+		const member = Array.isArray(list) ? list[0] : null;
+		if (!member?.idMember) return null;
+
+		const email = (member.contacts ?? []).find(
+			(c: { contactType?: string }) => c.contactType === "E-mail",
+		)?.description;
+		const name = [member.firstName, member.lastName].filter(Boolean).join(" ");
+
+		return {
+			idMember: member.idMember,
+			name: name || member.registerName || "",
+			email: typeof email === "string" ? email : undefined,
+		};
+	} catch {
+		console.error("[evo] failed to parse member lookup response");
+		return null;
+	}
+}
+
 export async function createCheckoutLink(
 	plan: "orange" | "platinum",
 	idProspect?: number | null,
@@ -283,3 +340,167 @@ export async function createCheckoutLink(
 		throw new Error("No cartCheckoutLink in EVO response");
 	return data.cartCheckoutLink as string;
 }
+
+export interface EvoActiveMember {
+	idMember: number;
+	firstName: string;
+	lastName: string;
+	displayName: string;
+}
+
+function toTitleCase(str: string): string {
+	return str
+		.toLowerCase()
+		.split(/\s+/)
+		.filter(Boolean)
+		.map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+		.join(" ");
+}
+
+export function formatFirstAndLastName(firstName?: string, lastName?: string) {
+	const cleanFirst = (firstName || "").trim();
+	const cleanLast = (lastName || "").trim();
+
+	const firstParts = cleanFirst.split(/\s+/).filter(Boolean);
+	const lastParts = cleanLast.split(/\s+/).filter(Boolean);
+
+	const first = firstParts[0] ? toTitleCase(firstParts[0]) : "Aluno";
+	const last =
+		lastParts.length > 0
+			? toTitleCase(lastParts[lastParts.length - 1])
+			: firstParts.length > 1
+				? toTitleCase(firstParts[firstParts.length - 1])
+				: "";
+
+	return {
+		first,
+		last,
+		displayName: last ? `${first} ${last}` : first,
+	};
+}
+
+let activeMembersCache: {
+	data: EvoActiveMember[];
+	timestamp: number;
+} | null = null;
+const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 hour
+
+export async function getActiveMembers(
+	forceRefresh = false,
+): Promise<EvoActiveMember[]> {
+	const now = Date.now();
+	if (
+		!forceRefresh &&
+		activeMembersCache &&
+		now - activeMembersCache.timestamp < CACHE_DURATION_MS
+	) {
+		console.log(
+			`[evo] Returning ${activeMembersCache.data.length} cached active members (age: ${Math.round((now - activeMembersCache.timestamp) / 1000)}s)`,
+		);
+		return activeMembersCache.data;
+	}
+
+	const missing = ["EVO_DNS", "EVO_TOKEN", "EVO_BRANCH_ID"].filter(
+		(k) => !process.env[k],
+	);
+	if (missing.length > 0) {
+		console.error("[evo] missing env vars:", missing);
+		return activeMembersCache?.data || [];
+	}
+
+	const idBranch = process.env.EVO_BRANCH_ID;
+	const take = 50;
+	let skip = 0;
+	const allMembers: EvoActiveMember[] = [];
+
+	while (true) {
+		try {
+			const res = await fetch(
+				`${EVO_BASE}/api/v2/members?idBranch=${idBranch}&status=1&take=${take}&skip=${skip}`,
+				{
+					headers: {
+						Authorization: evoAuthHeader(),
+						accept: "application/json",
+					},
+					cache: "no-store",
+				},
+			);
+
+			if (res.status === 429) {
+				console.warn(`[evo] Rate limited (429) at skip ${skip}, backing off...`);
+				await new Promise((r) => setTimeout(r, 1500));
+				continue;
+			}
+
+			if (!res.ok) {
+				console.error("[evo] getActiveMembers failed status:", res.status);
+				break;
+			}
+
+			const data = await res.json();
+			if (!Array.isArray(data) || data.length === 0) break;
+
+			for (const item of data) {
+				if (!item.idMember) continue;
+
+				// Exclude Gympass / Wellhub
+				const isWellhub = Boolean(
+					item.gympassId || item.tokenGympass || item.codeGympass,
+				);
+				// Exclude Totalpass
+				const isTotalpass = Boolean(item.codeTotalpass);
+				// Exclude Personal
+				const isPersonal = Boolean(item.personalTrainer || item.personalType);
+				// Exclude VIP
+				const isVIP = Boolean(
+					item.membershipStatus?.toLowerCase().includes("vip") ||
+						item.notes?.toLowerCase().includes("vip"),
+				);
+				// Exclude blocked or pending
+				const isBlockedOrPending = Boolean(
+					item.accessBlocked ||
+						item.membershipStatus === "Pendente" ||
+						item.membershipStatus === "Pending" ||
+						item.membershipStatus === "Aguardando",
+				);
+
+				if (isWellhub || isTotalpass || isPersonal || isVIP || isBlockedOrPending) {
+					continue;
+				}
+
+				const formatted = formatFirstAndLastName(
+					item.firstName || item.registerName,
+					item.lastName || item.registerLastName,
+				);
+
+				allMembers.push({
+					idMember: item.idMember,
+					firstName: formatted.first,
+					lastName: formatted.last,
+					displayName: formatted.displayName,
+				});
+			}
+
+			if (data.length < take) break;
+			skip += take;
+			await new Promise((r) => setTimeout(r, 50));
+		} catch (err) {
+			console.error("[evo] error fetching active members:", err);
+			break;
+		}
+	}
+
+	if (allMembers.length > 0) {
+		activeMembersCache = {
+			data: allMembers,
+			timestamp: now,
+		};
+	}
+
+	return allMembers.length > 0
+		? allMembers
+		: activeMembersCache?.data || [];
+}
+
+
+
