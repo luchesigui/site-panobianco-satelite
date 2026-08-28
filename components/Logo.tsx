@@ -13,15 +13,15 @@ interface LogoProps {
 }
 
 export default function Logo({
-	className = "h-10 w-auto",
-	width = 120,
-	height = 40,
+	className = "h-10 md:h-11 w-auto",
+	width = 168,
+	height = 44,
 	showLink = true,
 }: LogoProps) {
 	const { theme } = useTheme();
 
-	// Use logo-dark.png for light theme, logo.png for dark theme
-	const logoSrc = theme === "light" ? "/logo-dark.png" : "/logo.png";
+	// Use white SVG for dark surfaces / dark theme, black SVG for light theme
+	const logoSrc = theme === "light" ? "/logo-black.svg" : "/logo-white.svg";
 
 	const logoImage = (
 		<Image
@@ -30,6 +30,7 @@ export default function Logo({
 			width={width}
 			height={height}
 			className={className}
+			priority
 		/>
 	);
 

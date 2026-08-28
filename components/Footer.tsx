@@ -18,7 +18,7 @@ export default function Footer() {
 				<div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-4">
 					<div className="md:col-span-2">
 						<div className="mb-6">
-							<Logo className="h-10 w-auto" width={140} height={40} />
+							<Logo className="h-10 md:h-11 w-auto" width={168} height={44} />
 						</div>
 						<p className="mb-6 max-w-sm text-neutral-300">
 							Feitos de força e vontade. Um espaço para viver o movimento com

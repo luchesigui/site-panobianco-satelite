@@ -24,7 +24,7 @@ export default function Header() {
 	return (
 		<header className="fixed top-0 left-0 right-0 z-50 h-20 border-b border-white/10 bg-background-dark/95 backdrop-blur-md">
 			<div className="container-main flex h-full items-center justify-between">
-				<Logo className="h-12 w-auto" width={150} height={48} />
+				<Logo className="h-10 md:h-11 w-auto" width={168} height={44} />
 
 				<nav className="hidden items-center gap-8 md:flex">
 					{navigation.map((item) => (
