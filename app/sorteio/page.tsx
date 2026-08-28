@@ -23,6 +23,15 @@ function SorteioContent() {
 	const searchParams = useSearchParams();
 	const isCaptureMode = searchParams.get("capture") === "1";
 	const isFeedCaptureMode = searchParams.get("format") === "feed";
+	const isReelsCaptureMode = searchParams.get("format") === "reels";
+	// This is intentionally available only in the opt-in capture route so a
+	// previously verified draw can be re-recorded in another social format.
+	const captureWinnerName = isCaptureMode
+		? searchParams.get("winner")?.trim() || null
+		: null;
+	const useMockCaptureData =
+		isCaptureMode && searchParams.get("mock") === "1";
+
 	const [members, setMembers] = useState<Member[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
@@ -76,8 +85,28 @@ function SorteioContent() {
 
 	// Pre-fetch active members silently from Evo API on mount
 	useEffect(() => {
+		if (useMockCaptureData && captureWinnerName) {
+			const mockMembers = Array.from({ length: 10 }, (_, index) => ({
+				idMember: 0,
+				firstName: "Participante",
+				lastName: String(index + 1).padStart(2, "0"),
+				displayName: `Participante ${String(index + 1).padStart(2, "0")}`,
+			}));
+			const winnerNameParts = captureWinnerName.split(/\s+/);
+			setMembers([
+				...mockMembers,
+				{
+					idMember: 0,
+					firstName: winnerNameParts[0],
+					lastName: winnerNameParts.slice(1).join(" "),
+					displayName: captureWinnerName,
+				},
+			]);
+			setLoading(false);
+			return;
+		}
 		fetchMembersList();
-	}, []);
+	}, [captureWinnerName, useMockCaptureData]);
 
 	useLayoutEffect(() => {
 		document.body.classList.toggle("sorteio-capture-mode", isCaptureMode);
@@ -85,12 +114,17 @@ function SorteioContent() {
 			"sorteio-feed-capture-mode",
 			isCaptureMode && isFeedCaptureMode,
 		);
+		document.body.classList.toggle(
+			"sorteio-reels-capture-mode",
+			isCaptureMode && isReelsCaptureMode,
+		);
 
 		return () => {
 			document.body.classList.remove("sorteio-capture-mode");
 			document.body.classList.remove("sorteio-feed-capture-mode");
+			document.body.classList.remove("sorteio-reels-capture-mode");
 		};
-	}, [isCaptureMode, isFeedCaptureMode]);
+	}, [isCaptureMode, isFeedCaptureMode, isReelsCaptureMode]);
 
 	// Web Audio synthetic tick for slot animation
 	const playTickSound = useCallback(() => {
@@ -210,8 +244,22 @@ function SorteioContent() {
 			return;
 		}
 
-		// Select final winner randomly ahead of time
-		const selectedWinnerIndex = Math.floor(Math.random() * activeMembers.length);
+		// A normal page visit remains random. The capture-only route may replay a
+		// winner from an already recorded draw so the same result can be exported
+		// at another aspect ratio without triggering a new live draw.
+		const selectedWinnerIndex = captureWinnerName
+			? activeMembers.findIndex(
+					(member) =>
+						member.displayName.localeCompare(captureWinnerName, "pt-BR", {
+							sensitivity: "base",
+						}) === 0,
+				)
+			: Math.floor(Math.random() * activeMembers.length);
+		if (selectedWinnerIndex < 0) {
+			setError("O vencedor solicitado não está disponível para a regravação.");
+			setStatus("idle");
+			return;
+		}
 		const selectedWinner = activeMembers[selectedWinnerIndex];
 
 		let delay = 35; // initial fast delay (ms)
@@ -316,11 +364,16 @@ function SorteioContent() {
 									>
 										{winner.firstName} {winner.lastName}
 									</h2>
-									<div className="pt-2">
-										<span className="inline-block rounded-full bg-primary-500/20 border border-primary-500/40 px-6 py-2 text-lg font-bold text-primary-400">
-											ID Aluno: #{winner.idMember}
-										</span>
-									</div>
+									{winner.idMember > 0 && (
+										<div className="pt-2">
+											<span
+												data-testid="winner-id"
+												className="inline-block rounded-full bg-primary-500/20 border border-primary-500/40 px-6 py-2 text-lg font-bold text-primary-400"
+											>
+												ID Aluno: #{winner.idMember}
+											</span>
+										</div>
+									)}
 								</div>
 							</div>
 						)}

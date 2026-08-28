@@ -2,12 +2,20 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import path from "node:path";
 
-const baseUrl = "http://mac-mini:3005/sorteio?capture=1&format=feed";
+const captureFormat = process.env.CAPTURE_FORMAT === "reels" ? "reels" : "feed";
+const captureWinner = process.env.CAPTURE_WINNER?.trim() || null;
+const useMockCaptureData = process.env.CAPTURE_MOCK === "1";
+const canvas = captureFormat === "reels" ? { width: 1080, height: 1920 } : { width: 1080, height: 1350 };
+const captureOrigin = process.env.CAPTURE_ORIGIN || "http://mac-mini:3005";
+const params = new URLSearchParams({ capture: "1", format: captureFormat });
+if (captureWinner) params.set("winner", captureWinner);
+if (useMockCaptureData) params.set("mock", "1");
+const baseUrl = `${captureOrigin}/sorteio?${params.toString()}`;
 const outputDir = path.resolve("artifacts/sorteio");
 const stamp = new Date().toISOString().replace(/[:.]/g, "-");
 const framesDir = path.join(outputDir, `frames-${stamp}`);
-const videoPath = path.join(outputDir, `sorteio-feed-${stamp}.mp4`);
-const metaPath = path.join(outputDir, `sorteio-feed-${stamp}.json`);
+const videoPath = path.join(outputDir, `sorteio-${captureFormat}-${stamp}.mp4`);
+const metaPath = path.join(outputDir, `sorteio-${captureFormat}-${stamp}.json`);
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -88,17 +96,26 @@ try {
   await cdp.ready;
   await cdp.send("Page.enable");
   await cdp.send("Runtime.enable");
+  if (captureFormat === "reels") {
+    await cdp.send("Emulation.setDeviceMetricsOverride", {
+      ...canvas,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
+  }
   // Start a fresh page state so this recording performs exactly one new live draw.
   await cdp.send("Page.navigate", { url: baseUrl });
   await sleep(500);
-  const initialStatus = await waitFor(cdp, ["ready", "error"], 120_000);
+  const initialStatus = await waitFor(cdp, ["ready", "error"], 600_000);
   if (initialStatus !== "ready") throw new Error("O sorteio não ficou pronto para gravação.");
+  // Let the capture-only styles paint before the first screencast frame.
+  await sleep(750);
 
   await cdp.send("Page.startScreencast", {
     format: "jpeg",
     quality: 95,
-    maxWidth: 1080,
-    maxHeight: 1350,
+    maxWidth: canvas.width,
+    maxHeight: canvas.height,
     everyNthFrame: 1,
   });
 
@@ -123,6 +140,10 @@ try {
     expression: "document.querySelector('[data-testid=winner-name]')?.textContent?.trim() || null",
     returnByValue: true,
   });
+  const winnerId = await cdp.send("Runtime.evaluate", {
+    expression: "document.querySelector('[data-testid=winner-id]')?.textContent?.match(/#(\\d+)/)?.[1] || null",
+    returnByValue: true,
+  });
 
   await cdp.send("Page.stopScreencast");
   if (frames.length < 20) throw new Error(`Foram recebidos poucos frames: ${frames.length}`);
@@ -142,12 +163,15 @@ try {
   lines.push(`file '${frames.at(-1).file.replace(/'/g, "'\\''")}'`);
   const concatPath = path.join(framesDir, "frames.txt");
   await writeFile(concatPath, `${lines.join("\n")}\n`);
-  execFileSync("ffmpeg", ["-y", "-f", "concat", "-safe", "0", "-i", concatPath, "-vf", "fps=30,scale=1080:1350:flags=lanczos,format=yuv420p", "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-movflags", "+faststart", videoPath], { stdio: "inherit" });
+  execFileSync("ffmpeg", ["-y", "-f", "concat", "-safe", "0", "-i", concatPath, "-vf", `fps=30,scale=${canvas.width}:${canvas.height}:flags=lanczos,format=yuv420p`, "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-movflags", "+faststart", videoPath], { stdio: "inherit" });
 
-  const metadata = { videoPath, frames: frames.length, winner: winner.result.value, sourceUrl: baseUrl, width: 1080, height: 1350, captureFps: 30 };
+  const metadata = { videoPath, frames: frames.length, winner: winner.result.value, winnerId: winnerId.result.value, replayWinner: captureWinner, sourceUrl: baseUrl, width: canvas.width, height: canvas.height, captureFps: 30 };
   await writeFile(metaPath, `${JSON.stringify(metadata, null, 2)}\n`);
   console.log(JSON.stringify(metadata));
 } finally {
   try { await cdp.send("Page.stopScreencast"); } catch {}
+  if (captureFormat === "reels") {
+    try { await cdp.send("Emulation.clearDeviceMetricsOverride"); } catch {}
+  }
   cdp.close();
 }
