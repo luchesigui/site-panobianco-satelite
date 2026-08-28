@@ -10,37 +10,38 @@ module.exports = {
 		extend: {
 			colors: {
 				primary: {
-					500: "#ff5e29", // Stitch design: vibrant orange
+					500: "#FF6100", // Panobianco 2026 orange
 				},
-				"background-light": "#f8f6f5",
-				"background-dark": "#120a08",
-				// Light theme colors (default) - NEW AND IMPROVED
+				"background-light": "#FAEDE4",
+				"background-dark": "#161515",
+				// Panobianco 2026 surfaces. Keep the existing utility names so pages
+				// can adopt the new system without structural changes.
 				light: {
 					bg: {
-						primary: "#ffffff", // White background
-						secondary: "#f8fafc", // Light gray background for sections
-						card: "#ffffff", // White for cards
+						primary: "#FAEDE4",
+						secondary: "#ffffff",
+						card: "#ffffff",
 					},
 					text: {
-						primary: "#1e293b", // Dark gray for primary text - excellent contrast
-						secondary: "#64748b", // Medium gray for secondary text
-						muted: "#94a3b8", // Light gray for muted text
+						primary: "#3D3336",
+						secondary: "#87756B",
+						muted: "#87756B",
 					},
-					border: "#e2e8f0", // Light gray borders
+					border: "#87756B",
 				},
-				// Dark theme colors - RESTORED TO ORIGINAL
+				// Dark surfaces from the Panobianco 2026 palette.
 				dark: {
 					bg: {
-						primary: "#121212", // Original dark background
-						secondary: "#1f1f1f", // Original surface color
-						card: "#1f1f1f", // Original surface color for cards (not the new #2a2a2a)
+						primary: "#161515",
+						secondary: "#330000",
+						card: "#3D3336",
 					},
 					text: {
 						primary: "#ffffff", // Original white for primary text
 						secondary: "#d1d5db", // Original light gray for secondary text
 						muted: "#d1d5db", // Keep secondary color for muted (original didn't have separate muted)
 					},
-					border: "#333333", // Original dark gray borders
+					border: "#3D3336",
 				},
 				state: {
 					disabled: {
@@ -50,19 +51,21 @@ module.exports = {
 						"dark-text": "#71717a",
 					},
 					focus: {
-						ring: "#f15927", // Vibrant Orange for focus states
+						ring: "#FF6100", // Panobianco 2026 orange for focus states
 					},
 				},
 			},
 			fontFamily: {
 				display: [
-					"var(--font-inter)",
+					"Forma DJR Micro",
+					"var(--font-archivo)",
+					"Archivo",
 					"ui-sans-serif",
 					"system-ui",
 					"sans-serif",
 				],
 				sans: [
-					"var(--font-inter)",
+					"var(--font-archivo)",
 					"ui-sans-serif",
 					"system-ui",
 					"-apple-system",

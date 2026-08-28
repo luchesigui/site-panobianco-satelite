@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Inter, Montserrat, Roboto } from "next/font/google";
+import {
+	Archivo,
+	Bebas_Neue,
+	Montserrat,
+	Roboto,
+} from "next/font/google";
 import Script from "next/script";
 
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -72,10 +77,10 @@ const websiteSchema = {
 	publisher: { "@id": `${SITE_URL}#organization` },
 };
 
-const inter = Inter({
+const archivo = Archivo({
 	subsets: ["latin"],
 	display: "swap",
-	variable: "--font-inter",
+	variable: "--font-archivo",
 });
 
 const bebasNeue = Bebas_Neue({
@@ -142,7 +147,7 @@ export default function RootLayout({
 	return (
 		<html
 			lang="pt-BR"
-			className={`${inter.variable} ${bebasNeue.variable} ${montserrat.variable} ${roboto.variable}`}
+			className={`${archivo.variable} ${bebasNeue.variable} ${montserrat.variable} ${roboto.variable}`}
 		>
 			<head>
 				<link rel="preconnect" href="https://cdn.prod.website-files.com" />

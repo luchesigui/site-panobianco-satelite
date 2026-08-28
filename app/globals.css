@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--pb-orange: #ff6100;
+	--pb-black: #161515;
+	--pb-grena: #330000;
+	--pb-off-white: #faede4;
+	--pb-warm-gray: #87756b;
+	--pb-graphite: #3d3336;
+	--pb-white: #ffffff;
+}
+
 @font-face {
 	font-family: "SF Compact";
 	src: url("/fonts/SFCompact.ttf") format("truetype"),
@@ -20,31 +30,31 @@
 @layer base {
 	html {
 		font-family:
-			var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+			"Forma DJR Micro", var(--font-archivo), "Archivo", ui-sans-serif, system-ui, -apple-system,
 			BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
 			"Noto Sans", sans-serif;
 	}
 
-	/* Light theme (default) - IMPROVED */
+	/* Panobianco 2026 light surface. */
 	body {
-		background-color: #ffffff;
-		color: #1e293b;
+		background-color: var(--pb-off-white);
+		color: var(--pb-graphite);
 		line-height: 1.5;
 		transition:
 			background-color 0.3s ease,
 			color 0.3s ease;
 	}
 
-	/* Dark theme - RESTORED TO ORIGINAL */
+	/* Panobianco 2026 dark surface. */
 	.dark body {
-		background-color: #121212;
-		color: #ffffff;
+		background-color: var(--pb-black);
+		color: var(--pb-white);
 	}
 }
 
 @layer components {
 	.btn-primary {
-		@apply inline-flex items-center justify-center rounded-md bg-primary-500 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+		@apply inline-flex items-center justify-center rounded-full bg-primary-500 px-5 py-3 text-base font-extrabold uppercase tracking-wide text-white transition-colors hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
 		@apply focus:ring-offset-light-bg-primary dark:focus:ring-offset-dark-bg-primary;
 	}
 
@@ -79,7 +89,7 @@
 
 	/* Stitch design utilities */
 	.glass-card {
-		background: rgba(255, 255, 255, 0.03);
+		background: rgba(255, 255, 255, 0.04);
 		backdrop-filter: blur(10px);
 		border: 1px solid rgba(255, 255, 255, 0.1);
 	}
@@ -87,9 +97,27 @@
 	.hero-gradient {
 		background: linear-gradient(
 			to bottom,
-			rgba(18, 10, 8, 0.4),
-			rgba(18, 10, 8, 1)
+			rgba(51, 0, 0, 0.28),
+			var(--pb-black)
 		);
+	}
+
+	.pb-dark-surface {
+		background:
+			radial-gradient(100% 72% at 50% 110%, rgba(255, 97, 0, 0.18), transparent 62%),
+			var(--pb-black);
+	}
+
+	.pb-chamfer {
+		clip-path: polygon(0 0, calc(100% - 1rem) 0, 100% 1rem, 100% 100%, 0 100%);
+	}
+
+	.pb-display {
+		font-family: "Forma DJR Micro", var(--font-archivo), "Archivo", ui-sans-serif, sans-serif;
+		font-weight: 800;
+		letter-spacing: -0.025em;
+		line-height: 0.96;
+		text-transform: uppercase;
 	}
 }
 
@@ -215,4 +243,9 @@
 		padding-right: 0;
 		padding-left: 0;
 	}
-}
+	/* Reels fill the real 9:16 viewport; feed retains its own framing above. */
+	body.sorteio-reels-capture-mode .sorteio-page {
+		padding-top: 8rem;
+		padding-bottom: 6rem;
+	}
+	}

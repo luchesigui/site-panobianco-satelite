@@ -13,16 +13,16 @@ import {
 
 export default function Footer() {
 	return (
-		<footer className="border-t border-white/10 bg-background-dark py-16 text-white">
+		<footer className="pb-dark-surface border-t border-white/10 py-16 text-white">
 			<div className="container-main">
 				<div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-4">
 					<div className="md:col-span-2">
 						<div className="mb-6">
 							<Logo className="h-10 w-auto" width={140} height={40} />
 						</div>
-						<p className="mb-6 max-w-sm text-neutral-400">
-							Transformando vidas através do movimento. A Panobianco Jardim
-							Satélite é o seu destino premium para saúde e bem-estar.
+						<p className="mb-6 max-w-sm text-neutral-300">
+							Feitos de força e vontade. Um espaço para viver o movimento com
+							acolhimento, comunidade e prazer.
 						</p>
 						<div className="flex gap-4">
 							<a
@@ -47,7 +47,9 @@ export default function Footer() {
 					</div>
 
 					<div>
-						<h4 className="mb-6 font-bold">Links Rápidos</h4>
+						<h4 className="mb-6 text-xs font-extrabold uppercase tracking-[0.1em] text-primary-500">
+							Links Rápidos
+						</h4>
 						<ul className="space-y-4 text-sm text-neutral-400">
 							<li>
 								<Link
@@ -104,7 +106,9 @@ export default function Footer() {
 					</div>
 
 					<div>
-						<h4 className="mb-6 font-bold">Contato</h4>
+						<h4 className="mb-6 text-xs font-extrabold uppercase tracking-[0.1em] text-primary-500">
+							Contato
+						</h4>
 						<ul className="space-y-4 text-sm text-neutral-400">
 							<li className="flex items-center gap-2">
 								<Phone className="size-4 shrink-0" />

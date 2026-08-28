@@ -2,7 +2,7 @@
 	"designSystemProfile": {
 		"name": "Panobianco Satélite",
 		"version": "2.0.0",
-		"description": "Design system do site Panobianco Satélite. Tema dual (light/dark) com laranja vibrante como cor primária de marca, tipografia Inter e estética moderna e limpa.",
+		"description": "Design system do site Panobianco Satélite. Tema dual (light/dark) com laranja vibrante como cor primária de marca, tipografia Archivo e estética moderna e limpa.",
 		"style": "Modern, Clean, Dual-theme",
 		"theme": "Light (default) / Dark",
 		"coreElements": {
@@ -108,14 +108,14 @@
 				}
 			},
 			"typography": {
-				"description": "Fonte primária Inter carregada via next/font. Fallback para system-ui e sans-serif nativo.",
+				"description": "Fonte primária Archivo carregada via next/font. Fallback para system-ui e sans-serif nativo.",
 				"fontFamily": {
 					"sans": {
-						"value": "var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+						"value": "var(--font-archivo), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
 						"description": "Fonte principal do projeto."
 					},
 					"display": {
-						"value": "var(--font-inter), ui-sans-serif, system-ui, sans-serif",
+						"value": "\"Forma DJR Micro\", var(--font-archivo), Archivo, ui-sans-serif, system-ui, sans-serif",
 						"description": "Fonte para títulos de destaque."
 					}
 				},
