@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const inputClassName =
-	"w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none";
+	"w-full border border-pb-graphite/25 bg-white px-4 py-3 text-pb-graphite placeholder:text-pb-graphite/50 focus:border-pb-orange focus:outline-none disabled:opacity-60";
 
 export default function TreinamentoLoginForm() {
 	const { refresh } = useRouter();
@@ -46,13 +46,15 @@ export default function TreinamentoLoginForm() {
 	};
 
 	return (
-		<article className="mx-auto max-w-md rounded-xl border border-white/10 bg-white/5 p-6">
-			<h2 className="text-2xl font-semibold">Acesso ao treinamento</h2>
-			<p className="mt-2 text-sm text-white/65">
+		<article className="card-hex-light mx-auto max-w-md px-12 py-16">
+			<h2 className="text-[3.5rem] leading-none tracking-tight">
+				Acesso ao treinamento
+			</h2>
+			<p className="mt-2 text-[1.5rem] leading-tight text-pb-graphite/80">
 				Informe o login e a senha fornecidos pela equipe.
 			</p>
 
-			<form onSubmit={handleSubmit} className="mt-6 space-y-4">
+			<form onSubmit={handleSubmit} className="mt-8 space-y-4">
 				<div>
 					<label htmlFor="treinamento-login" className="sr-only">
 						Login
@@ -89,14 +91,14 @@ export default function TreinamentoLoginForm() {
 				</div>
 				<button
 					type="submit"
-					className="inline-flex h-12 w-full items-center justify-center rounded-full bg-primary-500 px-6 text-sm font-bold text-white transition-colors hover:bg-primary-500/90 disabled:opacity-70"
+					className="botao-chanfrado inline-flex w-full items-center justify-center bg-pb-orange px-8 py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-orange-warm disabled:opacity-70"
 					disabled={isSubmitting}
 				>
 					<LogIn className="mr-2 size-4" />
 					{isSubmitting ? "Entrando..." : "Entrar"}
 				</button>
 				{message && (
-					<p className="rounded-lg border border-red-400/40 bg-red-500/15 px-4 py-3 text-sm text-red-200">
+					<p className="border border-pb-orange-warm/40 bg-pb-orange-warm/10 px-4 py-3 text-sm text-pb-orange-warm">
 						{message}
 					</p>
 				)}

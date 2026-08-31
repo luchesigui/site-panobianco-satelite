@@ -3,34 +3,47 @@
 @tailwind utilities;
 
 :root {
+	/* Paleta oficial Panobianco 2026 (Manual de Marca, pág. 26-32). */
 	--pb-orange: #ff6100;
-	--pb-black: #161515;
+	--pb-orange-warm: #cc3300;
 	--pb-grena: #330000;
-	--pb-off-white: #faede4;
-	--pb-warm-gray: #87756b;
 	--pb-graphite: #3d3336;
+	--pb-black: #161515;
 	--pb-white: #ffffff;
+	--pb-off-white: #f4ede4;
+	--pb-concrete: #87756b;
+	/* Alias legado mantido para não quebrar consumidores existentes. */
+	--pb-warm-gray: var(--pb-concrete);
+
+	/* Sistema de chanfros a 45º derivado do símbolo da marca. */
+	--tamanho-chanfro: 72px; /* Molduras e banners desktop */
+	--tamanho-chanfro-grande: 120px; /* Hero e grandes superfícies */
+	--tamanho-chanfro-menor: 24px; /* Cards médios */
+	--tamanho-chanfro-botao: 12px; /* Botões principais */
+	--tamanho-chanfro-botao-nav: 8px; /* Botões de cabeçalho e badges */
+	--tamanho-chanfro-selo: 5px; /* Selos e pílulas compactas */
 }
 
-@font-face {
-	font-family: "SF Compact";
-	src: url("/fonts/SFCompact.ttf") format("truetype"),
-		local("SF Compact Display"),
-		local("SF Compact Text"),
-		local("SF Compact");
-	font-weight: 100 900;
-	font-style: normal;
-	font-display: swap;
+@media (max-width: 991px) {
+	:root {
+		--tamanho-chanfro: 40px;
+		--tamanho-chanfro-grande: 64px;
+		--tamanho-chanfro-menor: 18px;
+	}
 }
 
-.font-sf-compact {
-	font-family: "SF Compact", -apple-system, "SF Compact Display", "SF Compact Text", system-ui, sans-serif;
+@media (max-width: 768px) {
+	:root {
+		--tamanho-chanfro: 30px;
+		--tamanho-chanfro-grande: 48px;
+		--tamanho-chanfro-menor: 16px;
+	}
 }
 
 @layer base {
 	html {
 		font-family:
-			"Forma DJR Micro", var(--font-archivo), "Archivo", ui-sans-serif, system-ui, -apple-system,
+			"Forma DJR Micro", var(--font-brand), "Archivo", ui-sans-serif, system-ui, -apple-system,
 			BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
 			"Noto Sans", sans-serif;
 	}
@@ -53,24 +66,237 @@
 }
 
 @layer components {
+	/* ======================================================================
+	   Geometria Panobianco 2026 — chanfros a 45º e octógonos.
+	   Todas as máscaras derivam do símbolo da marca: nenhum canto é
+	   arredondado e todo corte é feito exatamente a 45º.
+	   ====================================================================== */
+
+	/* 1. Octógono completo: os quatro cantos chanfrados. */
+	.shape-chanfrado {
+		clip-path: polygon(
+			var(--tamanho-chanfro) 0%,
+			calc(100% - var(--tamanho-chanfro)) 0%,
+			100% var(--tamanho-chanfro),
+			100% calc(100% - var(--tamanho-chanfro)),
+			calc(100% - var(--tamanho-chanfro)) 100%,
+			var(--tamanho-chanfro) 100%,
+			0% calc(100% - var(--tamanho-chanfro)),
+			0% var(--tamanho-chanfro)
+		);
+		overflow: hidden;
+	}
+
+	.shape-chanfrado-menor {
+		clip-path: polygon(
+			var(--tamanho-chanfro-menor) 0%,
+			calc(100% - var(--tamanho-chanfro-menor)) 0%,
+			100% var(--tamanho-chanfro-menor),
+			100% calc(100% - var(--tamanho-chanfro-menor)),
+			calc(100% - var(--tamanho-chanfro-menor)) 100%,
+			var(--tamanho-chanfro-menor) 100%,
+			0% calc(100% - var(--tamanho-chanfro-menor)),
+			0% var(--tamanho-chanfro-menor)
+		);
+		overflow: hidden;
+	}
+
+	/* 2. Chanfro apenas nos cantos superiores. */
+	.shape-chanfrado-cima {
+		clip-path: polygon(
+			var(--tamanho-chanfro) 0%,
+			calc(100% - var(--tamanho-chanfro)) 0%,
+			100% var(--tamanho-chanfro),
+			100% 100%,
+			0% 100%,
+			0% var(--tamanho-chanfro)
+		);
+		overflow: hidden;
+	}
+
+	.shape-chanfrado-cima-grande {
+		clip-path: polygon(
+			var(--tamanho-chanfro-grande) 0%,
+			calc(100% - var(--tamanho-chanfro-grande)) 0%,
+			100% var(--tamanho-chanfro-grande),
+			100% 100%,
+			0% 100%,
+			0% var(--tamanho-chanfro-grande)
+		);
+		overflow: hidden;
+	}
+
+	/* 3. Chanfro apenas nos cantos inferiores. */
+	.shape-chanfrado-baixo {
+		clip-path: polygon(
+			0% 0%,
+			100% 0%,
+			100% calc(100% - var(--tamanho-chanfro)),
+			calc(100% - var(--tamanho-chanfro)) 100%,
+			var(--tamanho-chanfro) 100%,
+			0% calc(100% - var(--tamanho-chanfro))
+		);
+		overflow: hidden;
+	}
+
+	/* 4. Chanfros laterais. No mobile a coluna vira linha, então o corte
+	   migra para topo/base para preservar a leitura do conteúdo. */
+	.shape-chanfrado-esquerda {
+		clip-path: polygon(
+			var(--tamanho-chanfro) 0%,
+			100% 0%,
+			100% 100%,
+			var(--tamanho-chanfro) 100%,
+			0% calc(100% - var(--tamanho-chanfro)),
+			0% var(--tamanho-chanfro)
+		);
+		overflow: hidden;
+	}
+
+	.shape-chanfrado-direita {
+		clip-path: polygon(
+			0% 0%,
+			calc(100% - var(--tamanho-chanfro)) 0%,
+			100% var(--tamanho-chanfro),
+			100% calc(100% - var(--tamanho-chanfro)),
+			calc(100% - var(--tamanho-chanfro)) 100%,
+			0% 100%
+		);
+		overflow: hidden;
+	}
+
+	@media (max-width: 991px) {
+		.shape-chanfrado-esquerda,
+		.shape-chanfrado-direita {
+			clip-path: polygon(
+				var(--tamanho-chanfro) 0%,
+				calc(100% - var(--tamanho-chanfro)) 0%,
+				100% var(--tamanho-chanfro),
+				100% 100%,
+				0% 100%,
+				0% var(--tamanho-chanfro)
+			);
+		}
+	}
+
+	/* 5. Botões e CTAs. */
+	.botao-chanfrado {
+		clip-path: polygon(
+			var(--tamanho-chanfro-botao) 0%,
+			calc(100% - var(--tamanho-chanfro-botao)) 0%,
+			100% var(--tamanho-chanfro-botao),
+			100% calc(100% - var(--tamanho-chanfro-botao)),
+			calc(100% - var(--tamanho-chanfro-botao)) 100%,
+			var(--tamanho-chanfro-botao) 100%,
+			0% calc(100% - var(--tamanho-chanfro-botao)),
+			0% var(--tamanho-chanfro-botao)
+		);
+	}
+
+	.botao-chanfrado-nav {
+		clip-path: polygon(
+			var(--tamanho-chanfro-botao-nav) 0%,
+			calc(100% - var(--tamanho-chanfro-botao-nav)) 0%,
+			100% var(--tamanho-chanfro-botao-nav),
+			100% calc(100% - var(--tamanho-chanfro-botao-nav)),
+			calc(100% - var(--tamanho-chanfro-botao-nav)) 100%,
+			var(--tamanho-chanfro-botao-nav) 100%,
+			0% calc(100% - var(--tamanho-chanfro-botao-nav)),
+			0% var(--tamanho-chanfro-botao-nav)
+		);
+	}
+
+	/* Selos e pílulas compactas (badges de destaque, tags). */
+	.selo-chanfrado {
+		clip-path: polygon(
+			var(--tamanho-chanfro-selo) 0%,
+			calc(100% - var(--tamanho-chanfro-selo)) 0%,
+			100% var(--tamanho-chanfro-selo),
+			100% calc(100% - var(--tamanho-chanfro-selo)),
+			calc(100% - var(--tamanho-chanfro-selo)) 100%,
+			var(--tamanho-chanfro-selo) 100%,
+			0% calc(100% - var(--tamanho-chanfro-selo)),
+			0% var(--tamanho-chanfro-selo)
+		);
+	}
+
+	/* 6. Octógono regular 1:1 para ícones, avatares e badges. */
+	.shape-octagon-regular {
+		aspect-ratio: 1;
+		clip-path: polygon(
+			29.29% 0%,
+			70.71% 0%,
+			100% 29.29%,
+			100% 70.71%,
+			70.71% 100%,
+			29.29% 100%,
+			0% 70.71%,
+			0% 29.29%
+		);
+	}
+
+	/* O clip-path corta o anel de foco, então superfícies chanfradas
+	   interativas sinalizam foco por sombra interna de alto contraste. */
+	.botao-chanfrado:focus-visible,
+	.botao-chanfrado-nav:focus-visible,
+	.shape-chanfrado:focus-visible,
+	.shape-chanfrado-menor:focus-visible,
+	.shape-chanfrado-cima:focus-visible,
+	.shape-octagon-regular:focus-visible {
+		outline: none;
+		box-shadow:
+			inset 0 0 0 2px var(--pb-white),
+			inset 0 0 0 5px var(--pb-orange);
+	}
+
+	/* CTA primário oficial: laranja protagonista com chanfro de 12px. */
 	.btn-primary {
-		@apply inline-flex items-center justify-center rounded-full bg-primary-500 px-5 py-3 text-base font-extrabold uppercase tracking-wide text-white transition-colors hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-		@apply focus:ring-offset-light-bg-primary dark:focus:ring-offset-dark-bg-primary;
+		@apply inline-flex items-center justify-center bg-primary-500 px-6 py-3.5 text-base uppercase tracking-wide text-white transition-colors;
+		@apply hover:bg-pb-orange-warm active:bg-pb-orange-warm;
+		clip-path: polygon(
+			var(--tamanho-chanfro-botao) 0%,
+			calc(100% - var(--tamanho-chanfro-botao)) 0%,
+			100% var(--tamanho-chanfro-botao),
+			100% calc(100% - var(--tamanho-chanfro-botao)),
+			calc(100% - var(--tamanho-chanfro-botao)) 100%,
+			var(--tamanho-chanfro-botao) 100%,
+			0% calc(100% - var(--tamanho-chanfro-botao)),
+			0% var(--tamanho-chanfro-botao)
+		);
 	}
 
+	/* CTA secundário: mesma geometria, peso visual reduzido. */
 	.btn-secondary {
-		@apply inline-flex items-center justify-center rounded-md border px-5 py-3 text-base font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-		/* Light theme - improved */
-		@apply border-light-border bg-light-bg-secondary text-light-text-primary hover:bg-light-border focus:ring-offset-light-bg-primary;
-		/* Dark theme - original styling */
-		@apply dark:border-dark-border dark:bg-dark-bg-card dark:text-dark-text-primary dark:hover:bg-dark-border dark:focus:ring-offset-dark-bg-primary;
+		@apply inline-flex items-center justify-center px-6 py-3.5 text-base uppercase tracking-wide transition-colors;
+		@apply bg-light-bg-secondary text-light-text-primary hover:bg-light-border;
+		@apply dark:bg-white/10 dark:text-white dark:hover:bg-white/20;
+		clip-path: polygon(
+			var(--tamanho-chanfro-botao) 0%,
+			calc(100% - var(--tamanho-chanfro-botao)) 0%,
+			100% var(--tamanho-chanfro-botao),
+			100% calc(100% - var(--tamanho-chanfro-botao)),
+			calc(100% - var(--tamanho-chanfro-botao)) 100%,
+			var(--tamanho-chanfro-botao) 100%,
+			0% calc(100% - var(--tamanho-chanfro-botao)),
+			0% var(--tamanho-chanfro-botao)
+		);
 	}
 
+	.btn-primary:focus-visible,
+	.btn-secondary:focus-visible {
+		outline: none;
+		box-shadow:
+			inset 0 0 0 2px var(--pb-black),
+			inset 0 0 0 5px var(--pb-orange);
+	}
+
+	/* Superfície neutra: sem raio (o brandbook não usa cantos arredondados),
+	   sem chanfro — a assinatura fica nos módulos editoriais. */
 	.card {
-		@apply rounded-lg border p-6 transition-colors;
+		@apply border p-6 transition-colors;
 		/* Light theme - improved */
 		@apply border-light-border bg-light-bg-card;
-		/* Dark theme - original: both surface and cards use #1f1f1f */
+		/* Dark theme - original */
 		@apply dark:border-dark-border dark:bg-dark-bg-card;
 	}
 
@@ -84,50 +310,134 @@
 
 	.container-main {
 		@apply mx-auto w-full px-4 sm:px-6 lg:px-8;
-		max-width: 80rem; /* 1280px - Stitch max-w-7xl */
+		max-width: 90rem; /* 1440px */
 	}
 
 	/* Stitch design utilities */
 	.glass-card {
 		background: rgba(255, 255, 255, 0.04);
 		backdrop-filter: blur(10px);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-	}
-
-	.hero-gradient {
-		background: linear-gradient(
-			to bottom,
-			rgba(51, 0, 0, 0.28),
-			var(--pb-black)
-		);
+		border: 1px solid rgba(255, 255, 255, 0.08);
 	}
 
 	.pb-dark-surface {
 		background:
-			radial-gradient(100% 72% at 50% 110%, rgba(255, 97, 0, 0.18), transparent 62%),
+			radial-gradient(
+				100% 72% at 50% 110%,
+				rgba(255, 97, 0, 0.18),
+				transparent 62%
+			),
 			var(--pb-black);
 	}
 
+	/* Rodapé oficial: grená sobre preto, sem brilhos nem gradientes coloridos
+	   fora da paleta. */
+	.pb-footer-surface {
+		background: linear-gradient(
+			180deg,
+			var(--pb-grena) 0%,
+			var(--pb-black) 55%
+		);
+	}
+
+	/* Alias legado — usar .botao-chanfrado em código novo. */
 	.pb-chamfer {
-		clip-path: polygon(0 0, calc(100% - 1rem) 0, 100% 1rem, 100% 100%, 0 100%);
+		clip-path: polygon(
+			var(--tamanho-chanfro-botao) 0%,
+			calc(100% - var(--tamanho-chanfro-botao)) 0%,
+			100% var(--tamanho-chanfro-botao),
+			100% calc(100% - var(--tamanho-chanfro-botao)),
+			calc(100% - var(--tamanho-chanfro-botao)) 100%,
+			var(--tamanho-chanfro-botao) 100%,
+			0% calc(100% - var(--tamanho-chanfro-botao)),
+			0% var(--tamanho-chanfro-botao)
+		);
 	}
 
 	.pb-display {
-		font-family: "Forma DJR Micro", var(--font-archivo), "Archivo", ui-sans-serif, sans-serif;
-		font-weight: 800;
+		font-family:
+			"Forma DJR Micro", var(--font-brand), "Archivo", ui-sans-serif, sans-serif;
+		font-weight: 400;
 		letter-spacing: -0.025em;
 		line-height: 0.96;
-		text-transform: uppercase;
+	}
+
+	/* Cards Chanfrados / Hexagonais com gradiente colorido para transparente (Padrão Experiência Panobianco) */
+	.card-hex-dark {
+		@apply shape-chanfrado-menor text-white backdrop-blur-md transition-all duration-300;
+		background-image: linear-gradient(
+			180deg,
+			rgba(61, 51, 54, 0.9) 0%,
+			rgba(22, 21, 21, 0.1) 100%
+		);
+	}
+
+	/* Geometria comum às duas variantes de card: topo chanfrado a 45º,
+	   base reta. */
+	.card-hex-grena,
+	.card-hex-orange,
+	.card-hex-light {
+		clip-path: polygon(
+			/* CANTO SUPERIOR ESQUERDO (Chanfrado) */
+			var(--tamanho-chanfro) 0%,
+			/* CANTO SUPERIOR DIREITO (Chanfrado) */
+			calc(100% - var(--tamanho-chanfro)) 0%,
+			100% var(--tamanho-chanfro),
+			/* CANTO INFERIOR DIREITO (Reto) */
+			100% 100%,
+			/* CANTO INFERIOR ESQUERDO (Reto) */
+			0% 100%,
+			/* FECHAMENTO DO CANTO SUPERIOR ESQUERDO */
+			0% var(--tamanho-chanfro)
+		);
+		overflow: hidden;
+	}
+
+	.card-hex-grena {
+		@apply text-white backdrop-blur-md transition-all duration-300;
+		background-image: linear-gradient(
+			180deg,
+			rgba(89, 0, 0, 0.9) 0%,
+			rgba(51, 0, 0, 0.1) 100%
+		);
+	}
+
+	/* Card laranja protagonista, para uso sobre superfície grená. */
+	.card-hex-orange {
+		@apply text-white backdrop-blur-md transition-all duration-300;
+		background-image: linear-gradient(180deg, var(--pb-orange), #ff610100);
+	}
+
+	.card-hex-light {
+		@apply text-pb-graphite backdrop-blur-md transition-all duration-300;
+		background-image: linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0.95) 0%,
+			rgba(244, 237, 228, 0.2) 100%
+		);
+	}
+
+	/* Palavra nenhuma se parte dentro dos módulos hexagonais. Quando um
+	   título não cabe, quem cede é a grade — as colunas usam auto-fit e
+	   reduzem os cards por linha — nunca a palavra. */
+	.shape-chanfrado,
+	.card-hex-grena,
+	.card-hex-orange,
+	.card-hex-light,
+	.card-hex-dark {
+		hyphens: none;
+		overflow-wrap: normal;
+		word-break: normal;
 	}
 }
 
 @layer utilities {
 	.text-display {
-		@apply text-3xl font-bold leading-9;
+		@apply text-3xl leading-9;
 	}
 
 	.text-heading {
-		@apply text-xl font-bold leading-7;
+		@apply text-xl leading-7;
 	}
 
 	.text-body {
@@ -248,4 +558,4 @@
 		padding-top: 8rem;
 		padding-bottom: 6rem;
 	}
-	}
+}

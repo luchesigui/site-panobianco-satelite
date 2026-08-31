@@ -1,4 +1,4 @@
-import { Brain, Shield, Target, Users, Zap } from "lucide-react";
+import { Brain, Shield, Users, Zap } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
@@ -32,12 +32,9 @@ export default function JiuJitsuPage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
 			/>
 			<ModalidadePage.Hero
-				badge="Modalidade Premium"
 				title="JIU"
 				titleHighlight="JITSU"
 				description='Desenvolva disciplina, autodefesa e condicionamento físico de elite na Panobianco Satélite. A "Arte Suave" para transformar seu corpo e sua mente através da técnica.'
-				accentGradient="from-primary-500 to-orange-700"
-				icon={Target}
 				heroImageSrc={HERO_IMAGE}
 				stats={[
 					{ value: "60 min", label: "Duração" },
@@ -56,7 +53,6 @@ export default function JiuJitsuPage() {
 					title: "Diferenciais",
 					items: ["Autodefesa Real", "Foco Mental"],
 				}}
-				accentClass="bg-primary-500"
 				imageSrc={ABOUT_IMAGE}
 				statCard={{ value: "60 min", label: "Duração" }}
 			/>
@@ -89,12 +85,10 @@ export default function JiuJitsuPage() {
 						icon: Users,
 					},
 				]}
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.Classes
 				name="Jiu Jitsu"
 				description="O Jiu Jitsu na Panobianco Jardim Satélite é ministrado por professores graduados, em um ambiente de respeito e evolução contínua."
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.ContactCta />
 		</ModalidadePage>

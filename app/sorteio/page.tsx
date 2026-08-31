@@ -1,7 +1,7 @@
 "use client";
 
 import confetti from "canvas-confetti";
-import { PartyPopper, Sparkles, Trophy } from "lucide-react";
+import { PartyPopper, Trophy } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import {
 	Suspense,
@@ -11,6 +11,8 @@ import {
 	useRef,
 	useState,
 } from "react";
+
+import Logo from "@/components/Logo";
 
 interface Member {
 	idMember: number;
@@ -29,8 +31,7 @@ function SorteioContent() {
 	const captureWinnerName = isCaptureMode
 		? searchParams.get("winner")?.trim() || null
 		: null;
-	const useMockCaptureData =
-		isCaptureMode && searchParams.get("mock") === "1";
+	const useMockCaptureData = isCaptureMode && searchParams.get("mock") === "1";
 
 	const [members, setMembers] = useState<Member[]>([]);
 	const [loading, setLoading] = useState(true);
@@ -68,7 +69,11 @@ function SorteioContent() {
 		try {
 			const res = await fetch("/api/sorteio/alunos");
 			const data = await res.json();
-			if (data.success && Array.isArray(data.members) && data.members.length > 0) {
+			if (
+				data.success &&
+				Array.isArray(data.members) &&
+				data.members.length > 0
+			) {
 				setMembers(data.members);
 				return data.members;
 			}
@@ -202,28 +207,28 @@ function SorteioContent() {
 		fire(0.25, {
 			spread: 26,
 			startVelocity: 55,
-			colors: ["#ff5e29", "#ffffff", "#ffd700"],
+			colors: ["#ff6100", "#ffffff", "#cc3300"],
 		});
 		fire(0.2, {
 			spread: 60,
-			colors: ["#ff5e29", "#ff9e29", "#ffffff"],
+			colors: ["#ff6100", "#cc3300", "#ffffff"],
 		});
 		fire(0.35, {
 			spread: 100,
 			decay: 0.91,
 			scalar: 0.8,
-			colors: ["#ffd700", "#ff5e29", "#ffffff"],
+			colors: ["#cc3300", "#ff6100", "#ffffff"],
 		});
 		fire(0.1, {
 			spread: 120,
 			startVelocity: 25,
 			decay: 0.92,
-			colors: ["#ffffff", "#ff5e29"],
+			colors: ["#ffffff", "#ff6100"],
 		});
 		fire(0.1, {
 			spread: 120,
 			startVelocity: 45,
-			colors: ["#ffd700", "#ff5e29"],
+			colors: ["#cc3300", "#ff6100"],
 		});
 	}, [playVictorySound]);
 
@@ -271,7 +276,7 @@ function SorteioContent() {
 			const progress = Math.min(elapsed / duration, 1);
 
 			// Keep names moving fast for most of the draw, then slow near the reveal.
-			const easeProgress = Math.pow(progress, 4);
+			const easeProgress = progress ** 4;
 			delay = 35 + easeProgress * 380; // delay goes from 35ms to 415ms
 
 			setCurrentIndex((prev) => (prev + 1) % activeMembers.length);
@@ -291,18 +296,33 @@ function SorteioContent() {
 		step();
 	};
 
-	const currentDisplay =
-		status !== "idle" && members.length > 0
-			? members[currentIndex]
-			: {
-					firstName: "Sorteio de",
-					lastName: "alunos ativos",
-					idMember: 0,
-					displayName: "Sorteio de alunos ativos",
-				};
+	// Enquanto roda, a caixa mostra o aluno da vez. Parada, ela não finge ser
+	// um nome: faz o convite, ou diz o que está acontecendo.
+	const currentDisplay = members.length > 0 ? members[currentIndex] : null;
+
+	const idleHeadline = loading
+		? "Carregando"
+		: error
+			? "Não foi possível carregar"
+			: "Hora de testar a sorte";
+
+	const idleSubhead = loading
+		? "Buscando a lista de alunos ativos da unidade."
+		: error
+			? error
+			: "Todo aluno ativo do Jardim Satélite já está concorrendo.";
+
+	// A cor da arena é o indicador de estado: o clip-path do hexágono corta
+	// bordas e rings, então a sinalização precisa vir do fundo.
+	const arenaSurface =
+		status === "suspense"
+			? "bg-pb-orange-warm animate-pulse"
+			: status === "winner"
+				? "bg-pb-grena"
+				: "bg-pb-orange";
 
 	return (
-		<div className="sorteio-page relative min-h-screen bg-background-dark text-white overflow-hidden flex flex-col justify-between py-6 sm:py-8 px-4 sm:px-6">
+		<div className="sorteio-page font-display relative flex min-h-screen flex-col justify-between overflow-hidden bg-pb-off-white px-4 py-6 text-pb-graphite sm:px-6 sm:py-8">
 			<output
 				data-testid="draw-status"
 				data-status={drawStatus}
@@ -311,15 +331,12 @@ function SorteioContent() {
 			>
 				{drawStatus}
 			</output>
-			{/* Background ambient lighting */}
-			<div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-500/10 rounded-full blur-[140px] pointer-events-none" />
-			<div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-			<div className="container-main relative z-10 max-w-3xl w-full mx-auto flex-1 flex flex-col justify-between py-2">
-				{/* Top Section - Title Aligned Left with Custom Size */}
+			<div className="container-main relative z-10 mx-auto flex w-full max-w-3xl flex-1 flex-col justify-between py-2">
+				{/* Título — o tamanho é sobrescrito pelo CSS de captura. */}
 				<div className="text-left">
 					<h1
-						className="font-sf-compact font-black tracking-tight uppercase text-white"
+						className="tracking-tight text-pb-orange-warm"
 						style={{
 							fontSize: "9rem",
 							lineHeight: "0.9",
@@ -327,40 +344,29 @@ function SorteioContent() {
 							marginBottom: "-1rem",
 						}}
 					>
-						SORTEIO <span className="text-primary-500">SEMANAL</span>
+						Sorteio semanal
 					</h1>
 				</div>
 
-				{/* Center Section - Main Raffle Arena */}
+				{/* Arena do sorteio */}
 				<div className="my-auto py-6">
-					<div className="relative rounded-3xl border border-white/15 bg-slate-950/70 p-5 sm:p-7 backdrop-blur-2xl shadow-2xl overflow-hidden">
-						{/* Glowing frame indicator */}
-						<div
-							className={`absolute inset-0 rounded-3xl pointer-events-none transition-all duration-500 ${
-								status === "spinning"
-									? "ring-2 ring-primary-500/80 shadow-[inset_0_0_40px_rgba(255,94,41,0.2)]"
-									: status === "suspense"
-										? "ring-4 ring-amber-400/90 animate-pulse shadow-[inset_0_0_60px_rgba(251,191,36,0.3)]"
-										: status === "winner"
-											? "ring-2 ring-emerald-500/80 shadow-[inset_0_0_50px_rgba(16,185,129,0.2)]"
-											: ""
-							}`}
-						/>
-
-						{/* Winner Modal Banner (Post-Suspense) */}
+					<div
+						className={`shape-chanfrado px-10 py-12 text-white transition-colors duration-500 sm:px-14 sm:py-16 ${arenaSurface}`}
+					>
+						{/* Vencedor */}
 						{status === "winner" && winner && (
-							<div className="space-y-6 text-center animate-in fade-in zoom-in duration-500 py-4">
-								<div className="inline-flex items-center justify-center p-4 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 shadow-[0_0_30px_rgba(245,158,11,0.3)]">
-									<Trophy className="size-14 animate-bounce" />
-								</div>
+							<div className="animate-in fade-in zoom-in space-y-8 text-center duration-500">
+								<span className="shape-octagon-regular mx-auto grid size-24 place-items-center bg-white/20 text-white">
+									<Trophy className="block size-12" />
+								</span>
 
-								<div className="space-y-3">
-									<p className="text-xs uppercase font-extrabold tracking-widest text-amber-400">
-										🏆 Parabéns ao Vencedor(a)! 🏆
+								<div className="space-y-4">
+									<p className="text-sm uppercase tracking-widest text-white/80">
+										Parabéns ao vencedor
 									</p>
 									<h2
 										data-testid="winner-name"
-										className="text-4xl sm:text-6xl font-black tracking-tight text-white drop-shadow-md"
+										className="text-[3.5rem] leading-none tracking-tight sm:text-[5rem]"
 									>
 										{winner.firstName} {winner.lastName}
 									</h2>
@@ -368,7 +374,7 @@ function SorteioContent() {
 										<div className="pt-2">
 											<span
 												data-testid="winner-id"
-												className="inline-block rounded-full bg-primary-500/20 border border-primary-500/40 px-6 py-2 text-lg font-bold text-primary-400"
+												className="selo-chanfrado inline-block bg-pb-black px-6 py-2 text-lg text-white"
 											>
 												ID Aluno: #{winner.idMember}
 											</span>
@@ -378,41 +384,47 @@ function SorteioContent() {
 							</div>
 						)}
 
-						{/* Idle & Spinning states */}
+						{/* Ocioso e sorteando */}
 						{(status === "idle" || status === "spinning") && (
-							<div className="space-y-8 text-center py-4">
-								{/* Slot Machine Display */}
-								<div className="relative rounded-2xl bg-black/80 border border-white/10 p-8 sm:p-12 shadow-inner overflow-hidden">
-									<div className="space-y-3 min-h-[140px] flex flex-col justify-center items-center">
-										<div
-											className={`transition-all duration-75 ${
-												status === "spinning" ? "scale-105 blur-[0.3px]" : ""
-											}`}
-										>
-											<h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
-												{currentDisplay.firstName} {currentDisplay.lastName}
-											</h2>
-										</div>
-
-										<div className="pt-2">
-											<span className="inline-block rounded-lg bg-white/5 border border-white/10 px-4 py-1 font-mono text-lg sm:text-xl text-primary-400 font-bold">
-												ID: #{currentDisplay.idMember || "------"}
-											</span>
-										</div>
+							<div className="space-y-10 text-center">
+								{/* Rolagem dos nomes */}
+								<div className="shape-chanfrado-menor bg-pb-black px-8 py-10 sm:px-12">
+									<div className="flex min-h-[140px] flex-col items-center justify-center space-y-4">
+										{status === "spinning" && currentDisplay ? (
+											<>
+												<div className="scale-105 blur-[0.3px] transition-all duration-75">
+													<h2 className="text-[2.5rem] leading-none tracking-tight sm:text-[3.5rem]">
+														{currentDisplay.firstName} {currentDisplay.lastName}
+													</h2>
+												</div>
+												<span className="selo-chanfrado inline-block bg-white/15 px-4 py-1 text-lg sm:text-xl">
+													ID: #{currentDisplay.idMember}
+												</span>
+											</>
+										) : (
+											<>
+												<h2 className="text-[2.5rem] leading-none tracking-tight sm:text-[3.5rem]">
+													{idleHeadline}
+												</h2>
+												<p className="max-w-md text-[1.5rem] leading-tight text-white/80">
+													{idleSubhead}
+												</p>
+											</>
+										)}
 									</div>
 								</div>
 
-								{/* Action Button */}
-								<div className="pt-2 sorteio-action">
+								{/* Gatilho — o CSS de captura o esconde sem removê-lo. */}
+								<div className="sorteio-action pt-2">
 									<button
 										data-testid="draw-button"
 										type="button"
 										onClick={startRaffle}
 										disabled={!isDrawReady}
-										className="group relative inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-primary-500 to-amber-500 hover:from-primary-500/90 hover:to-amber-500/90 px-10 py-5 text-xl font-extrabold text-white shadow-[0_0_30px_rgba(255,94,41,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none"
+										className="botao-chanfrado inline-flex items-center justify-center gap-3 bg-white px-10 py-5 text-sm uppercase tracking-wide text-pb-orange-warm transition-colors hover:bg-pb-off-white disabled:pointer-events-none disabled:opacity-50"
 									>
-										<PartyPopper className="size-6 transition-transform group-hover:rotate-12" />
-										Sortear Aluno
+										<PartyPopper className="size-5" />
+										Sortear aluno
 									</button>
 								</div>
 							</div>
@@ -420,13 +432,14 @@ function SorteioContent() {
 					</div>
 				</div>
 
-				{/* Bottom Section - Logo Assinatura Horizontal */}
-				<div className="flex justify-center items-center pt-2">
-					{/* eslint-disable-next-line @next/next/no-img-element */}
-					<img
-						src="/logo-assinatura-horizontal.png"
-						alt="Panobianco Academia"
-						className="h-20 sm:h-24 w-auto object-contain drop-shadow-lg"
+				{/* Assinatura */}
+				<div className="flex items-center justify-center pt-2">
+					<Logo
+						variant="dark-on-light"
+						showLink={false}
+						width={519}
+						height={96}
+						className="h-20 w-auto sm:h-24"
 					/>
 				</div>
 			</div>

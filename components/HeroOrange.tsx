@@ -84,7 +84,7 @@ export default function HeroOrange({ CDN, CTA_HREF }: HeroOrangeProps) {
 						plan="orange"
 						href={CTA_HREF}
 						destination="checkout"
-						className="font-montserrat inline-flex items-center justify-center rounded-[10px] bg-white text-[#ff6101] px-[30px] py-[15px] text-[16px] font-bold uppercase mt-[25px] mb-[24px] transition-all duration-200 hover:bg-[#f15927] hover:text-white hover:scale-[1.025] hover:shadow-[0_0_30px_0_#ff6101]"
+						className="font-montserrat inline-flex items-center justify-center rounded-[10px] bg-white text-[#ff6101] px-[30px] py-[15px] text-[16px] uppercase mt-[25px] mb-[24px] transition-all duration-200 hover:bg-[#f15927] hover:text-white hover:scale-[1.025] hover:shadow-[0_0_30px_0_#ff6101]"
 					>
 						Ativar desconto agora
 					</PlanCTAButton>

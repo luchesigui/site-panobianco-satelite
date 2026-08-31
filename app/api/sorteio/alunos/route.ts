@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
+
 import { getActiveMembers } from "@/lib/evo";
 
 export const dynamic = "force-dynamic";
@@ -15,7 +16,8 @@ export async function GET(request: NextRequest) {
 			},
 			{
 				headers: {
-					"Cache-Control": "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+					"Cache-Control":
+						"public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
 				},
 			},
 		);

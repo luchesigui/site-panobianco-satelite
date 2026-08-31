@@ -1,4 +1,4 @@
-import { Accessibility, Flame, Heart, Target, Zap } from "lucide-react";
+import { Accessibility, Flame, Heart, Zap } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
@@ -33,11 +33,8 @@ export default function GAPPage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
 			/>
 			<ModalidadePage.Hero
-				badge="Aulas Coletivas"
 				title="GAP"
 				description="Glúteos, Abdômen e Pernas. O treino focado que você precisa para definir e fortalecer os membros inferiores e o core."
-				accentGradient="from-primary-500 to-orange-700"
-				icon={Target}
 				heroImageSrc={HERO_IMAGE}
 				stats={[
 					{ value: "30 min", label: "Duração" },
@@ -51,7 +48,6 @@ export default function GAPPage() {
 					"O GAP é uma aula coletiva de alta intensidade que combina exercícios específicos para glúteos, abdômen e pernas. É uma das modalidades mais procuradas por quem busca resultados rápidos e localizados.",
 					"Com duração média de 45 a 60 minutos, as sessões utilizam caneleiras, halteres e o peso do próprio corpo para esculpir a silhueta, aumentar a resistência muscular e queimar calorias de forma eficiente.",
 				]}
-				accentClass="bg-primary-500"
 				imageSrc={ABOUT_IMAGE}
 				statCard={{ value: "30 min", label: "Duração" }}
 			/>
@@ -84,12 +80,10 @@ export default function GAPPage() {
 						icon: Heart,
 					},
 				]}
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.Classes
 				name="GAP"
 				description="As aulas de GAP na Panobianco Jardim Satélite são conduzidas por instrutores que garantem execução correta e evolução segura."
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.ContactCta />
 		</ModalidadePage>

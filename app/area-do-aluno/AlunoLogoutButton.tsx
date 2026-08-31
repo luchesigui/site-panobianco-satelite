@@ -23,7 +23,7 @@ export default function AlunoLogoutButton() {
 			type="button"
 			onClick={handleLogout}
 			disabled={isSubmitting}
-			className="inline-flex h-11 items-center justify-center rounded-full border border-white/15 px-6 text-sm font-bold text-white/80 transition-colors hover:border-white/30 hover:text-white disabled:opacity-70"
+			className="botao-chanfrado inline-flex items-center justify-center bg-pb-orange px-8 py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-orange-warm disabled:opacity-70"
 		>
 			<LogOut className="mr-2 size-4" />
 			{isSubmitting ? "Saindo..." : "Sair"}

@@ -13,19 +13,21 @@ export default function BlogCard({ post }: Props) {
 
 	return (
 		<Link href={`/blog/${post.slug}`} className="group block h-full">
-			<article className="glass-card flex h-full flex-col rounded-2xl p-6 transition-all hover:border-primary-500/50">
-				<div className="mb-3">
-					<span className="inline-block rounded-full border border-primary-500/20 bg-primary-500/10 px-3 py-1 text-xs font-semibold text-primary-500">
+			{/* O chanfro de topo come 72px, então o padding superior precisa
+			    passar do que sobra para o selo não ser cortado na diagonal. */}
+			<article className="card-hex-light flex h-full flex-col px-12 py-16">
+				<div className="mb-4">
+					<span className="selo-chanfrado inline-block bg-pb-orange px-3 py-1 text-xs text-white">
 						{post.category}
 					</span>
 				</div>
-				<h2 className="mb-3 line-clamp-2 text-lg font-bold text-white transition-colors group-hover:text-primary-500">
+				<h2 className="mb-3 line-clamp-2 text-[3.5rem] leading-none tracking-tight transition-colors group-hover:text-pb-orange-warm">
 					{post.headline}
 				</h2>
-				<p className="mb-4 line-clamp-3 flex-1 text-sm text-neutral-400">
+				<p className="mb-6 line-clamp-3 flex-1 text-[1.5rem] leading-tight text-pb-graphite/80">
 					{post.description}
 				</p>
-				<div className="flex items-center gap-2 text-xs text-neutral-500">
+				<div className="flex items-center gap-2 text-xs text-pb-graphite/60">
 					<time dateTime={post.publishedAt}>{date}</time>
 					<span>·</span>
 					<span>{post.readingTimeMinutes} min de leitura</span>

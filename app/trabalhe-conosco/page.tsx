@@ -1,4 +1,3 @@
-import { Briefcase } from "lucide-react";
 import type { Metadata } from "next";
 
 import ContactCtaSection from "@/components/ContactCtaSection";
@@ -24,7 +23,7 @@ export default function TrabalheConosco() {
 	};
 
 	return (
-		<div className="font-display min-h-screen bg-background-dark text-white antialiased overflow-x-hidden">
+		<div className="font-display min-h-screen overflow-x-hidden bg-pb-off-white text-pb-graphite antialiased">
 			<script
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{
@@ -33,66 +32,65 @@ export default function TrabalheConosco() {
 			/>
 
 			{/* Hero */}
-			<section className="relative h-[300px] w-full overflow-hidden md:h-[400px]">
+			{/* Mesma construção da home: foto limpa e o conteúdo dentro do
+			    módulo hexagonal laranja encostado à direita. */}
+			<section className="relative flex min-h-[85vh] items-center overflow-hidden pt-20">
 				<div
 					className="absolute inset-0 bg-cover bg-center"
-					style={{
-						backgroundImage: `linear-gradient(0deg, rgba(24, 18, 16, 1) 0%, rgba(24, 18, 16, 0.5) 60%, rgba(24, 18, 16, 0.2) 100%), url("${heroBg}")`,
-					}}
+					style={{ backgroundImage: `url("${heroBg}")` }}
 				/>
-				<div className="container-main relative flex h-full flex-col justify-end pb-12">
-					<div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary-500">
-						<Briefcase className="size-4" />
-						Carreira & Oportunidades
+				<div className="container-main relative z-10 flex w-full justify-end">
+					<div className="shape-chanfrado mt-20 w-full max-w-2xl bg-pb-orange px-10 py-14 text-white lg:px-14 lg:py-16">
+						<h1 className="text-[3.5rem] leading-[0.96] tracking-tight">
+							Trabalhe conosco
+						</h1>
+						<p className="mt-6 text-[1.5rem] leading-tight">
+							Junte-se à equipe que transforma vidas pelo movimento no Jardim
+							Satélite. Envie seu currículo e faça parte da nossa história.
+						</p>
 					</div>
-					<h1 className="max-w-2xl text-4xl font-semibold leading-[1.1] md:text-6xl">
-						Trabalhe <span className="text-primary-500">Conosco</span>
-					</h1>
-					<p className="mt-4 max-w-xl text-sm text-neutral-300 md:text-base">
-						Junte-se à equipe que transforma vidas pelo movimento no Jardim
-						Satélite. Envie seu currículo e faça parte da nossa história.
-					</p>
 				</div>
 			</section>
 
-			{/* Content: Copy + Form */}
-			<section className="container-main py-16">
-				<div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-					{/* Left: Copy / Text */}
-					<div className="space-y-6 lg:col-span-5">
-						<h2 className="text-3xl font-bold text-white md:text-4xl">
-							Faça Parte do <span className="text-primary-500">Nosso Time</span>
-						</h2>
-						<p className="text-neutral-400 leading-relaxed text-sm md:text-base">
-							Na Panobianco, valorizamos dedicação, trabalho em equipe e paixão
-							pelo fitness. Se você quer fazer parte de um time que transforma
-							vidas pelo movimento, preencha o formulário e envie seu currículo.
-						</p>
-
-						{/* Quick values cards */}
-						<div className="grid grid-cols-1 gap-4 pt-6 sm:grid-cols-2">
-							<div className="rounded-xl border border-white/5 bg-white/5 p-5">
-								<h4 className="font-semibold text-primary-500 mb-1">
-									Dedicacão
-								</h4>
-								<p className="text-xs text-neutral-400">
-									Comprometimento em entregar o melhor serviço sempre.
+			{/* Copy e formulário */}
+			<section className="bg-pb-off-white pb-6 pt-20 lg:pb-8 lg:pt-28">
+				<div className="container-main">
+					<div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+						<div className="lg:col-span-5">
+							<div className="shape-chanfrado bg-pb-grena px-12 py-12 text-white lg:py-20">
+								<h2 className="mb-6 text-[3.5rem] leading-none tracking-tight">
+									Faça parte do nosso time
+								</h2>
+								<p className="text-[1.5rem] leading-tight text-white/90">
+									Na Panobianco, valorizamos dedicação, trabalho em equipe e
+									paixão pelo fitness. Se você quer fazer parte de um time que
+									transforma vidas pelo movimento, preencha o formulário e envie
+									seu currículo.
 								</p>
-							</div>
-							<div className="rounded-xl border border-white/5 bg-white/5 p-5">
-								<h4 className="font-semibold text-primary-500 mb-1">
-									Trabalho em Equipe
-								</h4>
-								<p className="text-xs text-neutral-400">
-									União de forças para construir uma comunidade saudável.
-								</p>
+								<div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+									<div>
+										<h3 className="mb-2 text-[1.5rem] leading-tight tracking-tight">
+											Dedicação
+										</h3>
+										<p className="leading-snug text-white/90">
+											Comprometimento em entregar o melhor serviço sempre.
+										</p>
+									</div>
+									<div>
+										<h3 className="mb-2 text-[1.5rem] leading-tight tracking-tight">
+											Trabalho em equipe
+										</h3>
+										<p className="leading-snug text-white/90">
+											União de forças para construir uma comunidade saudável.
+										</p>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					{/* Right: Form */}
-					<div className="lg:col-span-7">
-						<WorkWithUsForm />
+						<div className="lg:col-span-7">
+							<WorkWithUsForm />
+						</div>
 					</div>
 				</div>
 			</section>

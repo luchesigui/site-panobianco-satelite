@@ -22,23 +22,28 @@ export default function AreaDoAlunoPage() {
 	}
 
 	return (
-		<div className="font-display min-h-screen bg-background-dark text-white antialiased overflow-x-hidden">
-			<section className="relative border-b border-white/10 bg-gradient-to-b from-white/5 to-transparent">
-				<div className="container-main py-12 md:py-16">
-					<h1 className="text-4xl font-semibold leading-tight md:text-5xl">
-						Área do <span className="text-primary-500">Aluno</span>
-					</h1>
-					<p className="mt-4 max-w-2xl text-sm text-white/65 md:text-base">
-						Acesso exclusivo para alunos da Academia Panobianco Jardim Satélite.
-					</p>
+		<div className="font-display min-h-screen overflow-x-hidden bg-pb-off-white text-pb-graphite antialiased">
+			{/* Sem foto de topo: o bloco hexagonal laranja carrega a chamada,
+			    com folga para o header fixo de 80px. */}
+			<section className="bg-pb-off-white pb-12 pt-20 lg:pb-14 lg:pt-28">
+				<div className="container-main">
+					<div className="shape-chanfrado bg-pb-orange px-10 py-14 text-white lg:px-14 lg:py-16">
+						<h1 className="text-[3.5rem] leading-[0.96] tracking-tight">
+							Área do aluno
+						</h1>
+						<p className="mt-6 max-w-2xl text-[1.5rem] leading-tight">
+							Acesso exclusivo para alunos da Academia Panobianco Jardim
+							Satélite.
+						</p>
+					</div>
 				</div>
 			</section>
 
-			<section className="container-main py-12">
+			<section className="container-main pb-20 pt-10 lg:pb-28 lg:pt-12">
 				{alunoNome ? (
-					<article className="mx-auto max-w-md rounded-xl border border-white/10 bg-white/5 p-6 text-center">
-						<p className="text-sm text-white/65">Bem-vindo(a),</p>
-						<p className="mt-2 text-3xl font-semibold text-primary-500">
+					<article className="card-hex-light mx-auto max-w-md px-12 py-16 text-center">
+						<p className="text-pb-graphite/80">Bem-vindo(a),</p>
+						<p className="mt-2 text-[3.5rem] leading-none tracking-tight text-pb-orange-warm">
 							{alunoNome}
 						</p>
 						<div className="mt-8">

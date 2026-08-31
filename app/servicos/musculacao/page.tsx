@@ -53,295 +53,264 @@ const breadcrumbSchema = {
 	],
 };
 
+const beneficios = [
+	{
+		icon: TrendingUp,
+		title: "Ganho de Massa Muscular",
+		description:
+			"Essencial para aumentar o metabolismo, queimar mais calorias em repouso e melhorar a composição corporal.",
+	},
+	{
+		icon: Shield,
+		title: "Fortalecimento Ósseo",
+		description:
+			"Ajuda a prevenir a osteoporose e a manter a densidade óssea, especialmente importante com o avanço da idade.",
+	},
+	{
+		icon: Target,
+		title: "Redução de Gordura",
+		description:
+			"O aumento da massa muscular acelera o metabolismo, contribuindo para a perda de gordura de forma mais eficiente.",
+	},
+	{
+		icon: CheckCircle,
+		title: "Melhora da Postura",
+		description:
+			"Fortalece os músculos do core e das costas, corrigindo desequilíbrios e aliviando dores.",
+	},
+	{
+		icon: Dumbbell,
+		title: "Força e Resistência",
+		description:
+			"Melhora a capacidade de realizar tarefas diárias e o desempenho em outras atividades físicas.",
+	},
+	{
+		icon: Shield,
+		title: "Prevenção de Lesões",
+		description:
+			"Músculos fortes e equilibrados protegem as articulações e reduzem o risco de lesões.",
+	},
+];
+
+const estrutura = [
+	{
+		icon: Dumbbell,
+		title: "Equipamentos Modernos",
+		description:
+			"Ampla variedade de máquinas de força, pesos livres, halteres, barras e acessórios, todos de marcas renomadas com manutenção regular.",
+	},
+	{
+		icon: Target,
+		title: "Espaço Amplo e Climatizado",
+		description:
+			"Ambiente espaçoso que permite livre circulação e execução dos exercícios sem aglomeração, com climatização adequada.",
+	},
+	{
+		icon: Users,
+		title: "Acompanhamento Profissional",
+		description:
+			"Professores altamente qualificados sempre presentes para orientar, corrigir postura e garantir execução correta e segura.",
+	},
+];
+
+const personalizacao = [
+	"Avaliação completa do seu condicionamento atual",
+	"Plano de treino adaptado aos seus objetivos",
+	"Acompanhamento e ajustes regulares",
+	"Orientação sobre execução correta dos exercícios",
+];
+
 export default function Musculacao() {
 	return (
-		<div className="bg-primary">
+		<div className="font-display min-h-screen overflow-x-hidden bg-pb-off-white text-pb-graphite">
 			<script
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
 			/>
-			{/* Hero Section */}
-			<section className="py-16 lg:py-24">
+
+			{/* Hero */}
+			{/* Sem foto de topo: o bloco hexagonal laranja carrega a chamada,
+			    com folga para o header fixo de 80px. */}
+			<section className="bg-pb-off-white pb-12 pt-20 lg:pb-14 lg:pt-28">
 				<div className="container-main">
-					<div className="text-center">
-						<h1 className="text-4xl lg:text-6xl font-bold text-primary mb-6">
-							<span className="text-primary-500">Musculação</span>
-							<br />
-							Força e Definição para o Seu Corpo
+					<div className="shape-chanfrado bg-pb-orange px-10 py-14 text-white lg:px-14 lg:py-16">
+						<h1 className="text-[3.5rem] leading-[0.96] tracking-tight">
+							Musculação: força e definição para o seu corpo
 						</h1>
-						<p className="text-xl text-secondary mb-8 max-w-3xl mx-auto">
+						<p className="mt-6 max-w-3xl text-[1.5rem] leading-tight">
 							Nossa área de musculação é um espaço amplo e bem equipado, com uma
 							vasta gama de aparelhos modernos e seguros, projetados para
 							atender a todas as necessidades e grupos musculares.
 						</p>
-						<div className="flex flex-col sm:flex-row gap-4 justify-center">
-							<SchedulingLink>Experimente Gratuitamente</SchedulingLink>
-							<Link href="/planos" className="btn-secondary">
-								Conheça Nossos Planos
+						<div className="mt-8 flex flex-col gap-4 sm:flex-row">
+							<SchedulingLink className="botao-chanfrado inline-flex items-center justify-center bg-white px-8 py-4 text-sm uppercase tracking-wide text-pb-orange-warm transition-colors hover:bg-pb-off-white">
+								Experimente gratuitamente
+							</SchedulingLink>
+							<Link
+								href="/planos"
+								className="botao-chanfrado inline-flex items-center justify-center bg-pb-black px-8 py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-grena"
+							>
+								Conheça nossos planos
 							</Link>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* Why Musculação */}
-			<section className="py-16">
+			{/* Por que musculação */}
+			<section className="bg-pb-grena py-20 lg:py-28">
 				<div className="container-main">
-					<div className="text-center mb-12">
-						<h2 className="text-display text-primary mb-4">
-							Por Que a Musculação é Essencial?
+					<div className="mb-[7.5rem] text-center">
+						<h2 className="text-[3.5rem] leading-none tracking-tight text-white">
+							Por que a musculação é essencial?
 						</h2>
-						<p className="text-body text-secondary max-w-2xl mx-auto">
+						<p className="mx-auto mt-6 max-w-2xl text-[1.5rem] leading-tight text-white/80">
 							Acreditamos que a musculação é mais do que apenas levantar pesos;
 							é uma ciência que, quando aplicada corretamente, pode transformar
 							seu corpo e sua vida.
 						</p>
 					</div>
-
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						<div className="card hover:border-primary-500 transition-colors">
-							<div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
-								<TrendingUp className="h-6 w-6 text-white" />
-							</div>
-							<h3 className="text-heading text-primary mb-3">
-								Ganho de Massa Muscular
-							</h3>
-							<p className="text-body text-secondary">
-								Essencial para aumentar o metabolismo, queimar mais calorias em
-								repouso e melhorar a composição corporal.
-							</p>
-						</div>
-
-						<div className="card hover:border-primary-500 transition-colors">
-							<div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
-								<Shield className="h-6 w-6 text-white" />
-							</div>
-							<h3 className="text-heading text-primary mb-3">
-								Fortalecimento Ósseo
-							</h3>
-							<p className="text-body text-secondary">
-								Ajuda a prevenir a osteoporose e a manter a densidade óssea,
-								especialmente importante com o avanço da idade.
-							</p>
-						</div>
-
-						<div className="card hover:border-primary-500 transition-colors">
-							<div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
-								<Target className="h-6 w-6 text-white" />
-							</div>
-							<h3 className="text-heading text-primary mb-3">
-								Redução de Gordura
-							</h3>
-							<p className="text-body text-secondary">
-								O aumento da massa muscular acelera o metabolismo, contribuindo
-								para a perda de gordura de forma mais eficiente.
-							</p>
-						</div>
-
-						<div className="card hover:border-primary-500 transition-colors">
-							<div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
-								<CheckCircle className="h-6 w-6 text-white" />
-							</div>
-							<h3 className="text-heading text-primary mb-3">
-								Melhora da Postura
-							</h3>
-							<p className="text-body text-secondary">
-								Fortalece os músculos do core e das costas, corrigindo
-								desequilíbrios e aliviando dores.
-							</p>
-						</div>
-
-						<div className="card hover:border-primary-500 transition-colors">
-							<div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
-								<Dumbbell className="h-6 w-6 text-white" />
-							</div>
-							<h3 className="text-heading text-primary mb-3">
-								Força e Resistência
-							</h3>
-							<p className="text-body text-secondary">
-								Melhora a capacidade de realizar tarefas diárias e o desempenho
-								em outras atividades físicas.
-							</p>
-						</div>
-
-						<div className="card hover:border-primary-500 transition-colors">
-							<div className="flex items-center justify-center size-12 bg-primary-500 rounded-lg mb-4">
-								<Shield className="h-6 w-6 text-white" />
-							</div>
-							<h3 className="text-heading text-primary mb-3">
-								Prevenção de Lesões
-							</h3>
-							<p className="text-body text-secondary">
-								Músculos fortes e equilibrados protegem as articulações e
-								reduzem o risco de lesões.
-							</p>
-						</div>
+					<div className="grid gap-8 grid-cols-[repeat(auto-fit,minmax(min(540px,100%),1fr))]">
+						{beneficios.map((item) => {
+							const Icon = item.icon;
+							return (
+								<div
+									key={item.title}
+									className="card-hex-orange font-display px-12 py-16 text-white"
+								>
+									<span className="shape-octagon-regular mb-6 flex size-12 items-center justify-center bg-white/20 text-white">
+										<Icon className="size-6" />
+									</span>
+									<h3 className="mb-6 text-[3.5rem] leading-none tracking-tight">
+										{item.title}
+									</h3>
+									<p className="text-[1.5rem] leading-tight text-white/90">
+										{item.description}
+									</p>
+								</div>
+							);
+						})}
 					</div>
 				</div>
 			</section>
 
 			{/* Nossa Estrutura */}
-			<section className="py-16 bg-secondary">
+			<section className="bg-pb-off-white py-20 lg:py-28">
 				<div className="container-main">
-					<div className="text-center mb-12">
-						<h2 className="text-display text-primary mb-4">
-							Nossa Estrutura de Musculação
+					<div className="mb-[7.5rem] text-center">
+						<h2 className="text-[3.5rem] leading-none tracking-tight text-pb-orange-warm">
+							Nossa estrutura de musculação
 						</h2>
-						<p className="text-body text-secondary max-w-2xl mx-auto">
+						<p className="mx-auto mt-6 max-w-2xl text-[1.5rem] leading-tight">
 							Nossa área de musculação é projetada para oferecer o máximo de
 							conforto, segurança e eficiência em seu treino.
 						</p>
 					</div>
-
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-						<div className="text-center">
-							<div className="flex items-center justify-center size-16 bg-primary-500 rounded-lg mx-auto mb-4">
-								<Dumbbell className="h-8 w-8 text-white" />
-							</div>
-							<h3 className="text-heading text-primary mb-3">
-								Equipamentos Modernos
-							</h3>
-							<p className="text-body text-secondary">
-								Ampla variedade de máquinas de força, pesos livres, halteres,
-								barras e acessórios, todos de marcas renomadas com manutenção
-								regular.
-							</p>
-						</div>
-
-						<div className="text-center">
-							<div className="flex items-center justify-center size-16 bg-primary-500 rounded-lg mx-auto mb-4">
-								<Target className="h-8 w-8 text-white" />
-							</div>
-							<h3 className="text-heading text-primary mb-3">
-								Espaço Amplo e Climatizado
-							</h3>
-							<p className="text-body text-secondary">
-								Ambiente espaçoso que permite livre circulação e execução dos
-								exercícios sem aglomeração, com climatização adequada.
-							</p>
-						</div>
-
-						<div className="text-center">
-							<div className="flex items-center justify-center size-16 bg-primary-500 rounded-lg mx-auto mb-4">
-								<Users className="h-8 w-8 text-white" />
-							</div>
-							<h3 className="text-heading text-primary mb-3">
-								Acompanhamento Profissional
-							</h3>
-							<p className="text-body text-secondary">
-								Professores altamente qualificados sempre presentes para
-								orientar, corrigir postura e garantir execução correta e segura.
-							</p>
-						</div>
+					<div className="grid gap-8 grid-cols-[repeat(auto-fit,minmax(min(540px,100%),1fr))]">
+						{estrutura.map((item) => {
+							const Icon = item.icon;
+							return (
+								<div key={item.title} className="card-hex-light px-12 py-16">
+									<span className="shape-octagon-regular mb-6 flex size-14 items-center justify-center bg-pb-orange text-white">
+										<Icon className="size-7" />
+									</span>
+									<h3 className="mb-6 text-[3.5rem] leading-none tracking-tight">
+										{item.title}
+									</h3>
+									<p className="text-[1.5rem] leading-tight text-pb-graphite/80">
+										{item.description}
+									</p>
+								</div>
+							);
+						})}
 					</div>
 				</div>
 			</section>
 
 			{/* Treino Personalizado */}
-			<section className="py-16">
+			<section className="bg-pb-off-white pb-12 pt-10 lg:pb-14 lg:pt-12">
 				<div className="container-main">
-					<div className="text-center mb-12">
-						<h2 className="text-display text-primary mb-4">
-							Seu Treino Personalizado
-						</h2>
-						<p className="text-body text-secondary max-w-2xl mx-auto">
-							Entendemos que cada corpo é único e responde de forma diferente
-							aos estímulos. Por isso, trabalhamos em conjunto com você para
-							elaborar um plano personalizado.
-						</p>
-					</div>
-
-					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-						<div>
-							<h3 className="text-heading text-primary mb-4">
-								Personalização Completa
-							</h3>
-							<p className="text-body text-secondary mb-6">
+					<div className="flex flex-col lg:flex-row">
+						<div className="shape-chanfrado bg-pb-orange px-12 py-12 text-white lg:w-3/5 lg:py-20">
+							<h2 className="mb-8 text-[3.5rem] leading-none tracking-tight">
+								Seu treino personalizado
+							</h2>
+							<p className="text-[1.5rem] leading-tight text-white/90">
 								Nossos professores trabalham em conjunto com você para elaborar
 								um plano de treino de musculação personalizado, levando em
 								consideração seus objetivos, nível de condicionamento físico,
 								histórico de saúde e preferências.
 							</p>
-							<ul className="gap-y-3">
-								<li className="flex items-start gap-x-3">
-									<CheckCircle className="h-5 w-5 text-primary-500 mt-0.5" />
-									<span className="text-body text-secondary">
-										Avaliação completa do seu condicionamento atual
-									</span>
-								</li>
-								<li className="flex items-start gap-x-3">
-									<CheckCircle className="h-5 w-5 text-primary-500 mt-0.5" />
-									<span className="text-body text-secondary">
-										Plano de treino adaptado aos seus objetivos
-									</span>
-								</li>
-								<li className="flex items-start gap-x-3">
-									<CheckCircle className="h-5 w-5 text-primary-500 mt-0.5" />
-									<span className="text-body text-secondary">
-										Acompanhamento e ajustes regulares
-									</span>
-								</li>
-								<li className="flex items-start gap-x-3">
-									<CheckCircle className="h-5 w-5 text-primary-500 mt-0.5" />
-									<span className="text-body text-secondary">
-										Orientação sobre execução correta dos exercícios
-									</span>
-								</li>
+							<ul className="mt-8 space-y-4">
+								{personalizacao.map((item) => (
+									<li key={item} className="flex items-start gap-4">
+										<span className="shape-octagon-regular flex size-8 shrink-0 items-center justify-center bg-white/20 text-white">
+											<CheckCircle className="size-4" />
+										</span>
+										<span>{item}</span>
+									</li>
+								))}
 							</ul>
 						</div>
-						<div className="bg-secondary rounded-lg p-8">
-							<h4 className="text-heading text-primary mb-4">
-								Para Todos os Níveis
-							</h4>
-							<p className="text-body text-secondary mb-4">
-								Seja para iniciantes que precisam aprender os fundamentos, ou
-								para avançados que buscam otimizar seus resultados, nosso
-								acompanhamento garante que você esteja sempre no caminho certo.
-							</p>
-							<p className="text-body text-secondary">
-								<strong>Objetivos atendidos:</strong> Ganho de massa muscular,
-								emagrecimento, fortalecimento, reabilitação, condicionamento
-								físico geral e muito mais.
-							</p>
+						<div className="shape-chanfrado bg-pb-grena px-12 py-12 text-white lg:w-2/5 lg:py-20">
+							<h3 className="mb-8 text-[3.5rem] leading-none tracking-tight">
+								Para todos os níveis
+							</h3>
+							<div className="space-y-6 text-[1.5rem] leading-tight text-white/90">
+								<p>
+									Seja para iniciantes que precisam aprender os fundamentos, ou
+									para avançados que buscam otimizar seus resultados, nosso
+									acompanhamento garante que você esteja sempre no caminho
+									certo.
+								</p>
+								<p>
+									Objetivos atendidos: ganho de massa muscular, emagrecimento,
+									fortalecimento, reabilitação, condicionamento físico geral e
+									muito mais.
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</section>
 
 			{/* Quiz CTA */}
-			<section className="py-12">
+			<section className="bg-pb-off-white pb-12 pt-10 lg:pb-14 lg:pt-12">
 				<div className="container-main">
-					<div className="mx-auto max-w-4xl">
-						<QuizCtaCard
-							variant="compact"
-							source="musculacao"
-							headline="Musculação é pra você?"
-							subhead="Faça o quiz e descubra o treino, plano e frequência ideal pro seu objetivo."
-							ctaLabel="Fazer o Quiz"
-						/>
-					</div>
+					<QuizCtaCard
+						variant="compact"
+						source="musculacao"
+						headline="Musculação é pra você?"
+						subhead="Faça o quiz e descubra o treino, o plano e a frequência ideais pro seu objetivo e pra sua rotina."
+						ctaLabel="Fazer o quiz"
+					/>
 				</div>
 			</section>
 
-			{/* CTA Section */}
-			<section className="py-16 bg-secondary">
+			{/* CTA final */}
+			{/* Mesmo módulo do fechamento da home: hexágono completo, cor
+			    chapada, tudo empilhado numa coluna. */}
+			<section className="pb-20 pt-10 lg:pb-28 lg:pt-12">
 				<div className="container-main">
-					<div className="text-center">
-						<h2 className="text-display text-primary mb-6">
-							Venha Transformar Seu Corpo!
+					<div className="shape-chanfrado bg-pb-orange px-10 pb-14 pt-10 text-white md:px-16 md:pb-20 md:pt-14">
+						<h2 className="text-[3.5rem] leading-[0.96] tracking-tight">
+							Venha transformar seu corpo
 						</h2>
-						<p className="text-body text-secondary mb-8 max-w-2xl mx-auto">
+						<p className="mt-6 text-[1.5rem] leading-tight">
 							Se você busca um lugar onde a musculação é levada a sério, com
 							estrutura de ponta, equipamentos modernos e o suporte de
 							profissionais dedicados, a Academia Panobianco Jardim Satélite é o
 							seu destino.
 						</p>
-						<div className="flex flex-col sm:flex-row gap-4 justify-center">
-							<SchedulingLink>
-								Agende Sua Aula Experimental Gratuita
+						<div className="mt-8 flex flex-col gap-4 sm:flex-row">
+							<SchedulingLink className="botao-chanfrado inline-flex items-center justify-center bg-white px-8 py-4 text-sm uppercase tracking-wide text-pb-orange-warm transition-colors hover:bg-pb-off-white">
+								Agendar aula experimental
 							</SchedulingLink>
-							<Link href="/contato" className="btn-secondary">
-								Entre em Contato
+							<Link
+								href="/contato"
+								className="botao-chanfrado inline-flex items-center justify-center bg-pb-black px-8 py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-grena"
+							>
+								Entre em contato
 							</Link>
 						</div>
 					</div>

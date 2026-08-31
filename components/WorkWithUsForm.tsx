@@ -14,6 +14,11 @@ function formatPhone(value: string): string {
 	return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
 }
 
+// Campos sem raio nem chanfro: o brandbook não usa cantos arredondados e o
+// clip-path cortaria a borda e o anel de foco.
+const INPUT_CLASS =
+	"w-full border border-pb-graphite/25 bg-white px-4 py-3 text-pb-graphite placeholder:text-pb-graphite/50 focus:border-pb-orange focus:outline-none disabled:opacity-60";
+
 export default function WorkWithUsForm() {
 	const [formData, setFormData] = useState({
 		nome: "",
@@ -136,21 +141,23 @@ export default function WorkWithUsForm() {
 	};
 
 	return (
-		<article className="rounded-xl border border-white/10 bg-white/5 p-6">
-			<h2 className="text-2xl font-semibold">Envie seu Currículo</h2>
-			<p className="mt-2 text-sm text-white/65">
+		<article className="card-hex-light px-12 py-16">
+			<h2 className="text-[3.5rem] leading-none tracking-tight">
+				Envie seu currículo
+			</h2>
+			<p className="mt-2 text-[1.5rem] leading-tight text-pb-graphite/80">
 				Preencha seus dados e anexe seu currículo nos formatos PDF, DOC ou DOCX
 				de no máximo 5MB.
 			</p>
 
-			<form onSubmit={handleSubmit} className="mt-6 space-y-4">
+			<form onSubmit={handleSubmit} className="mt-8 space-y-4">
 				<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 					<div className="flex flex-col gap-1.5">
 						<label
 							htmlFor="nome"
-							className="text-xs font-bold uppercase tracking-wider text-white/60"
+							className="text-xs uppercase tracking-wider text-pb-graphite/70"
 						>
-							Nome Completo <span className="text-primary-500">*</span>
+							Nome Completo <span className="text-pb-orange-warm">*</span>
 						</label>
 						<input
 							type="text"
@@ -159,7 +166,7 @@ export default function WorkWithUsForm() {
 							required
 							value={formData.nome}
 							onChange={updateFormField}
-							className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none disabled:opacity-50"
+							className={INPUT_CLASS}
 							placeholder="Nome completo"
 							disabled={isSubmitting}
 						/>
@@ -167,9 +174,9 @@ export default function WorkWithUsForm() {
 					<div className="flex flex-col gap-1.5">
 						<label
 							htmlFor="email"
-							className="text-xs font-bold uppercase tracking-wider text-white/60"
+							className="text-xs uppercase tracking-wider text-pb-graphite/70"
 						>
-							E-mail <span className="text-primary-500">*</span>
+							E-mail <span className="text-pb-orange-warm">*</span>
 						</label>
 						<input
 							type="email"
@@ -178,7 +185,7 @@ export default function WorkWithUsForm() {
 							required
 							value={formData.email}
 							onChange={updateFormField}
-							className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none disabled:opacity-50"
+							className={INPUT_CLASS}
 							placeholder="seu.email@exemplo.com"
 							disabled={isSubmitting}
 						/>
@@ -189,9 +196,9 @@ export default function WorkWithUsForm() {
 				<div className="flex flex-col gap-1.5">
 					<label
 						htmlFor="telefone"
-						className="text-xs font-bold uppercase tracking-wider text-white/60"
+						className="text-xs uppercase tracking-wider text-pb-graphite/70"
 					>
-						Telefone / WhatsApp <span className="text-primary-500">*</span>
+						Telefone / WhatsApp <span className="text-pb-orange-warm">*</span>
 					</label>
 					<input
 						type="tel"
@@ -200,25 +207,27 @@ export default function WorkWithUsForm() {
 						required
 						value={formData.telefone}
 						onChange={updateFormField}
-						className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none disabled:opacity-50"
+						className={INPUT_CLASS}
 						placeholder="(12) 99999-9999"
 						disabled={isSubmitting}
 					/>
 				</div>
 
 				{/* Área de Interesse */}
-				<div className="flex flex-col gap-3">
-					<label className="text-xs font-bold uppercase tracking-wider text-white/60">
-						Área de Interesse <span className="text-primary-500">*</span>
-					</label>
+				{/* Grupo de rádios: o rótulo do conjunto é a <legend> do
+				    <fieldset>, não um <label> solto sem controle associado. */}
+				<fieldset className="flex flex-col gap-3">
+					<legend className="mb-3 text-xs uppercase tracking-wider text-pb-graphite/70">
+						Área de Interesse <span className="text-pb-orange-warm">*</span>
+					</legend>
 					<div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
 						{["Instrutor", "Estágio", "Recepção", "Limpeza"].map((area) => (
 							<label
 								key={area}
-								className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2.5 text-sm transition-colors ${
+								className={`flex cursor-pointer items-center gap-2 border px-3 py-2.5 text-sm transition-colors ${
 									formData.area === area
-										? "border-primary-500 bg-primary-500/15 text-primary-500"
-										: "border-white/15 bg-black/20 text-white/70 hover:border-white/30"
+										? "border-pb-orange bg-pb-orange text-white"
+										: "border-pb-graphite/25 bg-white text-pb-graphite hover:border-pb-orange"
 								}`}
 							>
 								<input
@@ -231,30 +240,30 @@ export default function WorkWithUsForm() {
 									className="sr-only"
 								/>
 								<span
-									className={`size-3.5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
+									className={`flex size-3.5 flex-shrink-0 items-center justify-center border-2 ${
 										formData.area === area
-											? "border-primary-500 bg-primary-500"
-											: "border-white/30"
+											? "border-white bg-white"
+											: "border-pb-graphite/40"
 									}`}
 								>
 									{formData.area === area && (
-										<span className="size-1.5 rounded-full bg-white" />
+										<span className="size-1.5 bg-pb-orange" />
 									)}
 								</span>
 								{area}
 							</label>
 						))}
 					</div>
-				</div>
+				</fieldset>
 
 				{/* Currículo */}
 				<div className="flex flex-col gap-1.5">
 					<label
 						htmlFor="curriculo"
-						className="text-xs font-bold uppercase tracking-wider text-white/60"
+						className="text-xs uppercase tracking-wider text-pb-graphite/70"
 					>
 						Currículo (PDF, DOC, DOCX - Máx 5MB){" "}
-						<span className="text-primary-500">*</span>
+						<span className="text-pb-orange-warm">*</span>
 					</label>
 					<input
 						type="file"
@@ -263,26 +272,26 @@ export default function WorkWithUsForm() {
 						required
 						accept=".pdf,.doc,.docx"
 						onChange={handleFileChange}
-						className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-2.5 text-sm text-white file:mr-4 file:rounded-md file:border-0 file:bg-white/10 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-white file:transition-colors hover:file:bg-white/20 file:cursor-pointer disabled:opacity-50"
+						className={`${INPUT_CLASS} file:mr-4 file:cursor-pointer file:border-0 file:bg-pb-orange file:px-3 file:py-1.5 file:text-xs file:uppercase file:tracking-wide file:text-white`}
 						disabled={isSubmitting}
 					/>
 				</div>
 
 				<button
 					type="submit"
-					className="inline-flex h-12 items-center justify-center rounded-full bg-primary-500 px-6 text-sm font-bold text-white transition-colors hover:bg-primary-500/90 disabled:opacity-70"
+					className="botao-chanfrado inline-flex items-center justify-center bg-pb-orange px-8 py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-orange-warm disabled:opacity-70"
 					disabled={isSubmitting}
 				>
 					<Upload className="mr-2 size-4" />
-					{isSubmitting ? "Enviando..." : "Enviar Currículo"}
+					{isSubmitting ? "Enviando..." : "Enviar currículo"}
 				</button>
 
 				{submitMessage && (
 					<p
-						className={`rounded-lg border px-4 py-3 text-sm ${
+						className={`border px-4 py-3 text-sm ${
 							submitMessage.includes("sucesso")
-								? "border-green-400/40 bg-green-500/15 text-green-200"
-								: "border-red-400/40 bg-red-500/15 text-red-200"
+								? "border-green-700/40 bg-green-700/10 text-green-800"
+								: "border-pb-orange-warm/40 bg-pb-orange-warm/10 text-pb-orange-warm"
 						}`}
 					>
 						{submitMessage}

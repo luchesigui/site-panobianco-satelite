@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const inputClassName =
-	"w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none";
+	"w-full border border-pb-graphite/25 bg-white px-4 py-3 text-pb-graphite placeholder:text-pb-graphite/50 focus:border-pb-orange focus:outline-none disabled:opacity-60";
 
 const buttonClassName =
-	"inline-flex h-12 w-full items-center justify-center rounded-full bg-primary-500 px-6 text-sm font-bold text-white transition-colors hover:bg-primary-500/90 disabled:opacity-70";
+	"botao-chanfrado inline-flex w-full items-center justify-center bg-pb-orange px-8 py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-orange-warm disabled:opacity-70";
 
 export default function AlunoLoginForm() {
 	const { refresh } = useRouter();
@@ -102,16 +102,18 @@ export default function AlunoLoginForm() {
 	};
 
 	return (
-		<article className="mx-auto max-w-md rounded-xl border border-white/10 bg-white/5 p-6">
-			<h2 className="text-2xl font-semibold">Acesso do aluno</h2>
+		<article className="card-hex-light mx-auto max-w-md px-12 py-16">
+			<h2 className="text-[3.5rem] leading-none tracking-tight">
+				Acesso do aluno
+			</h2>
 
 			{step === "identifier" ? (
 				<>
-					<p className="mt-2 text-sm text-white/65">
+					<p className="mt-2 text-[1.5rem] leading-tight text-pb-graphite/80">
 						Informe o e-mail ou CPF cadastrado na academia. Você receberá um
 						código de acesso por e-mail.
 					</p>
-					<form onSubmit={handleRequestCode} className="mt-6 space-y-4">
+					<form onSubmit={handleRequestCode} className="mt-8 space-y-4">
 						<div>
 							<label htmlFor="aluno-identifier" className="sr-only">
 								E-mail ou CPF
@@ -141,11 +143,11 @@ export default function AlunoLoginForm() {
 				</>
 			) : (
 				<>
-					<p className="mt-2 text-sm text-white/65">
+					<p className="mt-2 leading-snug text-pb-graphite/80">
 						Digite o código de 6 dígitos enviado para o e-mail cadastrado. Ele
 						vale por 10 minutos.
 					</p>
-					<form onSubmit={handleVerifyCode} className="mt-6 space-y-4">
+					<form onSubmit={handleVerifyCode} className="mt-8 space-y-4">
 						<div>
 							<label htmlFor="aluno-code" className="sr-only">
 								Código de acesso
@@ -178,7 +180,7 @@ export default function AlunoLoginForm() {
 							type="button"
 							onClick={handleBack}
 							disabled={isSubmitting}
-							className="w-full text-center text-sm text-white/60 underline-offset-4 hover:text-white hover:underline disabled:opacity-70"
+							className="w-full text-center text-sm text-pb-graphite/70 underline-offset-4 hover:text-pb-orange-warm hover:underline disabled:opacity-70"
 						>
 							Usar outro e-mail ou reenviar código
 						</button>
@@ -187,12 +189,12 @@ export default function AlunoLoginForm() {
 			)}
 
 			{info && !error && (
-				<p className="mt-4 rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-white/75">
+				<p className="mt-4 border border-pb-graphite/25 bg-white px-4 py-3 text-sm text-pb-graphite/80">
 					{info}
 				</p>
 			)}
 			{error && (
-				<p className="mt-4 rounded-lg border border-red-400/40 bg-red-500/15 px-4 py-3 text-sm text-red-200">
+				<p className="mt-4 border border-pb-orange-warm/40 bg-pb-orange-warm/10 px-4 py-3 text-sm text-pb-orange-warm">
 					{error}
 				</p>
 			)}

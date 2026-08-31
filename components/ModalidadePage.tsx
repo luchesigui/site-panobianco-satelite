@@ -16,17 +16,17 @@ function ModalidadeContactCta({ modalidade }: ModalidadeContactCtaProps = {}) {
 	) as `modalidade_${string}`;
 	return (
 		<>
-			<section className="bg-background-dark py-8">
+			{/* Padding inferior curto: o ContactCtaSection já entra com o topo
+			    apertado, como na home. */}
+			<section className="bg-pb-off-white pb-6 pt-20 lg:pb-8 lg:pt-28">
 				<div className="container-main">
-					<div className="mx-auto max-w-4xl">
-						<QuizCtaCard
-							variant="compact"
-							source={source}
-							headline="Essa modalidade combina com você?"
-							subhead="Faça o quiz e receba uma recomendação personalizada pro seu objetivo — sem compromisso."
-							ctaLabel="Descobrir"
-						/>
-					</div>
+					<QuizCtaCard
+						variant="compact"
+						source={source}
+						headline="Essa modalidade combina com você?"
+						subhead="Faça o quiz e receba uma recomendação personalizada pro seu objetivo, sem compromisso."
+						ctaLabel="Descobrir"
+					/>
 				</div>
 			</section>
 			<ContactCtaSection />
@@ -42,13 +42,12 @@ type ModalidadeClassesProps = {
 	name: string;
 	title?: string;
 	description?: string;
-	accentClass: string;
 	highlights?: string[];
 };
 
 function ModalidadePageRoot({ children }: ModalidadePageRootProps) {
 	return (
-		<div className="font-display min-h-screen overflow-x-hidden bg-background-dark text-white">
+		<div className="font-display min-h-screen overflow-x-hidden bg-pb-off-white text-pb-graphite">
 			{children}
 		</div>
 	);
@@ -58,7 +57,6 @@ function ModalidadeClasses({
 	name,
 	title = "Nossas Aulas",
 	description,
-	accentClass,
 	highlights = [
 		"Instrutores certificados e apaixonados",
 		"Aulas dinâmicas e motivadoras",
@@ -66,45 +64,31 @@ function ModalidadeClasses({
 	],
 }: ModalidadeClassesProps) {
 	return (
-		<section className="py-16">
+		<section className="bg-pb-off-white py-20 lg:py-28">
 			<div className="container-main">
-				<div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
-					<div className="glass-card rounded-2xl p-8">
-						<h3 className="mb-4 text-xl font-bold text-white">
+				<div className="flex flex-col lg:flex-row">
+					<div className="shape-chanfrado bg-pb-orange px-12 py-12 text-white lg:w-1/2 lg:py-20">
+						<h2 className="mb-8 text-[3.5rem] leading-none tracking-tight">
 							{title} de {name}
-						</h3>
+						</h2>
 						{description && (
-							<>
-								<p className="mb-4 leading-relaxed text-neutral-400">
-									{description}
+							<div className="space-y-6 text-[1.5rem] leading-tight text-white/90">
+								<p>{description}</p>
+								<p>
+									Consulte a grade de horários na recepção ou fale com a gente
+									pelo WhatsApp.
 								</p>
-								<p className="mb-6 leading-relaxed text-neutral-400">
-									A trilha sonora e as coreografias são pensadas para manter
-									você motivado. Consulte a grade de horários na recepção ou
-									entre em contato.
-								</p>
-							</>
+							</div>
 						)}
-						<div className="rounded-xl bg-primary-500/20 p-4">
-							<p className="text-center text-sm text-neutral-300">
-								<strong>Horários:</strong> Consulte nossa grade na recepção ou
-								entre em contato
-							</p>
-						</div>
 					</div>
-					<div>
-						<h3 className="mb-6 text-xl font-bold text-white">
+					<div className="shape-chanfrado bg-pb-grena px-12 py-12 text-white lg:w-1/2 lg:py-20">
+						<h3 className="mb-8 text-[3.5rem] leading-none tracking-tight">
 							Para todos os níveis
 						</h3>
-						<ul className="space-y-4">
+						<ul className="space-y-4 text-[1.5rem] leading-tight">
 							{highlights.map((item) => (
-								<li
-									key={item}
-									className="flex items-start gap-3 text-neutral-400"
-								>
-									<div
-										className={`mt-1.5 size-2 shrink-0 rounded-full ${accentClass}`}
-									/>
+								<li key={item} className="flex items-start gap-4">
+									<span className="shape-octagon-regular mt-2 size-3 shrink-0 bg-pb-orange" />
 									<span>{item}</span>
 								</li>
 							))}

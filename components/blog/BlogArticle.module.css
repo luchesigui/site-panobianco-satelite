@@ -1,13 +1,13 @@
 .proseBlog h2 {
-	@apply mt-10 mb-4 text-2xl font-bold text-white;
+	@apply mt-12 mb-4 text-[2rem] leading-tight tracking-tight text-pb-black;
 }
 
 .proseBlog h3 {
-	@apply mt-8 mb-3 text-xl font-bold text-white;
+	@apply mt-8 mb-3 text-[1.5rem] leading-tight tracking-tight text-pb-black;
 }
 
 .proseBlog p {
-	@apply mb-5 leading-relaxed text-gray-300;
+	@apply mb-5 leading-relaxed text-pb-graphite;
 }
 
 .proseBlog ul {
@@ -15,12 +15,13 @@
 }
 
 .proseBlog ul li {
-	@apply flex gap-3 text-gray-300;
+	@apply flex gap-3 text-pb-graphite;
 }
 
+/* Marcador quadrado: o brandbook não usa cantos arredondados. */
 .proseBlog ul li::before {
 	content: "";
-	@apply mt-2 block size-2 shrink-0 rounded-full bg-primary-500;
+	@apply mt-2.5 block size-2 shrink-0 bg-pb-orange;
 }
 
 .proseBlog ol {
@@ -28,17 +29,18 @@
 }
 
 .proseBlog ol li {
-	@apply text-gray-300;
+	@apply text-pb-graphite;
 }
 
 .proseBlog a {
-	@apply text-primary-500 underline-offset-2 hover:underline;
+	@apply text-pb-orange-warm underline-offset-2 hover:underline;
 }
 
+/* Sem negrito no site: o destaque vem do tom mais fechado. */
 .proseBlog strong {
-	@apply font-bold text-white;
+	@apply text-pb-black;
 }
 
 .proseBlog blockquote {
-	@apply my-6 border-l-4 border-primary-500 pl-4 italic text-gray-400;
+	@apply my-6 border-l-4 border-pb-orange pl-4 italic text-pb-graphite/80;
 }

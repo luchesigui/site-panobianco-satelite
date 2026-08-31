@@ -38,33 +38,35 @@ export default function BlogPage() {
 	const posts = getAllPosts();
 
 	return (
-		<div className="font-display min-h-screen overflow-x-hidden bg-background-dark text-white">
+		<div className="font-display min-h-screen overflow-x-hidden bg-pb-off-white text-pb-graphite">
 			<script
 				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: trusted static JSON-LD
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
 			/>
 
-			<div className="px-4 py-10 lg:px-10">
-				{/* Hero */}
-				<div className="container-main mb-12 max-w-2xl space-y-4">
-					<span className="inline-block w-fit rounded-full border border-primary-500/20 bg-primary-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.1em] text-primary-500">
-						Blog
-					</span>
-					<h1 className="text-5xl font-semibold leading-none tracking-tight md:text-6xl">
-						SAÚDE & BEM-ESTAR
-					</h1>
-					<p className="text-lg font-normal leading-relaxed text-white/60">
-						Dicas e informações sobre exercícios, saúde na terceira idade,
-						emagrecimento e qualidade de vida em São José dos Campos.
-					</p>
+			{/* Hero */}
+			{/* Sem foto de topo: o bloco hexagonal laranja carrega a chamada,
+			    com folga para o header fixo de 80px. */}
+			<section className="bg-pb-off-white pb-12 pt-20 lg:pb-14 lg:pt-28">
+				<div className="container-main">
+					<div className="shape-chanfrado bg-pb-orange px-10 py-14 text-white lg:px-14 lg:py-16">
+						<h1 className="text-[3.5rem] leading-[0.96] tracking-tight">
+							Saúde e bem-estar
+						</h1>
+						<p className="mt-6 max-w-3xl text-[1.5rem] leading-tight">
+							Dicas e informações sobre exercícios, saúde na terceira idade,
+							emagrecimento e qualidade de vida em São José dos Campos.
+						</p>
+					</div>
 				</div>
+			</section>
 
-				{/* Posts — flat grid, 9 por vez */}
+			{/* Posts — grade plana, 9 por vez */}
+			<section className="bg-pb-off-white pb-20 pt-10 lg:pb-28 lg:pt-12">
 				<div className="container-main">
 					<BlogGrid posts={posts} />
 				</div>
-			</div>
+			</section>
 
 			<ContactCtaSection />
 		</div>

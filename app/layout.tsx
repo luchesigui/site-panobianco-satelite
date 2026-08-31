@@ -1,10 +1,5 @@
 import type { Metadata } from "next";
-import {
-	Archivo,
-	Bebas_Neue,
-	Montserrat,
-	Roboto,
-} from "next/font/google";
+import { Archivo, Bebas_Neue, Montserrat, Roboto } from "next/font/google";
 import Script from "next/script";
 
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -27,7 +22,11 @@ const organizationSchema = {
 	"@context": "https://schema.org",
 	"@type": "LocalBusiness",
 	"@id": `${SITE_URL}#organization`,
-	name: "Academia Panobianco Jardim Satélite",
+	name: "Panobianco Jardim Satélite",
+	alternateName: "Academia Panobianco Jardim Satélite",
+	slogan: "Feitos de força e vontade.",
+	description:
+		"Um espaço para viver o movimento com acolhimento, comunidade e prazer. Musculação, aulas coletivas e treino personalizado na unidade Jardim Satélite, em São José dos Campos.",
 	url: SITE_URL,
 	logo: `${SITE_URL}/logo.webp`,
 	priceRange: "$$",
@@ -73,16 +72,25 @@ const websiteSchema = {
 	"@context": "https://schema.org",
 	"@type": "WebSite",
 	url: SITE_URL,
-	name: "Academia Panobianco Jardim Satélite",
+	name: "Panobianco Jardim Satélite",
+	description: "Feitos de força e vontade.",
 	publisher: { "@id": `${SITE_URL}#organization` },
 };
 
-const archivo = Archivo({
+// Hierarquia tipográfica oficial: Forma DJR Micro (Regular / Medium / Bold).
+// Os arquivos licenciados ainda não estão no repositório, então Archivo — que
+// compartilha a grotesca de largura estreita e os mesmos três pesos — é o
+// fallback estruturado. Ao receber a licença, troque este bloco por
+// `next/font/local` mantendo a mesma variável `--font-brand`.
+const brandFont = Archivo({
 	subsets: ["latin"],
+	weight: ["400", "500", "700", "800"],
 	display: "swap",
-	variable: "--font-archivo",
+	variable: "--font-brand",
 });
 
+// Famílias legadas: consumidas exclusivamente por /promo-orange e HeroOrange.
+// Não usar em superfícies novas — a marca 2026 é monotipográfica.
 const bebasNeue = Bebas_Neue({
 	weight: "400",
 	subsets: ["latin"],
@@ -106,31 +114,30 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
 	title: {
-		default:
-			"Academia Panobianco Jardim Satélite | Musculação, Aulas Coletivas e Treino Personalizado em São José dos Campos",
-		template: "%s | Academia Panobianco Jardim Satélite",
+		default: "Panobianco Jardim Satélite | Feitos de força e vontade",
+		template: "%s | Panobianco Jardim Satélite",
 	},
 	description:
-		"Academia Panobianco Jardim Satélite oferece musculação, aulas coletivas, treino personalizado e avaliação física. Localizada na Av. Cidade Jardim, 391 - Jardim Satélite, São José dos Campos - SP, 12231-675.",
+		"Estrutura moderna, equipamentos de ponta e ambiente acolhedor, no seu ritmo e do seu jeito. Fazemos do seu treino a melhor hora da rotina na unidade Jardim Satélite em São José dos Campos.",
 	keywords:
-		"academia, musculação, aulas coletivas, treino personalizado, são josé dos campos, jardim satélite, academia panobianco, fitness, personal trainer",
-	authors: [{ name: "Academia Panobianco Jardim Satélite" }],
-	creator: "Academia Panobianco Jardim Satélite",
-	publisher: "Academia Panobianco Jardim Satélite",
+		"academia, musculação, aulas coletivas, treino personalizado, são josé dos campos, jardim satélite, academia panobianco, fitness, feitos de força e vontade",
+	authors: [{ name: "Panobianco Jardim Satélite" }],
+	creator: "Panobianco Jardim Satélite",
+	publisher: "Panobianco Jardim Satélite",
 	robots: "index, follow",
 	openGraph: {
 		type: "website",
 		locale: "pt_BR",
-		siteName: "Academia Panobianco Jardim Satélite",
-		title: "Academia Panobianco Jardim Satélite | Musculação e Aulas Coletivas",
+		siteName: "Panobianco Jardim Satélite",
+		title: "Panobianco Jardim Satélite | Feitos de força e vontade",
 		description:
-			"Academia completa em São José dos Campos com musculação, aulas coletivas e treino personalizado.",
+			"Estrutura moderna, equipamentos de ponta e ambiente acolhedor, no seu ritmo e do seu jeito. Unidade Jardim Satélite.",
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Academia Panobianco Jardim Satélite | Musculação e Aulas Coletivas",
+		title: "Panobianco Jardim Satélite | Feitos de força e vontade",
 		description:
-			"Academia completa em São José dos Campos com musculação, aulas coletivas e treino personalizado.",
+			"Estrutura moderna, equipamentos de ponta e ambiente acolhedor, no seu ritmo e do seu jeito. Unidade Jardim Satélite.",
 	},
 };
 
@@ -147,7 +154,7 @@ export default function RootLayout({
 	return (
 		<html
 			lang="pt-BR"
-			className={`${archivo.variable} ${bebasNeue.variable} ${montserrat.variable} ${roboto.variable}`}
+			className={`${brandFont.variable} ${bebasNeue.variable} ${montserrat.variable} ${roboto.variable}`}
 		>
 			<head>
 				<link rel="preconnect" href="https://cdn.prod.website-files.com" />

@@ -20,7 +20,7 @@ export default function FloatingWhatsApp() {
 			target="_blank"
 			rel="noopener noreferrer"
 			onClick={() => trackWhatsappClicked("floating_button", "support")}
-			className="floating-whatsapp-btn fixed bottom-6 right-6 z-50 flex size-14 items-center justify-center rounded-full bg-primary-500 text-white shadow-2xl transition-transform hover:scale-110 md:hidden"
+			className="floating-whatsapp-btn shape-octagon-regular fixed bottom-6 right-6 z-50 flex size-14 items-center justify-center bg-pb-orange text-white transition-colors hover:bg-pb-orange-warm md:hidden"
 			aria-label="Abrir WhatsApp"
 		>
 			<MessageCircle className="size-7" />

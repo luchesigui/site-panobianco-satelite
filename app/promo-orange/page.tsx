@@ -132,10 +132,10 @@ export default function PromoOrange() {
 							}}
 						>
 							<div className="flex flex-row items-center gap-[10px] text-[#ff6101]">
-								<span className="font-bebas text-[60px] xs:text-[75px] sm:text-[90px] leading-[80%] tracking-[-3px] font-bold text-[#ff6101]">
+								<span className="font-bebas text-[60px] xs:text-[75px] sm:text-[90px] leading-[80%] tracking-[-3px] text-[#ff6101]">
 									R$ 0,99
 								</span>
-								<span className="text-[16px] xs:text-[20px] sm:text-[24px] max-w-[140px] xs:max-w-[120px] sm:max-w-[100px] leading-[100%] xs:leading-[90%] sm:leading-[80%] sm:mt-[15px] text-[#2a2f31] font-semibold">
+								<span className="text-[16px] xs:text-[20px] sm:text-[24px] max-w-[140px] xs:max-w-[120px] sm:max-w-[100px] leading-[100%] xs:leading-[90%] sm:leading-[80%] sm:mt-[15px] text-[#2a2f31]">
 									NA PRIMEIRA MENSALIDADE
 								</span>
 							</div>
@@ -158,7 +158,7 @@ export default function PromoOrange() {
 							plan="orange"
 							href={CTA_HREF}
 							destination="checkout"
-							className="font-montserrat flex w-full items-center justify-center rounded-[200px] bg-[#ff6101] text-white h-[50px] text-[18px] font-medium uppercase mt-[20px] transition-all duration-200 hover:scale-[1.025] hover:shadow-[0_0_15px_rgba(255,97,1,0.4)]"
+							className="font-montserrat flex w-full items-center justify-center rounded-[200px] bg-[#ff6101] text-white h-[50px] text-[18px] uppercase mt-[20px] transition-all duration-200 hover:scale-[1.025] hover:shadow-[0_0_15px_rgba(255,97,1,0.4)]"
 						>
 							Matricule-se agora
 						</PlanCTAButton>
@@ -284,7 +284,7 @@ export default function PromoOrange() {
 								{/* Label at bottom */}
 								<div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 text-white flex flex-col gap-2">
 									{icon}
-									<span className="font-semibold text-[15px] xs:text-[18px] md:text-2xl leading-tight">
+									<span className="text-[15px] xs:text-[18px] md:text-2xl leading-tight">
 										{label}
 									</span>
 								</div>

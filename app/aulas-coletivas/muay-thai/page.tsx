@@ -1,4 +1,4 @@
-import { Brain, Flame, Shield, Target, Zap } from "lucide-react";
+import { Brain, Flame, Shield, Zap } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
@@ -32,12 +32,9 @@ export default function MuayThaiPage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
 			/>
 			<ModalidadePage.Hero
-				badge="Artes Marciais"
 				title="Muay"
 				titleHighlight="Thai"
 				description="Domine técnicas milenares, queime até 1.000 calorias por aula e fortaleça corpo e mente na unidade mais premium da Panobianco."
-				accentGradient="from-primary-500 to-orange-700"
-				icon={Target}
 				heroImageSrc={HERO_IMAGE}
 				stats={[
 					{ value: "60 min", label: "Duração" },
@@ -51,7 +48,6 @@ export default function MuayThaiPage() {
 					'O Muay Thai é uma arte marcial tailandesa milenar, reconhecida mundialmente pela sua eficácia e disciplina. Chamada de "A Arte das Oito Armas", ela utiliza combinadamente os punhos, cotovelos, joelhos e canelas, criando um sistema de combate completo e dinâmico.',
 					"Na Panobianco Satélite, nossas aulas são projetadas para transformar não apenas o seu físico, mas sua postura mental. Focamos na técnica refinada, no condicionamento físico de elite e na construção de um espírito inabalável.",
 				]}
-				accentClass="bg-primary-500"
 				statCard={{ value: "60 min", label: "Duração" }}
 			/>
 			<ModalidadePage.Benefits
@@ -83,12 +79,10 @@ export default function MuayThaiPage() {
 						icon: Zap,
 					},
 				]}
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.Classes
 				name="Muay Thai"
 				description="O Muay Thai na Panobianco Jardim Satélite é ministrado por instrutores experientes, em um ambiente seguro e motivador."
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.ContactCta />
 		</ModalidadePage>

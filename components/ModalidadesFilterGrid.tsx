@@ -1,36 +1,16 @@
 "use client";
 
-import {
-	Activity,
-	ArrowRight,
-	Flower2,
-	Music,
-	Shield,
-	Target,
-	Zap,
-} from "lucide-react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
 type CategoryId = "todos" | "forca" | "cardio" | "mente-corpo" | "danca";
 
-const ICON_MAP = {
-	activity: Activity,
-	flower2: Flower2,
-	music: Music,
-	shield: Shield,
-	target: Target,
-	zap: Zap,
-} as const;
-
 export type ClassItem = {
 	name: string;
 	slug: string;
-	icon: keyof typeof ICON_MAP;
 	categories: readonly string[];
 	description: string;
 	benefits: string[];
-	color: string;
 };
 
 type CategoryOption = { id: CategoryId; label: string };
@@ -60,8 +40,8 @@ export function ModalidadesFilterGrid({ classes, categories }: Props) {
 
 	return (
 		<>
-			{/* Category pills */}
-			<div className="container-main flex gap-3 overflow-x-auto pb-8 scrollbar-hide">
+			{/* Filtros de categoria */}
+			<div className="container-main flex gap-3 overflow-x-auto pb-10 scrollbar-hide">
 				{categories.map((cat) => {
 					const isActive = selectedCategory === cat.id;
 					return (
@@ -69,10 +49,10 @@ export function ModalidadesFilterGrid({ classes, categories }: Props) {
 							key={cat.id}
 							type="button"
 							onClick={() => setSelectedCategory(cat.id)}
-							className={`flex h-10 shrink-0 items-center justify-center gap-2 rounded-full px-6 text-sm font-medium transition-all duration-300 ${
+							className={`botao-chanfrado-nav flex h-11 shrink-0 items-center justify-center px-6 text-sm uppercase tracking-wide transition-colors ${
 								isActive
-									? "bg-primary-500 font-bold text-white shadow-lg shadow-primary-500/25"
-									: "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white/90"
+									? "bg-pb-orange text-white"
+									: "bg-white text-pb-graphite hover:bg-pb-orange hover:text-white"
 							}`}
 						>
 							{cat.label}
@@ -81,52 +61,39 @@ export function ModalidadesFilterGrid({ classes, categories }: Props) {
 				})}
 			</div>
 
-			{/* Grid with animated cards */}
+			{/* Grade animada */}
 			<section
-				className="container-main grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+				className="container-main grid gap-8 grid-cols-[repeat(auto-fit,minmax(min(350px,100%),1fr))]"
 				id="grade"
 			>
-				{filteredClasses.map((classItem, index) => {
-					const IconComponent = ICON_MAP[classItem.icon];
-					return (
-						<Link
-							key={`${classItem.slug}-${classItem.name}`}
-							href={`/aulas-coletivas/${classItem.slug}`}
-							className="group flex flex-col overflow-hidden rounded-xl border border-white/5 bg-white/5 opacity-0 transition-all hover:border-white/20 hover:bg-white/10 animate-modalidade-in"
-							style={{ animationDelay: `${index * 50}ms` }}
-						>
-							<div className="flex flex-col gap-4 p-6">
-								<div className="flex items-start justify-between">
-									<div
-										className={`flex size-10 items-center justify-center rounded-lg ${classItem.color}`}
-									>
-										<IconComponent className="size-5" />
-									</div>
-									<ArrowRight className="size-5 text-primary-500" />
-								</div>
-								<div className="flex flex-col gap-2">
-									<h3 className="text-2xl font-bold text-white">
-										{classItem.name}
-									</h3>
-									<p className="text-sm leading-relaxed text-white/60">
-										{classItem.description}
-									</p>
-									<ul className="mt-2 flex flex-col gap-1 text-xs text-white/40">
-										{classItem.benefits.map((benefit) => (
-											<li key={benefit} className="flex items-center gap-2">
-												<div className="size-1 rounded-full bg-primary-500" />
-												{benefit}
-											</li>
-										))}
-									</ul>
-								</div>
-								<span className="mt-2 w-full rounded-full border border-white/5 bg-white/10 py-3 text-center text-sm font-bold text-white transition-colors group-hover:bg-primary-500">
-									Saiba mais
-								</span>
-							</div>
-						</Link>
-					);
-				})}
+				{/* O chanfro de topo come 72px: o padding superior precisa passar
+				    do que sobra para o título não ser cortado. */}
+				{filteredClasses.map((classItem, index) => (
+					<Link
+						key={`${classItem.slug}-${classItem.name}`}
+						href={`/aulas-coletivas/${classItem.slug}`}
+						className="card-hex-light group flex animate-modalidade-in flex-col px-12 py-16 opacity-0"
+						style={{ animationDelay: `${index * 50}ms` }}
+					>
+						<h3 className="mb-6 text-[3.5rem] leading-none tracking-tight">
+							{classItem.name}
+						</h3>
+						<p className="text-[1.5rem] leading-tight text-pb-graphite/80">
+							{classItem.description}
+						</p>
+						<ul className="mt-4 flex flex-col gap-2 text-sm text-pb-graphite/70">
+							{classItem.benefits.map((benefit) => (
+								<li key={benefit} className="flex items-center gap-3">
+									<span className="size-1.5 shrink-0 bg-pb-orange" />
+									{benefit}
+								</li>
+							))}
+						</ul>
+						<span className="botao-chanfrado mt-8 inline-flex items-center self-start bg-pb-orange px-6 py-3 text-sm uppercase tracking-wide text-white transition-colors group-hover:bg-pb-orange-warm">
+							Saiba mais
+						</span>
+					</Link>
+				))}
 			</section>
 		</>
 	);

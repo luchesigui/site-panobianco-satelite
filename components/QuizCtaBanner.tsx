@@ -1,13 +1,11 @@
 "use client";
 
-import { ArrowRight, Mail, Sparkles, Timer } from "lucide-react";
 import Link from "next/link";
 
 import { type QuizCtaSource, trackQuizCtaClicked } from "@/lib/analytics";
 
 type Props = {
 	source: QuizCtaSource;
-	eyebrow?: string;
 	headline?: React.ReactNode;
 	subhead?: string;
 	ctaLabel?: string;
@@ -15,59 +13,29 @@ type Props = {
 
 export default function QuizCtaBanner({
 	source,
-	eyebrow = "Quiz personalizado",
-	headline = (
-		<>
-			Sua jornada começa com a{" "}
-			<span className="italic text-primary-500">escolha certa</span>
-		</>
-	),
-	subhead = "Em menos de 1 minuto, te mostramos qual treino, modalidade e plano combinam com seus objetivos. Tudo organizado no seu e-mail.",
+	headline = "Você se encontra, a gente acompanha",
+	subhead = "Em menos de 1 minuto, e sem custo nenhum, te mostramos qual treino, qual modalidade e qual plano combinam com o seu objetivo e a sua rotina. A recomendação chega organizada no seu e-mail, para você decidir com calma.",
 	ctaLabel = "Iniciar Quiz Personalizado",
 }: Props) {
 	return (
-		<section className="bg-background-dark py-16">
+		<section className="pb-10 pt-6 lg:pb-12 lg:pt-8">
 			<div className="container-main">
-				<div className="relative overflow-hidden rounded-3xl border border-primary-500/30 bg-gradient-to-br from-primary-500/20 via-primary-500/5 to-transparent p-8 md:p-12">
-					<div className="pointer-events-none absolute -right-20 -top-20 size-72 rounded-full bg-primary-500/20 blur-[100px]" />
-					<div className="pointer-events-none absolute -bottom-24 -left-16 size-64 rounded-full bg-primary-500/10 blur-[120px]" />
-
-					<div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-						<div className="max-w-2xl">
-							<span className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary-500/30 bg-primary-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.15em] text-primary-500">
-								<Sparkles className="size-3" />
-								{eyebrow}
-							</span>
-							<h2 className="text-3xl font-semibold leading-[1.15] tracking-tight md:text-4xl lg:text-5xl">
-								{headline}
-							</h2>
-							<p className="mt-4 text-base text-neutral-300 md:text-lg">
-								{subhead}
-							</p>
-
-							<div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-medium text-neutral-400">
-								<span className="inline-flex items-center gap-1.5">
-									<Timer className="size-4 text-primary-500" />
-									Menos de 1 minuto
-								</span>
-								<span className="inline-flex items-center gap-1.5">
-									<Mail className="size-4 text-primary-500" />
-									Recomendação no seu e-mail
-								</span>
-								<span className="inline-flex items-center gap-1.5">
-									<Sparkles className="size-4 text-primary-500" />
-									100% gratuito
-								</span>
-							</div>
-						</div>
+				{/* Módulo chanfrado em laranja escuro chapado. */}
+				<div className="shape-chanfrado relative bg-pb-orange-warm px-10 pb-14 pt-10 text-white md:px-16 md:pb-20 md:pt-14">
+					<div className="relative">
+						<h2 className="text-[3.5rem] leading-[0.96] tracking-tight text-white">
+							{headline}
+						</h2>
+						<p className="mt-6 text-[1.5rem] leading-tight text-white">
+							{subhead}
+						</p>
 
 						<Link
 							href="/quiz"
 							onClick={() => trackQuizCtaClicked(source)}
-							className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-primary-500 px-10 py-4 text-base font-bold text-white shadow-xl shadow-primary-500/30 transition-all hover:bg-primary-500/90 hover:scale-[1.025] active:scale-95"
+							className="botao-chanfrado mt-8 inline-flex items-center justify-center bg-white px-8 py-4 text-sm uppercase tracking-wide text-pb-orange-warm transition-colors hover:bg-pb-off-white"
 						>
 							{ctaLabel}
-							<ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
 						</Link>
 					</div>
 				</div>

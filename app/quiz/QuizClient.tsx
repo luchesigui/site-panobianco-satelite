@@ -949,37 +949,30 @@ export default function QuizClient() {
 	};
 
 	return (
-		<div className="relative min-h-screen bg-background-dark text-white overflow-x-hidden pb-24">
-			{/* Decorative background */}
-			<div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-full -translate-x-1/2 bg-gradient-to-b from-primary-500/10 to-transparent" />
-			<div className="pointer-events-none absolute -right-24 top-24 size-72 rounded-full bg-primary-500/8 blur-[120px]" />
-
+		<div className="font-display relative min-h-screen overflow-x-hidden bg-pb-off-white pb-24 text-pb-graphite">
 			<div className="relative mx-auto flex max-w-xl flex-col items-center px-4 pt-10">
 				{/* Phase indicators */}
 				<div className="mb-4 flex items-center gap-6">
 					{PHASES.map((phase, i) => (
 						<div key={phase.key} className="flex flex-col items-center gap-1.5">
 							<div
-								className="rounded-full transition-all duration-300"
+								className="transition-all duration-300"
 								style={{
 									width: "8px",
 									height: "8px",
 									background:
 										i < phaseIndex
-											? "rgba(255,94,41,0.45)"
+											? "rgba(204,51,0,0.45)"
 											: i === phaseIndex
-												? "#ff5e29"
-												: "rgba(255,255,255,0.12)",
-									boxShadow:
-										i === phaseIndex ? "0 0 8px rgba(255,94,41,0.55)" : "none",
+												? "#cc3300"
+												: "rgba(61,51,54,0.2)",
 									transform: i === phaseIndex ? "scale(1.4)" : "scale(1)",
 								}}
 							/>
 							<span
-								className="text-[9px] font-bold uppercase tracking-wider transition-colors duration-300"
+								className="text-[9px] uppercase tracking-wider transition-colors duration-300"
 								style={{
-									color:
-										i === phaseIndex ? "#ff5e29" : "rgba(255,255,255,0.22)",
+									color: i === phaseIndex ? "#cc3300" : "rgba(61,51,54,0.45)",
 									whiteSpace: "nowrap",
 								}}
 							>
@@ -990,26 +983,23 @@ export default function QuizClient() {
 				</div>
 
 				{/* Progress bar */}
-				<div className="mb-8 h-0.5 w-full overflow-hidden rounded-full bg-white/5">
+				<div className="mb-8 h-0.5 w-full overflow-hidden bg-pb-graphite/15">
 					<div
-						className="h-full w-full origin-left rounded-full bg-gradient-to-r from-primary-500 to-orange-400 shadow-[0_0_8px_rgba(255,94,41,0.4)] transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"
+						className="h-full w-full origin-left bg-pb-orange transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"
 						style={{ transform: `scaleX(${progress / 100})` }}
 					/>
 				</div>
 
 				{/* Quiz card */}
-				<div
-					className="w-full rounded-xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm"
-					style={slideStyle}
-				>
+				<div className="card-hex-light w-full px-12 py-16" style={slideStyle}>
 					{/* Back button */}
 					{history.length > 1 && (
 						<button
 							onClick={goBack}
-							className="mb-6 flex items-center gap-2 text-white/30 transition-colors hover:text-white/60"
+							className="mb-6 flex items-center gap-2 text-pb-graphite/60 transition-colors hover:text-pb-orange-warm"
 						>
 							<ArrowLeft className="size-4" />
-							<span className="text-xs font-medium">Voltar</span>
+							<span className="text-xs">Voltar</span>
 						</button>
 					)}
 
@@ -1019,10 +1009,10 @@ export default function QuizClient() {
 
 					{(step.type === "single_choice" || step.type === "text_input") && (
 						<>
-							<p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-primary-500/70">
+							<p className="mb-3 text-[10px] uppercase tracking-widest text-pb-orange-warm">
 								Pergunta {history.length}
 							</p>
-							<h2 className="mb-6 text-xl font-bold leading-snug text-white md:text-2xl">
+							<h2 className="mb-6 text-[1.5rem] leading-tight tracking-tight">
 								{getQuestion()}
 							</h2>
 
@@ -1063,7 +1053,7 @@ export default function QuizClient() {
 				</div>
 
 				{/* Footer note */}
-				<p className="mt-8 flex items-center gap-2 text-xs text-white/20">
+				<p className="mt-8 flex items-center gap-2 text-xs text-pb-graphite/60">
 					<Lock className="size-3" />
 					Seus dados são privados e nunca serão compartilhados
 				</p>
@@ -1090,30 +1080,26 @@ function OptionButton({
 			onMouseEnter={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}
 			className={[
-				"group flex w-full items-center gap-4 rounded-xl border p-4 text-left transition-all duration-200",
+				"group flex w-full items-center gap-4 border p-4 text-left transition-colors duration-200",
 				selected
-					? "border-primary-500 bg-primary-500/15"
+					? "border-pb-orange bg-pb-orange text-white"
 					: hovered
-						? "border-primary-500/40 bg-primary-500/8"
-						: "border-white/10 bg-white/5 hover:border-primary-500/40 hover:bg-primary-500/8",
+						? "border-pb-orange bg-white"
+						: "border-pb-graphite/25 bg-white hover:border-pb-orange",
 			].join(" ")}
 		>
-			<span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/5 text-lg">
+			<span className="shape-octagon-regular flex size-9 shrink-0 items-center justify-center bg-pb-off-white text-lg">
 				{opt.emoji}
 			</span>
 			<span className="flex-1">
-				<span className="block text-sm font-medium leading-snug text-white/90">
-					{opt.label}
-				</span>
+				<span className="block text-sm leading-snug">{opt.label}</span>
 				{opt.sublabel && (
-					<span className="mt-0.5 block text-[11px] text-white/35">
+					<span className="mt-0.5 block text-[11px] opacity-70">
 						{opt.sublabel}
 					</span>
 				)}
 			</span>
-			{selected && (
-				<span className="shrink-0 text-sm font-bold text-primary-500">✓</span>
-			)}
+			{selected && <span className="shrink-0 text-sm">✓</span>}
 		</button>
 	);
 }
@@ -1157,12 +1143,12 @@ function TextInputBlock({
 				onChange={(e) => onChange(e.target.value)}
 				placeholder={placeholder}
 				onKeyDown={(e) => e.key === "Enter" && onNext()}
-				className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-base text-white placeholder:text-white/35 focus:border-primary-500 focus:outline-none transition-colors"
+				className="w-full border border-pb-graphite/25 bg-white px-4 py-3 text-base text-pb-graphite transition-colors placeholder:text-pb-graphite/50 focus:border-pb-orange focus:outline-none"
 			/>
 			<button
 				onClick={onNext}
 				disabled={disabled}
-				className="flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_20px_rgba(255,94,41,0.3)] transition-all hover:bg-primary-500/90 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
+				className="botao-chanfrado flex w-full items-center justify-center bg-pb-orange py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-orange-warm disabled:cursor-not-allowed disabled:opacity-40"
 			>
 				{buttonLabel}
 			</button>
@@ -1188,12 +1174,12 @@ function CaptureBlock({
 		<div className="flex flex-col gap-5">
 			<div className="text-center">
 				<div className="mb-4 text-5xl">🎯</div>
-				<h2 className="mb-2 text-2xl font-semibold leading-snug text-white">
+				<h2 className="mb-2 text-[1.5rem] leading-tight tracking-tight">
 					Quase lá, {answers.firstName}!
 				</h2>
-				<p className="text-sm leading-relaxed text-white/50">
+				<p className="leading-snug text-pb-graphite/80">
 					Informe seus dados para receber seu resultado e uma{" "}
-					<strong className="text-white/80">oferta exclusiva</strong> para
+					<span className="text-pb-orange-warm">oferta exclusiva</span> para
 					começar essa semana.
 				</p>
 			</div>
@@ -1204,7 +1190,7 @@ function CaptureBlock({
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
 					placeholder="Seu e-mail"
-					className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-base text-white placeholder:text-white/35 focus:border-primary-500 focus:outline-none transition-colors"
+					className="w-full border border-pb-graphite/25 bg-white px-4 py-3 text-base text-pb-graphite transition-colors placeholder:text-pb-graphite/50 focus:border-pb-orange focus:outline-none"
 				/>
 				<input
 					type="tel"
@@ -1212,19 +1198,19 @@ function CaptureBlock({
 					value={whatsapp}
 					onChange={(e) => setWhatsapp(applyPhoneMask(e.target.value))}
 					placeholder="WhatsApp com DDD"
-					className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-base text-white placeholder:text-white/35 focus:border-primary-500 focus:outline-none transition-colors"
+					className="w-full border border-pb-graphite/25 bg-white px-4 py-3 text-base text-pb-graphite transition-colors placeholder:text-pb-graphite/50 focus:border-pb-orange focus:outline-none"
 				/>
 			</div>
 
 			<button
 				onClick={() => valid && onSubmit({ email, whatsapp })}
 				disabled={!valid}
-				className="flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_20px_rgba(255,94,41,0.3)] transition-all hover:bg-primary-500/90 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
+				className="botao-chanfrado flex w-full items-center justify-center bg-pb-orange py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-orange-warm disabled:cursor-not-allowed disabled:opacity-40"
 			>
 				Quero meu resultado →
 			</button>
 
-			<p className="text-center text-[11px] text-white/20">
+			<p className="text-center text-[11px] text-pb-graphite/60">
 				Sem spam. Usaremos apenas para enviar seu resultado.
 			</p>
 		</div>
@@ -1246,25 +1232,22 @@ function ScreenSuccess({
 	)}`;
 
 	return (
-		<div className="relative min-h-screen bg-background-dark text-white overflow-x-hidden pb-24">
-			<div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-full -translate-x-1/2 bg-gradient-to-b from-primary-500/10 to-transparent" />
-
+		<div className="font-display relative min-h-screen overflow-x-hidden bg-pb-off-white pb-24 text-pb-graphite">
 			<div className="relative mx-auto flex max-w-xl flex-col items-center px-4 pt-16">
-				<div className="w-full rounded-xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
-					<Trophy className="mx-auto mb-5 size-14 text-primary-500" />
+				<div className="card-hex-light w-full px-12 py-16 text-center">
+					<Trophy className="mx-auto mb-5 size-14 text-pb-orange" />
 
-					<h2 className="mb-3 text-2xl font-semibold leading-snug text-white md:text-3xl">
+					<h2 className="mb-3 text-[3.5rem] leading-none tracking-tight text-pb-orange-warm">
 						{resultData.headline}
 					</h2>
-					<p className="mb-8 leading-relaxed text-white/55">{resultData.sub}</p>
+					<p className="mb-8 text-[1.5rem] leading-tight">{resultData.sub}</p>
 
 					{/* Plan confirmation */}
-					<div className="mb-8 rounded-xl border border-primary-500/20 bg-primary-500/8 p-5 text-left">
-						<p className="text-sm leading-relaxed text-white/75">
-							<strong className="text-white">{answers.firstName}</strong>, em
-							breve você vai receber um e-mail com o resultado do seu quiz. Se
-							ficou alguma dúvida, fale com a gente pelo WhatsApp, é rapidinho!
-							😊
+					<div className="shape-chanfrado-menor mb-8 bg-pb-orange px-8 py-8 text-left text-white">
+						<p className="leading-snug">
+							<span>{answers.firstName}</span>, em breve você vai receber um
+							e-mail com o resultado do seu quiz. Se ficou alguma dúvida, fale
+							com a gente pelo WhatsApp, é rapidinho! 😊
 						</p>
 					</div>
 
@@ -1273,13 +1256,13 @@ function ScreenSuccess({
 						target="_blank"
 						rel="noopener noreferrer"
 						onClick={() => trackQuizWhatsappClicked(answers.plan ?? "")}
-						className="flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_20px_rgba(255,94,41,0.3)] transition-all hover:bg-primary-500/90 active:scale-95"
+						className="botao-chanfrado flex w-full items-center justify-center bg-pb-orange py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-orange-warm disabled:cursor-not-allowed disabled:opacity-40"
 					>
 						Tirar dúvidas pelo WhatsApp →
 					</a>
 				</div>
 
-				<p className="mt-10 text-[10px] uppercase tracking-widest text-white/15">
+				<p className="mt-10 text-[10px] uppercase tracking-widest text-pb-graphite/60">
 					Panobianco Jd. Satélite · São José dos Campos
 				</p>
 			</div>
@@ -1299,20 +1282,19 @@ function ScreenEbook({ answers }: { answers: Answers }) {
 
 	if (done) {
 		return (
-			<div className="relative min-h-screen bg-background-dark text-white overflow-x-hidden pb-24">
-				<div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-full -translate-x-1/2 bg-gradient-to-b from-primary-500/10 to-transparent" />
+			<div className="font-display relative min-h-screen overflow-x-hidden bg-pb-off-white pb-24 text-pb-graphite">
 				<div className="relative mx-auto flex max-w-xl flex-col items-center px-4 pt-16">
-					<div className="w-full rounded-xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
+					<div className="card-hex-light w-full px-12 py-16 text-center">
 						<div className="mb-5 text-5xl">📬</div>
-						<h2 className="mb-3 text-2xl font-semibold text-white">
+						<h2 className="mb-6 text-[3.5rem] leading-none tracking-tight">
 							Obrigado, {answers.firstName}!
 						</h2>
-						<p className="leading-relaxed text-white/55">
+						<p className="text-[1.5rem] leading-tight text-pb-graphite/80">
 							Recebemos seu contato. Nossa equipe vai entrar em contato pelo
-							e-mail <strong className="text-primary-500">{email}</strong> em
+							e-mail <span className="text-pb-orange-warm">{email}</span> em
 							breve com todos os detalhes. 🧡
 						</p>
-						<p className="mt-10 text-[10px] uppercase tracking-widest text-white/15">
+						<p className="mt-10 text-[10px] uppercase tracking-widest text-pb-graphite/60">
 							Panobianco Jd. Satélite · São José dos Campos
 						</p>
 					</div>
@@ -1322,42 +1304,40 @@ function ScreenEbook({ answers }: { answers: Answers }) {
 	}
 
 	return (
-		<div className="relative min-h-screen bg-background-dark text-white overflow-x-hidden pb-24">
-			<div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-full -translate-x-1/2 bg-gradient-to-b from-primary-500/10 to-transparent" />
-
+		<div className="font-display relative min-h-screen overflow-x-hidden bg-pb-off-white pb-24 text-pb-graphite">
 			<div className="relative mx-auto flex max-w-xl flex-col items-center px-4 pt-16">
-				<div className="w-full rounded-xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
+				<div className="card-hex-light w-full px-12 py-16">
 					<div className="mb-5 text-center text-5xl">🤗</div>
-					<h2 className="mb-3 text-center text-2xl font-semibold text-white">
+					<h2 className="mb-3 text-center text-[3.5rem] leading-none tracking-tight">
 						A gente entende, {answers.firstName}.
 					</h2>
-					<p className="mb-4 leading-relaxed text-white/55">
+					<p className="mb-4 text-[1.5rem] leading-tight text-pb-graphite/80">
 						Sabemos que o momento financeiro nem sempre permite. E tudo bem, o
 						que importa é que a preocupação com a sua saúde já está aqui.
 					</p>
-					<p className="mb-6 leading-relaxed text-white/55">
+					<p className="mb-6 text-[1.5rem] leading-tight text-pb-graphite/80">
 						Pensando nisso, criamos um{" "}
-						<strong className="text-white">e-book completo</strong> com tudo que
-						você precisa pra começar a se movimentar em casa, pra sair do lugar
-						agora, do seu jeito.
+						<span className="text-pb-orange-warm">e-book completo</span> com
+						tudo que você precisa pra começar a se movimentar em casa, pra sair
+						do lugar agora, do seu jeito.
 					</p>
 
 					{/* Ebook card */}
-					<div className="mb-6 rounded-xl border border-primary-500/18 bg-primary-500/7 p-6 text-center">
-						<p className="mb-2 flex items-center justify-center gap-2 text-[10px] font-bold uppercase tracking-widest text-primary-500/60">
+					<div className="shape-chanfrado-menor mb-6 bg-pb-orange px-8 py-8 text-center text-white">
+						<p className="mb-2 flex items-center justify-center gap-2 text-[10px] uppercase tracking-widest text-white/80">
 							<BookOpen className="size-3" />
 							E-book exclusivo
 						</p>
-						<p className="mb-3 text-lg font-black leading-snug text-white">
+						<p className="mb-3 text-[1.5rem] leading-tight tracking-tight">
 							Comece Agora: Treino em Casa + Alimentação Saudável
 						</p>
-						<p className="text-3xl font-black text-primary-500">R$ 19,90</p>
-						<p className="mt-1 text-[11px] text-white/25">
+						<p className="text-[3rem] leading-none">R$ 19,90</p>
+						<p className="mt-2 text-[11px] text-white/80">
 							pagamento único · entregue por e-mail
 						</p>
 					</div>
 
-					<p className="mb-3 text-center text-sm text-white/40">
+					<p className="mb-3 text-center text-pb-graphite/80">
 						Deixe seu e-mail que nossa equipe entra em contato.
 					</p>
 
@@ -1366,7 +1346,7 @@ function ScreenEbook({ answers }: { answers: Answers }) {
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						placeholder="Seu e-mail"
-						className="mb-3 w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-base text-white placeholder:text-white/35 focus:border-primary-500 focus:outline-none transition-colors"
+						className="w-full border border-pb-graphite/25 bg-white px-4 py-3 text-base text-pb-graphite transition-colors placeholder:text-pb-graphite/50 focus:border-pb-orange focus:outline-none"
 					/>
 
 					<button
@@ -1388,12 +1368,12 @@ function ScreenEbook({ answers }: { answers: Answers }) {
 							}
 						}}
 						disabled={!email.includes("@")}
-						className="flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_20px_rgba(255,94,41,0.3)] transition-all hover:bg-primary-500/90 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
+						className="botao-chanfrado flex w-full items-center justify-center bg-pb-orange py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-orange-warm disabled:cursor-not-allowed disabled:opacity-40"
 					>
 						Quero o e-book por R$ 19,90 →
 					</button>
 
-					<p className="mt-4 text-center text-xs text-white/18">
+					<p className="mt-4 text-center text-xs text-pb-graphite/60">
 						E quando as coisas melhorarem, a gente vai estar aqui esperando por
 						você. 🧡
 					</p>

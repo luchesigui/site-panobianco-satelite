@@ -1,5 +1,6 @@
 "use client";
 
+import { Check } from "lucide-react";
 import { useState } from "react";
 
 function formatPhone(value: string): string {
@@ -28,10 +29,13 @@ function formatCpf(value: string): string {
 
 type Partner = "wellhub";
 
+// Campos sem raio nem chanfro: o brandbook não usa cantos arredondados e o
+// clip-path cortaria a borda e o anel de foco.
 const INPUT_CLASS =
-	"w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none disabled:opacity-50";
+	"w-full border border-pb-graphite/25 bg-white px-4 py-3 text-pb-graphite placeholder:text-pb-graphite/50 focus:border-pb-orange focus:outline-none disabled:opacity-60";
 
-const LABEL_CLASS = "block text-xs font-medium text-white/60 mb-1";
+const LABEL_CLASS =
+	"mb-1 block text-xs uppercase tracking-wider text-pb-graphite/70";
 
 export default function ParceirosPage() {
 	const partner: Partner = "wellhub";
@@ -94,43 +98,33 @@ export default function ParceirosPage() {
 
 	if (successData) {
 		return (
-			<main className="min-h-screen bg-[#120a08] px-4 py-16 text-white">
+			<main className="font-display min-h-screen bg-pb-off-white px-4 pb-20 pt-20 text-pb-graphite lg:pb-28 lg:pt-28">
 				<div className="mx-auto max-w-lg text-center">
-					<div className="mb-6 inline-flex size-16 items-center justify-center rounded-full bg-green-500/20 text-green-400">
-						<svg
-							className="size-8"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-							strokeWidth={2}
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								d="M5 13l4 4L19 7"
-							/>
-						</svg>
+					<div className="shape-octagon-regular mx-auto mb-6 inline-flex size-16 items-center justify-center bg-pb-orange text-white">
+						<Check className="size-8" aria-hidden />
 					</div>
-					<h1 className="text-2xl font-bold">Pré-cadastro concluído!</h1>
-					<p className="mt-3 text-white/70">
+					<h1 className="text-[3.5rem] leading-none tracking-tight text-pb-orange-warm">
+						Pré-cadastro concluído
+					</h1>
+					<p className="mt-6 text-[1.5rem] leading-tight">
 						Esse é o seu ID Panobianco. Se estiver na recepção, mostre para uma
 						de nossas recepcionistas.
 					</p>
 					{successData.idCliente && (
-						<div className="mt-6 rounded-lg border border-white/10 bg-white/5 px-8 py-6">
-							<p className="text-xs font-medium uppercase tracking-widest text-white/40">
+						<div className="shape-chanfrado-menor mt-8 bg-pb-orange px-8 py-8 text-white">
+							<p className="text-xs uppercase tracking-widest text-white/80">
 								Seu ID
 							</p>
-							<p className="mt-1 text-5xl font-bold tracking-tight text-primary-500">
+							<p className="mt-1 text-[3.5rem] leading-none tracking-tight">
 								{successData.idCliente}
 							</p>
 						</div>
 					)}
-					<div className="mt-6 rounded-lg border border-yellow-400/20 bg-yellow-500/10 px-5 py-4 text-left">
-						<p className="text-sm font-semibold text-yellow-300">
-							Verifique seu e-mail — PAR-Q
+					<div className="mt-6 border-l-4 border-pb-orange bg-white px-5 py-4 text-left">
+						<p className="text-[1.5rem] leading-tight tracking-tight text-pb-orange-warm">
+							Verifique seu e-mail: PAR-Q
 						</p>
-						<p className="mt-1 text-sm text-white/60">
+						<p className="mt-2 leading-snug text-pb-graphite/80">
 							Você deve ter recebido um e-mail com o questionário PAR-Q. É
 							importante que você preencha esse rápido questionário antes de
 							começar a treinar.
@@ -138,14 +132,14 @@ export default function ParceirosPage() {
 					</div>
 					{successData.linkAceiteContrato && (
 						<div className="mt-6">
-							<p className="text-sm text-white/60">
+							<p className="leading-snug text-pb-graphite/80">
 								Para finalizar, assine seu contrato virtualmente.
 							</p>
 							<a
 								href={successData.linkAceiteContrato}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="mt-3 inline-flex h-12 items-center justify-center rounded-full bg-primary-500 px-8 text-sm font-bold text-white transition-colors hover:bg-primary-500/90"
+								className="botao-chanfrado mt-4 inline-flex items-center justify-center bg-pb-orange px-8 py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-orange-warm"
 							>
 								Assinar contrato
 							</a>
@@ -157,11 +151,13 @@ export default function ParceirosPage() {
 	}
 
 	return (
-		<main className="min-h-screen bg-[#120a08] px-4 py-16 text-white">
+		<main className="font-display min-h-screen bg-pb-off-white px-4 pb-20 pt-20 text-pb-graphite lg:pb-28 lg:pt-28">
 			<div className="mx-auto max-w-lg">
 				<div className="mb-8 text-center">
-					<h1 className="text-3xl font-bold">Cadastro de Parceiros</h1>
-					<p className="mt-2 text-sm text-white/60">
+					<h1 className="text-[3.5rem] leading-none tracking-tight text-pb-orange-warm">
+						Cadastro de parceiros
+					</h1>
+					<p className="mt-6 text-[1.5rem] leading-tight">
 						Alunos do Wellhub, realizem o cadastro abaixo para acessar a
 						academia.
 					</p>
@@ -170,7 +166,7 @@ export default function ParceirosPage() {
 				{/* Form */}
 				<form
 					onSubmit={handleSubmit}
-					className="rounded-xl border border-white/10 bg-white/5 p-6 space-y-4"
+					className="card-hex-light space-y-4 px-12 py-16"
 				>
 					<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 						<div>
@@ -318,11 +314,11 @@ export default function ParceirosPage() {
 							{(["M", "F"] as const).map((g) => (
 								<label
 									key={g}
-									className={`flex flex-1 cursor-pointer items-center justify-center rounded-lg border py-2.5 text-sm font-medium transition-colors ${
+									className={`flex flex-1 cursor-pointer items-center justify-center border py-2.5 text-sm transition-colors ${
 										form.gender === g
-											? "border-primary-500 bg-primary-500/20 text-white"
-											: "border-white/15 bg-black/20 text-white/50 hover:text-white"
-									} ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
+											? "border-pb-orange bg-pb-orange text-white"
+											: "border-pb-graphite/25 bg-white text-pb-graphite hover:border-pb-orange"
+									} ${isSubmitting ? "cursor-not-allowed opacity-50" : ""}`}
 								>
 									<input
 										type="radio"
@@ -342,13 +338,13 @@ export default function ParceirosPage() {
 					<button
 						type="submit"
 						disabled={isSubmitting || !form.gender}
-						className="mt-2 w-full rounded-full bg-primary-500 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-500/90 disabled:opacity-60"
+						className="botao-chanfrado mt-2 w-full bg-pb-orange py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-orange-warm disabled:opacity-60"
 					>
-						{isSubmitting ? "Cadastrando..." : "Realizar Cadastro"}
+						{isSubmitting ? "Cadastrando..." : "Realizar cadastro"}
 					</button>
 
 					{errorMessage && (
-						<p className="rounded-lg border border-red-400/40 bg-red-500/15 px-4 py-3 text-sm text-red-200">
+						<p className="border border-pb-orange-warm/40 bg-pb-orange-warm/10 px-4 py-3 text-sm text-pb-orange-warm">
 							{errorMessage}
 						</p>
 					)}

@@ -10,15 +10,24 @@ module.exports = {
 		extend: {
 			colors: {
 				primary: {
-					500: "#FF6100", // Panobianco 2026 orange
+					500: "#FF6100", // Panobianco 2026 orange protagonist
+					600: "#CC3300", // Panobianco 2026 orange warm
 				},
-				"background-light": "#FAEDE4",
+				"pb-orange": "#FF6100",
+				"pb-orange-warm": "#CC3300",
+				"pb-grena": "#330000",
+				"pb-graphite": "#3D3336",
+				"pb-black": "#161515",
+				"pb-white": "#FFFFFF",
+				"pb-off-white": "#F4EDE4",
+				"pb-concrete": "#87756B",
+				"background-light": "#F4EDE4",
 				"background-dark": "#161515",
 				// Panobianco 2026 surfaces. Keep the existing utility names so pages
 				// can adopt the new system without structural changes.
 				light: {
 					bg: {
-						primary: "#FAEDE4",
+						primary: "#F4EDE4",
 						secondary: "#ffffff",
 						card: "#ffffff",
 					},
@@ -39,7 +48,7 @@ module.exports = {
 					text: {
 						primary: "#ffffff", // Original white for primary text
 						secondary: "#d1d5db", // Original light gray for secondary text
-						muted: "#d1d5db", // Keep secondary color for muted (original didn't have separate muted)
+						muted: "#d1d5db", // Keep secondary color for muted
 					},
 					border: "#3D3336",
 				},
@@ -55,28 +64,33 @@ module.exports = {
 					},
 				},
 			},
+			// Marca 2026 é monotipográfica: títulos, texto e botões saem da mesma
+			// família (Forma DJR Micro), diferenciados só por peso e escala.
+			// `display` e `sans` apontam para a mesma pilha de propósito.
 			fontFamily: {
 				display: [
 					"Forma DJR Micro",
-					"var(--font-archivo)",
+					"var(--font-brand)",
 					"Archivo",
 					"ui-sans-serif",
 					"system-ui",
 					"sans-serif",
 				],
 				sans: [
-					"var(--font-archivo)",
+					"Forma DJR Micro",
+					"var(--font-brand)",
+					"Archivo",
 					"ui-sans-serif",
 					"system-ui",
 					"-apple-system",
 					"BlinkMacSystemFont",
 					"Segoe UI",
-					"Roboto",
 					"Helvetica Neue",
 					"Arial",
 					"Noto Sans",
 					"sans-serif",
 				],
+				// Legado: apenas /promo-orange e HeroOrange.
 				bebas: ["var(--font-bebas-neue)", "sans-serif"],
 				montserrat: ["var(--font-montserrat)", "sans-serif"],
 				roboto: ["var(--font-roboto)", "sans-serif"],

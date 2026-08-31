@@ -1,4 +1,4 @@
-import { Accessibility, Brain, Dumbbell, Flower2, Leaf } from "lucide-react";
+import { Accessibility, Brain, Dumbbell, Leaf } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
@@ -32,11 +32,8 @@ export default function PilatesPage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
 			/>
 			<ModalidadePage.Hero
-				badge="Bem-estar Premium"
 				title="PILATES"
 				description="Equilíbrio entre corpo e mente no ambiente mais completo da região. Fortalecimento, flexibilidade e consciência corporal com tecnologia de ponta e instrutores certificados."
-				accentGradient="from-primary-500 to-orange-700"
-				icon={Flower2}
 				heroImageSrc={HERO_IMAGE}
 				stats={[
 					{ value: "45 min", label: "Duração" },
@@ -59,7 +56,6 @@ export default function PilatesPage() {
 						"Ambiente Climatizado",
 					],
 				}}
-				accentClass="bg-primary-500"
 				imageSrc={ABOUT_IMAGE}
 				statCard={{ value: "45 min", label: "Duração" }}
 			/>
@@ -92,12 +88,10 @@ export default function PilatesPage() {
 						icon: Brain,
 					},
 				]}
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.Classes
 				name="Pilates"
 				description="Na Panobianco Jardim Satélite, o Pilates é ministrado por profissionais qualificados em um ambiente tranquilo e equipado."
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.ContactCta />
 		</ModalidadePage>

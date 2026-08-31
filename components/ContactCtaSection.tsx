@@ -7,21 +7,23 @@ import { WHATSAPP_AULA_EXPERIMENTAL, WHATSAPP_URL } from "@/lib/constants";
 
 export default function ContactCtaSection() {
 	return (
-		<section className="bg-background-dark py-16">
+		<section className="pb-20 pt-6 lg:pb-28 lg:pt-8">
 			<div className="container-main">
-				<div className="rounded-2xl bg-gradient-to-r from-primary-500 to-primary-500/90 p-8 shadow-xl shadow-primary-500/20 md:p-12">
-					<div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-						<div>
-							<h2 className="font-display text-3xl font-semibold uppercase italic text-white">
-								Pronto para começar?
-							</h2>
-							<p className="mt-2 max-w-2xl text-base text-white/90">
-								Visite nossa unidade hoje mesmo e faça uma aula experimental
-								gratuita.
-							</p>
-						</div>
+				{/* Mesmo módulo do banner do quiz: hexágono completo, cor chapada,
+				    tudo empilhado numa coluna. */}
+				<div className="shape-chanfrado relative bg-pb-orange px-10 pb-14 pt-10 text-white md:px-16 md:pb-20 md:pt-14">
+					<div className="relative">
+						<h2 className="font-display text-[3.5rem] leading-[0.96] tracking-tight text-white">
+							Um passo de cada vez, até não parar mais.
+						</h2>
+						<p className="mt-6 text-[1.5rem] leading-tight text-white">
+							A primeira aula é por nossa conta, sem compromisso e sem
+							burocracia na recepção. Venha conhecer a unidade Jardim Satélite,
+							fazer um treino do seu jeito e sentir se o clima combina com a sua
+							rotina. Se combinar, a gente continua daqui.
+						</p>
 
-						<div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+						<div className="mt-8 flex flex-col gap-4 sm:flex-row">
 							<Link
 								href={WHATSAPP_AULA_EXPERIMENTAL}
 								target="_blank"
@@ -29,7 +31,7 @@ export default function ContactCtaSection() {
 								onClick={() =>
 									trackWhatsappClicked("cta_section_aula", "aula_experimental")
 								}
-								className="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-primary-500 transition-colors hover:bg-white/95"
+								className="botao-chanfrado inline-flex items-center justify-center bg-white px-8 py-4 text-sm uppercase tracking-wide text-pb-orange-warm transition-colors hover:bg-pb-off-white"
 							>
 								Solicitar Aula Grátis
 							</Link>
@@ -40,7 +42,7 @@ export default function ContactCtaSection() {
 								onClick={() =>
 									trackWhatsappClicked("cta_section_whatsapp", "support")
 								}
-								className="inline-flex h-12 items-center justify-center rounded-full border border-white/30 bg-black/15 px-6 text-sm font-bold text-white transition-colors hover:bg-black/25"
+								className="botao-chanfrado inline-flex items-center justify-center bg-pb-black px-8 py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-grena"
 							>
 								Falar no WhatsApp
 							</Link>

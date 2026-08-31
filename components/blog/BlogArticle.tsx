@@ -26,40 +26,43 @@ export default function BlogArticle({
 	});
 
 	return (
-		<div className="font-display min-h-screen overflow-x-hidden bg-background-dark text-white">
-			<div className="px-4 py-10 lg:px-10">
+		<div className="font-display min-h-screen overflow-x-hidden bg-pb-off-white text-pb-graphite">
+			<div className="pb-20 pt-10 lg:pb-28 lg:pt-12">
 				<div className="container-main max-w-3xl">
 					{/* Breadcrumb */}
 					<nav
-						className="mb-8 flex items-center gap-2 text-sm text-white/40"
+						className="mb-8 flex items-center gap-2 text-sm text-pb-graphite/70"
 						aria-label="Breadcrumb"
 					>
-						<Link href="/" className="transition-colors hover:text-primary-500">
+						<Link
+							href="/"
+							className="transition-colors hover:text-pb-orange-warm"
+						>
 							Início
 						</Link>
 						<span aria-hidden="true">/</span>
 						<Link
 							href="/blog"
-							className="transition-colors hover:text-primary-500"
+							className="transition-colors hover:text-pb-orange-warm"
 						>
 							Blog
 						</Link>
 						<span aria-hidden="true">/</span>
-						<span className="truncate text-white/25">{headline}</span>
+						<span className="truncate text-pb-graphite/50">{headline}</span>
 					</nav>
 
 					{/* Category badge */}
-					<span className="mb-4 inline-block rounded-full border border-primary-500/20 bg-primary-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.1em] text-primary-500">
+					<span className="selo-chanfrado mb-4 inline-block bg-pb-orange px-3 py-1 text-[10px] uppercase tracking-[0.1em] text-white">
 						{category}
 					</span>
 
 					{/* Title */}
-					<h1 className="mb-6 text-4xl font-semibold leading-none tracking-tight md:text-5xl">
+					<h1 className="mb-6 text-[3.5rem] leading-[0.96] tracking-tight text-pb-black">
 						{headline}
 					</h1>
 
 					{/* Meta */}
-					<div className="mb-12 flex flex-wrap items-center gap-3 text-sm text-white/40">
+					<div className="mb-12 flex flex-wrap items-center gap-3 text-sm text-pb-graphite/70">
 						<span>Panobianco Jardim Satélite</span>
 						<span>·</span>
 						<time dateTime={publishedAt}>{date}</time>
@@ -81,7 +84,7 @@ export default function BlogArticle({
 							source="blog_article"
 							headline="Quer um plano personalizado pra atingir esse objetivo?"
 							subhead="Em 60s, te indicamos qual plano e treino combinam com o que você acabou de ler."
-							ctaLabel="Fazer o Quiz"
+							ctaLabel="Fazer o quiz"
 						/>
 					</div>
 				</div>

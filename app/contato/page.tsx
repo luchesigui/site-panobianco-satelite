@@ -1,5 +1,4 @@
 import {
-	ArrowRight,
 	Clock,
 	Facebook,
 	Instagram,
@@ -36,162 +35,163 @@ export default function Contato() {
 	};
 
 	return (
-		<div className="font-display min-h-screen bg-background-dark text-white antialiased overflow-x-hidden">
+		<div className="font-display min-h-screen overflow-x-hidden bg-pb-off-white text-pb-graphite antialiased">
 			<script
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{
 					__html: JSON.stringify(webPageSchema),
 				}}
 			/>
+
 			{/* Hero */}
-			<section className="relative h-[300px] w-full overflow-hidden md:h-[400px]">
+			{/* Mesma construção da home: foto limpa e o conteúdo dentro do
+			    módulo hexagonal laranja encostado à direita. */}
+			<section className="relative flex min-h-[85vh] items-center overflow-hidden pt-20">
 				<div
 					className="absolute inset-0 bg-cover bg-center"
-					style={{
-						backgroundImage: `linear-gradient(0deg, rgba(24, 18, 16, 1) 0%, rgba(24, 18, 16, 0.5) 60%, rgba(24, 18, 16, 0.2) 100%), url("${heroBg}")`,
-					}}
+					style={{ backgroundImage: `url("${heroBg}")` }}
 				/>
-				<div className="container-main relative flex h-full flex-col justify-end pb-12">
-					<div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary-500">
-						<MapPin className="size-4" />
-						São José dos Campos, SP
+				<div className="container-main relative z-10 flex w-full justify-end">
+					<div className="shape-chanfrado mt-20 w-full max-w-2xl bg-pb-orange px-10 py-14 text-white lg:px-14 lg:py-16">
+						<h1 className="text-[3.5rem] leading-[0.96] tracking-tight">
+							Venha nos visitar no Jardim Satélite
+						</h1>
+						<p className="mt-6 text-[1.5rem] leading-tight">
+							Av. Cidade Jardim, 391, em São José dos Campos. Chega sem
+							compromisso: a gente te mostra a unidade e você sente se o clima
+							combina com a sua rotina.
+						</p>
 					</div>
-					<h1 className="max-w-2xl text-4xl font-semibold leading-[1.1] md:text-6xl">
-						Venha nos visitar no{" "}
-						<span className="text-primary-500">Jardim Satélite</span>
-					</h1>
 				</div>
 			</section>
 
-			{/* Content Grid: Cards + Form */}
-			<section className="container-main py-12">
-				<div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-					{/* Left: Address, Hours, Contact */}
-					<div className="space-y-6 lg:col-span-1">
-						<div className="flex flex-col gap-4 rounded-xl border border-white/10 bg-white/5 p-8">
-							<div className="flex size-12 items-center justify-center rounded-full bg-primary-500/10 text-primary-500">
-								<MapPin className="size-6" />
-							</div>
-							<div>
-								<h3 className="mb-2 text-xl font-bold">Nosso Endereço</h3>
-								<p className="leading-relaxed text-neutral-400">
+			{/* Endereço, horários, contato e formulário */}
+			<section className="bg-pb-off-white pb-6 pt-20 lg:pb-8 lg:pt-28">
+				<div className="container-main">
+					<div className="grid grid-cols-1 gap-8 lg:grid-cols-[2fr_3fr]">
+						{/* Coluna esquerda: endereço, horários e contato */}
+						<div className="space-y-8">
+							<div className="card-hex-light flex flex-col px-12 py-16">
+								<span className="shape-octagon-regular mb-6 flex size-12 items-center justify-center bg-pb-orange text-white">
+									<MapPin className="size-6" />
+								</span>
+								<h2 className="mb-6 text-[3.5rem] leading-none tracking-tight">
+									Nosso endereço
+								</h2>
+								<p className="text-[1.5rem] leading-tight text-pb-graphite/80">
 									Av. Cidade Jardim, 391 - Jardim Satélite
 									<br />
 									São José dos Campos - SP, 12231-675
 								</p>
-							</div>
-							<a
-								href={GOOGLE_MAPS_URL}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="group mt-4 flex h-12 w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 font-bold text-white transition-all hover:bg-white/10"
-							>
-								<ArrowRight className="size-5 text-primary-500 transition-transform group-hover:scale-110" />
-								Ver no Google Maps
-							</a>
-						</div>
-
-						<div className="rounded-xl border border-white/10 bg-white/5 p-8">
-							<div className="mb-6 flex items-center gap-3">
-								<div className="flex size-10 items-center justify-center rounded-full bg-primary-500/10 text-primary-500">
-									<Clock className="size-5" />
-								</div>
-								<h3 className="text-xl font-bold">Funcionamento</h3>
-							</div>
-							<div className="space-y-4">
-								<div className="flex items-center justify-between border-b border-white/5 pb-3">
-									<span className="text-neutral-400">Segunda à Sexta</span>
-									<span className="font-bold">06:00 - 23:00</span>
-								</div>
-								<div className="flex items-center justify-between border-b border-white/5 pb-3">
-									<span className="text-neutral-400">Sábado</span>
-									<span className="font-bold">08:00 - 18:00</span>
-								</div>
-								<div className="flex items-center justify-between">
-									<span className="text-neutral-400">Domingo</span>
-									<span className="font-bold text-primary-500">
-										09:00 - 14:00
-									</span>
-								</div>
-							</div>
-						</div>
-
-						<div className="flex flex-col gap-4 rounded-xl border border-white/10 bg-white/5 p-8">
-							<div className="mb-2 flex items-center gap-3">
-								<div className="flex size-10 items-center justify-center rounded-full bg-primary-500/10 text-primary-500">
-									<Phone className="size-5" />
-								</div>
-								<h3 className="text-xl font-bold">Contato</h3>
-							</div>
-							<div className="flex flex-col gap-3">
 								<a
-									href={`tel:+${WHATSAPP_PHONE}`}
-									className="group flex items-center gap-3 text-neutral-300 transition-colors hover:text-primary-500"
-								>
-									<span className="flex size-8 items-center justify-center rounded-full bg-white/5 transition-colors group-hover:bg-primary-500/20">
-										<Phone className="size-4" />
-									</span>
-									{PHONE_DISPLAY}
-								</a>
-								<a
-									href={WHATSAPP_URL}
+									href={GOOGLE_MAPS_URL}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="group flex items-center gap-3 text-neutral-300 transition-colors hover:text-green-500"
+									className="botao-chanfrado mt-8 inline-flex items-center justify-center self-start bg-pb-orange px-6 py-3 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-orange-warm"
 								>
-									<span className="flex size-8 items-center justify-center rounded-full bg-white/5 transition-colors group-hover:bg-green-500/20">
-										<MessageCircle className="size-4" />
-									</span>
-									WhatsApp Oficial
+									Ver no Google Maps
 								</a>
-								<div className="flex gap-2 pt-2">
-									<a
-										href={INSTAGRAM_URL}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="flex size-10 items-center justify-center rounded-full bg-white/5 text-white/80 transition-colors hover:bg-primary-500 hover:text-white"
-										aria-label="Instagram"
-									>
-										<Instagram className="size-5" />
-									</a>
-									<a
-										href={FACEBOOK_URL}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="flex size-10 items-center justify-center rounded-full bg-white/5 text-white/80 transition-colors hover:bg-primary-500 hover:text-white"
-										aria-label="Facebook"
-									>
-										<Facebook className="size-5" />
-									</a>
-								</div>
 							</div>
-						</div>
-					</div>
 
-					{/* Right: Map + Form */}
-					<div className="lg:col-span-2 flex flex-col gap-8">
-						<div className="group relative h-[420px] w-full overflow-hidden rounded-xl border border-white/10 lg:h-auto lg:min-h-0 lg:flex-1">
-							<Image
-								src={mapImage}
-								alt="Localização Panobianco Jardim Satélite"
-								fill
-								sizes="(max-width: 1024px) 100vw, 66vw"
-								className="object-cover object-center grayscale brightness-50 contrast-125 transition-all duration-700 group-hover:brightness-75"
-							/>
-							<div className="absolute inset-0 flex items-center justify-center">
-								<div className="relative">
-									<div className="absolute inset-0 size-16 animate-ping rounded-full bg-primary-500/40" />
-									<div className="relative flex size-10 items-center justify-center rounded-full border-4 border-white/10 bg-primary-500 shadow-2xl shadow-primary-500/50">
-										<MapPin className="size-5 text-white" />
+							<div className="card-hex-light px-12 py-16">
+								<span className="shape-octagon-regular mb-6 flex size-12 items-center justify-center bg-pb-orange text-white">
+									<Clock className="size-6" />
+								</span>
+								<h2 className="mb-6 text-[3.5rem] leading-none tracking-tight">
+									Funcionamento
+								</h2>
+								<div className="space-y-4">
+									<div className="flex items-center justify-between border-b border-pb-graphite/15 pb-3">
+										<span className="text-pb-graphite/80">Segunda à Sexta</span>
+										<span>06:00 - 23:00</span>
 									</div>
-									<div className="absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-primary-500/50 bg-white/10 px-3 py-1 text-xs font-bold">
-										Panobianco Satélite
+									<div className="flex items-center justify-between border-b border-pb-graphite/15 pb-3">
+										<span className="text-pb-graphite/80">Sábado</span>
+										<span>08:00 - 18:00</span>
+									</div>
+									<div className="flex items-center justify-between">
+										<span className="text-pb-graphite/80">Domingo</span>
+										<span>09:00 - 14:00</span>
 									</div>
 								</div>
 							</div>
+
+							<div className="card-hex-light px-12 py-16">
+								<span className="shape-octagon-regular mb-6 flex size-12 items-center justify-center bg-pb-orange text-white">
+									<Phone className="size-6" />
+								</span>
+								<h2 className="mb-6 text-[3.5rem] leading-none tracking-tight">
+									Contato
+								</h2>
+								<div className="flex flex-col gap-4">
+									<a
+										href={`tel:+${WHATSAPP_PHONE}`}
+										className="flex items-center gap-3 transition-colors hover:text-pb-orange-warm"
+									>
+										<span className="shape-octagon-regular flex size-8 items-center justify-center bg-pb-orange text-white">
+											<Phone className="size-4" />
+										</span>
+										{PHONE_DISPLAY}
+									</a>
+									<a
+										href={WHATSAPP_URL}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="flex items-center gap-3 transition-colors hover:text-pb-orange-warm"
+									>
+										<span className="shape-octagon-regular flex size-8 items-center justify-center bg-pb-orange text-white">
+											<MessageCircle className="size-4" />
+										</span>
+										WhatsApp oficial
+									</a>
+									<div className="flex gap-3 pt-2">
+										<a
+											href={INSTAGRAM_URL}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="shape-octagon-regular flex size-10 items-center justify-center bg-pb-orange text-white transition-colors hover:bg-pb-orange-warm"
+											aria-label="Instagram"
+										>
+											<Instagram className="size-5" />
+										</a>
+										<a
+											href={FACEBOOK_URL}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="shape-octagon-regular flex size-10 items-center justify-center bg-pb-orange text-white transition-colors hover:bg-pb-orange-warm"
+											aria-label="Facebook"
+										>
+											<Facebook className="size-5" />
+										</a>
+									</div>
+								</div>
+							</div>
 						</div>
 
-						<ContactForm />
+						{/* Coluna direita: mapa e formulário */}
+						<div className="flex flex-col gap-8">
+							<div className="shape-chanfrado group relative h-[420px] w-full lg:h-auto lg:min-h-0 lg:flex-1">
+								<Image
+									src={mapImage}
+									alt="Localização Panobianco Jardim Satélite"
+									fill
+									sizes="(max-width: 1024px) 100vw, 66vw"
+									className="object-cover object-center opacity-80 grayscale transition-all duration-700 group-hover:opacity-100 group-hover:grayscale-0"
+								/>
+								<div className="botao-chanfrado absolute left-1/2 top-1/2 z-20 flex -translate-x-1/2 -translate-y-1/2 items-center gap-3 bg-pb-orange p-4 text-white">
+									<MapPin className="size-6" />
+									<div className="text-xs leading-none">
+										ENCONTRE-NOS AQUI
+										<br />
+										<span className="text-[10px] opacity-80">
+											Jardim Satélite, SJC
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<ContactForm />
+						</div>
 					</div>
 				</div>
 			</section>

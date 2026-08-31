@@ -1,103 +1,67 @@
-import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import SchedulingLink from "@/components/SchedulingLink";
 
 export type ModalidadeHeroProps = {
-	badge?: string;
 	title: string;
 	titleHighlight?: string;
 	subtitle?: string;
 	description: string;
-	accentGradient: string;
-	icon?: LucideIcon;
-	heroImageSrc?: string;
+	heroImageSrc: string;
 	stats?: { value: string; label: string }[];
 };
 
 export default function ModalidadeHero({
-	badge,
 	title,
 	titleHighlight,
 	subtitle,
 	description,
-	accentGradient,
-	icon: Icon,
 	heroImageSrc,
 	stats,
 }: ModalidadeHeroProps) {
 	return (
-		<section className="relative flex min-h-[85vh] items-end overflow-hidden pt-32 pb-20">
-			{heroImageSrc && (
-				<>
-					<div className="absolute inset-0 z-0">
-						<Image
-							src={heroImageSrc}
-							alt=""
-							fill
-							className="object-cover object-center"
-							priority
-							sizes="(max-width: 1280px) 100vw, 1280px"
-						/>
-						<div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent" />
-					</div>
-				</>
-			)}
-			{!heroImageSrc && (
-				<div
-					className={`absolute inset-0 z-0 bg-gradient-to-br ${accentGradient}`}
+		// Mesma construção da home: foto limpa, sem véu, e todo o conteúdo
+		// dentro do módulo hexagonal laranja encostado à direita.
+		<section className="relative flex min-h-screen items-center overflow-hidden pt-20">
+			<div className="absolute inset-0 z-0">
+				<Image
+					src={heroImageSrc}
+					alt=""
+					fill
+					className="object-cover object-center"
+					priority
+					sizes="100vw"
 				/>
-			)}
+			</div>
 
-			<div className="container-main relative z-10 w-full">
-				<div className="max-w-2xl">
-					{!heroImageSrc && Icon && (
-						<div className="mb-6 flex justify-center">
-							<div className="flex size-20 items-center justify-center rounded-full bg-white/20">
-								<Icon className="size-10 text-white" />
-							</div>
-						</div>
-					)}
-					{badge && (
-						<span className="mb-6 inline-block rounded-full border border-primary-500/30 bg-primary-500/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary-500">
-							{badge}
-						</span>
-					)}
-					<h1 className="mb-6 text-6xl font-semibold uppercase leading-tight tracking-tighter text-white md:text-8xl">
+			<div className="container-main relative z-10 flex w-full justify-end">
+				<div className="shape-chanfrado mt-20 w-full max-w-2xl bg-pb-orange px-10 py-14 text-white lg:px-14 lg:py-16">
+					<h1 className="mb-6 text-[3.5rem] leading-[0.96] tracking-tight">
 						{title}
-						{titleHighlight != null && (
-							<>
-								{" "}
-								<span className="italic text-primary-500">
-									{titleHighlight}
-								</span>
-							</>
-						)}
+						{titleHighlight != null && <> {titleHighlight}</>}
 					</h1>
-					{subtitle && <p className="mb-2 text-lg text-white/90">{subtitle}</p>}
-					<p className="mb-8 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl">
-						{description}
-					</p>
-					<div className="flex flex-col gap-4 sm:flex-row">
-						<SchedulingLink className="inline-flex items-center justify-center gap-2 rounded-full bg-primary-500 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-primary-500/20 transition-all hover:bg-primary-500/90">
-							Agendar Aula Experimental
+					{subtitle && (
+						<p className="mb-2 text-[1.5rem] leading-tight">{subtitle}</p>
+					)}
+					<p className="text-[1.5rem] leading-tight">{description}</p>
+					<div className="mt-8 flex flex-col gap-4 sm:flex-row">
+						<SchedulingLink className="botao-chanfrado inline-flex items-center justify-center bg-white px-8 py-4 text-sm uppercase tracking-wide text-pb-orange-warm transition-colors hover:bg-pb-off-white">
+							Agendar aula experimental
 						</SchedulingLink>
 						<Link
 							href="/aulas-coletivas"
-							className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition-all hover:bg-white/20"
+							className="botao-chanfrado inline-flex items-center justify-center bg-pb-black px-8 py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-grena"
 						>
-							Ver Outras Aulas
+							Ver outras aulas
 						</Link>
 					</div>
 					{stats && stats.length > 0 && (
-						<div className="mt-10 flex flex-wrap items-center gap-6">
+						<div className="mt-10 flex flex-wrap items-center gap-10">
 							{stats.map((s) => (
 								<div key={s.label} className="flex flex-col">
-									<span className="text-2xl font-black text-white md:text-3xl">
-										{s.value}
-									</span>
-									<span className="text-xs font-bold uppercase tracking-widest text-primary-500">
+									<span className="text-[1.5rem] leading-none">{s.value}</span>
+									<span className="mt-1 text-xs uppercase tracking-widest text-white/80">
 										{s.label}
 									</span>
 								</div>

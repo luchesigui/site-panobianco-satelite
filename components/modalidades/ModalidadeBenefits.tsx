@@ -10,39 +10,43 @@ export type ModalidadeBenefitsProps = {
 	title: string;
 	subtitle?: string;
 	benefits: BenefitItem[];
-	accentClass: string;
 };
 
 export default function ModalidadeBenefits({
 	title,
 	subtitle,
 	benefits,
-	accentClass,
 }: ModalidadeBenefitsProps) {
 	return (
-		<section className="border-y border-white/5 bg-white/[0.02] py-24">
+		// Mesma faixa da seção "Aqui, o básico é bem feito." da home:
+		// superfície grená com os cards laranja em degradê por cima.
+		<section className="bg-pb-grena py-20 lg:py-28">
 			<div className="container-main">
-				<div className="mb-16 text-center">
-					<h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+				<div className="mb-[7.5rem] text-center">
+					<h2 className="font-display text-[3.5rem] leading-none text-white">
 						{title}
 					</h2>
 					{subtitle && (
-						<p className="mx-auto mt-4 max-w-xl text-white/60">{subtitle}</p>
+						<p className="mx-auto mt-6 max-w-2xl text-[1.5rem] leading-tight text-white/80">
+							{subtitle}
+						</p>
 					)}
 				</div>
-				<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+				<div className="grid gap-8 grid-cols-[repeat(auto-fit,minmax(min(520px,100%),1fr))]">
 					{benefits.map((b) => {
 						const Icon = b.icon;
 						return (
 							<div
 								key={b.title}
-								className="glass-card group rounded-2xl p-8 transition-all hover:border-primary-500/50"
+								className="card-hex-orange font-display px-12 py-16 text-white"
 							>
-								<div className="mb-6 flex size-14 items-center justify-center rounded-full bg-primary-500/10 transition-colors group-hover:bg-primary-500">
-									<Icon className="size-7 text-primary-500 transition-colors group-hover:text-white" />
-								</div>
-								<h3 className="mb-3 text-xl font-bold text-white">{b.title}</h3>
-								<p className="text-sm leading-relaxed text-white/60">
+								<span className="shape-octagon-regular mb-6 flex size-12 items-center justify-center bg-white/20 text-white">
+									<Icon className="size-6" />
+								</span>
+								<h3 className="mb-6 text-[3.5rem] leading-none tracking-tight">
+									{b.title}
+								</h3>
+								<p className="text-[1.5rem] leading-tight text-white/90">
 									{b.description}
 								</p>
 							</div>

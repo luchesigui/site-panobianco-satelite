@@ -1,4 +1,4 @@
-import { Activity, Flame, Heart, Users, Zap } from "lucide-react";
+import { Flame, Heart, Users, Zap } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
@@ -37,12 +37,9 @@ export default function WolfFitPage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
 			/>
 			<ModalidadePage.Hero
-				badge="Alta Performance"
 				title="WOLF"
 				titleHighlight="FIT"
 				description="O treino funcional de alta intensidade que combina força, cardio e agilidade para transformar seu corpo e mente. Experimente a energia do Wolf Fit."
-				accentGradient="from-primary-500 to-orange-700"
-				icon={Activity}
 				heroImageSrc={HERO_IMAGE}
 				stats={[
 					{ value: "30 min", label: "Duração" },
@@ -56,7 +53,6 @@ export default function WolfFitPage() {
 					"O Wolf Fit é uma modalidade exclusiva de treinamento funcional de alta intensidade (HIIT). Combinando exercícios dinâmicos, movimentos naturais do corpo e equipamentos específicos, as aulas são projetadas para queimar calorias, aumentar a resistência e fortalecer toda a musculatura em um ambiente motivador e coletivo.",
 					"Cada sessão é um novo desafio, focado em resultados reais e na superação dos seus limites. Se você busca intensidade, comunidade e uma transformação visível, o Wolf Fit é o seu lugar.",
 				]}
-				accentClass="bg-primary-500"
 				imageSrc={ABOUT_IMAGE}
 				statCard={{ value: "30 min", label: "Duração" }}
 			/>
@@ -89,7 +85,6 @@ export default function WolfFitPage() {
 						icon: Users,
 					},
 				]}
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.About
 				title="Elementos da"
@@ -103,14 +98,12 @@ export default function WolfFitPage() {
 					"Foco em movimentos naturais e multiarticulares",
 					"Ritmo intenso e motivador",
 				]}
-				accentClass="bg-primary-500"
 				imageSrc={CARIOCA_IMAGES}
 				imagePosition="left"
 			/>
 			<ModalidadePage.Classes
 				name="Wolf Fit"
 				description="O Wolf Fit na Panobianco Satélite traz a ginga e a energia carioca para São José dos Campos."
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.ContactCta />
 		</ModalidadePage>

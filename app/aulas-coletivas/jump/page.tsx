@@ -1,4 +1,4 @@
-import { Activity, Flame, Shield, Target, Zap } from "lucide-react";
+import { Flame, Shield, Target, Zap } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
@@ -32,11 +32,8 @@ export default function JumpPage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
 			/>
 			<ModalidadePage.Hero
-				badge="Alta Intensidade"
 				title="JUMP"
 				description="Aumente sua energia e queime até 600 calorias em uma aula super dinâmica sobre o mini-trampolim. O treino perfeito para quem busca diversão, ritmo e resultados rápidos."
-				accentGradient="from-primary-500 to-orange-700"
-				icon={Activity}
 				heroImageSrc={HERO_IMAGE}
 				stats={[
 					{ value: "45 min", label: "Duração" },
@@ -50,7 +47,6 @@ export default function JumpPage() {
 					"O Jump é uma aula de ginástica aeróbica realizada sobre um mini-trampolim. Através de coreografias motivantes e simples, você trabalha o corpo todo.",
 					"A aula é estruturada para elevar sua frequência cardíaca de forma segura, alternando picos de esforço com momentos de recuperação ativa, garantindo uma queima calórica massiva enquanto você se diverte ao som dos melhores hits.",
 				]}
-				accentClass="bg-primary-500"
 				imageSrc={ABOUT_IMAGE}
 				statCard={{ value: "45 min", label: "Duração" }}
 			/>
@@ -82,7 +78,6 @@ export default function JumpPage() {
 						icon: Zap,
 					},
 				]}
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.About
 				title="Segurança e"
@@ -96,14 +91,12 @@ export default function JumpPage() {
 					"Equipamento Premium",
 					"Postura Correta",
 				]}
-				accentClass="bg-primary-500"
 				imageSrc="/images/aulas-coletivas/jump/jump-small-2.jpg"
 				imagePosition="left"
 			/>
 			<ModalidadePage.Classes
 				name="Jump"
 				description="As aulas de Jump na Panobianco Jardim Satélite são realizadas com mini-trampolins de qualidade e instrutores que garantem sua segurança e evolução."
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.ContactCta />
 		</ModalidadePage>

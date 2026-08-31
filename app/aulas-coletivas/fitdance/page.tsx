@@ -1,4 +1,4 @@
-import { Activity, Flame, Music, Smile, Users } from "lucide-react";
+import { Activity, Flame, Smile, Users } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
@@ -35,12 +35,9 @@ export default function FitDancePage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
 			/>
 			<ModalidadePage.Hero
-				badge="Aulas Coletivas"
 				title="FIT"
 				titleHighlight="DANCE"
 				description="Mova-se, divirta-se e transforme o seu treino em uma verdadeira festa. A modalidade que une coreografias contagiantes com alto gasto calórico."
-				accentGradient="from-primary-500 to-orange-700"
-				icon={Music}
 				heroImageSrc={HERO_IMAGE}
 				stats={[
 					{ value: "45 min", label: "Duração" },
@@ -62,7 +59,6 @@ export default function FitDancePage() {
 						"Instrutores certificados pela marca",
 					],
 				}}
-				accentClass="bg-primary-500"
 				imageSrc={ABOUT_IMAGES}
 				statCard={{ value: "45 min", label: "Duração" }}
 			/>
@@ -95,12 +91,10 @@ export default function FitDancePage() {
 						icon: Users,
 					},
 				]}
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.Classes
 				name="FitDance"
 				description="Na Panobianco Jardim Satélite, nossas aulas de FitDance são conduzidas por instrutores certificados que trazem toda a energia para você se soltar."
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.ContactCta />
 		</ModalidadePage>

@@ -2,12 +2,9 @@ import {
 	Check,
 	ChevronDown,
 	Clock,
-	Crown,
 	MapPin,
 	MessageCircle,
-	Star,
 	X,
-	Zap,
 } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -27,7 +24,7 @@ import { promoOrangeFlag } from "@/lib/flags";
 export const metadata: Metadata = {
 	title: "Planos | Panobianco Jardim Satélite",
 	description:
-		"Compare os planos da unidade Jardim Satélite: Orange Anual, Platinum Recorrente e Avulso. Escolha o ideal para sua evolução.",
+		"Orange Anual, Platinum Recorrente e Avulso na unidade Jardim Satélite. Dropa o peso, não a vontade — escolha o plano que cabe na sua rotina.",
 	alternates: { canonical: "/planos" },
 };
 
@@ -36,7 +33,7 @@ const webPageSchema = {
 	"@type": "WebPage",
 	name: "Planos | Panobianco Jardim Satélite",
 	description:
-		"Compare os planos da unidade Jardim Satélite: Orange Anual, Platinum Recorrente e Avulso. Escolha o ideal para sua evolução.",
+		"Orange Anual, Platinum Recorrente e Avulso na unidade Jardim Satélite. Escolha o plano que cabe na sua rotina.",
 	url: `${SITE_URL}/planos`,
 };
 
@@ -127,7 +124,7 @@ export default async function Planos() {
 	const isPromoB = await promoOrangeFlag();
 
 	return (
-		<div className="font-display min-h-screen bg-background-dark text-white overflow-x-hidden">
+		<div className="font-display min-h-screen overflow-x-hidden bg-pb-off-white text-pb-graphite">
 			<script
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{
@@ -146,324 +143,325 @@ export default async function Planos() {
 					__html: JSON.stringify(plansSchema),
 				}}
 			/>
-			<main className="relative overflow-hidden pb-24 pt-16">
-				{/* Decorative background */}
-				<div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-full -translate-x-1/2 bg-gradient-to-b from-primary-500/10 to-transparent" />
-				<div className="pointer-events-none absolute -right-24 -top-24 size-96 rounded-full bg-primary-500/10 blur-[120px]" />
-				<div className="pointer-events-none absolute -left-24 top-1/2 size-72 rounded-full bg-primary-500/5 blur-[100px]" />
-
-				<div className="container-main relative">
-					{/* Hero */}
-					<div className="mx-auto mb-16 max-w-3xl text-center">
-						<span className="mb-4 inline-block rounded-full bg-primary-500/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-primary-500">
-							Unidade Jardim Satélite
-						</span>
-						<h1 className="mb-6 text-4xl font-semibold leading-[1.1] tracking-tight md:text-6xl">
-							Escolha o plano ideal para sua{" "}
-							<span className="italic text-primary-500">evolução</span>
-						</h1>
-						<p className="text-lg text-stone-400">
-							Treine na melhor infraestrutura de São José dos Campos com
-							equipamentos de última geração e ambiente climatizado.
-						</p>
+			<main>
+				{/* Hero */}
+				{/* Sem foto de topo: o bloco hexagonal laranja carrega a chamada,
+				    com folga para o header fixo de 80px. */}
+				<section className="bg-pb-off-white pb-12 pt-20 lg:pb-14 lg:pt-28">
+					<div className="container-main">
+						<div className="shape-chanfrado bg-pb-orange px-10 py-14 text-white lg:px-14 lg:py-16">
+							<h1 className="text-[3.5rem] leading-[0.96] tracking-tight">
+								Escolha o plano que cabe na sua rotina
+							</h1>
+							<p className="mt-6 max-w-3xl text-[1.5rem] leading-tight">
+								Feitos de força e vontade. Sem letra miúda, sem surpresa na
+								recepção, só o treino que você veio fazer.
+							</p>
+						</div>
 					</div>
+				</section>
 
-					{/* Pricing Grid */}
-					<div className="mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-6 md:grid-cols-3">
-						{/* Orange Anual — A/B test: variante B exibe promoção R$0,99 primeiro mês */}
-						{isPromoB ? (
-							<article className="group relative flex flex-col rounded-xl border border-white/5 bg-white/5 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary-500/40 dark:bg-[#1e1411]">
-								<div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 rounded-full bg-primary-500 px-4 py-1 text-[10px] font-black uppercase tracking-widest text-white shadow-lg">
-									PROMOÇÃO
-								</div>
-								<div className="mb-8 mt-2">
-									<div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-primary-500/20 text-primary-500">
-										<Crown className="size-5" />
-									</div>
-									<h3 className="mb-2 text-2xl font-bold">Orange Anual</h3>
-									<p className="text-sm font-medium text-stone-400">
-										Plano com fidelidade de 12 meses.
+				{/* Grade de planos */}
+				{/* Full-bleed em três faixas coladas no padrão visual da home: Orange em
+				    laranja, Platinum em grená e Avulso em preto. */}
+				<section
+					id="planos-grade"
+					className="grid grid-cols-1 lg:grid-cols-3"
+				>
+					{/* Orange Anual — A/B test: variante B exibe promoção R$0,99 primeiro mês */}
+					<div className="flex flex-col bg-pb-orange px-10 py-16 text-white lg:px-12 lg:py-24">
+						<div className="flex items-start justify-between gap-4">
+							<h2 className="text-[3.5rem] uppercase leading-[0.98] tracking-tight">
+								Plano
+								<br />
+								Orange Anual
+							</h2>
+							{isPromoB && (
+								<span className="rounded bg-pb-black px-3 py-1 text-xs uppercase tracking-wider text-white">
+									Promoção
+								</span>
+							)}
+						</div>
+
+						<p className="mt-4 text-sm leading-snug text-white/90">
+							Plano com fidelidade de 12 meses.
+						</p>
+
+						<ul className="mt-10 space-y-4">
+							{orangeBenefits.map((item) => (
+								<li
+									key={item}
+									className="flex items-start gap-3 text-sm leading-snug"
+								>
+									<Check className="mt-0.5 size-4 shrink-0" strokeWidth={1.5} />
+									<span>{item}</span>
+								</li>
+							))}
+							<li className="flex items-start gap-3 text-sm leading-snug text-white/70">
+								<X className="mt-0.5 size-4 shrink-0" strokeWidth={1.5} />
+								<span>{orangeExclude}</span>
+							</li>
+						</ul>
+
+						<div className="mt-auto pt-16 leading-none">
+							{isPromoB ? (
+								<div>
+									<p className="leading-none">
+										<span className="text-[3rem] font-bold">R$ 0,99</span>
+										<span className="text-sm uppercase">/1ª mensalidade</span>
 									</p>
-								</div>
-								<div className="mb-8">
-									<div className="flex items-baseline gap-1">
-										<span className="text-sm font-medium text-stone-400">
-											R$
-										</span>
-										<span className="text-5xl font-black text-primary-500">
-											0,99
-										</span>
-										<span className="ml-1 text-sm font-semibold leading-tight text-stone-300">
-											na 1ª mensalidade
-										</span>
-									</div>
-									<p className="mt-1 text-sm text-stone-400">
-										R$119,90/mês a partir da 2ª mensalidade
+									<p className="mt-2 text-xs text-white/90">
+										R$ 119,90/mês a partir da 2ª mensalidade
 									</p>
-									<span className="mt-2 inline-block rounded-full bg-primary-500/10 px-3 py-0.5 text-xs font-bold text-primary-500">
+									<span className="mt-2 inline-block rounded bg-pb-black px-2.5 py-1 text-[11px] uppercase tracking-wider text-white">
 										Válido até 30/06/2026
 									</span>
 								</div>
-								<div className="mb-4 text-sm font-bold uppercase tracking-wider">
-									Inclui:
-								</div>
-								<ul className="mb-10 flex-grow space-y-3">
-									{orangeBenefits.map((item) => (
-										<li key={item} className="flex items-start gap-3 text-sm">
-											<Check className="size-5 shrink-0 text-primary-500" />
-											<span>{item}</span>
-										</li>
-									))}
-									<li className="flex items-start gap-3 text-sm text-primary-500">
-										<X className="size-5 shrink-0" />
-										<span>{orangeExclude}</span>
-									</li>
-								</ul>
-								<p className="mb-4 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
-									Válido para quem não teve contrato promocional nos últimos 12
-									meses. Em caso de cancelamento antes de 1 ano, a multa é de
-									20% do restante do contrato.
+							) : (
+								<p className="leading-none">
+									<span className="text-[3rem] font-bold">R$ 119,90</span>
+									<span className="text-sm">/MÊS</span>
 								</p>
-								<PlanCTAButton
-									plan="orange"
-									href="/checkout/orange"
-									destination="checkout"
-									className="mt-auto flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all hover:bg-primary-500/90"
-								>
-									Assinar Agora
-								</PlanCTAButton>
-							</article>
-						) : (
-							<article className="group flex flex-col rounded-xl border border-white/5 bg-white/5 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 dark:bg-[#1e1411]">
-								<div className="mb-8">
-									<div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-primary-500/20 text-primary-500">
-										<Crown className="size-5" />
-									</div>
-									<h3 className="mb-2 text-2xl font-bold">Orange Anual</h3>
-									<p className="text-sm font-medium text-stone-400">
-										Plano com fidelidade de 12 meses.
-									</p>
-								</div>
-								<div className="mb-8 flex items-baseline gap-1">
-									<span className="text-sm font-medium text-stone-400">R$</span>
-									<span className="text-5xl font-black text-primary-500">
-										119,90
-									</span>
-									<span className="text-sm font-medium text-stone-400">
-										/mês
-									</span>
-								</div>
-								<div className="mb-4 text-sm font-bold uppercase tracking-wider">
-									Inclui:
-								</div>
-								<ul className="mb-10 flex-grow space-y-3">
-									{orangeBenefits.map((item) => (
-										<li key={item} className="flex items-start gap-3 text-sm">
-											<Check className="size-5 shrink-0 text-primary-500" />
-											<span>{item}</span>
-										</li>
-									))}
-									<li className="flex items-start gap-3 text-sm text-primary-500">
-										<X className="size-5 shrink-0" />
-										<span>{orangeExclude}</span>
-									</li>
-								</ul>
-								<p className="mb-4 text-center text-[10px] font-bold uppercase tracking-widest text-stone-500">
-									Válido para quem não teve contrato promocional nos últimos 12
-									meses. Em caso de cancelamento antes de 1 ano, a multa é de
-									20% do restante do contrato.
-								</p>
-								<PlanCTAButton
-									plan="orange"
-									href="/checkout/orange"
-									destination="checkout"
-									className="mt-auto flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all hover:bg-primary-500/90"
-								>
-									Assinar Agora
-								</PlanCTAButton>
-							</article>
-						)}
+							)}
+						</div>
 
-						{/* Platinum Recorrente - MAIS VANTAJOSO */}
-						<article className="group relative flex flex-col rounded-xl border border-white/5 bg-white/5 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 dark:bg-[#1e1411]">
-							<div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 rounded-full bg-primary-500 px-4 py-1 text-[10px] font-black uppercase tracking-widest text-white shadow-lg">
-								MAIS VANTAJOSO
-							</div>
-							<div className="mb-8 mt-2">
-								<div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-primary-500/20 text-primary-500">
-									<Star className="size-5" />
-								</div>
-								<h3 className="mb-2 text-2xl font-bold">
-									Plano Platinum (recorrente)
-								</h3>
-								<p className="text-sm text-stone-400">
-									Débito automático, sem taxas e sem fidelidade.
-								</p>
-							</div>
-							<div className="mb-8 flex items-baseline gap-1">
-								<span className="text-sm font-medium text-stone-400">R$</span>
-								<span className="text-5xl font-black text-primary-500">
-									139,90
-								</span>
-								<span className="text-sm font-medium text-stone-400">/mês</span>
-							</div>
-							<div className="mb-4 text-sm font-bold uppercase tracking-wider">
-								Inclui:
-							</div>
-							<ul className="mb-10 flex-grow space-y-3">
-								{platinumBenefits.map((item) => (
-									<li key={item} className="flex items-start gap-3 text-sm">
-										<Check className="size-5 shrink-0 text-primary-500" />
-										<span>{item}</span>
-									</li>
-								))}
-							</ul>
-							<PlanCTAButton
-								plan="platinum"
-								href="/checkout/platinum"
-								destination="checkout"
-								className="mt-auto flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all hover:bg-primary-500/90"
-							>
-								Assinar Agora
-							</PlanCTAButton>
-						</article>
+						<PlanCTAButton
+							plan="orange"
+							href="/checkout/orange"
+							destination="checkout"
+							className="mt-6 flex items-center justify-center rounded-md bg-white px-8 py-4 text-lg font-medium text-pb-orange transition-colors hover:bg-pb-off-white"
+						>
+							Contratar agora
+						</PlanCTAButton>
 
-						{/* Plano Avulso */}
-						<article className="group flex flex-col rounded-xl border border-white/5 bg-white/5 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 dark:bg-[#1e1411]">
-							<div className="mb-8">
-								<div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-primary-500/20 text-primary-500">
-									<Zap className="size-5" />
-								</div>
-								<h3 className="mb-2 text-2xl font-bold">Plano Avulso</h3>
-								<p className="text-sm text-stone-400">
-									Você paga só o mês que usar, por pix, débito ou dinheiro
-									direto na recepção.
-								</p>
-							</div>
-							<div className="mb-8 flex items-baseline gap-1">
-								<span className="text-sm font-medium text-stone-400">R$</span>
-								<span className="text-5xl font-black text-primary-500">
-									159,90
-								</span>
-								<span className="text-sm font-medium text-stone-400">/mês</span>
-							</div>
-							<div className="mb-4 text-sm font-bold uppercase tracking-wider">
-								Benefícios:
-							</div>
-							<ul className="mb-10 flex-grow space-y-3">
-								{avulsoBenefits.map((item) => (
-									<li key={item} className="flex items-start gap-3 text-sm">
-										<Check className="size-5 shrink-0 text-primary-500" />
-										<span>{item}</span>
-									</li>
-								))}
-								<li className="flex items-start gap-3 text-sm text-primary-500">
-									<X className="size-5 shrink-0" />
-									<span>{avulsoExclude}</span>
-								</li>
-							</ul>
-							<PlanCTAButton
-								plan="avulso"
-								href={WHATSAPP_AVULSO}
-								destination="whatsapp"
-								className="mt-auto flex w-full items-center justify-center rounded-full bg-primary-500 py-4 font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all hover:bg-primary-500/90"
-							>
-								Falar no WhatsApp
-							</PlanCTAButton>
-						</article>
+						<div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-2 border-t border-white/40 pt-6 text-xs leading-snug">
+							<span>Fidelidade de 12 meses</span>
+							<span>Sem taxa de adesão</span>
+							<span>Sem taxa de anuidade</span>
+							<span>Pagamento por crédito recorrente</span>
+							<span className="col-span-2 text-white/80 text-[11px] mt-1">
+								*Válido para quem não teve contrato promocional nos últimos 12 meses. Em caso de cancelamento antes de 1 ano, multa rescisória de 20% do saldo restante.
+							</span>
+						</div>
 					</div>
 
-					{/* Quiz CTA — Pós-grid (resgate de indecisão) */}
-					<div className="mx-auto mt-16 max-w-5xl">
+					{/* Platinum Recorrente — mais vantajoso */}
+					<div className="flex flex-col bg-pb-grena px-10 py-16 text-white lg:px-12 lg:py-24">
+						<div className="flex items-start justify-between gap-4">
+							<h2 className="text-[3.5rem] uppercase leading-[0.98] tracking-tight">
+								Plano
+								<br />
+								Platinum
+							</h2>
+							<span className="rounded bg-pb-orange px-3 py-1 text-xs uppercase tracking-wider text-white">
+								Mais vantajoso
+							</span>
+						</div>
+
+						<p className="mt-4 text-sm leading-snug text-white/90">
+							Débito automático, sem taxas e sem fidelidade.
+						</p>
+
+						<ul className="mt-10 space-y-4">
+							{platinumBenefits.map((item) => (
+								<li
+									key={item}
+									className="flex items-start gap-3 text-sm leading-snug"
+								>
+									<Check className="mt-0.5 size-4 shrink-0" strokeWidth={1.5} />
+									<span>{item}</span>
+								</li>
+							))}
+						</ul>
+
+						<div className="mt-auto pt-16 leading-none">
+							<p className="leading-none">
+								<span className="text-[3rem] font-bold">R$ 139,90</span>
+								<span className="text-sm">/MÊS</span>
+							</p>
+						</div>
+
+						<PlanCTAButton
+							plan="platinum"
+							href="/checkout/platinum"
+							destination="checkout"
+							className="mt-6 flex items-center justify-center rounded-md bg-white px-8 py-4 text-lg font-medium text-pb-grena transition-colors hover:bg-pb-off-white"
+						>
+							Contratar agora
+						</PlanCTAButton>
+
+						<div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-2 border-t border-white/40 pt-6 text-xs leading-snug">
+							<span>Sem fidelidade</span>
+							<span>Sem taxa de adesão</span>
+							<span>Sem taxa de anuidade</span>
+							<span>Sem taxa de cancelamento</span>
+							<span className="col-span-2 text-white/80 text-[11px] mt-1">
+								*Acesso livre e ilimitado a todas as unidades da rede Panobianco.
+							</span>
+						</div>
+					</div>
+
+					{/* Plano Avulso */}
+					<div className="flex flex-col bg-pb-black px-10 py-16 text-white lg:px-12 lg:py-24">
+						<h2 className="text-[3.5rem] uppercase leading-[0.98] tracking-tight">
+							Plano
+							<br />
+							Avulso
+						</h2>
+
+						<p className="mt-4 text-sm leading-snug text-white/90">
+							Você paga só o mês que usar, por pix, débito ou dinheiro direto na recepção.
+						</p>
+
+						<ul className="mt-10 space-y-4">
+							{avulsoBenefits.map((item) => (
+								<li
+									key={item}
+									className="flex items-start gap-3 text-sm leading-snug"
+								>
+									<Check className="mt-0.5 size-4 shrink-0" strokeWidth={1.5} />
+									<span>{item}</span>
+								</li>
+							))}
+							<li className="flex items-start gap-3 text-sm leading-snug text-white/70">
+								<X className="mt-0.5 size-4 shrink-0" strokeWidth={1.5} />
+								<span>{avulsoExclude}</span>
+							</li>
+						</ul>
+
+						<div className="mt-auto pt-16 leading-none">
+							<p className="leading-none">
+								<span className="text-[3rem] font-bold">R$ 159,90</span>
+								<span className="text-sm">/MÊS</span>
+							</p>
+						</div>
+
+						<PlanCTAButton
+							plan="avulso"
+							href={WHATSAPP_AVULSO}
+							destination="whatsapp"
+							className="mt-6 flex items-center justify-center rounded-md bg-white px-8 py-4 text-lg font-medium text-pb-black transition-colors hover:bg-pb-off-white"
+						>
+							Falar no WhatsApp
+						</PlanCTAButton>
+
+						<div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-2 border-t border-white/40 pt-6 text-xs leading-snug">
+							<span>Sem contrato</span>
+							<span>Sem fidelidade</span>
+							<span>Pagamento mensal avulso</span>
+							<span>Pix, débito ou dinheiro</span>
+							<span className="col-span-2 text-white/80 text-[11px] mt-1">
+								*Renovação presencial mensal diretamente na recepção da academia.
+							</span>
+						</div>
+					</div>
+				</section>
+
+				{/* Quiz CTA — pós-grade (resgate de indecisão) */}
+				<section className="bg-pb-off-white pb-12 pt-10 lg:pb-14 lg:pt-12">
+					<div className="container-main">
 						<QuizCtaCard
 							variant="default"
 							source="planos_pos_grid"
 							headline="Ainda na dúvida?"
-							subhead="Em 60 segundos, te ajudamos a escolher o plano certo — sem compromisso, com recomendação personalizada por e-mail."
-							ctaLabel="Fazer o Quiz"
+							subhead="Em 60 segundos, te ajudamos a escolher o plano certo, sem compromisso, com a recomendação personalizada chegando no seu e-mail."
+							ctaLabel="Fazer o quiz"
 						/>
 					</div>
+				</section>
 
-					{/* Info cards: Horários, Localização, Dúvidas */}
-					<div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-3">
-						<div className="flex flex-col items-center rounded-[2rem] border border-white/5 bg-white/5 p-8 text-center">
-							<div className="mb-6 flex size-12 items-center justify-center rounded-full bg-primary-500/20 text-primary-500">
-								<Clock className="size-6" />
+				{/* Horários, localização e dúvidas */}
+				<section className="bg-pb-off-white pb-12 pt-10 lg:pb-14 lg:pt-12">
+					<div className="container-main">
+						<div className="grid gap-8 grid-cols-[repeat(auto-fit,minmax(min(380px,100%),1fr))]">
+							<div className="card-hex-light px-12 py-16">
+								<span className="shape-octagon-regular mb-6 flex size-12 items-center justify-center bg-pb-orange text-white">
+									<Clock className="size-6" />
+								</span>
+								<h2 className="mb-6 text-[3.5rem] leading-none tracking-tight">
+									Horários
+								</h2>
+								<div className="space-y-1 text-pb-graphite/80">
+									<p>Seg a Sex: 06h às 23h</p>
+									<p>Sáb: 08h às 18h</p>
+									<p>Dom: 09h às 14h</p>
+								</div>
 							</div>
-							<h4 className="mb-4 text-xl font-bold">Horários</h4>
-							<div className="space-y-1 text-sm text-stone-400">
-								<p>Seg a Sex: 06h às 23h</p>
-								<p>Sáb: 08h às 18h</p>
-								<p>Dom: 09h às 14h</p>
+							<div className="card-hex-light px-12 py-16">
+								<span className="shape-octagon-regular mb-6 flex size-12 items-center justify-center bg-pb-orange text-white">
+									<MapPin className="size-6" />
+								</span>
+								<h2 className="mb-6 text-[3.5rem] leading-none tracking-tight">
+									Localização
+								</h2>
+								<div className="space-y-1 text-pb-graphite/80">
+									<p>Av. Cidade Jardim, 391 - Jardim Satélite</p>
+									<p>São José dos Campos - SP, 12231-675</p>
+								</div>
 							</div>
-						</div>
-						<div className="flex flex-col items-center rounded-[2rem] border border-white/5 bg-white/5 p-8 text-center">
-							<div className="mb-6 flex size-12 items-center justify-center rounded-full bg-primary-500/20 text-primary-500">
-								<MapPin className="size-6" />
-							</div>
-							<h4 className="mb-4 text-xl font-bold">Localização</h4>
-							<div className="space-y-1 text-sm text-stone-400">
-								<p>Av. Cidade Jardim, 391 - Jardim Satélite</p>
-								<p>São José dos Campos - SP, 12231-675</p>
-							</div>
-						</div>
-						<div className="flex flex-col items-center rounded-[2rem] border border-white/5 bg-white/5 p-8 text-center">
-							<div className="mb-6 flex size-12 items-center justify-center rounded-full bg-primary-500/20 text-primary-500">
-								<MessageCircle className="size-6" />
-							</div>
-							<h4 className="mb-4 text-xl font-bold">Dúvidas?</h4>
-							<div className="space-y-1 text-sm text-stone-400">
-								<p>Fale com nossa equipe</p>
-								<p>pelo WhatsApp oficial</p>
-								<p>{PHONE_DISPLAY}</p>
+							<div className="card-hex-light px-12 py-16">
+								<span className="shape-octagon-regular mb-6 flex size-12 items-center justify-center bg-pb-orange text-white">
+									<MessageCircle className="size-6" />
+								</span>
+								<h2 className="mb-6 text-[3.5rem] leading-none tracking-tight">
+									Dúvidas?
+								</h2>
+								<div className="space-y-1 text-pb-graphite/80">
+									<p>Fale com nossa equipe</p>
+									<p>pelo WhatsApp oficial</p>
+									<p>{PHONE_DISPLAY}</p>
+								</div>
 							</div>
 						</div>
 					</div>
+				</section>
 
-					{/* FAQ */}
-					<div className="mx-auto mt-24 max-w-4xl border-t border-white/10 pt-16">
-						<h2 className="mb-8 text-center text-2xl font-bold">
-							Dúvidas Frequentes
+				{/* FAQ */}
+				{/* Fecha curto: o ContactCtaSection já entra com o topo apertado. */}
+				<section className="bg-pb-off-white pb-6 pt-10 lg:pb-8 lg:pt-12">
+					<div className="container-main">
+						<h2 className="mb-[7.5rem] text-center text-[3.5rem] leading-none tracking-tight text-pb-orange-warm">
+							Dúvidas frequentes
 						</h2>
-						<div className="space-y-4">
-							<details className="group overflow-hidden rounded-lg border border-white/10 bg-white/5">
-								<summary className="flex cursor-pointer items-center justify-between p-4 transition-colors hover:bg-white/5">
-									<span className="font-medium">
+						<div className="mx-auto max-w-4xl space-y-4">
+							<details className="shape-chanfrado-menor group bg-white">
+								<summary className="flex cursor-pointer items-center justify-between gap-4 px-8 py-6 text-[1.5rem] leading-tight">
+									<span>
 										Posso cancelar o Plano Platinum a qualquer momento?
 									</span>
 									<ChevronDown className="size-5 shrink-0 transition-transform group-open:rotate-180" />
 								</summary>
-								<div className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-relaxed text-stone-400">
+								<div className="px-8 pb-8 leading-relaxed text-pb-graphite/80">
 									Sim! O Plano Platinum não possui fidelidade. Você pode
 									solicitar o cancelamento diretamente na recepção com 30 dias
 									de antecedência do próximo vencimento.
 								</div>
 							</details>
-							<details className="group overflow-hidden rounded-lg border border-white/10 bg-white/5">
-								<summary className="flex cursor-pointer items-center justify-between p-4 transition-colors hover:bg-white/5">
-									<span className="font-medium">
+							<details className="shape-chanfrado-menor group bg-white">
+								<summary className="flex cursor-pointer items-center justify-between gap-4 px-8 py-6 text-[1.5rem] leading-tight">
+									<span>
 										Quais são as unidades inclusas no plano recorrente?
 									</span>
 									<ChevronDown className="size-5 shrink-0 transition-transform group-open:rotate-180" />
 								</summary>
-								<div className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-relaxed text-stone-400">
+								<div className="px-8 pb-8 leading-relaxed text-pb-graphite/80">
 									Com o plano Platinum, você tem acesso livre a todas as
 									unidades da rede Panobianco. Basta apresentar seu CPF em
 									qualquer recepção.
 								</div>
 							</details>
-							<details className="group overflow-hidden rounded-lg border border-white/10 bg-white/5">
-								<summary className="flex cursor-pointer items-center justify-between p-4 transition-colors hover:bg-white/5">
-									<span className="font-medium">Aceita Wellhub/Gympass?</span>
+							<details className="shape-chanfrado-menor group bg-white">
+								<summary className="flex cursor-pointer items-center justify-between gap-4 px-8 py-6 text-[1.5rem] leading-tight">
+									<span>Aceita Wellhub/Gympass?</span>
 									<ChevronDown className="size-5 shrink-0 transition-transform group-open:rotate-180" />
 								</summary>
-								<div className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-relaxed text-stone-400">
+								<div className="px-8 pb-8 leading-relaxed text-pb-graphite/80">
 									Sim! Aceitamos Wellhub (antigo Gympass). Entre em contato ou
 									venha nos visitar para saber quais planos estão disponíveis
 									para a sua categoria. Se for o seu caso,{" "}
 									<Link
 										href="/parceiros"
-										className="text-primary-500 underline hover:text-primary-400"
+										className="text-pb-orange-warm underline"
 									>
 										preencha o pré-cadastro aqui
 									</Link>
@@ -472,12 +470,12 @@ export default async function Planos() {
 							</details>
 						</div>
 					</div>
+				</section>
 
-					<AbTestImpression
-						experiment="promo-orange"
-						variant={isPromoB ? "b" : "a"}
-					/>
-				</div>
+				<AbTestImpression
+					experiment="promo-orange"
+					variant={isPromoB ? "b" : "a"}
+				/>
 			</main>
 
 			<ContactCtaSection />

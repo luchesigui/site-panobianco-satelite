@@ -44,27 +44,31 @@ export default function TreinamentoPage() {
 	const authorized = cookies().get("isAuthorized")?.value === "1";
 
 	return (
-		<div className="font-display min-h-screen bg-background-dark text-white antialiased overflow-x-hidden">
-			<section className="relative border-b border-white/10 bg-gradient-to-b from-white/5 to-transparent">
-				<div className="container-main py-12 md:py-16">
-					<h1 className="text-4xl font-semibold leading-tight md:text-5xl">
-						Treinamento <span className="text-primary-500">em vídeo</span>
-					</h1>
-					<p className="mt-4 max-w-2xl text-sm text-white/65 md:text-base">
-						Materiais de apoio para o time. Esta área é restrita.
-					</p>
+		<div className="font-display min-h-screen overflow-x-hidden bg-pb-off-white text-pb-graphite antialiased">
+			{/* Sem foto de topo: o bloco hexagonal laranja carrega a chamada,
+			    com folga para o header fixo de 80px. */}
+			<section className="bg-pb-off-white pb-12 pt-20 lg:pb-14 lg:pt-28">
+				<div className="container-main">
+					<div className="shape-chanfrado bg-pb-orange px-10 py-14 text-white lg:px-14 lg:py-16">
+						<h1 className="text-[3.5rem] leading-[0.96] tracking-tight">
+							Treinamento em vídeo
+						</h1>
+						<p className="mt-6 max-w-2xl text-[1.5rem] leading-tight">
+							Materiais de apoio para o time. Esta área é restrita.
+						</p>
+					</div>
 				</div>
 			</section>
 
-			<section className="container-main py-12">
+			<section className="container-main pb-20 pt-10 lg:pb-28 lg:pt-12">
 				{authorized ? (
 					<div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3 lg:gap-8">
 						{VIDEOS.map((video) => (
 							<div key={video.id} className="flex min-w-0 flex-col gap-4">
-								<h2 className="text-lg font-bold leading-snug lg:text-xl">
+								<h2 className="text-[1.5rem] leading-tight tracking-tight">
 									{video.title}
 								</h2>
-								<div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-gray-950">
+								<div className="shape-chanfrado-menor relative aspect-video w-full bg-pb-black">
 									<iframe
 										title={video.title}
 										src={`https://www.youtube.com/embed/${video.id}`}

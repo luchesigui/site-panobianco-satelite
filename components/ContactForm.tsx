@@ -5,6 +5,11 @@ import { useState } from "react";
 
 import { trackContactFormSubmitted } from "@/lib/analytics";
 
+// Campos sem raio nem chanfro: o brandbook não usa cantos arredondados e o
+// clip-path cortaria a borda e o anel de foco.
+const INPUT_CLASS =
+	"w-full border border-pb-graphite/25 bg-white px-4 py-3 text-pb-graphite placeholder:text-pb-graphite/50 focus:border-pb-orange focus:outline-none disabled:opacity-60";
+
 function formatPhone(value: string): string {
 	const digits = value.replace(/\D/g, "").slice(0, 11);
 	if (digits.length <= 2) return digits ? `(${digits}` : "";
@@ -73,13 +78,15 @@ export default function ContactForm() {
 	};
 
 	return (
-		<article className="rounded-xl border border-white/10 bg-white/5 p-6">
-			<h2 className="text-2xl font-semibold">Envie sua Mensagem</h2>
-			<p className="mt-2 text-sm text-white/65">
+		<article className="card-hex-light px-12 py-16">
+			<h2 className="text-[3.5rem] leading-none tracking-tight">
+				Envie sua mensagem
+			</h2>
+			<p className="mt-2 text-[1.5rem] leading-tight text-pb-graphite/80">
 				Preencha os dados e nossa equipe retorna o mais rápido possível.
 			</p>
 
-			<form onSubmit={handleSubmit} className="mt-6 space-y-4">
+			<form onSubmit={handleSubmit} className="mt-8 space-y-4">
 				<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 					<input
 						type="text"
@@ -88,7 +95,7 @@ export default function ContactForm() {
 						required
 						value={formData.nome}
 						onChange={updateFormField}
-						className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none"
+						className={INPUT_CLASS}
 						placeholder="Nome completo"
 						disabled={isSubmitting}
 					/>
@@ -99,7 +106,7 @@ export default function ContactForm() {
 						required
 						value={formData.email}
 						onChange={updateFormField}
-						className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none"
+						className={INPUT_CLASS}
 						placeholder="E-mail"
 						disabled={isSubmitting}
 					/>
@@ -111,7 +118,7 @@ export default function ContactForm() {
 						name="telefone"
 						value={formData.telefone}
 						onChange={updateFormField}
-						className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none"
+						className={INPUT_CLASS}
 						placeholder="(12) 99999-9999"
 						disabled={isSubmitting}
 					/>
@@ -121,7 +128,7 @@ export default function ContactForm() {
 						name="assunto"
 						value={formData.assunto}
 						onChange={updateFormField}
-						className="w-full rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none"
+						className={INPUT_CLASS}
 						placeholder="Assunto"
 						disabled={isSubmitting}
 					/>
@@ -133,24 +140,24 @@ export default function ContactForm() {
 					rows={6}
 					value={formData.mensagem}
 					onChange={updateFormField}
-					className="w-full resize-none rounded-lg border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary-500 focus:outline-none"
+					className={`${INPUT_CLASS} resize-none`}
 					placeholder="Mensagem"
 					disabled={isSubmitting}
 				/>
 				<button
 					type="submit"
-					className="inline-flex h-12 items-center justify-center rounded-full bg-primary-500 px-6 text-sm font-bold text-white transition-colors hover:bg-primary-500/90 disabled:opacity-70"
+					className="botao-chanfrado inline-flex items-center justify-center bg-pb-orange px-8 py-4 text-sm uppercase tracking-wide text-white transition-colors hover:bg-pb-orange-warm disabled:opacity-70"
 					disabled={isSubmitting}
 				>
 					<Send className="mr-2 size-4" />
-					{isSubmitting ? "Enviando..." : "Enviar Mensagem"}
+					{isSubmitting ? "Enviando..." : "Enviar mensagem"}
 				</button>
 				{submitMessage && (
 					<p
-						className={`rounded-lg border px-4 py-3 text-sm ${
+						className={`border px-4 py-3 text-sm ${
 							submitMessage.includes("sucesso")
-								? "border-green-400/40 bg-green-500/15 text-green-200"
-								: "border-red-400/40 bg-red-500/15 text-red-200"
+								? "border-green-700/40 bg-green-700/10 text-green-800"
+								: "border-pb-orange-warm/40 bg-pb-orange-warm/10 text-pb-orange-warm"
 						}`}
 					>
 						{submitMessage}

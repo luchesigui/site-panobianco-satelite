@@ -1,4 +1,4 @@
-import { Activity, Flame, Music, Smile, Users } from "lucide-react";
+import { Activity, Flame, Smile, Users } from "lucide-react";
 import type { Metadata } from "next";
 
 import ModalidadePage from "@/components/ModalidadePage";
@@ -34,8 +34,6 @@ export default function RitmosPage() {
 			<ModalidadePage.Hero
 				title="RITMOS"
 				description="Aumente sua energia, queime calorias e divirta-se ao som dos melhores ritmos musicais em uma aula contagiante e cheia de vida."
-				accentGradient="from-primary-500 to-orange-700"
-				icon={Music}
 				heroImageSrc={HERO_IMAGE}
 				stats={[
 					{ value: "45 min", label: "Duração" },
@@ -49,7 +47,6 @@ export default function RitmosPage() {
 					"O Ritmos é uma aula de fitness baseada em dança, combinando diversos estilos musicais — do Reggaeton ao Pop — para criar um treino dinâmico e extremamente divertido.",
 					"Focada no movimento constante, a modalidade melhora a saúde cardiovascular, eleva o humor e proporciona um alto gasto calórico, tudo isso enquanto você aprende novas coreografias de forma intuitiva, sem precisar ser um dançarino profissional.",
 				]}
-				accentClass="bg-primary-500"
 				imageSrc={ABOUT_IMAGE}
 				statCard={{ value: "45 min", label: "Duração" }}
 			/>
@@ -80,12 +77,10 @@ export default function RitmosPage() {
 						icon: Users,
 					},
 				]}
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.Classes
 				name="Ritmos"
 				description="As aulas de Ritmos na Panobianco Jardim Satélite são conduzidas por instrutores que trazem animação e variedade musical."
-				accentClass="bg-primary-500"
 			/>
 			<ModalidadePage.ContactCta />
 		</ModalidadePage>
