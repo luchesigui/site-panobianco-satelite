@@ -53,9 +53,9 @@ const organizationSchema = {
 		},
 		{
 			"@type": "OpeningHoursSpecification",
-			dayOfWeek: "Sunday",
+			dayOfWeek: ["Sunday", "PublicHolidays"],
 			opens: "09:00",
-			closes: "14:00",
+			closes: "13:00",
 		},
 	],
 	sameAs: [INSTAGRAM_URL, FACEBOOK_URL, YOUTUBE_URL],

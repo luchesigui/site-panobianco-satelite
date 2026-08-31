@@ -458,7 +458,7 @@ export default function Home() {
 								</div>
 								<div className="flex items-center justify-between border-b border-white/30 pb-4 text-[1.5rem]">
 									<span>Domingos e Feriados</span>
-									<span>09:00 - 14:00</span>
+									<span>09:00 - 13:00</span>
 								</div>
 							</div>
 							<div className="mt-10 flex items-center gap-4">

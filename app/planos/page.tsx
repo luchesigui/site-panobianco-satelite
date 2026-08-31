@@ -384,7 +384,7 @@ export default async function Planos() {
 								<div className="space-y-1 text-pb-graphite/80">
 									<p>Seg a Sex: 06h às 23h</p>
 									<p>Sáb: 08h às 18h</p>
-									<p>Dom: 09h às 14h</p>
+									<p>Dom e Feriados: 09h às 13h</p>
 								</div>
 							</div>
 							<div className="card-hex-light px-12 py-16">

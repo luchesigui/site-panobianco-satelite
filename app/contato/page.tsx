@@ -110,8 +110,8 @@ export default function Contato() {
 										<span>08:00 - 18:00</span>
 									</div>
 									<div className="flex items-center justify-between">
-										<span className="text-pb-graphite/80">Domingo</span>
-										<span>09:00 - 14:00</span>
+										<span className="text-pb-graphite/80">Domingos e Feriados</span>
+										<span>09:00 - 13:00</span>
 									</div>
 								</div>
 							</div>

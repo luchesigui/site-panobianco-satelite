@@ -119,7 +119,7 @@ npm run dev
 - **Horários**: 
   - Segunda a Sexta: 05h00 às 23h00
   - Sábado: 08h00 às 18h00
-  - Domingo: 09h00 às 13h00
+  - Domingo e Feriados: 09h00 às 13h00
 
 ## 🤝 Contribuição
 

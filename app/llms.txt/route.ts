@@ -58,7 +58,7 @@ export function GET() {
 		"## Horários de Funcionamento",
 		"- Segunda a sexta: 06:00 às 23:00",
 		"- Sábado: 08:00 às 18:00",
-		"- Domingo e feriados: 09:00 às 14:00",
+		"- Domingo e feriados: 09:00 às 13:00",
 		"",
 		"## Localização",
 		"- Endereço: Av. Cidade Jardim, 391 - Jardim Satélite, São José dos Campos - SP, 12231-675",
