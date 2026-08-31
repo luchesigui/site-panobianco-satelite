@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Archivo, Bebas_Neue, Montserrat, Roboto } from "next/font/google";
+import { Bebas_Neue, Montserrat, Roboto } from "next/font/google";
+import localFont from "next/font/local";
 import Script from "next/script";
 
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -77,16 +78,27 @@ const websiteSchema = {
 	publisher: { "@id": `${SITE_URL}#organization` },
 };
 
-// Hierarquia tipográfica oficial: Forma DJR Micro (Regular / Medium / Bold).
-// Os arquivos licenciados ainda não estão no repositório, então Archivo — que
-// compartilha a grotesca de largura estreita e os mesmos três pesos — é o
-// fallback estruturado. Ao receber a licença, troque este bloco por
-// `next/font/local` mantendo a mesma variável `--font-brand`.
-const brandFont = Archivo({
-	subsets: ["latin"],
-	weight: ["400", "500", "700", "800"],
-	display: "swap",
+// Hierarquia tipográfica oficial: Forma DJR Micro (Light / Regular / Bold).
+const brandFont = localFont({
+	src: [
+		{
+			path: "../public/fonts/FormaDJRMicro-Light.ttf",
+			weight: "300",
+			style: "normal",
+		},
+		{
+			path: "../public/fonts/FormaDJRMicro-Regular.ttf",
+			weight: "400",
+			style: "normal",
+		},
+		{
+			path: "../public/fonts/FormaDJRMicro-Bold.ttf",
+			weight: "700",
+			style: "normal",
+		},
+	],
 	variable: "--font-brand",
+	display: "swap",
 });
 
 // Famílias legadas: consumidas exclusivamente por /promo-orange e HeroOrange.
