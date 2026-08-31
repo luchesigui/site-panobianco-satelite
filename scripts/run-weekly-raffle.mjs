@@ -11,9 +11,10 @@ const projectDir = path.resolve(
 const desktopVideo = path.join(
 	process.env.HOME,
 	"Desktop",
-	"sorteio-semanal-feed-15s.mp4",
+	"sorteio-semanal-reels-15s.mp4",
 );
-const preferredOrigin = process.env.CAPTURE_ORIGIN || "http://mac-mini:3005";
+const captureFormat = "reels";
+const preferredOrigin = process.env.CAPTURE_ORIGIN || "http://127.0.0.1:3005";
 const cdpVersionUrl = "http://127.0.0.1:9223/json/version";
 const isCheckOnly = process.argv.includes("--check");
 
@@ -82,7 +83,7 @@ async function ensureChromeCdp() {
 async function ensureCaptureOrigin() {
 	try {
 		await waitFor(
-			`${preferredOrigin}/sorteio?capture=1&format=feed`,
+			`${preferredOrigin}/sorteio?capture=1&format=${captureFormat}`,
 			5_000,
 			"Página do sorteio",
 		);
@@ -97,7 +98,7 @@ async function ensureCaptureOrigin() {
 	devServer.unref();
 	const localOrigin = "http://127.0.0.1:3005";
 	await waitFor(
-		`${localOrigin}/sorteio?capture=1&format=feed`,
+		`${localOrigin}/sorteio?capture=1&format=${captureFormat}`,
 		90_000,
 		"Servidor local do sorteio",
 	);
@@ -179,12 +180,12 @@ async function verifyAndTrim(videoPath) {
 	if (
 		video?.codec_name !== "h264" ||
 		video.width !== 1080 ||
-		video.height !== 1350 ||
+		video.height !== 1920 ||
 		video.avg_frame_rate !== "30/1" ||
 		probe.format?.duration !== "15.000000"
 	) {
 		throw new Error(
-			"O vídeo exportado não passou na validação H.264, 1080x1350, 30 fps e 15 segundos.",
+			"O vídeo exportado não passou na validação H.264, 1080x1920, 30 fps e 15 segundos.",
 		);
 	}
 }
@@ -205,7 +206,7 @@ try {
 	await ensureChromeCdp();
 	const captureOrigin = await ensureCaptureOrigin();
 	const preview = await run("node", ["scripts/capture-sorteio-layout.mjs"], {
-		env: { ...process.env, CAPTURE_ORIGIN: captureOrigin },
+		env: { ...process.env, CAPTURE_ORIGIN: captureOrigin, CAPTURE_FORMAT: captureFormat },
 	});
 	const previewPath = preview.stdout.trim();
 	const { stdout: dimensions } = await run("sips", [
@@ -217,15 +218,15 @@ try {
 	]);
 	if (
 		!dimensions.includes("pixelWidth: 1080") ||
-		!dimensions.includes("pixelHeight: 1350")
+		!dimensions.includes("pixelHeight: 1920")
 	) {
 		throw new Error(
-			"A prévia do sorteio não está em 1080x1350. Nenhum clique foi realizado.",
+			"A prévia do sorteio não está em 1080x1920. Nenhum clique foi realizado.",
 		);
 	}
 
 	const recording = await run("node", ["scripts/record-sorteio.mjs"], {
-		env: { ...process.env, CAPTURE_ORIGIN: captureOrigin },
+		env: { ...process.env, CAPTURE_ORIGIN: captureOrigin, CAPTURE_FORMAT: captureFormat },
 	});
 	const metadata = parseRecordingMetadata(recording.stdout);
 	await verifyAndTrim(metadata.videoPath);

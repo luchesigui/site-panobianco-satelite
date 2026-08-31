@@ -4,7 +4,7 @@ const captureFormat = process.env.CAPTURE_FORMAT === "reels" ? "reels" : "feed";
 const captureWinner = process.env.CAPTURE_WINNER?.trim() || null;
 const useMockCaptureData = process.env.CAPTURE_MOCK === "1";
 const canvas = captureFormat === "reels" ? { width: 1080, height: 1920 } : { width: 1080, height: 1350 };
-const captureOrigin = process.env.CAPTURE_ORIGIN || "http://mac-mini:3005";
+const captureOrigin = process.env.CAPTURE_ORIGIN || "http://127.0.0.1:3005";
 const params = new URLSearchParams({ capture: "1", format: captureFormat });
 if (captureWinner) params.set("winner", captureWinner);
 if (useMockCaptureData) params.set("mock", "1");
@@ -12,8 +12,10 @@ const url = `${captureOrigin}/sorteio?${params.toString()}`;
 const output = `/Users/guilhermeluchesi/Desktop/preview-sorteio-${captureFormat}.png`;
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const targets = await fetch("http://127.0.0.1:9223/json").then((response) => response.json());
-const target = targets.find((item) => item.type === "page");
-if (!target) throw new Error("Nenhuma aba disponível no Chrome de captura.");
+const target = targets.find(
+  (item) => item.type === "page" && item.url.includes("/sorteio"),
+);
+if (!target) throw new Error("A aba de captura do sorteio não está disponível no Chrome.");
 
 const socket = new WebSocket(target.webSocketDebuggerUrl);
 await new Promise((resolve, reject) => {
