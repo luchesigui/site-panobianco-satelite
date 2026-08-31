@@ -1,3 +1,11 @@
+import {
+	Activity,
+	Clock,
+	Dumbbell,
+	Sparkles,
+	Target,
+	Users,
+} from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -34,32 +42,40 @@ const services = [
 		title: "Equipamentos Modernos",
 		description:
 			"Máquinas importadas e ergonômicas para máxima eficiência e segurança no seu treino, otimizando cada repetição.",
+		icon: Dumbbell,
+		href: "/servicos/musculacao",
 	},
 	{
 		title: "Treino Personalizado",
 		description:
 			"Profissionais qualificados para montar sua ficha de acordo com seus objetivos específicos, do emagrecimento à hipertrofia.",
+		icon: Target,
+		href: "/servicos/treino-personalizado",
 	},
 	{
 		title: "Aulas Coletivas",
 		description:
 			"FitDance, Ritmos, Funcional e muito mais em um ambiente contagiante e motivador que faz você esquecer do esforço.",
+		icon: Users,
 		href: "/aulas-coletivas",
 	},
 	{
 		title: "Avaliação Física",
 		description:
 			"Avaliações periódicas de composição corporal e evolução para acompanhar seus resultados e ajustar seu treino.",
+		icon: Activity,
 	},
 	{
 		title: "Vestiários Completos",
 		description:
 			"Conforto e praticidade com chuveiros aquecidos, secadores e armários seguros para o seu pós-treino premium.",
+		icon: Sparkles,
 	},
 	{
 		title: "Horário Estendido",
 		description:
 			"Flexibilidade total para você treinar quando quiser, desde as primeiras horas da manhã até tarde da noite.",
+		icon: Clock,
 	},
 ];
 
@@ -162,55 +178,59 @@ export default function Servicos() {
 			{/* Services Grid */}
 			<section className="bg-pb-off-white pb-12 pt-20 lg:pb-14 lg:pt-28">
 				<div className="container-main">
-					<h2 className="mb-[7.5rem] text-center text-[3.5rem] leading-none tracking-tight text-pb-orange-warm">
-						O que oferecemos para você
-					</h2>
-					{/* Faixa de hexágonos em laranja claro sobre uma faixa em laranja
-					    escuro, coladas na vertical — como os dois níveis dos cards de
-					    modalidade da home. São duas grades separadas, uma por faixa: com
-					    uma grade só, ao cair para duas colunas a virada de cor cairia no
-					    meio de uma linha. O `minmax` é o maior título ("Equipamentos",
-					    348px em 3.5rem) mais o padding, para nenhuma palavra quebrar. */}
-					{[
-						{ items: services.slice(0, 3), surface: "bg-pb-orange" },
-						{ items: services.slice(3), surface: "bg-pb-orange-warm" },
-					].map((faixa) => (
-						<div
-							key={faixa.surface}
-							className="grid gap-x-8 gap-y-0 grid-cols-[repeat(auto-fit,minmax(min(450px,100%),1fr))]"
-						>
-							{faixa.items.map((service) => {
-								// Com as 4 pontas chanfradas, o padding vertical precisa passar
-								// do chanfro nas duas bordas para o texto não ser cortado.
-								const cardContent = (
-									<>
-										<h3 className="mb-6 text-[3.5rem] leading-none tracking-tight">
+					<div className="mb-16 text-center">
+						<h2 className="text-[3.5rem] leading-none tracking-tight text-pb-orange-warm">
+							O que oferecemos para você
+						</h2>
+						<p className="mx-auto mt-6 max-w-2xl text-[1.5rem] leading-tight text-pb-graphite/80">
+							Estrutura de ponta, acompanhamento profissional e diversas opções para você atingir seus objetivos com conforto e segurança.
+						</p>
+					</div>
+
+					<div className="grid gap-8 grid-cols-[repeat(auto-fit,minmax(min(350px,100%),1fr))]">
+						{services.map((service) => {
+							const Icon = service.icon;
+							const cardContent = (
+								<>
+									<div>
+										<span className="shape-octagon-regular mb-6 flex size-14 items-center justify-center bg-pb-orange text-white">
+											<Icon className="size-7" />
+										</span>
+										<h3 className="mb-4 text-2xl lg:text-[2rem] leading-tight font-medium tracking-tight text-pb-graphite transition-colors group-hover:text-pb-orange-warm">
 											{service.title}
 										</h3>
-										<p className="text-[1.5rem] leading-tight">
+										<p className="text-base lg:text-lg leading-relaxed text-pb-graphite/80">
 											{service.description}
 										</p>
-									</>
-								);
-								return "href" in service && service.href ? (
-									<Link
-										key={service.title}
-										href={service.href}
-										className={`shape-chanfrado h-full px-12 py-12 text-white lg:py-20 ${faixa.surface}`}
-									>
-										{cardContent}
-									</Link>
-								) : (
-									<div
-										key={service.title}
-										className={`shape-chanfrado h-full px-12 py-12 text-white lg:py-20 ${faixa.surface}`}
-									>
-										{cardContent}
 									</div>
-								);
-							})}
-						</div>
-					))}
+									{"href" in service && service.href ? (
+										<div className="mt-8">
+											<span className="botao-chanfrado inline-flex items-center bg-pb-orange px-6 py-3 text-sm uppercase tracking-wide text-white transition-colors group-hover:bg-pb-orange-warm">
+												Saiba mais
+											</span>
+										</div>
+									) : null}
+								</>
+							);
+
+							return "href" in service && service.href ? (
+								<Link
+									key={service.title}
+									href={service.href}
+									className="card-hex-light group flex flex-col justify-between px-10 py-12 lg:px-12 lg:py-16 transition-all duration-300 hover:shadow-lg"
+								>
+									{cardContent}
+								</Link>
+							) : (
+								<div
+									key={service.title}
+									className="card-hex-light flex flex-col justify-between px-10 py-12 lg:px-12 lg:py-16"
+								>
+									{cardContent}
+								</div>
+							);
+						})}
+					</div>
 				</div>
 			</section>
 
