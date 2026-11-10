@@ -1,17 +1,23 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, writeFile, readFile } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import path from "node:path";
 
+import { chooseCaptureTarget, requireCaptureFrame } from "./sorteio-cdp.mjs";
+import { validateReplay } from "./raffle-replay.mjs";
+
 const captureFormat = process.env.CAPTURE_FORMAT === "reels" ? "reels" : "feed";
 const captureWinner = process.env.CAPTURE_WINNER?.trim() || null;
-const useMockCaptureData = process.env.CAPTURE_MOCK === "1";
+const replay = process.env.CAPTURE_REPLAY_FILE ? validateReplay(JSON.parse(await readFile(process.env.CAPTURE_REPLAY_FILE, 'utf8'))) : null;
+const useMockCaptureData = !replay && process.env.CAPTURE_MOCK === "1";
 const canvas = captureFormat === "reels" ? { width: 1080, height: 1920 } : { width: 1080, height: 1350 };
 const captureOrigin = process.env.CAPTURE_ORIGIN || "http://127.0.0.1:3005";
+const cdpOrigin = process.env.CAPTURE_CDP_ORIGIN || "http://127.0.0.1:9223";
 const params = new URLSearchParams({ capture: "1", format: captureFormat });
-if (captureWinner) params.set("winner", captureWinner);
+if (replay) params.set("winnerId", String(replay.winner.id));
+else if (captureWinner) params.set("winner", captureWinner);
 if (useMockCaptureData) params.set("mock", "1");
 const baseUrl = `${captureOrigin}/sorteio?${params.toString()}`;
-const outputDir = path.resolve("artifacts/sorteio");
+const outputDir = path.resolve(process.env.CAPTURE_OUTPUT_DIR || "artifacts/sorteio");
 const stamp = new Date().toISOString().replace(/[:.]/g, "-");
 const framesDir = path.join(outputDir, `frames-${stamp}`);
 const videoPath = path.join(outputDir, `sorteio-${captureFormat}-${stamp}.mp4`);
@@ -22,13 +28,16 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function chromeTarget() {
   for (let attempt = 0; attempt < 40; attempt += 1) {
     try {
-      const targets = await fetch("http://127.0.0.1:9223/json").then((r) => r.json());
-      const target = targets.find((item) => item.type === "page" && item.url.includes("/sorteio"));
-      if (target) return target;
+      let targets = await fetch(`${cdpOrigin}/json`).then((r) => r.json());
+      if (!targets.some((item) => item.type === "page" && item.webSocketDebuggerUrl)) {
+        await fetch(`${cdpOrigin}/json/new?about:blank`, { method: "PUT" });
+        targets = await fetch(`${cdpOrigin}/json`).then((r) => r.json());
+      }
+      return chooseCaptureTarget(targets);
     } catch {}
     await sleep(250);
   }
-  throw new Error("Chrome CDP não disponibilizou a página do sorteio.");
+  throw new Error("Chrome CDP não disponibilizou uma página para o sorteio.");
 }
 
 function createCdp(wsUrl, onFrame) {
@@ -37,6 +46,16 @@ function createCdp(wsUrl, onFrame) {
   let messageId = 0;
   ws.addEventListener("message", async (event) => {
     const message = JSON.parse(event.data);
+    if (message.method === "Fetch.requestPaused" && replay) {
+      const requestUrl = new URL(message.params.request.url);
+      if (requestUrl.origin !== new URL(captureOrigin).origin || requestUrl.pathname !== '/api/sorteio/alunos') {
+        ws.send(JSON.stringify({ id: ++messageId, method: 'Fetch.failRequest', params: { requestId: message.params.requestId, errorReason: 'BlockedByClient' } }));
+        return;
+      }
+      const body = Buffer.from(JSON.stringify({success:true,total:replay.members.length,members:replay.members})).toString('base64');
+      ws.send(JSON.stringify({ id: ++messageId, method: 'Fetch.fulfillRequest', params: { requestId: message.params.requestId, responseCode: 200, responseHeaders: [{name:'Content-Type',value:'application/json'},{name:'Cache-Control',value:'no-store'}], body } }));
+      return;
+    }
     if (message.method === "Page.screencastFrame") {
       await onFrame(message.params);
       ws.send(JSON.stringify({ id: ++messageId, method: "Page.screencastFrameAck", params: { sessionId: message.params.sessionId } }));
@@ -96,6 +115,9 @@ try {
   await cdp.ready;
   await cdp.send("Page.enable");
   await cdp.send("Runtime.enable");
+  if (replay) await cdp.send('Fetch.enable', { patterns: [{ urlPattern: `${new URL(captureOrigin).origin}/api/sorteio/alunos*`, requestStage:'Request' }] });
+  await cdp.send("Page.bringToFront");
+  await cdp.send("Emulation.setFocusEmulationEnabled", { enabled: true });
   if (captureFormat === "reels") {
     await cdp.send("Emulation.setDeviceMetricsOverride", {
       ...canvas,
@@ -120,6 +142,7 @@ try {
   });
 
   // Shorter lead-in so the draw begins half a second sooner.
+  await requireCaptureFrame(() => frames.length);
   await sleep(1500);
   const click = await cdp.send("Runtime.evaluate", {
     expression: `(() => {
@@ -145,6 +168,7 @@ try {
     returnByValue: true,
   });
 
+  if (replay && String(winnerId.result.value) !== String(replay.winner.id)) throw new Error('Rendered winner does not match saved result. Do not redraw.');
   await cdp.send("Page.stopScreencast");
   if (frames.length < 20) throw new Error(`Foram recebidos poucos frames: ${frames.length}`);
 

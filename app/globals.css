@@ -543,6 +543,11 @@
 		transform: translateX(-50%);
 	}
 
+	/* Identificadores de aluno não fazem parte do vídeo social. */
+	body.sorteio-capture-mode .sorteio-member-id {
+		display: none;
+	}
+
 	body.sorteio-capture-mode .sorteio-page .container-main {
 		gap: 2rem;
 	}

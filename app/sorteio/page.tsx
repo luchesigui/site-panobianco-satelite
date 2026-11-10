@@ -32,6 +32,7 @@ function SorteioContent() {
 		? searchParams.get("winner")?.trim() || null
 		: null;
 	const useMockCaptureData = isCaptureMode && searchParams.get("mock") === "1";
+	const captureWinnerId = isCaptureMode ? searchParams.get("winnerId") : null;
 
 	const [members, setMembers] = useState<Member[]>([]);
 	const [loading, setLoading] = useState(true);
@@ -252,7 +253,9 @@ function SorteioContent() {
 		// A normal page visit remains random. The capture-only route may replay a
 		// winner from an already recorded draw so the same result can be exported
 		// at another aspect ratio without triggering a new live draw.
-		const selectedWinnerIndex = captureWinnerName
+		const selectedWinnerIndex = captureWinnerId
+			? activeMembers.findIndex((member) => String(member.idMember) === captureWinnerId)
+			: captureWinnerName
 			? activeMembers.findIndex(
 					(member) =>
 						member.displayName.localeCompare(captureWinnerName, "pt-BR", {
@@ -374,7 +377,7 @@ function SorteioContent() {
 										<div className="pt-2">
 											<span
 												data-testid="winner-id"
-												className="selo-chanfrado inline-block bg-pb-black px-6 py-2 text-lg text-white"
+												className="sorteio-member-id selo-chanfrado inline-block bg-pb-black px-6 py-2 text-lg text-white"
 											>
 												ID Aluno: #{winner.idMember}
 											</span>
@@ -397,7 +400,7 @@ function SorteioContent() {
 														{currentDisplay.firstName} {currentDisplay.lastName}
 													</h2>
 												</div>
-												<span className="selo-chanfrado inline-block bg-white/15 px-4 py-1 text-lg sm:text-xl">
+												<span className="sorteio-member-id selo-chanfrado inline-block bg-white/15 px-4 py-1 text-lg sm:text-xl">
 													ID: #{currentDisplay.idMember}
 												</span>
 											</>
