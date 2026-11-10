@@ -62,5 +62,9 @@ Acceptance requires the exact received TESTE message, guide, fictional winner an
 
 The legacy `raffle-cloud-acceptance.yml` remains manual and mock-only. It is not the weekly production workflow.
 
-## Initial evidence
-The original mock-only hosted acceptance run 42848219123 attempt 3 succeeded; its exact received attachment passed FFprobe and visual QA. The production-runner path, private checkpoints, second-invocation skip, cloud EVO preflight and final cutover require their own verification before enabling the gate.
+## Verified deployment and cutover
+PR #21 was merged into main (implementation merge a2bcc279f999c77ee142210a4bd539071184aaf7). Independent spec, quality and keepalive reviews passed. Hosted durable-pipeline runs 42855166102 and 42856358569 succeeded: the first invocation sent the test email and the second skipped the sent checkpoint. The exact Gmail message from the durable test was MIME-verified; its received MP4 SHA-256 matched the payload in the private checkpoint, passed FFprobe and sampled/full-resolution visual QA.
+
+Cloud preflight run 42856949403 on main successfully fetched the complete eligible pool without selecting a winner or sending an email. Cutover was verified on 2026-11-10: the old local Hermes raffle job was paused and read back, then RAFFLE_PRODUCTION_ENABLED was set to true and read back; the default-branch weekly workflow was active. Next configured Sunday: 2026-11-15 at 11:00 America/Sao_Paulo. No live draw was performed during migration tests.
+
+The initial legacy mock-only acceptance run 42848219123 attempt 3 also passed. These are verification records, not a substitute for checking current workflow/gate/state before any future rollback.
