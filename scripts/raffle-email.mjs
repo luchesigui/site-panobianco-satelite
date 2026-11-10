@@ -13,7 +13,19 @@ export async function sendRaffleEmail({ apiKey, payload, idempotencyKey, fetchIm
   } catch {
     throw new Error('Email delivery status unknown; do not redraw.');
   }
-  if (!response.ok) throw new Error(`Email provider rejected request (HTTP ${response.status}); do not redraw.`);
+  if (!response.ok) {
+    const detail = await response.json().catch(() => ({}));
+    const reason = String(detail.message || '');
+    const error = new Error(`Email provider rejected request (HTTP ${response.status}); do not redraw.`);
+    error.code = `MAIL_HTTP_${response.status}`;
+    error.safeReason = /domain.*not verified/i.test(reason) ? 'SENDER_DOMAIN_NOT_VERIFIED'
+      : /API key is invalid|invalid api key/i.test(reason) ? 'API_KEY_INVALID'
+      : /only send testing emails/i.test(reason) ? 'TEST_RECIPIENT_RESTRICTION'
+      : /idempotenc|same.*key/i.test(reason) ? 'IDEMPOTENCY_CONFLICT'
+      : /restricted.*domain|not.*permission|not authorized/i.test(reason) ? 'KEY_PERMISSION_RESTRICTION'
+      : 'PROVIDER_REJECTION';
+    throw error;
+  }
   const result = await response.json();
   if (!result.id) throw new Error('Email provider returned no receipt; do not redraw.');
   return result.id;

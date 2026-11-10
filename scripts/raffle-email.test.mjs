@@ -26,6 +26,15 @@ test('rejects unsafe or incomplete email inputs before sending', () => {
   }
 });
 
+test('provider errors expose a safe actionable diagnosis without response data', async () => {
+  await assert.rejects(sendRaffleEmail({ apiKey: 'fixture-key', payload: {}, idempotencyKey: 'mock-diagnostic', fetchImpl: async () => new Response(JSON.stringify({ message: 'The example.com domain is not verified. secret-private-details' }), { status: 403 }) }), error => {
+    assert.equal(error.code, 'MAIL_HTTP_403');
+    assert.equal(error.safeReason, 'SENDER_DOMAIN_NOT_VERIFIED');
+    assert.doesNotMatch(error.message, /example.com|secret-private-details/);
+    return true;
+  });
+});
+
 test('send returns a provider receipt with explicit idempotency and no retries', async () => {
   let calls = 0;
   const id = await sendRaffleEmail({ apiKey: 'fixture-key', payload: { text: 'fixture' }, idempotencyKey: 'mock-2026-11-15', fetchImpl: async (url, options) => {

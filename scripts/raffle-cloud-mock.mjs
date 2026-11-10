@@ -52,7 +52,13 @@ async function main() {
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
-  main().catch(() => { console.error('Cloud acceptance failed. No live draw was performed. Inspect configuration, rendering or email provider.'); process.exitCode = 1; });
+  main().catch(error => {
+    if (/^MAIL_HTTP_\d{3}$/.test(error?.code || '')) {
+      console.error(JSON.stringify({ code: error.code, reason: /^[A-Z_]+$/.test(error.safeReason || '') ? error.safeReason : 'PROVIDER_REJECTION' }));
+    }
+    console.error('Cloud acceptance failed. No live draw was performed. Inspect configuration, rendering or email provider.');
+    process.exitCode = 1;
+  });
 }
 
 export async function executeMockAcceptance({ record, verify, send }) {
