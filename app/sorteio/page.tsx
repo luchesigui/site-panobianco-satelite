@@ -374,7 +374,7 @@ function SorteioContent() {
 										<div className="pt-2">
 											<span
 												data-testid="winner-id"
-												className="selo-chanfrado inline-block bg-pb-black px-6 py-2 text-lg text-white"
+												className="sorteio-member-id selo-chanfrado inline-block bg-pb-black px-6 py-2 text-lg text-white"
 											>
 												ID Aluno: #{winner.idMember}
 											</span>
@@ -397,7 +397,7 @@ function SorteioContent() {
 														{currentDisplay.firstName} {currentDisplay.lastName}
 													</h2>
 												</div>
-												<span className="selo-chanfrado inline-block bg-white/15 px-4 py-1 text-lg sm:text-xl">
+												<span className="sorteio-member-id selo-chanfrado inline-block bg-white/15 px-4 py-1 text-lg sm:text-xl">
 													ID: #{currentDisplay.idMember}
 												</span>
 											</>

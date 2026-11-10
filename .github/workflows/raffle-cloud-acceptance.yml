@@ -1,0 +1,61 @@
+name: Raffle cloud acceptance
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ci/raffle-cloud-acceptance]
+    paths:
+      - '.github/workflows/raffle-cloud-acceptance.yml'
+      - 'scripts/raffle-*.mjs'
+      - 'scripts/sorteio-*.mjs'
+      - 'scripts/record-sorteio.mjs'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: raffle-cloud-acceptance
+  cancel-in-progress: false
+
+jobs:
+  mock-email:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Install video tools
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+      - name: Check browser
+        run: google-chrome --version
+      - name: Unit tests
+        run: node --test scripts/raffle-email.test.mjs scripts/raffle-cloud-mock.test.mjs scripts/sorteio-cdp.test.mjs scripts/sorteio-capture-guard.test.mjs scripts/sorteio-result.test.mjs scripts/sorteio-video.test.mjs
+      - name: Render and email fictitious result
+        env:
+          RAFFLE_MODE: mock
+          CAPTURE_CHROME_BINARY: /usr/bin/google-chrome
+          CAPTURE_ORIGIN: http://127.0.0.1:3005
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RAFFLE_EMAIL_FROM: ${{ secrets.RAFFLE_EMAIL_FROM }}
+          RAFFLE_EMAIL_TO: ${{ secrets.RAFFLE_EMAIL_TO }}
+          RAFFLE_RUN_KEY: mock-${{ github.run_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run dev -- --hostname 127.0.0.1 -p 3005 > "$RUNNER_TEMP/raffle-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          ready=0
+          for attempt in {1..90}; do
+            if curl --silent --fail 'http://127.0.0.1:3005/sorteio?capture=1&format=reels&mock=1&winner=Pessoa%20Ficticia' > /dev/null; then
+              ready=1
+              break
+            fi
+            sleep 2
+          done
+          test "$ready" = 1
+          node scripts/raffle-cloud-mock.mjs

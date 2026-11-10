@@ -2,16 +2,19 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import path from "node:path";
 
+import { chooseCaptureTarget, requireCaptureFrame } from "./sorteio-cdp.mjs";
+
 const captureFormat = process.env.CAPTURE_FORMAT === "reels" ? "reels" : "feed";
 const captureWinner = process.env.CAPTURE_WINNER?.trim() || null;
 const useMockCaptureData = process.env.CAPTURE_MOCK === "1";
 const canvas = captureFormat === "reels" ? { width: 1080, height: 1920 } : { width: 1080, height: 1350 };
 const captureOrigin = process.env.CAPTURE_ORIGIN || "http://127.0.0.1:3005";
+const cdpOrigin = process.env.CAPTURE_CDP_ORIGIN || "http://127.0.0.1:9223";
 const params = new URLSearchParams({ capture: "1", format: captureFormat });
 if (captureWinner) params.set("winner", captureWinner);
 if (useMockCaptureData) params.set("mock", "1");
 const baseUrl = `${captureOrigin}/sorteio?${params.toString()}`;
-const outputDir = path.resolve("artifacts/sorteio");
+const outputDir = path.resolve(process.env.CAPTURE_OUTPUT_DIR || "artifacts/sorteio");
 const stamp = new Date().toISOString().replace(/[:.]/g, "-");
 const framesDir = path.join(outputDir, `frames-${stamp}`);
 const videoPath = path.join(outputDir, `sorteio-${captureFormat}-${stamp}.mp4`);
@@ -22,13 +25,16 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function chromeTarget() {
   for (let attempt = 0; attempt < 40; attempt += 1) {
     try {
-      const targets = await fetch("http://127.0.0.1:9223/json").then((r) => r.json());
-      const target = targets.find((item) => item.type === "page" && item.url.includes("/sorteio"));
-      if (target) return target;
+      let targets = await fetch(`${cdpOrigin}/json`).then((r) => r.json());
+      if (!targets.some((item) => item.type === "page" && item.webSocketDebuggerUrl)) {
+        await fetch(`${cdpOrigin}/json/new?about:blank`, { method: "PUT" });
+        targets = await fetch(`${cdpOrigin}/json`).then((r) => r.json());
+      }
+      return chooseCaptureTarget(targets);
     } catch {}
     await sleep(250);
   }
-  throw new Error("Chrome CDP não disponibilizou a página do sorteio.");
+  throw new Error("Chrome CDP não disponibilizou uma página para o sorteio.");
 }
 
 function createCdp(wsUrl, onFrame) {
@@ -96,6 +102,8 @@ try {
   await cdp.ready;
   await cdp.send("Page.enable");
   await cdp.send("Runtime.enable");
+  await cdp.send("Page.bringToFront");
+  await cdp.send("Emulation.setFocusEmulationEnabled", { enabled: true });
   if (captureFormat === "reels") {
     await cdp.send("Emulation.setDeviceMetricsOverride", {
       ...canvas,
@@ -120,6 +128,7 @@ try {
   });
 
   // Shorter lead-in so the draw begins half a second sooner.
+  await requireCaptureFrame(() => frames.length);
   await sleep(1500);
   const click = await cdp.send("Runtime.evaluate", {
     expression: `(() => {
