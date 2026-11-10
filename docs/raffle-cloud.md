@@ -3,6 +3,8 @@
 ## Schedule and cutover gate
 `weekly-raffle.yml` defines Sunday 11:00 America/Sao_Paulo for the real weekly draw and Sunday 12:30 for a delivery watchdog. GitHub schedules are best effort and may be delayed or dropped. The watchdog is also best effort; native GitHub run notifications remain a fallback.
 
+Because GitHub disables scheduled workflows in public repositories after 60 days of inactivity, an isolated scheduled keepalive job checks the last main commit. Only after 28 days without source activity does it add an empty same-tree commit, with a non-forced ref update and readback. It changes no application files, has no EVO/email/state credentials, and alone receives contents-write permission. Concurrent user pushes are never overwritten.
+
 Scheduled jobs are gated by the repository Actions variable `RAFFLE_PRODUCTION_ENABLED=true`. Keep it unset/false until cloud acceptance and independent reviews pass. At cutover, pause the old local Hermes weekly raffle job, verify it is paused, then enable the variable and verify it remotely. Never leave both schedulers enabled. Do not fire a new live draw merely to test cutover.
 
 The application source stays in this public repository. Only operational state lives in `luchesigui/panobianco-raffle-state`, which must remain private. The runner refuses an unexpected state remote or a repository visible through the unauthenticated public API.
