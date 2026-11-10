@@ -56,6 +56,12 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
     if (/^MAIL_HTTP_\d{3}$/.test(error?.code || '')) {
       console.error(JSON.stringify({ code: error.code, reason: /^[A-Z_]+$/.test(error.safeReason || '') ? error.safeReason : 'PROVIDER_REJECTION' }));
     }
+    let diagnostic = String(error?.message || 'Unknown mock acceptance failure');
+    for (const key of ['RESEND_API_KEY', 'RAFFLE_EMAIL_FROM', 'RAFFLE_EMAIL_TO']) {
+      if (process.env[key]) diagnostic = diagnostic.split(process.env[key]).join('[redacted]');
+    }
+    // This entrypoint is mock-only. Never emit provider response bodies or environment dumps.
+    console.error(diagnostic.slice(-1200));
     console.error('Cloud acceptance failed. No live draw was performed. Inspect configuration, rendering or email provider.');
     process.exitCode = 1;
   });
