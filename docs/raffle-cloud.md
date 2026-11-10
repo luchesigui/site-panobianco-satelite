@@ -25,6 +25,9 @@ Entrypoint preflight (no email, no draw):
 
 Actual acceptance requires the local raffle page, Chromium, FFmpeg/FFprobe, and the above configuration. Linux browser is selected with CAPTURE_CHROME_BINARY=/usr/bin/google-chrome. Temporary files are deleted in finally. Logs do not contain internal winner details or email payloads.
 
+## Cloud acceptance result
+GitHub run 42843493361 executed on hosted Ubuntu and successfully rendered/FFprobe-validated a 1080x1920 H.264 30fps mock video (11.966667 seconds, 738766 bytes). Email delivery failed. A separate provider request confirmed the currently available RESEND_API_KEY is invalid (HTTP 400 validation_error). The configured GitHub secret needs to be replaced through repository Settings > Secrets and variables > Actions; never paste the key into chat or commit it. No email receipt or attachment acceptance has been verified yet. Draft PR: https://github.com/luchesigui/site-panobianco-satelite/pull/21.
+
 ## Production gates still outstanding
 1. Persistent authorized draw/result checkpoint before rendering, with same-period locking and crash recovery.
 2. Separate retry of an existing result, never a new draw after an export/email failure.
