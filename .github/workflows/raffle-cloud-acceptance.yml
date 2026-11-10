@@ -2,13 +2,6 @@ name: Raffle cloud acceptance
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ci/raffle-cloud-acceptance]
-    paths:
-      - '.github/workflows/raffle-cloud-acceptance.yml'
-      - 'scripts/raffle-*.mjs'
-      - 'scripts/sorteio-*.mjs'
-      - 'scripts/record-sorteio.mjs'
 
 permissions:
   contents: read

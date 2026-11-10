@@ -1,0 +1,105 @@
+name: Weekly Panobianco raffle
+
+on:
+  schedule:
+    - cron: '0 11 * * 0'
+      timezone: America/Sao_Paulo
+    - cron: '30 12 * * 0'
+      timezone: America/Sao_Paulo
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'mock sends a fictitious result; preflight only checks EVO; recover uses a saved result'
+        type: choice
+        options: [mock, preflight, recover]
+        default: mock
+      period:
+        description: 'Recovery only: Sunday YYYY-MM-DD'
+        type: string
+        required: false
+  push:
+    branches: [ci/raffle-cloud-acceptance]
+    paths:
+      - '.github/workflows/weekly-raffle.yml'
+      - 'scripts/raffle-*.mjs'
+      - 'scripts/record-sorteio.mjs'
+      - 'app/sorteio/page.tsx'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: panobianco-weekly-raffle
+  cancel-in-progress: false
+
+jobs:
+  raffle:
+    if: github.event_name != 'schedule' || vars.RAFFLE_PRODUCTION_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: source
+          persist-credentials: false
+      - name: Checkout private checkpoints
+        uses: actions/checkout@v4
+        with:
+          repository: luchesigui/panobianco-raffle-state
+          ref: main
+          path: state
+          ssh-key: ${{ secrets.RAFFLE_STATE_SSH_KEY }}
+          persist-credentials: true
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: source/package-lock.json
+      - run: npm ci
+        working-directory: source
+      - name: Install video tools
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+      - name: Unit and state integration tests
+        working-directory: source
+        run: node --test scripts/raffle-*.test.mjs scripts/sorteio-cdp.test.mjs scripts/sorteio-capture-guard.test.mjs scripts/sorteio-result.test.mjs scripts/sorteio-video.test.mjs
+      - name: Execute authorized mode
+        working-directory: source
+        env:
+          RAFFLE_MODE: ${{ github.event_name == 'schedule' && (github.event.schedule == '30 12 * * 0' && 'watchdog' || 'live') || inputs.mode || 'mock' }}
+          RAFFLE_PERIOD: ${{ inputs.period }}
+          RAFFLE_STATE_DIR: ${{ github.workspace }}/state
+          CAPTURE_TEMP_ROOT: ${{ runner.temp }}
+          CAPTURE_CHROME_BINARY: /usr/bin/google-chrome
+          CAPTURE_ORIGIN: http://127.0.0.1:3005
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RAFFLE_EMAIL_FROM: ${{ secrets.RAFFLE_EMAIL_FROM }}
+          RAFFLE_EMAIL_TO: ${{ secrets.RAFFLE_EMAIL_TO }}
+          EVO_DNS: ${{ secrets.EVO_DNS }}
+          EVO_TOKEN: ${{ secrets.EVO_TOKEN }}
+          EVO_BRANCH_ID: ${{ secrets.EVO_BRANCH_ID }}
+          GIT_TERMINAL_PROMPT: '0'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$RAFFLE_MODE" == preflight || "$RAFFLE_MODE" == watchdog ]]; then
+            node scripts/raffle-weekly-cloud.mjs
+            exit
+          fi
+          npm run dev -- --hostname 127.0.0.1 -p 3005 > "$RUNNER_TEMP/raffle-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          ready=0
+          for attempt in {1..90}; do
+            if curl --silent --fail 'http://127.0.0.1:3005/sorteio?capture=1&format=reels&mock=1&winner=Pessoa%20Ficticia' > /dev/null; then
+              ready=1
+              break
+            fi
+            sleep 2
+          done
+          test "$ready" = 1
+          node scripts/raffle-weekly-cloud.mjs
+          if [[ "$RAFFLE_MODE" == mock ]]; then
+            # Prove a second invocation reuses the durable sent checkpoint, no second draw/email.
+            node scripts/raffle-weekly-cloud.mjs
+          fi

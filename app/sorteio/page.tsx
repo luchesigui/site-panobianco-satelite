@@ -32,6 +32,7 @@ function SorteioContent() {
 		? searchParams.get("winner")?.trim() || null
 		: null;
 	const useMockCaptureData = isCaptureMode && searchParams.get("mock") === "1";
+	const captureWinnerId = isCaptureMode ? searchParams.get("winnerId") : null;
 
 	const [members, setMembers] = useState<Member[]>([]);
 	const [loading, setLoading] = useState(true);
@@ -252,7 +253,9 @@ function SorteioContent() {
 		// A normal page visit remains random. The capture-only route may replay a
 		// winner from an already recorded draw so the same result can be exported
 		// at another aspect ratio without triggering a new live draw.
-		const selectedWinnerIndex = captureWinnerName
+		const selectedWinnerIndex = captureWinnerId
+			? activeMembers.findIndex((member) => String(member.idMember) === captureWinnerId)
+			: captureWinnerName
 			? activeMembers.findIndex(
 					(member) =>
 						member.displayName.localeCompare(captureWinnerName, "pt-BR", {
