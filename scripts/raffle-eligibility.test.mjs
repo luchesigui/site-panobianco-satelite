@@ -10,16 +10,19 @@ const page = (data, status = 200, retryAfter = null) => ({
 	headers: new Headers(retryAfter === null ? {} : { "retry-after": retryAfter }),
 	json: async () => data,
 });
-function harness(responses) {
+function harness(responses, financialResponses = [page({ qtde: 0, lista: [] })]) {
 	const calls = [];
+	const financialCalls = [];
 	const waits = [];
 	return {
-		calls, waits,
+		calls, waits, financialCalls,
 		options: {
 			...config,
+			now: () => new Date("2026-11-16T02:30:00Z"),
 			fetchImpl: async (url, options) => {
-				calls.push({ url, options });
-				const response = responses.shift();
+				const financial = new URL(url).pathname === "/api/v1/receivables";
+				(financial ? financialCalls : calls).push({ url, options });
+				const response = (financial ? financialResponses : responses).shift();
 				if (response instanceof Error) throw response;
 				assert.ok(response, "Unexpected fixture request");
 				return response;
@@ -28,6 +31,81 @@ function harness(responses) {
 		},
 	};
 }
+
+const receivable = (idMemberPayer, extra = {}) => ({
+	idReceivable: idMemberPayer, idMemberPayer, dueDate: "2026-11-14T00:00:00",
+	status: { id: 4 }, ammount: 100, ammountPaid: 0, cancellationDate: null, ...extra,
+});
+
+test("excludes active members with overdue unpaid balances, including partial payments", async () => {
+	const records = [receivable(1), receivable(2, { ammountPaid: 10 }),
+		receivable(3, { dueDate: "2026-11-15T00:00:00" }),
+		receivable(4, { dueDate: "2026-11-16T00:00:00" }),
+		receivable(5, { ammountPaid: 100, status: { id: 2 } }),
+		receivable(6, { status: { id: 3 }, cancellationDate: "2026-11-10T00:00:00" }),
+		receivable(7, { dueDate: "2020-01-01T00:00:00", status: { id: 1 } })];
+	const h = harness([page(Array.from({ length: 8 }, (_, i) => member(i + 1)))], [page({ qtde: records.length, lista: records })]);
+	assert.deepEqual((await fetchEligibleMembers(h.options)).map(x => x.idMember), [3, 4, 5, 6, 8]);
+	assert.equal(h.financialCalls.length, 1);
+	const params = new URL(h.financialCalls[0].url).searchParams;
+	assert.equal(params.get("idBranch"), "1");
+	assert.equal(params.get("accountStatus"), "1,4");
+	assert.equal(params.get("dueDateEnd"), "2026-11-14");
+	assert.equal(params.has("dueDateStart"), false, "must not overlook old debts");
+});
+
+test("candidate loading does not query finances before selection", async () => {
+	const h = harness([page([member(1),member(2)])]);
+	assert.equal((await fetchEligibleMembers({...h.options, checkFinances:false})).length,2);
+	assert.equal(h.financialCalls.length,0);
+});
+
+test("live EVO null ammountPaid means no payment and excludes overdue balance", async () => {
+	const h = harness([page([member(1), member(2)])], [page([receivable(1, { ammountPaid: null })])]);
+	assert.deepEqual((await fetchEligibleMembers(h.options)).map(x => x.idMember), [2]);
+});
+
+test("accepts the live EVO array contract and paginates to a short page", async () => {
+	const full = Array.from({ length: 50 }, (_, i) => receivable(i + 1));
+	const h = harness([page([member(51), member(52)])], [page(full), page([receivable(51)])]);
+	assert.deepEqual((await fetchEligibleMembers(h.options)).map(x => x.idMember), [52]);
+	assert.equal(h.financialCalls.length, 2);
+});
+
+test("financial pagination is complete, authenticated and uncached", async () => {
+	const full = Array.from({ length: 50 }, (_, i) => receivable(i + 1));
+	const h = harness([page([member(51), member(52)])], [page({ qtde: 51, lista: full }), page({ qtde: 51, lista: [receivable(51)] })]);
+	assert.deepEqual((await fetchEligibleMembers(h.options)).map(x => x.idMember), [52]);
+	assert.equal(h.financialCalls.length, 2);
+	for (const [i, call] of h.financialCalls.entries()) {
+		assert.equal(new URL(call.url).searchParams.get("skip"), String(i * 50));
+		assert.equal(call.options.cache, "no-store");
+		assert.ok(call.options.signal instanceof AbortSignal);
+		assert.equal(call.options.headers.Authorization, h.calls[0].options.headers.Authorization);
+	}
+});
+
+test("financial errors, malformed and incomplete responses abort the entire pool", async () => {
+	for (const response of [page({}, 503), new Error("PRIVATE_NETWORK"), page(null), page({ qtde: 1, lista: [] }),
+		page({ qtde: 0, lista: [receivable(1)] }), page({ qtde: 1, lista: [receivable(1, { ammountPaid: "invalid" })] }),
+		page({ qtde: 2, lista: [receivable(1), receivable(1)] }), page({ qtde: 1, lista: [receivable(1, { dueDate: "PRIVATE" })] })]) {
+		await assert.rejects(fetchEligibleMembers(harness([page([member(1)])], [response]).options), /financial/i);
+	}
+	const full = Array.from({ length: 50 }, (_, i) => receivable(i + 1));
+	for (const second of [page({}, 500), page({ qtde: 52, lista: [receivable(51)] }), page({ qtde: 51, lista: [] })]) {
+		await assert.rejects(fetchEligibleMembers(harness([page([member(1)])], [page({ qtde: 51, lista: full }), second]).options), /financial/i);
+	}
+	const h = harness([page([member(1)])], [page({ qtde: 51, lista: full })]);
+	await assert.rejects(fetchEligibleMembers({ ...h.options, maxPages: 1 }), /financial page limit/i);
+});
+
+test("financial rate limits retry once with bounded waits and then fail closed", async () => {
+	const h = harness([page([member(1)])], [page(null, 429, "999999"), page({ qtde: 0, lista: [] })]);
+	assert.equal((await fetchEligibleMembers(h.options)).length, 1);
+	assert.deepEqual(h.waits, [5000]);
+	assert.equal(h.financialCalls.length, 2);
+	await assert.rejects(fetchEligibleMembers(harness([page([member(1)])], [page(null, 429), page(null, 429)]).options), /financial rate limit/);
+});
 
  test("paginates 50 then short page with authenticated, uncached, timed requests", async () => {
 	const h = harness([page(Array.from({ length: 50 }, (_, i) => member(i + 1))), page([member(51)])]);

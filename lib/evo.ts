@@ -1,3 +1,5 @@
+import { fetchEligibleMembers } from "../scripts/raffle-eligibility.mjs";
+
 const EVO_BASE = "https://evo-integracao-api.w12app.com.br";
 
 function evoAuthHeader(): string {
@@ -379,128 +381,14 @@ export function formatFirstAndLastName(firstName?: string, lastName?: string) {
 	};
 }
 
-let activeMembersCache: {
-	data: EvoActiveMember[];
-	timestamp: number;
-} | null = null;
-const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 hour
-
+// Keep the site and the scheduled draw on the same fresh eligibility rules.
 export async function getActiveMembers(
-	forceRefresh = false,
+	_forceRefresh = false,
 ): Promise<EvoActiveMember[]> {
-	const now = Date.now();
-	if (
-		!forceRefresh &&
-		activeMembersCache &&
-		now - activeMembersCache.timestamp < CACHE_DURATION_MS
-	) {
-		console.log(
-			`[evo] Returning ${activeMembersCache.data.length} cached active members (age: ${Math.round((now - activeMembersCache.timestamp) / 1000)}s)`,
-		);
-		return activeMembersCache.data;
-	}
-
-	const missing = ["EVO_DNS", "EVO_TOKEN", "EVO_BRANCH_ID"].filter(
-		(k) => !process.env[k],
-	);
-	if (missing.length > 0) {
-		console.error("[evo] missing env vars:", missing);
-		return activeMembersCache?.data || [];
-	}
-
-	const idBranch = process.env.EVO_BRANCH_ID;
-	const take = 50;
-	let skip = 0;
-	const allMembers: EvoActiveMember[] = [];
-
-	while (true) {
-		try {
-			const res = await fetch(
-				`${EVO_BASE}/api/v2/members?idBranch=${idBranch}&status=1&take=${take}&skip=${skip}`,
-				{
-					headers: {
-						Authorization: evoAuthHeader(),
-						accept: "application/json",
-					},
-					cache: "no-store",
-				},
-			);
-
-			if (res.status === 429) {
-				console.warn(`[evo] Rate limited (429) at skip ${skip}, backing off...`);
-				await new Promise((r) => setTimeout(r, 1500));
-				continue;
-			}
-
-			if (!res.ok) {
-				console.error("[evo] getActiveMembers failed status:", res.status);
-				break;
-			}
-
-			const data = await res.json();
-			if (!Array.isArray(data) || data.length === 0) break;
-
-			for (const item of data) {
-				if (!item.idMember) continue;
-
-				// Exclude Gympass / Wellhub
-				const isWellhub = Boolean(
-					item.gympassId || item.tokenGympass || item.codeGympass,
-				);
-				// Exclude Totalpass
-				const isTotalpass = Boolean(item.codeTotalpass);
-				// Exclude Personal
-				const isPersonal = Boolean(item.personalTrainer || item.personalType);
-				// Exclude VIP
-				const isVIP = Boolean(
-					item.membershipStatus?.toLowerCase().includes("vip") ||
-						item.notes?.toLowerCase().includes("vip"),
-				);
-				// Exclude blocked or pending
-				const isBlockedOrPending = Boolean(
-					item.accessBlocked ||
-						item.membershipStatus === "Pendente" ||
-						item.membershipStatus === "Pending" ||
-						item.membershipStatus === "Aguardando",
-				);
-
-				if (isWellhub || isTotalpass || isPersonal || isVIP || isBlockedOrPending) {
-					continue;
-				}
-
-				const formatted = formatFirstAndLastName(
-					item.firstName || item.registerName,
-					item.lastName || item.registerLastName,
-				);
-
-				allMembers.push({
-					idMember: item.idMember,
-					firstName: formatted.first,
-					lastName: formatted.last,
-					displayName: formatted.displayName,
-				});
-			}
-
-			if (data.length < take) break;
-			skip += take;
-			await new Promise((r) => setTimeout(r, 50));
-		} catch (err) {
-			console.error("[evo] error fetching active members:", err);
-			break;
-		}
-	}
-
-	if (allMembers.length > 0) {
-		activeMembersCache = {
-			data: allMembers,
-			timestamp: now,
-		};
-	}
-
-	return allMembers.length > 0
-		? allMembers
-		: activeMembersCache?.data || [];
+	return fetchEligibleMembers({
+		dns: process.env.EVO_DNS,
+		token: process.env.EVO_TOKEN,
+		branchId: process.env.EVO_BRANCH_ID,
+		checkFinances: false,
+	});
 }
-
-
-

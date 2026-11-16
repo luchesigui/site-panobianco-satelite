@@ -253,7 +253,7 @@ function SorteioContent() {
 		// A normal page visit remains random. The capture-only route may replay a
 		// winner from an already recorded draw so the same result can be exported
 		// at another aspect ratio without triggering a new live draw.
-		const selectedWinnerIndex = captureWinnerId
+		let selectedWinnerIndex = captureWinnerId
 			? activeMembers.findIndex((member) => String(member.idMember) === captureWinnerId)
 			: captureWinnerName
 			? activeMembers.findIndex(
@@ -262,7 +262,20 @@ function SorteioContent() {
 							sensitivity: "base",
 						}) === 0,
 				)
-			: Math.floor(Math.random() * activeMembers.length);
+			: -1;
+		if (!captureWinnerId && !captureWinnerName) {
+			try {
+				const response = await fetch("/api/sorteio/selecionar", { method: "POST", cache: "no-store" });
+				const result = await response.json();
+				if (!response.ok || !result.success || !result.winner) throw new Error("Validation failed");
+				selectedWinnerIndex = activeMembers.findIndex(member => member.idMember === result.winner.idMember);
+				if (selectedWinnerIndex < 0) throw new Error("Candidate list changed");
+			} catch {
+				setError("Não foi possível validar um participante sem débitos vencidos. Recarregue e tente novamente mais tarde.");
+				setStatus("idle");
+				return;
+			}
+		}
 		if (selectedWinnerIndex < 0) {
 			setError("O vencedor solicitado não está disponível para a regravação.");
 			setStatus("idle");

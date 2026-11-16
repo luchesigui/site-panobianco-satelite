@@ -13,6 +13,10 @@ export function resolveRaffleRun({mode,eventName,ref,period,runId,now=new Date()
     if (!/^\d{1,30}$/.test(runId || '')) throw new Error('Invalid mock run ID.');
     return {mode:'mock',key:`mock-${runId}`,recoverOnly:false};
   }
+  if (mode === 'replace') {
+    if (eventName !== 'workflow_dispatch' || ref !== 'refs/heads/main' || !sunday(period) || period > today) throw new Error('Replacement requires explicit manual authorization on main for an existing Sunday.');
+    return {mode:'live',key:`live-${period}-replacement`,replacementOf:`live-${period}`,recoverOnly:false};
+  }
   if (mode === 'recover') {
     if (!sunday(period) || period > today) throw new Error('Recovery requires a past or current Sunday period.');
     return {mode:'live',key:`live-${period}`,recoverOnly:true};

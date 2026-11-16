@@ -5,6 +5,7 @@ import path from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { fetchEligibleMembers } from './raffle-eligibility.mjs';
+import { hasOverdueDebt } from './raffle-candidate-eligibility.mjs';
 import { GitRaffleStore } from './raffle-git-store.mjs';
 import { runRafflePeriod } from './raffle-production.mjs';
 import { resolveRaffleRun } from './raffle-schedule.mjs';
@@ -25,12 +26,14 @@ async function alertEmail(subject,key) {
 async function main() {
   if (process.argv.includes('--check')) { console.log('Weekly cloud runner ready. No draw or email.'); return; }
   const config=resolveRaffleRun({mode:process.env.RAFFLE_MODE,eventName:process.env.GITHUB_EVENT_NAME,ref:process.env.GITHUB_REF,period:process.env.RAFFLE_PERIOD,runId:process.env.GITHUB_RUN_ID});
-  const loadLive=()=>fetchEligibleMembers({dns:process.env.EVO_DNS,token:process.env.EVO_TOKEN,branchId:process.env.EVO_BRANCH_ID});
+  // Pace the paginated active-member load to respect EVO request limits.
+  const evoOptions={dns:process.env.EVO_DNS,token:process.env.EVO_TOKEN,branchId:process.env.EVO_BRANCH_ID,fetchImpl:async (...args)=>{await new Promise(resolve=>setTimeout(resolve,2200));return fetch(...args);}};
+  const loadLive=()=>fetchEligibleMembers({...evoOptions,checkFinances:false});
   if (config.mode==='preflight') {
     stage='eligibility_preflight';
     const members=await loadLive();
     if (!members.length) throw new Error('Empty participant pool.');
-    console.log(JSON.stringify({preflight:true,eligibleCount:members.length,drawPerformed:false})); return;
+    console.log(JSON.stringify({preflight:true,candidateCount:members.length,financialChecksPerformed:false,drawPerformed:false})); return;
   }
   for (const key of ['RESEND_API_KEY','RAFFLE_EMAIL_FROM','RAFFLE_EMAIL_TO','RAFFLE_STATE_DIR']) if(!process.env[key]) throw new Error('Missing cloud configuration.');
   const stateDir=path.resolve(process.env.RAFFLE_STATE_DIR);
@@ -54,7 +57,7 @@ async function main() {
         if(config.mode==='mock') return Array.from({length:12},(_,i)=>({idMember:i+1,firstName:i===11?'Pessoa':'Participante',lastName:i===11?'Ficticia':String(i+1).padStart(2,'0'),displayName:i===11?'Pessoa Ficticia':`Participante ${String(i+1).padStart(2,'0')}`}));
         return loadLive();
       },
-      ...(config.mode==='mock'?{randomIndex:()=>11}:{}),
+      ...(config.mode==='mock'?{randomIndex:()=>11}:{isCandidateEligible:async member=>!(await hasOverdueDebt({...evoOptions,memberId:member.idMember}))}),
       renderEmail:async saved=>{
         stage='render'; validateReplay(saved);
         const replayFile=path.join(dir,'replay.json');
@@ -82,7 +85,7 @@ async function main() {
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){
   main().catch(async error=>{
     console.error(JSON.stringify({status:'failed',stage,reason:/^[A-Z_]+$/.test(error.safeReason||'')?error.safeReason:'CHECK_PRIVATE_STATE_AND_WORKFLOW'}));
-    if(stage!=='configuration'&&['live','recover','watchdog'].includes(process.env.RAFFLE_MODE))try{await alertEmail('[ALERTA] Falha na automação do sorteio',`failure-${process.env.GITHUB_RUN_ID}`);}catch{console.error('Failure email unavailable; GitHub run remains failed.');}
+    if(stage!=='configuration'&&['live','recover','watchdog','replace'].includes(process.env.RAFFLE_MODE))try{await alertEmail('[ALERTA] Falha na automação do sorteio',`failure-${process.env.GITHUB_RUN_ID}`);}catch{console.error('Failure email unavailable; GitHub run remains failed.');}
     process.exitCode=1;
   });
 }

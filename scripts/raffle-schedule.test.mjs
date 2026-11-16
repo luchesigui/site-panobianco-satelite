@@ -11,6 +11,15 @@ test('Sunday live period uses Sao Paulo date and only scheduled main can select'
   assert.throws(()=>resolveRaffleRun({...base,now:new Date('2026-11-15T02:00:00Z')}));
 });
 
+test('explicit manual replacement uses one stable key and preserves original period',()=>{
+ const base={mode:'replace',eventName:'workflow_dispatch',ref:'refs/heads/main',period:'2026-11-15',now:new Date('2026-11-16T14:00:00Z')};
+ assert.deepEqual(resolveRaffleRun(base),{mode:'live',key:'live-2026-11-15-replacement',replacementOf:'live-2026-11-15',recoverOnly:false});
+ assert.throws(()=>resolveRaffleRun({...base,eventName:'schedule'}));
+ assert.throws(()=>resolveRaffleRun({...base,ref:'refs/heads/feature'}));
+ assert.throws(()=>resolveRaffleRun({...base,period:'2026-11-22'}));
+ assert.throws(()=>resolveRaffleRun({...base,period:'2026-11-16'}));
+});
+
 test('manual recovery cannot invent a new or future period and mock is separate', () => {
   const now=new Date('2026-11-16T14:00:00Z');
   assert.deepEqual(resolveRaffleRun({mode:'recover',period:'2026-11-15',now}),{mode:'live',key:'live-2026-11-15',recoverOnly:true});

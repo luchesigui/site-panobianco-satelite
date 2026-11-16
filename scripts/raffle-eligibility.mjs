@@ -63,9 +63,66 @@ function retryDelay(response) {
 	return Number.isFinite(delay) ? Math.max(0, Math.min(MAX_RETRY_MS, delay)) : 1500;
 }
 
-/** Fetch a complete fresh pool or reject. Never log upstream data or errors. */
+/** Full financial pagination, without a lookback cutoff that could hide old debts. */
+async function fetchOverdueMemberIds({ headers, branch, fetchImpl, sleep, maxPages, now }) {
+	const instant = now();
+	if (!(instant instanceof Date) || !Number.isFinite(instant.getTime())) throw new Error("Invalid EVO financial date.");
+	const parts = new Intl.DateTimeFormat("en-US", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(instant);
+	const part = (type) => parts.find((entry) => entry.type === type).value;
+	const today = `${part("year")}-${part("month")}-${part("day")}`;
+	const yesterday = new Date(`${today}T00:00:00Z`);
+	yesterday.setUTCDate(yesterday.getUTCDate() - 1);
+	const overdue = new Set();
+	const seen = new Set();
+	let expectedTotal;
+	for (let index = 0; index < maxPages; index++) {
+		const url = new URL("https://evo-integracao-api.w12app.com.br/api/v1/receivables");
+		url.search = new URLSearchParams({ idBranch: String(branch), accountStatus: "1,4", dueDateEnd: yesterday.toISOString().slice(0, 10), take: String(TAKE), skip: String(index * TAKE) }).toString();
+		let response;
+		for (let attempt = 0; attempt < 2; attempt++) {
+			try {
+				response = await fetchImpl(url.toString(), { headers, cache: "no-store", signal: AbortSignal.timeout(TIMEOUT_MS) });
+			} catch { throw new Error("EVO financial request failed."); }
+			if (response?.status !== 429) break;
+			if (attempt === 1) throw new Error("EVO financial rate limit exhausted.");
+			try { await sleep(retryDelay(response)); } catch { throw new Error("EVO financial rate limit wait failed."); }
+		}
+		if (!response?.ok) throw new Error("EVO financial request failed.");
+		let data;
+		try { data = await response.json(); } catch { throw new Error("Invalid EVO financial page."); }
+		const rows = Array.isArray(data) ? data : data?.lista;
+		const total = Array.isArray(data) ? null : data?.qtde;
+		if (!Array.isArray(rows) || rows.length > TAKE || (total !== null && (!Number.isSafeInteger(total) || total < 0))) throw new Error("Invalid EVO financial page.");
+		if (index === 0) expectedTotal = total;
+		if (total !== expectedTotal) throw new Error("EVO financial total changed.");
+		for (const item of rows) {
+			if (!item || !positiveInteger(item.idReceivable) || !Number.isInteger(item.idMemberPayer) || item.idMemberPayer < 0 ||
+				!/^\d{4}-\d{2}-\d{2}(?:T|$)/.test(item.dueDate) || !Number.isFinite(Date.parse(item.dueDate)) ||
+				![1, 2, 3, 4].includes(item.status?.id) ||
+				!Number.isFinite(item.ammount) || item.ammount < 0 || (item.ammountPaid !== null && (!Number.isFinite(item.ammountPaid) || item.ammountPaid < 0)) ||
+				(item.cancellationDate != null && (typeof item.cancellationDate !== "string" || !Number.isFinite(Date.parse(item.cancellationDate))))) throw new Error("Invalid EVO financial record.");
+			if (seen.has(item.idReceivable)) throw new Error("Duplicate EVO financial record.");
+			seen.add(item.idReceivable);
+			if (item.idMemberPayer > 0 && [1, 4].includes(item.status.id) && !item.cancellationDate &&
+				item.dueDate.slice(0, 10) < today && Math.round(item.ammount * 100) > Math.round((item.ammountPaid ?? 0) * 100)) overdue.add(item.idMemberPayer);
+		}
+		if (expectedTotal === null) {
+			if (rows.length < TAKE) return overdue;
+		} else {
+			if (seen.size > expectedTotal) throw new Error("Invalid EVO financial total.");
+			if (seen.size === expectedTotal) return overdue;
+			if (rows.length < TAKE) throw new Error("Incomplete EVO financial page.");
+		}
+	}
+	throw new Error("EVO financial page limit exhausted.");
+}
+
+/**
+ * Fetch a complete fresh pool or reject. Never log upstream data or errors.
+ * @param {{dns?: string, token?: string, branchId?: string | number, fetchImpl?: typeof fetch, sleep?: (ms: number) => Promise<void>, maxPages?: number, now?: () => Date, checkFinances?: boolean}} options
+ */
 export async function fetchEligibleMembers({
-	dns, token, branchId, fetchImpl = fetch, sleep = pause, maxPages = 500,
+	dns, token, branchId, fetchImpl = fetch, sleep = pause, maxPages = 500, now = () => new Date(), checkFinances = true,
 } = {}) {
 	const validCredential = (value) => typeof value === "string" && value.trim().length > 0 && !/[\x00-\x1f\x7f]/.test(value);
 	const branch = typeof branchId === "string" && /^[1-9]\d*$/.test(branchId) ? Number(branchId) : branchId;
@@ -113,7 +170,11 @@ export async function fetchEligibleMembers({
 			seen.add(item.idMember);
 			if (!excluded(item)) members.push(formatMember(item));
 		}
-		if (data.length < TAKE) return members;
+		if (data.length < TAKE) {
+			if (!checkFinances) return members;
+			const overdue = await fetchOverdueMemberIds({ headers, branch, fetchImpl, sleep, maxPages, now });
+			return members.filter((member) => !overdue.has(member.idMember));
+		}
 	}
 	throw new Error("EVO eligibility page limit exhausted.");
 }

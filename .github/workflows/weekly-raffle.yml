@@ -9,12 +9,12 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'mock sends a fictitious result; preflight only checks EVO; recover uses a saved result'
+        description: 'mock: fictional; preflight: active pool; recover: saved result; replace: authorized indebted-winner replacement'
         type: choice
-        options: [mock, preflight, recover]
+        options: [mock, preflight, recover, replace]
         default: mock
       period:
-        description: 'Recovery only: Sunday YYYY-MM-DD'
+        description: 'Recovery/replacement: original Sunday YYYY-MM-DD'
         type: string
         required: false
   push:
@@ -77,7 +77,7 @@ jobs:
         run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
       - name: Unit and state integration tests
         working-directory: source
-        run: node --test scripts/raffle-*.test.mjs scripts/sorteio-cdp.test.mjs scripts/sorteio-capture-guard.test.mjs scripts/sorteio-result.test.mjs scripts/sorteio-video.test.mjs
+        run: node --import tsx --test scripts/raffle-api-eligibility.test.ts scripts/raffle-*.test.mjs scripts/sorteio-cdp.test.mjs scripts/sorteio-capture-guard.test.mjs scripts/sorteio-result.test.mjs scripts/sorteio-video.test.mjs
       - name: Execute authorized mode
         working-directory: source
         env:

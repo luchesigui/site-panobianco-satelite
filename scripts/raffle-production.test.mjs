@@ -17,6 +17,47 @@ function options(store, extra = {}) {
     send: async () => 'fixture-receipt', now: () => new Date('2026-11-15T14:00:00Z'), ...extra };
 }
 
+test('replacement requires an existing sent indebted winner and preserves its checkpoint',async()=>{
+ const original={revision:'original-revision',data:{schema:1,key:'live-2026-11-15',mode:'live',status:'sent',winner:{id:1,name:'Original'},receipt:'original-receipt'}};
+ const store=memoryStore(); const read=store.read.bind(store);
+ store.read=async key=>key==='live-2026-11-15'?structuredClone(original):read(key);
+ const config=options(store,{mode:'live',key:'live-2026-11-15-replacement',replacementOf:'live-2026-11-15',randomIndex:()=>0,isCandidateEligible:async m=>m.idMember!==1});
+ await runRafflePeriod(config);
+ const saved=(await read()).data;
+ assert.equal(saved.winner.id,2); assert.equal(saved.replacementOf,'live-2026-11-15');
+ assert.equal(saved.originalRevision,'original-revision');
+ assert.deepEqual(await store.read('live-2026-11-15'),original);
+ assert.equal((await runRafflePeriod(config)).status,'already_sent');
+ for (const source of [null,{...original,data:{...original.data,status:'selected'}},original]) {
+   const other=memoryStore(); const otherRead=other.read.bind(other);
+   other.read=async key=>key==='live-2026-11-15'?source:otherRead(key);
+   await assert.rejects(runRafflePeriod({...config,store:other,isCandidateEligible:async()=>true}),/replacement/i);
+   assert.equal(await otherRead(),null);
+ }
+});
+
+test('live selection validates the candidate, rejects debt, and saves only the approved winner', async () => {
+  const store = memoryStore(); const checked = [];
+  await runRafflePeriod(options(store, { mode:'live', key:'live-fixture', randomIndex:()=>0,
+    isCandidateEligible: async member => { checked.push(member.idMember); return member.idMember === 2; } }));
+  assert.deepEqual(checked,[1,2]);
+  const saved = (await store.read()).data;
+  assert.equal(saved.winner.id,2); assert.deepEqual(saved.rejectedIds,[1]);
+  assert.deepEqual(saved.members.map(m=>m.idMember),[2]);
+});
+
+test('live candidate API failure never records a winner or sends an email', async () => {
+  const store = memoryStore(); let sends=0;
+  await assert.rejects(runRafflePeriod(options(store, { mode:'live',key:'live-fixture',isCandidateEligible:async()=>{throw new Error('financial failure');},send:async()=>{sends++;} })),/financial failure/);
+  assert.equal(sends,0); assert.equal((await store.read()).data.winner,undefined);
+});
+
+test('live draw refuses to run without financial validation', async () => {
+  const store = memoryStore();
+  await assert.rejects(runRafflePeriod(options(store,{mode:'live',key:'live-fixture'})),/validation/);
+  assert.equal(await store.read(),null);
+});
+
 test('eligibility failure before selection does not claim the period', async () => {
   const store = memoryStore();
   await assert.rejects(runRafflePeriod(options(store, { loadMembers: async () => { throw new Error('API unavailable'); } })));
